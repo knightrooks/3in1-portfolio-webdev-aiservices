@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+
+{% block title %}Web Development Services - Professional Solutions{% endblock %}
+
+{% block content %}
+<section class="services-hero py-5 mt-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <h1 class="display-4 fw-bold mb-4">
+                    <i class="fas fa-code text-success me-3"></i>Web Development Services
+                </h1>
+                <p class="lead text-muted mb-4">
+                    Professional web development solutions for businesses of all sizes. From simple websites to complex web applications.
+                </p>
+                <a href="{{ url_for('services.inquiry') }}" class="btn btn-success btn-lg">
+                    <i class="fas fa-quote-right me-2"></i>Get Free Quote
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services-grid py-5">
+    <div class="container">
+        <div class="row g-4">
+            {% for service in services %}
+            <div class="col-lg-6 col-md-6">
+                <div class="service-card card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="service-icon me-3">
+                                {% if 'frontend' in service.name.lower() %}
+                                    <i class="fas fa-palette fa-2x text-primary"></i>
+                                {% elif 'backend' in service.name.lower() %}
+                                    <i class="fas fa-server fa-2x text-success"></i>
+                                {% elif 'full-stack' in service.name.lower() %}
+                                    <i class="fas fa-layer-group fa-2x text-warning"></i>
+                                {% elif 'database' in service.name.lower() %}
+                                    <i class="fas fa-database fa-2x text-info"></i>
+                                {% else %}
+                                    <i class="fas fa-cog fa-2x text-secondary"></i>
+                                {% endif %}
+                            </div>
+                            <div>
+                                <h4 class="card-title mb-1">{{ service.name }}</h4>
+                                <span class="badge bg-success">{{ service.price_range }}</span>
+                            </div>
+                        </div>
+                        
+                        <p class="card-text text-muted mb-3">{{ service.description }}</p>
+                        
+                        <div class="technologies mb-3">
+                            <h6 class="fw-bold mb-2">Technologies:</h6>
+                            <div class="tech-badges">
+                                {% for tech in service.technologies %}
+                                <span class="badge bg-primary me-1 mb-1">{{ tech }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{{ url_for('services.inquiry') }}" class="btn btn-outline-success">
+                                <i class="fas fa-envelope me-1"></i>Get Quote
+                            </a>
+                            <small class="text-muted">{{ service.price_range }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="process-section py-5 bg-light">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="display-6 fw-bold mb-3">Our Development Process</h2>
+                <p class="lead text-muted">A streamlined approach to deliver high-quality results</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-3 text-center">
+                <div class="process-step">
+                    <div class="step-number bg-primary text-white mb-3">1</div>
+                    <h5>Discovery & Planning</h5>
+                    <p class="text-muted">Understanding your requirements, goals, and technical specifications</p>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="process-step">
+                    <div class="step-number bg-success text-white mb-3">2</div>
+                    <h5>Design & Prototyping</h5>
+                    <p class="text-muted">Creating wireframes, mockups, and interactive prototypes</p>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="process-step">
+                    <div class="step-number bg-warning text-white mb-3">3</div>
+                    <h5>Development & Testing</h5>
+                    <p class="text-muted">Coding, integration, and comprehensive testing phases</p>
+                </div>
+            </div>
+            <div class="col-md-3 text-center">
+                <div class="process-step">
+                    <div class="step-number bg-info text-white mb-3">4</div>
+                    <h5>Launch & Support</h5>
+                    <p class="text-muted">Deployment, monitoring, and ongoing maintenance support</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="why-choose py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="display-6 fw-bold mb-4">Why Choose Our Services?</h2>
+                <div class="benefits">
+                    <div class="benefit-item d-flex mb-3">
+                        <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                        <div>
+                            <h6 class="mb-1">Expert Development Team</h6>
+                            <p class="text-muted mb-0">Experienced developers with proven track records</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item d-flex mb-3">
+                        <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                        <div>
+                            <h6 class="mb-1">Modern Technologies</h6>
+                            <p class="text-muted mb-0">Latest frameworks and best practices</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item d-flex mb-3">
+                        <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                        <div>
+                            <h6 class="mb-1">Transparent Communication</h6>
+                            <p class="text-muted mb-0">Regular updates and clear project milestones</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item d-flex mb-3">
+                        <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                        <div>
+                            <h6 class="mb-1">Quality Assurance</h6>
+                            <p class="text-muted mb-0">Thorough testing and quality control processes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="stats-container p-4 bg-light rounded">
+                    <h3 class="mb-4">Our Track Record</h3>
+                    <div class="row g-3">
+                        <div class="col-6 text-center">
+                            <h3 class="text-success fw-bold">50+</h3>
+                            <p class="text-muted">Projects Completed</p>
+                        </div>
+                        <div class="col-6 text-center">
+                            <h3 class="text-primary fw-bold">30+</h3>
+                            <p class="text-muted">Happy Clients</p>
+                        </div>
+                        <div class="col-6 text-center">
+                            <h3 class="text-warning fw-bold">5+</h3>
+                            <p class="text-muted">Years Experience</p>
+                        </div>
+                        <div class="col-6 text-center">
+                            <h3 class="text-info fw-bold">99%</h3>
+                            <p class="text-muted">Client Satisfaction</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section py-5 bg-dark text-white">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="display-6 fw-bold mb-3">Ready to Start Your Project?</h2>
+                <p class="lead mb-4">
+                    Let's discuss your web development needs and create something amazing together.
+                </p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{{ url_for('services.inquiry') }}" class="btn btn-success btn-lg">
+                        <i class="fas fa-envelope me-2"></i>Get Free Quote
+                    </a>
+                    <a href="{{ url_for('services.packages') }}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-box me-2"></i>View Packages
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+.process-step {
+    padding: 1.5rem;
+}
+
+.benefit-item {
+    transition: transform 0.2s ease;
+}
+
+.benefit-item:hover {
+    transform: translateX(10px);
+}
+
+.tech-badges .badge {
+    font-size: 0.75rem;
+}
+</style>
+{% endblock %}
