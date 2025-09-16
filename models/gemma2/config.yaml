@@ -1,0 +1,232 @@
+# Gemma 2 Configuration
+model_info:
+  name: "Gemma 2"
+  version: "2.0"
+  description: "Google's Gemma 2 model for general reasoning, analysis, and strategic thinking"
+  provider: "Google AI"
+  license: "Apache 2.0"
+  
+# Model Parameters
+parameters:
+  max_tokens: 4096
+  temperature: 0.3
+  top_p: 0.9
+  frequency_penalty: 0.1
+  presence_penalty: 0.1
+  stop_sequences: ["<|end|>", "</response>"]
+  
+# Core Capabilities
+capabilities:
+  general_reasoning:
+    - logical_analysis
+    - problem_decomposition
+    - critical_thinking
+    - decision_making
+    - hypothesis_formation
+    
+  text_analysis:
+    - sentiment_analysis
+    - content_summarization
+    - theme_extraction
+    - readability_assessment
+    - linguistic_analysis
+    
+  strategic_thinking:
+    - business_strategy
+    - competitive_analysis
+    - market_research
+    - risk_assessment
+    - opportunity_identification
+    
+  problem_solving:
+    - root_cause_analysis
+    - solution_generation
+    - pros_cons_evaluation
+    - implementation_planning
+    - outcome_prediction
+
+# Domain Specialties
+specialties:
+  business_analysis:
+    market_research:
+      - industry_analysis
+      - competitor_research
+      - market_sizing
+      - trend_identification
+      - customer_segmentation
+      
+    strategic_planning:
+      - swot_analysis
+      - strategic_options
+      - resource_planning
+      - goal_setting
+      - success_metrics
+      
+    financial_analysis:
+      - cost_benefit_analysis
+      - roi_calculation
+      - budget_planning
+      - risk_assessment
+      - investment_evaluation
+      
+  content_strategy:
+    content_planning:
+      - editorial_calendars
+      - content_themes
+      - audience_targeting
+      - content_optimization
+      - distribution_strategy
+      
+    communication:
+      - stakeholder_communication
+      - presentation_planning
+      - messaging_strategy
+      - brand_voice_development
+      - crisis_communication
+      
+  research_analysis:
+    data_interpretation:
+      - statistical_analysis
+      - pattern_recognition
+      - correlation_analysis
+      - trend_forecasting
+      - insight_generation
+      
+    methodology:
+      - research_design
+      - survey_planning
+      - interview_structuring
+      - analysis_frameworks
+      - reporting_standards
+
+# Reasoning Patterns
+reasoning:
+  analytical_approach:
+    - systematic_breakdown
+    - evidence_evaluation
+    - logical_progression
+    - assumption_testing
+    - conclusion_validation
+    
+  creative_thinking:
+    - brainstorming_techniques
+    - alternative_perspectives
+    - innovative_solutions
+    - scenario_planning
+    - blue_sky_thinking
+    
+  strategic_mindset:
+    - long_term_perspective
+    - systems_thinking
+    - stakeholder_consideration
+    - risk_reward_balance
+    - sustainable_solutions
+
+# Output Characteristics
+output_style:
+  structure:
+    - clear_organization
+    - logical_flow
+    - executive_summaries
+    - detailed_analysis
+    - actionable_recommendations
+    
+  communication:
+    - professional_tone
+    - data_driven_insights
+    - balanced_perspectives
+    - practical_examples
+    - clear_explanations
+    
+  format_options:
+    - bullet_point_summaries
+    - detailed_reports
+    - strategic_frameworks
+    - decision_matrices
+    - action_plans
+
+# Quality Standards
+quality:
+  accuracy:
+    - fact_checking
+    - source_verification
+    - logical_consistency
+    - comprehensive_coverage
+    - balanced_analysis
+    
+  usefulness:
+    - actionable_insights
+    - practical_recommendations
+    - clear_next_steps
+    - measurable_outcomes
+    - implementation_guidance
+    
+  clarity:
+    - plain_language
+    - structured_presentation
+    - visual_organization
+    - key_takeaways
+    - supporting_details
+
+# Context Handling
+context:
+  information_processing:
+    - multi_source_synthesis
+    - conflicting_information_resolution
+    - context_appropriate_responses
+    - stakeholder_perspective_integration
+    - cultural_sensitivity
+    
+  memory_utilization:
+    - conversation_continuity
+    - previous_analysis_building
+    - consistent_recommendations
+    - evolving_understanding
+    - adaptive_responses
+
+# Performance Metrics
+performance:
+  reasoning_quality: "high"
+  analysis_depth: "comprehensive"
+  strategic_insight: "advanced"
+  communication_clarity: "excellent"
+  practical_applicability: "strong"
+
+# Usage Guidelines
+usage:
+  optimal_for:
+    - "Strategic business questions"
+    - "Market analysis and research"
+    - "Problem-solving scenarios"
+    - "Content strategy development"
+    - "Decision-making support"
+    
+  prompt_best_practices:
+    - "Provide relevant background context"
+    - "Specify the analysis scope"
+    - "Include stakeholder perspectives"
+    - "Mention constraints and requirements"
+    - "Request specific output format"
+    
+  example_queries:
+    - "Analyze the competitive landscape for [industry]"
+    - "Develop a go-to-market strategy for [product]"
+    - "Evaluate the pros and cons of [business decision]"
+    - "Create a content strategy for [target audience]"
+    - "Assess the risks and opportunities in [situation]"
+
+# Integration Settings
+integration:
+  response_modes:
+    - analytical_report
+    - strategic_summary
+    - decision_framework
+    - action_plan
+    - research_brief
+    
+  collaboration:
+    - iterative_refinement
+    - follow_up_questions
+    - assumption_clarification
+    - additional_analysis
+    - implementation_support

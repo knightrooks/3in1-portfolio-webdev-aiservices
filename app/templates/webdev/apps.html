@@ -1,0 +1,382 @@
+{% extends "base.html" %}
+
+{% block title %}Web Applications | Professor Johnny (@onelastai){% endblock %}
+
+{% block content %}
+<div class="apps-section" style="margin-top: 76px;">
+    <!-- Apps Hero -->
+    <section class="apps-hero bg-success text-white py-5" style="background: linear-gradient(135deg, #198754 0%, #20c997 50%, #0d6efd 100%);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ url_for('webdev.index') }}" class="text-light">Services</a></li>
+                            <li class="breadcrumb-item active text-light">Web Applications</li>
+                        </ol>
+                    </nav>
+                    
+                    <h1 class="display-4 fw-bold mb-4">
+                        <i class="fas fa-code text-warning"></i> Custom Web Applications
+                    </h1>
+                    <p class="lead mb-4">Powerful web applications built with cutting-edge technology</p>
+                    
+                    <div class="d-flex gap-3">
+                        <a href="#packages" class="btn btn-warning btn-lg">
+                            <i class="fas fa-tags"></i> View Packages
+                        </a>
+                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-calculator"></i> Get Quote
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="device-mockup">
+                        <i class="fas fa-desktop fa-8x text-info opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Types -->
+    <section class="app-types py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-cogs text-success"></i> Types of Applications We Build
+                    </h2>
+                    <p class="lead text-muted">From simple tools to complex enterprise systems</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="app-type-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-chart-line fa-4x text-primary mb-4"></i>
+                            <h4 class="fw-bold mb-3">Business Dashboards</h4>
+                            <p class="text-muted mb-4">Real-time data visualization, analytics, and reporting systems for business intelligence.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>Real-time analytics</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Custom reporting</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Data visualization</li>
+                                <li><i class="fas fa-check text-success me-2"></i>User role management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="app-type-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-users fa-4x text-info mb-4"></i>
+                            <h4 class="fw-bold mb-3">CRM Systems</h4>
+                            <p class="text-muted mb-4">Customer relationship management systems to streamline your sales and marketing.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>Contact management</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Sales pipeline</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Email integration</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Activity tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="app-type-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-tasks fa-4x text-warning mb-4"></i>
+                            <h4 class="fw-bold mb-3">Project Management</h4>
+                            <p class="text-muted mb-4">Collaborative project management tools with task tracking and team collaboration.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>Task management</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Team collaboration</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Time tracking</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Progress reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="app-type-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-robot fa-4x text-danger mb-4"></i>
+                            <h4 class="fw-bold mb-3">AI-Powered Apps</h4>
+                            <p class="text-muted mb-4">Intelligent applications leveraging machine learning and AI capabilities.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>Machine learning models</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Natural language processing</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Predictive analytics</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Automated decision making</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="app-type-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-mobile-alt fa-4x text-secondary mb-4"></i>
+                            <h4 class="fw-bold mb-3">Progressive Web Apps</h4>
+                            <p class="text-muted mb-4">Mobile-first applications that work offline and provide native app experiences.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>Offline functionality</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Push notifications</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Mobile responsive</li>
+                                <li><i class="fas fa-check text-success me-2"></i>App-like experience</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="app-type-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-database fa-4x text-dark mb-4"></i>
+                            <h4 class="fw-bold mb-3">Data Management</h4>
+                            <p class="text-muted mb-4">Complex data management systems with advanced search and filtering capabilities.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>Advanced search</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Data import/export</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Backup & recovery</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Security controls</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack -->
+    <section class="tech-stack py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-layer-group text-primary"></i> Technology Stack
+                    </h2>
+                    <p class="lead text-muted">Modern technologies for scalable applications</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="tech-category">
+                        <h5 class="fw-bold text-center mb-3">Frontend</h5>
+                        <div class="tech-items">
+                            <span class="badge bg-primary m-1">React</span>
+                            <span class="badge bg-primary m-1">Vue.js</span>
+                            <span class="badge bg-primary m-1">TypeScript</span>
+                            <span class="badge bg-primary m-1">Bootstrap</span>
+                            <span class="badge bg-primary m-1">Tailwind CSS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="tech-category">
+                        <h5 class="fw-bold text-center mb-3">Backend</h5>
+                        <div class="tech-items">
+                            <span class="badge bg-success m-1">Python</span>
+                            <span class="badge bg-success m-1">Flask</span>
+                            <span class="badge bg-success m-1">Django</span>
+                            <span class="badge bg-success m-1">FastAPI</span>
+                            <span class="badge bg-success m-1">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="tech-category">
+                        <h5 class="fw-bold text-center mb-3">Database</h5>
+                        <div class="tech-items">
+                            <span class="badge bg-warning text-dark m-1">PostgreSQL</span>
+                            <span class="badge bg-warning text-dark m-1">MySQL</span>
+                            <span class="badge bg-warning text-dark m-1">MongoDB</span>
+                            <span class="badge bg-warning text-dark m-1">Redis</span>
+                            <span class="badge bg-warning text-dark m-1">SQLite</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="tech-category">
+                        <h5 class="fw-bold text-center mb-3">Cloud & DevOps</h5>
+                        <div class="tech-items">
+                            <span class="badge bg-info m-1">AWS</span>
+                            <span class="badge bg-info m-1">Docker</span>
+                            <span class="badge bg-info m-1">Kubernetes</span>
+                            <span class="badge bg-info m-1">NGINX</span>
+                            <span class="badge bg-info m-1">CI/CD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Process -->
+    <section class="dev-process py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-road text-info"></i> Development Process
+                    </h2>
+                    <p class="lead text-muted">Our proven methodology for successful applications</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="process-timeline">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4 class="fw-bold">Discovery & Planning</h4>
+                                <p class="text-muted">We analyze your requirements, define project scope, and create detailed technical specifications.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4 class="fw-bold">UI/UX Design</h4>
+                                <p class="text-muted">Create user-friendly interfaces with wireframes, mockups, and interactive prototypes.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4 class="fw-bold">Development</h4>
+                                <p class="text-muted">Build your application using agile methodology with regular updates and feedback cycles.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4 class="fw-bold">Testing & QA</h4>
+                                <p class="text-muted">Comprehensive testing including functionality, performance, and security validation.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4 class="fw-bold">Deployment & Support</h4>
+                                <p class="text-muted">Deploy to production with ongoing support, maintenance, and feature updates.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="apps-cta py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h3 class="fw-bold mb-3">Ready to Build Your Web Application?</h3>
+                    <p class="lead mb-4">Let's discuss your project requirements and create a powerful solution for your business.</p>
+                    <div class="d-flex gap-3 justify-content-center">
+                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-warning btn-lg">
+                            <i class="fas fa-rocket"></i> Start Your Project
+                        </a>
+                        <a href="{{ url_for('webdev.pricing') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-dollar-sign"></i> View Pricing
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.app-type-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.app-type-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+}
+
+.tech-category {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.process-timeline {
+    position: relative;
+}
+
+.process-timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #007bff;
+}
+
+.process-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 2rem;
+    z-index: 2;
+    position: relative;
+}
+
+.step-content {
+    flex: 1;
+    padding-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .process-timeline::before {
+        display: none;
+    }
+    
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+}
+</style>
+{% endblock %}

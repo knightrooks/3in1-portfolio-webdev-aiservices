@@ -1,0 +1,258 @@
+{% extends "base.html" %}
+
+{% block title %}Web Development Services | Professor Johnny (@onelastai){% endblock %}
+
+{% block content %}
+<div class="webdev-section" style="margin-top: 76px;">
+    <!-- WebDev Hero -->
+    <section class="webdev-hero bg-primary text-white py-5" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">
+                        <i class="fas fa-code text-warning"></i> {{ services.hero.title }}
+                    </h1>
+                    <p class="lead mb-4">{{ services.hero.tagline }}</p>
+                    <p class="mb-4">{{ services.hero.description }}</p>
+                    
+                    <!-- Quick Stats -->
+                    <div class="row g-3 mb-4">
+                        <div class="col-4">
+                            <div class="text-center">
+                                <div class="h3 fw-bold text-warning">50+</div>
+                                <div class="small">Websites Built</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-center">
+                                <div class="h3 fw-bold text-success">100%</div>
+                                <div class="small">Client Satisfaction</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="text-center">
+                                <div class="h3 fw-bold text-info">24/7</div>
+                                <div class="small">Support</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex gap-3">
+                        <a href="#services" class="btn btn-warning btn-lg">
+                            <i class="fas fa-eye"></i> View Services
+                        </a>
+                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-calculator"></i> Get Quote
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <div class="code-animation bg-dark p-4 rounded shadow-lg">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="d-flex gap-2">
+                                    <div class="bg-danger rounded-circle" style="width: 12px; height: 12px;"></div>
+                                    <div class="bg-warning rounded-circle" style="width: 12px; height: 12px;"></div>
+                                    <div class="bg-success rounded-circle" style="width: 12px; height: 12px;"></div>
+                                </div>
+                                <span class="text-muted ms-3 small">website-builder.py</span>
+                            </div>
+                            <div class="text-start font-monospace small">
+                                <div class="text-success">$ python create_website.py</div>
+                                <div class="text-info mt-2">
+                                    Building responsive website...<br>
+                                    ✓ HTML5 structure created<br>
+                                    ✓ CSS3 styling applied<br>
+                                    ✓ JavaScript functionality added<br>
+                                    ✓ SEO optimization complete<br>
+                                </div>
+                                <div class="text-warning mt-2">Website ready! 🚀</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services" class="services-grid py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-cogs text-primary"></i> Our Services
+                    </h2>
+                    <p class="lead text-muted">Comprehensive web development solutions for your business</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                {% for service in services.services %}
+                <div class="col-lg-6 mb-4">
+                    <div class="service-card card h-100 shadow-sm border-0">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="service-icon me-3">
+                                    <i class="{{ service.icon }} text-primary fa-2x"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h4 class="card-title fw-bold">{{ service.name }}</h4>
+                                    <p class="text-muted">{{ service.short_desc }}</p>
+                                </div>
+                                <div class="price-tag">
+                                    <span class="badge bg-primary fs-6">{{ service.price_from }}</span>
+                                </div>
+                            </div>
+                            
+                            <ul class="list-unstyled mb-3">
+                                {% for feature in service.features %}
+                                <li class="mb-1">
+                                    <i class="fas fa-check text-success me-2"></i>{{ feature }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            
+                            <a href="{{ url_for('webdev.' + service.id.replace('-', '_')) }}" class="btn btn-outline-primary">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="technologies py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-tools text-warning"></i> Technologies We Use
+                    </h2>
+                    <p class="lead">Modern, reliable technologies for robust web solutions</p>
+                </div>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                {% for tech in services.technologies %}
+                <div class="col-md-2 col-sm-4 text-center">
+                    <div class="tech-item p-3">
+                        <i class="{{ tech.icon }} fa-3x mb-3 text-info"></i>
+                        <h6 class="fw-bold">{{ tech.name }}</h6>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-route text-primary"></i> Our Process
+                    </h2>
+                    <p class="lead text-muted">Simple, transparent workflow from concept to launch</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 text-center">
+                    <div class="process-step mb-3">
+                        <div class="step-number bg-primary text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            1
+                        </div>
+                        <h5 class="fw-bold">Discovery</h5>
+                        <p class="text-muted">We discuss your needs, goals, and vision for the project.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-center">
+                    <div class="process-step mb-3">
+                        <div class="step-number bg-success text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            2
+                        </div>
+                        <h5 class="fw-bold">Planning</h5>
+                        <p class="text-muted">We create a detailed plan and wireframes for your approval.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-center">
+                    <div class="process-step mb-3">
+                        <div class="step-number bg-warning text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            3
+                        </div>
+                        <h5 class="fw-bold">Development</h5>
+                        <p class="text-muted">We build your website with regular updates and feedback.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-center">
+                    <div class="process-step mb-3">
+                        <div class="step-number bg-info text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            4
+                        </div>
+                        <h5 class="fw-bold">Launch</h5>
+                        <p class="text-muted">We deploy your website and provide ongoing support.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h3 class="fw-bold mb-2">Ready to Start Your Web Project?</h3>
+                    <p class="mb-0">Let's discuss your ideas and create something amazing together!</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ url_for('webdev.quote') }}" class="btn btn-warning btn-lg">
+                        <i class="fas fa-rocket"></i> Get Started Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+}
+
+.tech-item {
+    transition: transform 0.3s ease;
+}
+
+.tech-item:hover {
+    transform: translateY(-5px);
+}
+
+.code-animation {
+    animation: codeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes codeGlow {
+    0% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+    100% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.5); }
+}
+
+.step-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+</style>
+{% endblock %}

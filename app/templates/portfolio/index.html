@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% block title %}Portfolio | {{ data.personal_info.name }}{% endblock %}
+
+{% block content %}
+<div class="portfolio-section" style="margin-top: 76px;">
+    <!-- Portfolio Hero -->
+    <section class="portfolio-hero bg-dark text-white py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="profile-info">
+                        <h1 class="display-4 fw-bold mb-3">
+                            {{ data.personal_info.name }}
+                            <span class="text-danger">{{ data.personal_info.alias }}</span>
+                        </h1>
+                        <h2 class="h3 text-info mb-4">{{ data.personal_info.tagline }}</h2>
+                        <p class="lead mb-4">{{ data.personal_info.bio }}</p>
+                        
+                        <div class="contact-info mb-4">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <i class="fas fa-envelope text-warning me-2"></i>
+                                    <a href="mailto:{{ data.personal_info.email }}" class="text-light">
+                                        {{ data.personal_info.email }}
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <i class="fas fa-map-marker-alt text-success me-2"></i>
+                                    <span>{{ data.personal_info.location }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="{{ data.personal_info.github }}" target="_blank" class="btn btn-outline-light me-2">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="{{ data.personal_info.linkedin }}" target="_blank" class="btn btn-outline-light me-2">
+                                <i class="fab fa-linkedin"></i> LinkedIn  
+                            </a>
+                            <a href="{{ data.personal_info.twitter }}" target="_blank" class="btn btn-outline-light me-2">
+                                <i class="fab fa-twitter"></i> Twitter
+                            </a>
+                            <a href="{{ data.personal_info.instagram }}" target="_blank" class="btn btn-outline-light me-2">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </a>
+                            <a href="{{ data.personal_info.facebook }}" target="_blank" class="btn btn-outline-light me-2">
+                                <i class="fab fa-facebook"></i> Facebook
+                            </a>
+                            <a href="{{ data.personal_info.telegram }}" target="_blank" class="btn btn-outline-light me-2">
+                                <i class="fab fa-telegram"></i> Telegram
+                            </a>
+                            <a href="{{ data.personal_info.website }}" target="_blank" class="btn btn-outline-light">
+                                <i class="fas fa-globe"></i> Website
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="profile-avatar mb-4">
+                        <div class="avatar-placeholder bg-secondary rounded-circle mx-auto" style="width: 200px; height: 200px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-user-secret text-white" style="font-size: 4rem;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Specialties Section -->
+    <section class="specialties-section py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <h2 class="display-6 fw-bold text-center mb-4">
+                        <span class="text-danger">⚡</span> Specialties & Expertise
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                {% for specialty in data.specialties %}
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="specialty-item card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <h5 class="card-title">{{ specialty }}</h5>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    
+    <!-- Philosophy Section -->
+    <section class="philosophy-section py-5 bg-dark text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <h2 class="display-6 fw-bold text-center mb-4">
+                        <span class="text-warning">🌑</span> The Phantom Philosophy
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                {% for quote in data.philosophy %}
+                <div class="col-lg-6 mb-4">
+                    <div class="philosophy-card card bg-transparent border-secondary h-100">
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p class="text-light">{{ quote }}</p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    
+    <!-- Current Focus Section -->
+    <section class="current-focus py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-5">
+                    <h2 class="display-6 fw-bold text-center mb-4">
+                        <span class="text-warning">🎯</span> Current Focus
+                    </h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="focus-item">
+                        <h4><i class="fas fa-telescope text-warning me-2"></i> Currently working on:</h4>
+                        <p class="lead">{{ data.current_focus.working_on }}</p>
+                    </div>
+                    <div class="focus-item">
+                        <h4><i class="fas fa-search text-warning me-2"></i> Exploring:</h4>
+                        <p class="lead">{{ data.current_focus.exploring }}</p>
+                    </div>
+                    <div class="focus-item">
+                        <h4><i class="fas fa-handshake text-warning me-2"></i> Collaborating on:</h4>
+                        <p class="lead">{{ data.current_focus.collaborating }}</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="focus-item">
+                        <h4><i class="fas fa-lightbulb text-warning me-2"></i> Innovation in:</h4>
+                        <p class="lead">{{ data.current_focus.innovation }}</p>
+                    </div>
+                    <div class="focus-item">
+                        <h4><i class="fas fa-comments text-warning me-2"></i> Ask me about:</h4>
+                        <p class="lead">{{ data.current_focus.expertise }}</p>
+                    </div>
+                    <div class="focus-item">
+                        <h4><i class="fas fa-bolt text-warning me-2"></i> Fun Fact:</h4>
+                        <p class="lead">Machines can be controlled. But so can humans. 😏</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Portfolio Navigation -->
+    <section class="portfolio-nav py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-4">
+                    <h2 class="display-6 fw-bold mb-4">
+                        <span class="text-success">📁</span> Explore Portfolio
+                    </h2>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ url_for('portfolio.about') }}" class="text-decoration-none">
+                        <div class="nav-card card border-0 shadow-sm h-100 hover-card">
+                            <div class="card-body text-center p-4">
+                                <i class="fas fa-user-circle text-primary mb-3" style="font-size: 3rem;"></i>
+                                <h4 class="card-title">About Me</h4>
+                                <p class="text-muted">Learn more about my journey</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ url_for('portfolio.projects') }}" class="text-decoration-none">
+                        <div class="nav-card card border-0 shadow-sm h-100 hover-card">
+                            <div class="card-body text-center p-4">
+                                <i class="fas fa-folder-open text-success mb-3" style="font-size: 3rem;"></i>
+                                <h4 class="card-title">Projects</h4>
+                                <p class="text-muted">Featured work & achievements</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ url_for('portfolio.skills') }}" class="text-decoration-none">
+                        <div class="nav-card card border-0 shadow-sm h-100 hover-card">
+                            <div class="card-body text-center p-4">
+                                <i class="fas fa-code text-warning mb-3" style="font-size: 3rem;"></i>
+                                <h4 class="card-title">Skills</h4>
+                                <p class="text-muted">Technical expertise & tools</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <a href="{{ url_for('portfolio.testimonials') }}" class="text-decoration-none">
+                        <div class="nav-card card border-0 shadow-sm h-100 hover-card">
+                            <div class="card-body text-center p-4">
+                                <i class="fas fa-comments text-info mb-3" style="font-size: 3rem;"></i>
+                                <h4 class="card-title">Testimonials</h4>
+                                <p class="text-muted">Client feedback & reviews</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hover-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+    }
+    
+    .specialty-item {
+        border-left: 4px solid #dc3545;
+    }
+    
+    .focus-item {
+        margin-bottom: 2rem;
+    }
+    
+    .focus-item h4 {
+        margin-bottom: 0.5rem;
+    }
+    
+    .philosophy-card {
+        background: rgba(255,255,255,0.1) !important;
+        backdrop-filter: blur(10px);
+    }
+    
+    .nav-card {
+        cursor: pointer;
+    }
+    
+    .nav-card:hover i {
+        transform: scale(1.1);
+        transition: transform 0.3s ease;
+    }
+</style>
+{% endblock %}

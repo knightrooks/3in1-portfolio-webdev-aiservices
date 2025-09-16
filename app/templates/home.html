@@ -1,0 +1,409 @@
+{% extends "base.html" %}
+
+{% block title %}Professor Johnny (@onelastai) | AI Developer & Security Expert{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section bg-dark text-white py-5" style="margin-top: 76px; min-height: 100vh; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);">
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <!-- Typing Animation -->
+                    <div class="mb-4">
+                        <h1 class="display-4 fw-bold mb-3 hero-title">
+                            <span class="text-primary">�</span> Hey there!
+                        </h1>
+                        <h2 class="display-5 fw-bold mb-3 hero-subtitle">
+                            I'm <span class="hero-title">Professor Johnny</span>
+                        </h2>
+                        <div class="typing-animation hero-tagline">
+                            <span class="text-primary">@</span> 
+                            <span class="text-info">onelastai</span> 
+                            <span class="text-success">✨</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Tagline -->
+                    <div class="hero-tagline mb-4">
+                        <h3 class="h4 hero-tagline mb-3">
+                            <i class="fas fa-code text-primary"></i>
+                            AI Developer & Security Expert
+                        </h3>
+                        <p class="lead hero-tagline">
+                            <strong>I build smart, secure systems that actually work.</strong><br>
+                            From AI chatbots to web applications, let's create something amazing together!
+                        </p>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="hero-stats mb-4">
+                        <div class="row g-3">
+                            <div class="col-4">
+                                <div class="stat-item text-center">
+                                    <div class="stat-number text-success fw-bold">10+</div>
+                                    <div class="stat-label small text-muted">AI Tools</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-item text-center">
+                                    <div class="stat-number text-info fw-bold">5+</div>
+                                    <div class="stat-label small text-muted">Years Exp</div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="stat-item text-center">
+                                    <div class="stat-number text-warning fw-bold">∞</div>
+                                    <div class="stat-label small text-muted">Coffee ☕</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="hero-cta">
+                        <a href="{{ url_for('portfolio.index') }}" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-user"></i> Check My Work
+                        </a>
+                        <a href="#services" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-heart"></i> What I Do
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="hero-visual">
+                    <!-- Terminal-like animation -->
+                    <div class="terminal-window bg-black rounded p-4 shadow-lg">
+                        <div class="terminal-header mb-3">
+                            <div class="d-flex align-items-center">
+                                <div class="terminal-dots">
+                                    <span class="dot bg-danger"></span>
+                                    <span class="dot bg-warning"></span>
+                                    <span class="dot bg-success"></span>
+                                </div>
+                                <span class="terminal-title text-muted ms-3">onelastai@axeyaxe:~$</span>
+                            </div>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="terminal-line">
+                                <span class="text-success">$</span> 
+                                <span class="text-white">whoami</span>
+                            </div>
+                            <div class="terminal-line text-info">
+                                professor_johnny (@onelastai)
+                            </div>
+                            <div class="terminal-line">
+                                <span class="text-success">$</span> 
+                                <span class="text-white">cat skills.txt</span>
+                            </div>
+                            <div class="terminal-output">
+                                <div class="text-warning">🤖 AI & Machine Learning</div>
+                                <div class="text-warning">� Cybersecurity & Web Security</div>
+                                <div class="text-warning">� Python & Full-Stack Development</div>
+                                <div class="text-warning">🧠 Deep Learning & Neural Networks</div>
+                                <div class="text-warning">⚡ Automation & Smart Systems</div>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="text-success">$</span> 
+                                <span class="text-white">npm start awesome-project</span>
+                            </div>
+                            <div class="terminal-line text-success">
+                                [✓] Project started successfully! 🎉
+                            </div>
+                            <div class="terminal-cursor">█</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 3-in-1 Services Section -->
+<section id="services" class="services-section py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-6 fw-bold mb-3">
+                    <span class="text-danger">🏗️</span> 3-in-1 Platform
+                </h2>
+                <p class="lead text-muted">
+                    Choose your path: Personal showcase, professional services, or AI-powered solutions
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Portfolio Section -->
+            <div class="col-lg-4">
+                <div class="service-card h-100 card border-0 shadow-lg hover-card">
+                    <div class="card-body p-5 text-center">
+                        <div class="service-icon mb-4">
+                            <i class="fas fa-user-tie text-primary" style="font-size: 4rem;"></i>
+                        </div>
+                        <h3 class="card-title h4 fw-bold mb-3">Portfolio</h3>
+                        <p class="card-text text-muted mb-4">
+                            Explore my professional journey, skills, and projects. From AI development to cybersecurity expertise.
+                        </p>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li><i class="fas fa-check text-success me-2"></i> Professional Background</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Featured Projects</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Skills & Certifications</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Client Testimonials</li>
+                        </ul>
+                        <a href="{{ url_for('portfolio.index') }}" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-eye"></i> View Portfolio
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Web Development Services -->
+            <div class="col-lg-4">
+                <div class="service-card h-100 card border-0 shadow-lg hover-card">
+                    <div class="card-body p-5 text-center">
+                        <div class="service-icon mb-4">
+                            <i class="fas fa-code text-success" style="font-size: 4rem;"></i>
+                        </div>
+                        <h3 class="card-title h4 fw-bold mb-3">Web Development</h3>
+                        <p class="card-text text-muted mb-4">
+                            Professional web development services. From Flask applications to full-stack solutions.
+                        </p>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li><i class="fas fa-check text-success me-2"></i> Custom Web Applications</li>
+                            <li><i class="fas fa-check text-success me-2"></i> API Development</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Database Design</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Security Integration</li>
+                        </ul>
+                        <a href="#webdev" class="btn btn-success btn-lg w-100">
+                            <i class="fas fa-laptop-code"></i> View Services
+                        </a>
+                        <small class="text-muted d-block mt-2">Coming Soon</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AI Services -->
+            <div class="col-lg-4">
+                <div class="service-card h-100 card border-0 shadow-lg hover-card">
+                    <div class="card-body p-5 text-center">
+                        <div class="service-icon mb-4">
+                            <i class="fas fa-robot text-warning" style="font-size: 4rem;"></i>
+                        </div>
+                        <h3 class="card-title h4 fw-bold mb-3">AI Services</h3>
+                        <p class="card-text text-muted mb-4">
+                            Interact with 10 unique AI personalities. From coding help to entertainment and analysis.
+                        </p>
+                        <ul class="list-unstyled mb-4 text-start">
+                            <li><i class="fas fa-check text-warning me-2"></i> 10 AI Agent Personalities</li>
+                            <li><i class="fas fa-check text-warning me-2"></i> Real-time Chat Interface</li>
+                            <li><i class="fas fa-check text-warning me-2"></i> Specialized Expertise</li>
+                            <li><i class="fas fa-check text-warning me-2"></i> Individual Subscriptions</li>
+                        </ul>
+                        <a href="#ai-services" class="btn btn-warning btn-lg w-100 text-dark">
+                            <i class="fas fa-comments"></i> Chat with AI
+                        </a>
+                        <small class="text-muted d-block mt-2">10 Agents Available</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Philosophy Section -->
+<section class="philosophy-section py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-6 fw-bold mb-3">
+                    <span class="text-danger">🌑</span> The Phantom Philosophy
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="philosophy-quotes">
+                    <div class="quote-item mb-4">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">⚡ The Mind Unshackled — A prisoner of nothing, a master of all.</p>
+                        </blockquote>
+                    </div>
+                    <div class="quote-item mb-4">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">🔥 A Rebel Without Chains — No path is given, every road is taken.</p>
+                        </blockquote>
+                    </div>
+                    <div class="quote-item mb-4">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">👁 A Phantom in the Veil — When they see, it is already too late.</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="philosophy-quotes">
+                    <div class="quote-item mb-4">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">☁️ The Shadow Architect — I write my story in the dark so they can read it in fear.</p>
+                        </blockquote>
+                    </div>
+                    <div class="quote-item mb-4">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">⚔️ The Edge Walker — Order crumbles where I step, chaos follows where I lead.</p>
+                        </blockquote>
+                    </div>
+                    <div class="quote-item mb-4">
+                        <blockquote class="blockquote">
+                            <p class="mb-0">🔑 The Keeper of Lost Secrets — Every lock has a key, but mine are unseen.</p>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Connect Section -->
+<section class="connect-section py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h3 class="fw-bold mb-2">Ready to Collaborate?</h3>
+                <p class="mb-0">Let's build something extraordinary together. AI, Security, or Web Development.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="mailto:contact@axeyaxe.com" class="btn btn-light btn-lg">
+                    <i class="fas fa-envelope"></i> Get In Touch
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero-section {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 20% 80%, rgba(255, 0, 0, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+    }
+    
+    .typing-animation {
+        font-family: 'Fira Code', monospace;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    
+    .terminal-window {
+        font-family: 'Fira Code', monospace;
+        font-size: 0.9rem;
+        max-height: 400px;
+        overflow: hidden;
+    }
+    
+    .terminal-dots {
+        display: flex;
+        gap: 8px;
+    }
+    
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+    
+    .terminal-line {
+        margin: 8px 0;
+        line-height: 1.4;
+    }
+    
+    .terminal-output div {
+        margin-left: 20px;
+        font-size: 0.85rem;
+    }
+    
+    .terminal-cursor {
+        display: inline-block;
+        color: #00ff00;
+        animation: blink 1s infinite;
+    }
+    
+    @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+    }
+    
+    .hover-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2) !important;
+    }
+    
+    .service-icon {
+        transition: transform 0.3s ease;
+    }
+    
+    .hover-card:hover .service-icon {
+        transform: scale(1.1);
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .philosophy-quotes blockquote p {
+        font-style: italic;
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Terminal typing animation
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add any interactive effects here
+        
+        // Animate terminal cursor
+        const cursor = document.querySelector('.terminal-cursor');
+        if (cursor) {
+            setInterval(() => {
+                cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+            }, 500);
+        }
+        
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

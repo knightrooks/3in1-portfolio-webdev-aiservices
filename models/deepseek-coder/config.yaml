@@ -1,0 +1,171 @@
+# DeepSeek Coder Configuration
+model_info:
+  name: "DeepSeek Coder"
+  version: "v1.3"
+  description: "Advanced AI model specialized in code generation, analysis, and debugging"
+  provider: "DeepSeek AI"
+  license: "Commercial Use Allowed"
+  
+# Model Parameters
+parameters:
+  max_tokens: 8192
+  temperature: 0.1
+  top_p: 0.95
+  frequency_penalty: 0.0
+  presence_penalty: 0.0
+  stop_sequences: ["</code>", "<|endoftext|>"]
+  
+# Capabilities
+capabilities:
+  code_generation:
+    languages:
+      - python
+      - javascript
+      - typescript
+      - html
+      - css
+      - sql
+      - bash
+      - json
+      - yaml
+    frameworks:
+      - flask
+      - django
+      - react
+      - vue
+      - express
+      - fastapi
+    
+  code_analysis:
+    - syntax_checking
+    - code_review
+    - security_analysis
+    - performance_optimization
+    - refactoring_suggestions
+    
+  debugging:
+    - error_detection
+    - troubleshooting
+    - log_analysis
+    - performance_profiling
+    
+  architecture:
+    - system_design
+    - database_design
+    - api_design
+    - microservices
+    - deployment_strategies
+
+# Specialties
+specialties:
+  web_development:
+    frontend:
+      - react_components
+      - vue_components
+      - responsive_design
+      - css_frameworks
+    backend:
+      - flask_applications
+      - fastapi_services
+      - database_integration
+      - api_development
+    fullstack:
+      - full_application_development
+      - deployment_automation
+      - testing_strategies
+      
+  data_science:
+    - data_analysis
+    - machine_learning
+    - data_visualization
+    - statistical_analysis
+    
+  devops:
+    - docker_containerization
+    - ci_cd_pipelines
+    - infrastructure_as_code
+    - monitoring_setup
+
+# Context Understanding
+context:
+  code_patterns: true
+  project_structure: true
+  dependencies: true
+  best_practices: true
+  security_considerations: true
+  performance_implications: true
+
+# Output Formats
+output_formats:
+  - clean_code
+  - commented_code
+  - step_by_step_explanation
+  - code_with_documentation
+  - test_cases
+  - deployment_instructions
+
+# Model Behavior
+behavior:
+  code_style:
+    - pythonic (for Python)
+    - clean_code_principles
+    - proper_naming_conventions
+    - appropriate_comments
+    - error_handling
+    
+  security_focus:
+    - input_validation
+    - sql_injection_prevention
+    - xss_prevention
+    - authentication_best_practices
+    - secure_configurations
+    
+  performance_awareness:
+    - efficient_algorithms
+    - database_optimization
+    - caching_strategies
+    - scalability_considerations
+
+# Limitations
+limitations:
+  - "Cannot execute code directly"
+  - "Cannot access external APIs during generation"
+  - "Limited to training data knowledge cutoff"
+  - "May require clarification for ambiguous requirements"
+
+# Usage Guidelines
+usage:
+  best_for:
+    - "Complex coding problems"
+    - "Architecture design questions"
+    - "Code review and optimization"
+    - "Debugging assistance"
+    - "Learning programming concepts"
+    
+  prompt_tips:
+    - "Be specific about requirements"
+    - "Provide context about the project"
+    - "Mention target framework/library"
+    - "Include relevant constraints"
+    - "Ask for explanations when needed"
+
+# Integration Settings
+integration:
+  api_endpoint: null  # To be configured
+  auth_method: null   # To be configured
+  timeout: 30
+  retry_attempts: 3
+  
+# Performance Metrics
+performance:
+  avg_response_time: "2-5 seconds"
+  tokens_per_second: "50-100"
+  context_window: 8192
+  memory_usage: "moderate"
+
+# Quality Assurance
+quality:
+  code_compilation_rate: "95%+"
+  best_practices_adherence: "high"
+  security_awareness: "high"
+  documentation_quality: "comprehensive"

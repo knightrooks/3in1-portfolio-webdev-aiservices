@@ -1,0 +1,264 @@
+# AI System Registry Configuration
+# This file defines available models, agents, and system settings
+
+# Available AI Models
+models:
+  deepseek-coder:
+    class: "models.deepseek_coder.DeepSeekCoder"
+    config_file: "models/deepseek-coder/config.yaml"
+    description: "Advanced code generation and analysis model"
+    capabilities:
+      - code_generation
+      - code_review
+      - debugging
+      - architecture_design
+    specialties:
+      - python
+      - javascript
+      - typescript
+      - html_css
+      - sql
+    max_tokens: 8192
+    temperature: 0.1
+    status: "available"
+    
+  gemma2:
+    class: "models.gemma2.Gemma2"
+    config_file: "models/gemma2/config.yaml"
+    description: "Google's Gemma 2 model for general reasoning and analysis"
+    capabilities:
+      - general_reasoning
+      - text_analysis
+      - strategic_thinking
+      - problem_solving
+    specialties:
+      - business_analysis
+      - strategic_planning
+      - market_research
+      - content_analysis
+    max_tokens: 4096
+    temperature: 0.3
+    status: "available"
+    
+  llama3_2:
+    class: "models.llama3_2.Llama32"
+    config_file: "models/llama3.2/config.yaml"
+    description: "Meta's Llama 3.2 for advanced reasoning and security analysis"
+    capabilities:
+      - advanced_reasoning
+      - security_analysis
+      - threat_modeling
+      - risk_assessment
+    specialties:
+      - cybersecurity
+      - vulnerability_assessment
+      - ethical_hacking
+      - security_architecture
+    max_tokens: 4096
+    temperature: 0.2
+    status: "available"
+    
+  codellama:
+    class: "models.codellama.CodeLlama"
+    config_file: "models/codellama/config.yaml"
+    description: "Specialized code generation and programming assistance"
+    capabilities:
+      - code_generation
+      - code_explanation
+      - refactoring
+      - optimization
+    specialties:
+      - python
+      - c_plus_plus
+      - rust
+      - go
+      - java
+    max_tokens: 8192
+    temperature: 0.1
+    status: "development"
+    
+  mistral:
+    class: "models.mistral.Mistral"
+    config_file: "models/mistral/config.yaml"
+    description: "Efficient reasoning and multilingual support"
+    capabilities:
+      - multilingual_processing
+      - reasoning
+      - content_creation
+      - translation
+    specialties:
+      - content_writing
+      - translation
+      - summarization
+      - creative_writing
+    max_tokens: 4096
+    temperature: 0.4
+    status: "planned"
+
+# Available AI Agents
+agents:
+  strategist:
+    name: "Business Strategist AI"
+    description: "Expert in business strategy, market analysis, and strategic planning"
+    primary_model: "gemma2"
+    fallback_models: ["llama3_2", "deepseek-coder"]
+    capabilities:
+      - strategic_analysis
+      - market_research
+      - competitive_analysis
+      - business_planning
+      - risk_assessment
+    persona:
+      role: "Senior Business Strategist"
+      expertise: "15+ years in strategic consulting"
+      communication_style: "analytical, data-driven, professional"
+      decision_making: "evidence-based, considers multiple scenarios"
+    tools:
+      - market_research
+      - swot_analysis
+      - competitive_intelligence
+      - financial_modeling
+    status: "active"
+    
+  developer:
+    name: "Senior Developer AI"
+    description: "Expert software developer and architect"
+    primary_model: "deepseek-coder"
+    fallback_models: ["codellama", "gemma2"]
+    capabilities:
+      - code_generation
+      - architecture_design
+      - code_review
+      - debugging
+      - testing
+    persona:
+      role: "Senior Full-Stack Developer"
+      expertise: "10+ years in software development"
+      communication_style: "technical, precise, solution-oriented"
+      decision_making: "best-practices focused, performance-oriented"
+    tools:
+      - code_analysis
+      - testing_frameworks
+      - deployment_automation
+      - performance_profiling
+    status: "active"
+    
+  security_expert:
+    name: "Cybersecurity Expert AI"
+    description: "Expert in cybersecurity, ethical hacking, and threat analysis"
+    primary_model: "llama3_2"
+    fallback_models: ["deepseek-coder", "gemma2"]
+    capabilities:
+      - vulnerability_assessment
+      - threat_modeling
+      - security_analysis
+      - penetration_testing
+      - compliance_review
+    persona:
+      role: "Senior Cybersecurity Architect"
+      expertise: "12+ years in cybersecurity and ethical hacking"
+      communication_style: "security-focused, detail-oriented, proactive"
+      decision_making: "risk-averse, compliance-aware, threat-conscious"
+    tools:
+      - vulnerability_scanners
+      - threat_intelligence
+      - security_frameworks
+      - compliance_checkers
+    status: "active"
+    
+  content_creator:
+    name: "Content Creator AI"
+    description: "Expert content writer and marketing specialist"
+    primary_model: "gemma2"
+    fallback_models: ["mistral", "llama3_2"]
+    capabilities:
+      - content_writing
+      - seo_optimization
+      - social_media_content
+      - marketing_copy
+      - blog_writing
+    persona:
+      role: "Senior Content Strategist"
+      expertise: "8+ years in content marketing and SEO"
+      communication_style: "engaging, creative, audience-focused"
+      decision_making: "data-driven, audience-centric, conversion-focused"
+    tools:
+      - seo_analysis
+      - content_optimization
+      - social_media_analytics
+      - competitor_analysis
+    status: "development"
+
+# System Settings
+settings:
+  # Performance Settings
+  max_concurrent_sessions: 10
+  max_concurrent_tasks: 5
+  default_timeout_seconds: 300
+  max_message_length: 10000
+  
+  # Memory Settings
+  memory_limit_mb: 1000
+  session_timeout_hours: 24
+  max_context_length: 8192
+  auto_cleanup_enabled: true
+  
+  # Model Settings
+  model_switching_enabled: true
+  fallback_models_enabled: true
+  model_load_timeout: 60
+  model_unload_timeout: 30
+  
+  # Security Settings
+  rate_limiting_enabled: true
+  max_requests_per_minute: 30
+  max_requests_per_hour: 500
+  input_validation_enabled: true
+  output_filtering_enabled: true
+  
+  # Logging Settings
+  log_level: "INFO"
+  log_conversations: true
+  log_model_usage: true
+  log_performance_metrics: true
+  
+  # API Settings
+  api_version: "v1"
+  enable_streaming: true
+  enable_websockets: true
+  cors_enabled: true
+  
+# Feature Flags
+features:
+  multi_agent_collaboration: true
+  agent_memory_sharing: true
+  task_decomposition: true
+  model_auto_selection: true
+  conversation_context: true
+  knowledge_extraction: true
+  real_time_learning: false  # Planned for future
+  multi_modal_support: false  # Planned for future
+
+# Development Settings
+development:
+  mock_models_enabled: true  # For development without actual models
+  debug_mode: true
+  verbose_logging: true
+  performance_monitoring: true
+  
+# Deployment Settings
+deployment:
+  environment: "development"
+  model_storage_path: "models/"
+  data_storage_path: "data/"
+  logs_path: "logs/"
+  backup_enabled: true
+  backup_frequency_hours: 24
+
+# Integration Settings
+integrations:
+  flask_app: true
+  database: "json_files"  # Can be upgraded to MySQL/PostgreSQL
+  cache: "memory"  # Can be upgraded to Redis
+  vector_db: "planned"  # ChromaDB integration planned
+  monitoring: "planned"  # Application monitoring planned

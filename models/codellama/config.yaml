@@ -1,0 +1,226 @@
+name: codellama
+version: "7b-instruct"
+provider: meta
+model_type: code_generation
+description: "Meta's Code Llama model specialized for code generation, analysis, and programming assistance"
+
+# Model Parameters
+parameters:
+  max_tokens: 4096
+  temperature: 0.2
+  top_p: 0.95
+  top_k: 40
+  frequency_penalty: 0.1
+  presence_penalty: 0.1
+  context_window: 16384
+  
+# Core Capabilities
+capabilities:
+  code_generation:
+    - function_generation
+    - class_implementation
+    - algorithm_development
+    - code_completion
+  
+  code_analysis:
+    - bug_detection
+    - code_review
+    - performance_analysis
+    - security_assessment
+  
+  programming_assistance:
+    - debugging_support
+    - refactoring_suggestions
+    - optimization_recommendations
+    - best_practices_guidance
+  
+  multi_language_support:
+    - python
+    - javascript
+    - typescript
+    - java
+    - cpp
+    - rust
+    - go
+    - sql
+    - html_css
+
+# Specialized Areas
+specialties:
+  code_generation_excellence:
+    focus: "High-quality, production-ready code generation"
+    strength: 0.95
+    use_cases:
+      - api_endpoint_development
+      - database_integration_code
+      - frontend_component_creation
+      - backend_service_implementation
+  
+  debugging_assistance:
+    focus: "Error identification and resolution guidance"
+    strength: 0.90
+    use_cases:
+      - bug_identification
+      - error_troubleshooting
+      - performance_bottleneck_analysis
+      - code_optimization
+  
+  architecture_guidance:
+    focus: "Software architecture and design patterns"
+    strength: 0.85
+    use_cases:
+      - system_design_recommendations
+      - design_pattern_implementation
+      - code_structure_optimization
+      - scalability_planning
+
+# Model Configuration
+model_config:
+  coding_style: "clean_and_documented"
+  comment_density: "comprehensive"
+  error_handling: "robust"
+  testing_focus: "high"
+  
+  generation_settings:
+    code_quality: "production"
+    documentation_level: "detailed"
+    best_practices: "enforced"
+    security_awareness: "high"
+  
+  analysis_settings:
+    depth: "comprehensive"
+    accuracy: "high"
+    false_positive_tolerance: "low"
+    performance_focus: "high"
+
+# Language-Specific Configurations
+language_configs:
+  python:
+    style_guide: "pep8"
+    frameworks: ["flask", "django", "fastapi", "pandas", "numpy"]
+    testing: ["pytest", "unittest"]
+    async_support: true
+  
+  javascript:
+    style_guide: "airbnb"
+    frameworks: ["react", "vue", "angular", "node", "express"]
+    testing: ["jest", "mocha", "cypress"]
+    es_version: "es2021"
+  
+  typescript:
+    style_guide: "strict"
+    frameworks: ["angular", "react", "nest", "express"]
+    type_safety: "strict"
+    decorators: true
+  
+  sql:
+    dialect: "postgresql"
+    optimization: "query_performance"
+    security: "injection_prevention"
+    formatting: "readable"
+
+# Performance Characteristics
+performance:
+  code_generation_speed: "fast"      # < 3 seconds for functions
+  analysis_accuracy: "high"          # 90-95% bug detection
+  code_quality: "production_ready"   # Enterprise-grade output
+  language_coverage: "comprehensive" # 15+ programming languages
+  
+  optimal_use_cases:
+    - api_development
+    - database_operations
+    - frontend_components
+    - algorithm_implementation
+    - code_refactoring
+    - debugging_assistance
+  
+  complexity_handling:
+    simple_functions: "excellent"
+    complex_algorithms: "very_good"
+    system_integration: "good"
+    architecture_design: "good"
+
+# Integration Settings
+integration:
+  ide_compatibility: "vscode_extension_ready"
+  api_format: "completion_and_chat"
+  streaming_support: true
+  real_time_analysis: true
+  
+  input_formats:
+    - code_snippets
+    - function_signatures
+    - requirements_specifications
+    - existing_codebase_context
+  
+  output_formats:
+    - complete_functions
+    - code_blocks
+    - implementation_explanations
+    - refactoring_suggestions
+
+# Quality Control
+quality_settings:
+  code_validation: "syntax_and_logic"
+  security_scanning: "enabled"
+  performance_analysis: "basic"
+  best_practices_enforcement: "strict"
+  
+  code_standards:
+    naming_conventions: "enforced"
+    documentation: "required"
+    error_handling: "comprehensive"
+    testing: "encouraged"
+
+# Optimization Profiles
+optimization_profiles:
+  rapid_prototyping:
+    temperature: 0.3
+    focus: "speed_and_functionality"
+    documentation: "minimal"
+    error_handling: "basic"
+  
+  production_code:
+    temperature: 0.1
+    focus: "reliability_and_maintainability"
+    documentation: "comprehensive"
+    error_handling: "robust"
+  
+  learning_assistance:
+    temperature: 0.4
+    focus: "educational_clarity"
+    documentation: "explanatory"
+    examples: "abundant"
+  
+  code_review:
+    temperature: 0.0
+    focus: "accuracy_and_standards"
+    analysis_depth: "thorough"
+    suggestions: "actionable"
+
+# Development Workflow Integration
+workflow_integration:
+  version_control: "git_aware"
+  testing_frameworks: "integrated"
+  documentation_generation: "automatic"
+  code_formatting: "automatic"
+  
+  development_phases:
+    planning: "architecture_suggestions"
+    implementation: "code_generation"
+    testing: "test_case_generation"
+    deployment: "deployment_scripts"
+    maintenance: "refactoring_assistance"
+
+# Security and Compliance
+security:
+  secure_coding_practices: "enforced"
+  vulnerability_detection: "basic"
+  dependency_analysis: "security_focused"
+  data_privacy: "gdpr_compliant"
+  
+  security_patterns:
+    input_validation: "comprehensive"
+    sql_injection_prevention: "automatic"
+    xss_prevention: "frontend_focused"
+    authentication: "best_practices"
