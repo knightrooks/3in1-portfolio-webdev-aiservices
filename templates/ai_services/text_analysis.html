@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+
+{% block title %}Text Analysis - AI-Powered Text Processing{% endblock %}
+
+{% block content %}
+<section class="text-analysis-hero py-5 mt-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <h1 class="display-5 fw-bold mb-4">
+                    <i class="fas fa-file-alt text-success me-3"></i>AI Text Analysis
+                </h1>
+                <p class="lead text-muted mb-4">
+                    Analyze text for sentiment, extract keywords, and gain insights using our AI-powered text processing tools.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="analysis-tool py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="analysis-widget card shadow-lg">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-brain me-2"></i>Text Analysis Tool
+                        </h5>
+                    </div>
+                    
+                    <div class="card-body p-4">
+                        <div class="mb-4">
+                            <label for="text-input" class="form-label fw-bold">Enter text to analyze:</label>
+                            <textarea id="text-input" class="form-control" rows="8" 
+                                placeholder="Paste or type your text here... (up to 5000 characters)
+                                
+Example: 'I absolutely love this new product! It has exceeded my expectations and the customer service was fantastic. The quality is amazing and I would definitely recommend it to others.'"
+                                maxlength="5000"></textarea>
+                            <div class="form-text">
+                                <small id="char-counter" class="text-muted">0 / 5000 characters</small>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <button id="analyze-btn" class="btn btn-success btn-lg">
+                                <i class="fas fa-search me-2"></i>Analyze Text
+                            </button>
+                            <button id="clear-btn" class="btn btn-outline-secondary">
+                                <i class="fas fa-trash me-2"></i>Clear
+                            </button>
+                        </div>
+                        
+                        <div id="analysis-results" class="results-container">
+                            <!-- Results will be displayed here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="analysis-features py-5 bg-light">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="display-6 fw-bold mb-3">Analysis Features</h2>
+                <p class="lead text-muted">Comprehensive text analysis capabilities</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4 text-center">
+                <div class="feature-item p-4">
+                    <i class="fas fa-heart fa-3x text-danger mb-3"></i>
+                    <h5>Sentiment Analysis</h5>
+                    <p class="text-muted">Determine if the text expresses positive, negative, or neutral sentiment with confidence scores</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="feature-item p-4">
+                    <i class="fas fa-key fa-3x text-primary mb-3"></i>
+                    <h5>Keyword Extraction</h5>
+                    <p class="text-muted">Identify the most important words and phrases in your text content</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="feature-item p-4">
+                    <i class="fas fa-chart-bar fa-3x text-success mb-3"></i>
+                    <h5>Text Statistics</h5>
+                    <p class="text-muted">Get detailed statistics including word count, character count, and readability metrics</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="use-cases py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-6 fw-bold mb-3">Use Cases</h2>
+                <p class="lead text-muted">How our text analysis can help you</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="use-case-card card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-comments fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Social Media Monitoring</h5>
+                        <p class="card-text text-muted">Analyze customer feedback and social media posts to understand public sentiment</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="use-case-card card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-star fa-3x text-warning mb-3"></i>
+                        <h5 class="card-title">Review Analysis</h5>
+                        <p class="card-text text-muted">Process product reviews and customer testimonials to extract insights</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="use-case-card card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-newspaper fa-3x text-info mb-3"></i>
+                        <h5 class="card-title">Content Analysis</h5>
+                        <p class="card-text text-muted">Analyze articles, blog posts, and documents for key themes and sentiment</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="use-case-card card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-envelope fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">Email Analysis</h5>
+                        <p class="card-text text-muted">Analyze email content and customer support messages for sentiment trends</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.analysis-widget {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+#text-input {
+    border-radius: 10px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    line-height: 1.5;
+}
+
+#text-input:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+.results-container {
+    min-height: 50px;
+    border-radius: 10px;
+}
+
+.feature-item {
+    transition: transform 0.2s ease;
+    border-radius: 15px;
+}
+
+.feature-item:hover {
+    transform: translateY(-5px);
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.use-case-card {
+    transition: transform 0.3s ease;
+}
+
+.use-case-card:hover {
+    transform: translateY(-5px);
+}
+
+.metric-card {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    border-radius: 15px;
+}
+
+#char-counter {
+    float: right;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const textInput = document.getElementById('text-input');
+    const charCounter = document.getElementById('char-counter');
+    const analyzeBtn = document.getElementById('analyze-btn');
+    const clearBtn = document.getElementById('clear-btn');
+    
+    // Character counter
+    textInput.addEventListener('input', function() {
+        const count = this.value.length;
+        charCounter.textContent = `${count} / 5000 characters`;
+        
+        if (count > 4500) {
+            charCounter.classList.add('text-warning');
+        } else if (count > 4800) {
+            charCounter.classList.remove('text-warning');
+            charCounter.classList.add('text-danger');
+        } else {
+            charCounter.classList.remove('text-warning', 'text-danger');
+            charCounter.classList.add('text-muted');
+        }
+    });
+    
+    // Clear button
+    clearBtn.addEventListener('click', function() {
+        textInput.value = '';
+        textInput.focus();
+        charCounter.textContent = '0 / 5000 characters';
+        charCounter.className = 'text-muted';
+        document.getElementById('analysis-results').innerHTML = '';
+    });
+    
+    // Sample text button (optional enhancement)
+    const sampleTexts = [
+        "I absolutely love this new product! It has exceeded my expectations and the customer service was fantastic. The quality is amazing and I would definitely recommend it to others.",
+        "This service was disappointing. The response time was slow, the quality was poor, and I wouldn't recommend it to anyone. Very unsatisfied with the experience.",
+        "The presentation was informative and well-structured. The speaker covered all the key topics thoroughly and answered questions effectively. Overall, it was a professional and educational session."
+    ];
+    
+    // Add sample text functionality (could be expanded)
+    function loadSampleText() {
+        const randomText = sampleTexts[Math.floor(Math.random() * sampleTexts.length)];
+        textInput.value = randomText;
+        textInput.dispatchEvent(new Event('input'));
+    }
+});
+</script>
+{% endblock %}
