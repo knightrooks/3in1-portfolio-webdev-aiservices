@@ -1,0 +1,134 @@
+version: '3.8'
+
+services:
+  # Main Application - Development
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: portfolio_app_dev
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+      - DATABASE_URL=postgresql://postgres:devpassword@db:5432/portfolio_dev
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=dev-secret-key-change-in-production
+      - STRIPE_PUBLISHABLE_KEY=${STRIPE_PUBLISHABLE_KEY:-}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY:-}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+    volumes:
+      - .:/app
+      - /app/__pycache__
+      - /app/logs
+    depends_on:
+      - db
+      - redis
+    networks:
+      - portfolio_dev_network
+
+  # PostgreSQL Database - Development
+  db:
+    image: postgres:15-alpine
+    container_name: portfolio_db_dev
+    environment:
+      - POSTGRES_DB=portfolio_dev
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=devpassword
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - portfolio_dev_network
+
+  # Redis Cache - Development
+  redis:
+    image: redis:7-alpine
+    container_name: portfolio_redis_dev
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_dev_data:/data
+    networks:
+      - portfolio_dev_network
+
+  # Celery Worker - Development
+  worker:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: portfolio_worker_dev
+    command: celery -A app.celery worker --loglevel=debug --concurrency=1
+    environment:
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+      - DATABASE_URL=postgresql://postgres:devpassword@db:5432/portfolio_dev
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=dev-secret-key-change-in-production
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+    volumes:
+      - .:/app
+      - /app/__pycache__
+    depends_on:
+      - db
+      - redis
+    networks:
+      - portfolio_dev_network
+
+  # Mailhog for Email Testing
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: portfolio_mailhog_dev
+    ports:
+      - "1025:1025"  # SMTP
+      - "8025:8025"  # Web UI
+    networks:
+      - portfolio_dev_network
+
+  # pgAdmin for Database Management
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: portfolio_pgadmin_dev
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@portfolio.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+      - PGADMIN_DISABLE_POSTFIX=true
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_dev_data:/var/lib/pgadmin
+    networks:
+      - portfolio_dev_network
+    profiles:
+      - admin
+
+  # Redis Commander for Redis Management
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: portfolio_redis_commander_dev
+    environment:
+      - REDIS_HOSTS=local:redis:6379
+    ports:
+      - "8081:8081"
+    networks:
+      - portfolio_dev_network
+    profiles:
+      - admin
+
+# Networks
+networks:
+  portfolio_dev_network:
+    driver: bridge
+
+# Volumes
+volumes:
+  postgres_dev_data:
+    driver: local
+  redis_dev_data:
+    driver: local
+  pgadmin_dev_data:
+    driver: local
