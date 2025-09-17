@@ -11,14 +11,14 @@ gossipqueen_metrics = GossipqueenMetrics()
 analytics_logger = gossipqueen_analytics_logger
 
 __all__ = [
-    'GossipqueenMetrics',
-    'GossipqueenAnalyticsLogger', 
-    'gossipqueen_metrics',
-    'gossipqueen_analytics_logger',
-    'analytics_logger'
+    "GossipqueenMetrics",
+    "GossipqueenAnalyticsLogger",
+    "gossipqueen_metrics",
+    "gossipqueen_analytics_logger",
+    "analytics_logger",
 ]
 
 # Version info
-__version__ = '1.0.0'
-__author__ = 'AI Portfolio Platform'
-__description__ = 'Advanced analytics system for Gossipqueen AI agent'
+__version__ = "1.0.0"
+__author__ = "AI Portfolio Platform"
+__description__ = "Advanced analytics system for Gossipqueen AI agent"

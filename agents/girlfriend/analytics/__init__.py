@@ -11,14 +11,14 @@ girlfriend_metrics = GirlfriendMetrics()
 analytics_logger = girlfriend_analytics_logger
 
 __all__ = [
-    'GirlfriendMetrics',
-    'GirlfriendAnalyticsLogger', 
-    'girlfriend_metrics',
-    'girlfriend_analytics_logger',
-    'analytics_logger'
+    "GirlfriendMetrics",
+    "GirlfriendAnalyticsLogger",
+    "girlfriend_metrics",
+    "girlfriend_analytics_logger",
+    "analytics_logger",
 ]
 
 # Version info
-__version__ = '1.0.0'
-__author__ = 'AI Portfolio Platform'
-__description__ = 'Advanced analytics system for Girlfriend AI agent'
+__version__ = "1.0.0"
+__author__ = "AI Portfolio Platform"
+__description__ = "Advanced analytics system for Girlfriend AI agent"

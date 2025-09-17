@@ -11,14 +11,14 @@ research_analyst_metrics = ResearchAnalystMetrics()
 analytics_logger = research_analyst_analytics_logger
 
 __all__ = [
-    'ResearchAnalystMetrics',
-    'ResearchAnalystAnalyticsLogger', 
-    'research_analyst_metrics',
-    'research_analyst_analytics_logger',
-    'analytics_logger'
+    "ResearchAnalystMetrics",
+    "ResearchAnalystAnalyticsLogger",
+    "research_analyst_metrics",
+    "research_analyst_analytics_logger",
+    "analytics_logger",
 ]
 
 # Version info
-__version__ = '1.0.0'
-__author__ = 'AI Portfolio Platform'
-__description__ = 'Advanced analytics system for Research Analyst AI agent'
+__version__ = "1.0.0"
+__author__ = "AI Portfolio Platform"
+__description__ = "Advanced analytics system for Research Analyst AI agent"

@@ -17,10 +17,8 @@ redis==5.0.1
 
 # Web Server & Deployment
 gunicorn==21.2.0
-uWSGI==2.0.23
 
 # Authentication & Security
-Passage==0.3.0
 passlib==1.7.4
 bcrypt==4.1.2
 cryptography==41.0.8
