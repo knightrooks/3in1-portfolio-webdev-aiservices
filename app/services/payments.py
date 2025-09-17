@@ -1,580 +1,486 @@
 """
-Payment Service Module
-Handles Stripe and PayPal payment processing, subscription management, and billing
+AI Services Payment System
+Handles Stripe and PayPal integration, subscription management, and usage tracking
 """
 
+import os
+import json
 import stripe
 import paypalrestsdk
-from decimal import Decimal
 from datetime import datetime, timedelta
+from decimal import Decimal
 from flask import current_app, request, jsonify
-from .db import db, User, Payment, UserRole
+from werkzeug.exceptions import BadRequest
 import logging
-import json
-import requests
+from typing import Dict, List, Optional, Tuple
+from dataclasses import dataclass
+from enum import Enum
 
+# Configure logging
 logger = logging.getLogger(__name__)
 
-class PaymentError(Exception):
-    """Custom payment processing error"""
-    pass
+# Payment Configuration
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_WEBHOOK_SECRET = os.environ.get('STRIPE_WEBHOOK_SECRET')
 
-class PaymentService:
-    """Payment service class for handling transactions"""
+PAYPAL_CLIENT_ID = os.environ.get('PAYPAL_CLIENT_ID')
+PAYPAL_CLIENT_SECRET = os.environ.get('PAYPAL_CLIENT_SECRET')
+PAYPAL_MODE = os.environ.get('PAYPAL_MODE', 'sandbox')  # 'live' for production
+
+# Initialize payment gateways
+if STRIPE_SECRET_KEY:
+    stripe.api_key = STRIPE_SECRET_KEY
+
+if PAYPAL_CLIENT_ID and PAYPAL_CLIENT_SECRET:
+    paypalrestsdk.configure({
+        "mode": PAYPAL_MODE,
+        "client_id": PAYPAL_CLIENT_ID,
+        "client_secret": PAYPAL_CLIENT_SECRET
+    })
+
+class SubscriptionTier(Enum):
+    """Subscription pricing tiers"""
+    DAILY = ("daily", 1, 1.00, "1 Day Access")
+    WEEKLY = ("weekly", 7, 5.00, "1 Week Access")
+    MONTHLY = ("monthly", 30, 19.00, "1 Month Access")
+    
+    def __init__(self, period, days, price, description):
+        self.period = period
+        self.days = days
+        self.price = price
+        self.description = description
+
+@dataclass
+class AgentSubscription:
+    """Agent subscription data model"""
+    user_id: str
+    agent_id: str
+    tier: SubscriptionTier
+    start_date: datetime
+    end_date: datetime
+    payment_method: str
+    transaction_id: str
+    status: str
+    usage_count: int = 0
+    max_usage: int = -1  # -1 for unlimited
+    
+class PaymentProcessor:
+    """Main payment processing class"""
     
     def __init__(self):
-        self.stripe_configured = False
-        self.paypal_configured = False
-        self._configure_stripe()
-        self._configure_paypal()
-    
-    def _configure_stripe(self):
-        """Configure Stripe payment processor"""
-        try:
-            stripe_secret = current_app.config.get('STRIPE_SECRET_KEY')
-            if stripe_secret:
-                stripe.api_key = stripe_secret
-                self.stripe_configured = True
-                logger.info("Stripe payment processor configured")
-            else:
-                logger.warning("Stripe not configured - missing STRIPE_SECRET_KEY")
-        except Exception as e:
-            logger.error(f"Stripe configuration failed: {str(e)}")
-    
-    def _configure_paypal(self):
-        """Configure PayPal payment processor"""
-        try:
-            paypal_client_id = current_app.config.get('PAYPAL_CLIENT_ID')
-            paypal_client_secret = current_app.config.get('PAYPAL_CLIENT_SECRET')
-            paypal_mode = current_app.config.get('PAYPAL_MODE', 'sandbox')
-            
-            if paypal_client_id and paypal_client_secret:
-                paypalrestsdk.configure({
-                    "mode": paypal_mode,
-                    "client_id": paypal_client_id,
-                    "client_secret": paypal_client_secret
-                })
-                self.paypal_configured = True
-                logger.info(f"PayPal payment processor configured ({paypal_mode} mode)")
-            else:
-                logger.warning("PayPal not configured - missing credentials")
-        except Exception as e:
-            logger.error(f"PayPal configuration failed: {str(e)}")
-    
-    def get_pricing_plans(self):
-        """Get available pricing plans"""
+        self.agent_pricing = self._load_agent_pricing()
+        self.subscriptions = {}  # In production, this would be a database
+        
+    def _load_agent_pricing(self) -> Dict:
+        """Load agent-specific pricing configuration"""
         return {
-            "free": {
-                "name": "Free",
-                "price": 0,
-                "currency": "USD",
-                "billing_period": "monthly",
-                "features": [
-                    "10 AI messages per day",
-                    "Basic web development consultation",
-                    "Portfolio showcase",
-                    "Community support"
-                ],
-                "limits": {
-                    "daily_messages": 10,
-                    "ai_agents": ["coderbot"],
-                    "web_consultations": 1
-                }
-            },
-            "pro": {
-                "name": "Pro",
-                "price": 29.99,
-                "currency": "USD",
-                "billing_period": "monthly",
-                "features": [
-                    "Unlimited AI messages",
-                    "Access to all AI agents",
-                    "Priority web development services",
-                    "Custom AI training",
-                    "Email support",
-                    "API access"
-                ],
-                "limits": {
-                    "daily_messages": -1,  # unlimited
-                    "ai_agents": "all",
-                    "web_consultations": 5,
-                    "api_calls": 1000
-                },
-                "stripe_price_id": current_app.config.get('STRIPE_PRO_PRICE_ID'),
-                "paypal_plan_id": current_app.config.get('PAYPAL_PRO_PLAN_ID')
-            },
-            "enterprise": {
-                "name": "Enterprise",
-                "price": 99.99,
-                "currency": "USD",
-                "billing_period": "monthly",
-                "features": [
-                    "Everything in Pro",
-                    "Dedicated AI agents",
-                    "White-label solutions",
-                    "Advanced analytics",
-                    "24/7 phone support",
-                    "Custom integrations",
-                    "SLA guarantee"
-                ],
-                "limits": {
-                    "daily_messages": -1,
-                    "ai_agents": "all",
-                    "web_consultations": -1,
-                    "api_calls": 10000,
-                    "custom_models": 3
-                },
-                "stripe_price_id": current_app.config.get('STRIPE_ENTERPRISE_PRICE_ID'),
-                "paypal_plan_id": current_app.config.get('PAYPAL_ENTERPRISE_PLAN_ID')
-            }
+            'strategist': {'base_multiplier': 1.0, 'premium': False},
+            'developer': {'base_multiplier': 1.2, 'premium': True},
+            'girlfriend': {'base_multiplier': 0.8, 'premium': False},
+            'coderbot': {'base_multiplier': 1.1, 'premium': True},
+            'data_scientist': {'base_multiplier': 1.3, 'premium': True},
+            'marketing_specialist': {'base_multiplier': 1.0, 'premium': False},
+            'product_manager': {'base_multiplier': 1.1, 'premium': True},
+            'security_expert': {'base_multiplier': 1.4, 'premium': True},
+            'research_analyst': {'base_multiplier': 1.2, 'premium': True},
+            'content_creator': {'base_multiplier': 0.9, 'premium': False},
+            'customer_success': {'base_multiplier': 0.8, 'premium': False},
+            'operations_manager': {'base_multiplier': 1.1, 'premium': True},
+            'emotionaljenny': {'base_multiplier': 0.7, 'premium': False},
+            'gossipqueen': {'base_multiplier': 0.6, 'premium': False},
+            'lazyjohn': {'base_multiplier': 0.5, 'premium': False},
+            'strictwife': {'base_multiplier': 0.8, 'premium': False}
         }
     
-    def create_stripe_payment_intent(self, user_id, plan, billing_period="monthly"):
-        """Create Stripe payment intent for subscription"""
+    def calculate_agent_price(self, agent_id: str, tier: SubscriptionTier) -> float:
+        """Calculate price for specific agent and tier"""
+        agent_config = self.agent_pricing.get(agent_id, {'base_multiplier': 1.0})
+        base_price = tier.price
+        multiplier = agent_config['base_multiplier']
+        
+        final_price = base_price * multiplier
+        return round(final_price, 2)
+    
+    def get_available_plans(self, agent_id: str) -> List[Dict]:
+        """Get all available subscription plans for an agent"""
+        plans = []
+        for tier in SubscriptionTier:
+            price = self.calculate_agent_price(agent_id, tier)
+            plans.append({
+                'tier': tier.period,
+                'price': price,
+                'duration_days': tier.days,
+                'description': tier.description,
+                'is_premium': self.agent_pricing.get(agent_id, {}).get('premium', False)
+            })
+        return plans
+    
+    def create_stripe_payment_intent(self, user_id: str, agent_id: str, tier: str) -> Dict:
+        """Create Stripe payment intent for agent subscription"""
         try:
-            if not self.stripe_configured:
-                raise PaymentError("Stripe not configured")
+            subscription_tier = SubscriptionTier[tier.upper()]
+            amount_cents = int(self.calculate_agent_price(agent_id, subscription_tier) * 100)
             
-            plans = self.get_pricing_plans()
-            if plan not in plans:
-                raise PaymentError(f"Invalid plan: {plan}")
-            
-            plan_info = plans[plan]
-            amount = int(plan_info["price"] * 100)  # Stripe uses cents
-            
-            # Adjust amount for yearly billing (10% discount)
-            if billing_period == "yearly":
-                amount = int(amount * 12 * 0.9)
-            
-            # Create payment intent
             intent = stripe.PaymentIntent.create(
-                amount=amount,
-                currency=plan_info["currency"].lower(),
+                amount=amount_cents,
+                currency='usd',
                 metadata={
-                    "user_id": user_id,
-                    "plan": plan,
-                    "billing_period": billing_period,
-                    "product_type": "ai_subscription"
+                    'user_id': user_id,
+                    'agent_id': agent_id,
+                    'subscription_tier': tier,
+                    'service': 'ai_agent_subscription'
                 },
-                automatic_payment_methods={
-                    "enabled": True,
-                },
+                description=f'{agent_id.title()} Agent - {subscription_tier.description}'
             )
-            
-            # Create payment record
-            payment = Payment(
-                user_id=user_id,
-                stripe_payment_id=intent.id,
-                amount=Decimal(str(plan_info["price"])),
-                currency=plan_info["currency"],
-                product_type="ai_subscription",
-                product_name=f"{plan_info['name']} Plan",
-                billing_period=billing_period,
-                status="pending",
-                payment_method="stripe"
-            )
-            db.session.add(payment)
-            db.session.commit()
-            
-            logger.info(f"Stripe payment intent created: {intent.id} for user {user_id}")
             
             return {
-                "payment_id": payment.id,
-                "client_secret": intent.client_secret,
-                "amount": amount / 100,
-                "currency": plan_info["currency"]
+                'success': True,
+                'client_secret': intent.client_secret,
+                'payment_intent_id': intent.id,
+                'amount': amount_cents / 100,
+                'currency': 'usd'
             }
             
-        except stripe.error.StripeError as e:
-            logger.error(f"Stripe error: {str(e)}")
-            raise PaymentError(f"Payment processing error: {str(e)}")
         except Exception as e:
-            db.session.rollback()
-            logger.error(f"Payment intent creation failed: {str(e)}")
-            raise PaymentError(f"Payment setup failed: {str(e)}")
+            logger.error(f"Stripe payment intent creation failed: {str(e)}")
+            return {'success': False, 'error': str(e)}
     
-    def create_paypal_payment(self, user_id, plan, billing_period="monthly"):
-        """Create PayPal payment for subscription"""
+    def create_paypal_payment(self, user_id: str, agent_id: str, tier: str) -> Dict:
+        """Create PayPal payment for agent subscription"""
         try:
-            if not self.paypal_configured:
-                raise PaymentError("PayPal not configured")
+            subscription_tier = SubscriptionTier[tier.upper()]
+            amount = self.calculate_agent_price(agent_id, subscription_tier)
             
-            plans = self.get_pricing_plans()
-            if plan not in plans:
-                raise PaymentError(f"Invalid plan: {plan}")
-            
-            plan_info = plans[plan]
-            amount = plan_info["price"]
-            
-            # Adjust amount for yearly billing
-            if billing_period == "yearly":
-                amount = amount * 12 * 0.9
-            
-            # Create PayPal payment
             payment = paypalrestsdk.Payment({
                 "intent": "sale",
-                "payer": {
-                    "payment_method": "paypal"
-                },
+                "payer": {"payment_method": "paypal"},
                 "redirect_urls": {
-                    "return_url": f"{current_app.config.get('BASE_URL', 'http://localhost:5000')}/payment/paypal/success",
-                    "cancel_url": f"{current_app.config.get('BASE_URL', 'http://localhost:5000')}/payment/paypal/cancel"
+                    "return_url": f"{request.host_url}ai/payment/paypal/success",
+                    "cancel_url": f"{request.host_url}ai/payment/paypal/cancel"
                 },
                 "transactions": [{
                     "item_list": {
                         "items": [{
-                            "name": f"{plan_info['name']} Plan ({billing_period})",
-                            "sku": f"{plan}_{billing_period}",
+                            "name": f"{agent_id.title()} Agent Subscription",
+                            "sku": f"{agent_id}_{tier}",
                             "price": str(amount),
-                            "currency": plan_info["currency"],
+                            "currency": "USD",
                             "quantity": 1
                         }]
                     },
                     "amount": {
                         "total": str(amount),
-                        "currency": plan_info["currency"]
+                        "currency": "USD"
                     },
-                    "description": f"AI Portfolio Platform - {plan_info['name']} subscription"
+                    "description": f"{agent_id.title()} Agent - {subscription_tier.description}",
+                    "custom": json.dumps({
+                        'user_id': user_id,
+                        'agent_id': agent_id,
+                        'subscription_tier': tier
+                    })
                 }]
             })
             
             if payment.create():
-                # Create payment record
-                payment_record = Payment(
-                    user_id=user_id,
-                    paypal_payment_id=payment.id,
-                    amount=Decimal(str(amount)),
-                    currency=plan_info["currency"],
-                    product_type="ai_subscription",
-                    product_name=f"{plan_info['name']} Plan",
-                    billing_period=billing_period,
-                    status="pending",
-                    payment_method="paypal"
-                )
-                db.session.add(payment_record)
-                db.session.commit()
-                
-                # Get approval URL
                 approval_url = None
                 for link in payment.links:
                     if link.rel == "approval_url":
                         approval_url = link.href
                         break
                 
-                logger.info(f"PayPal payment created: {payment.id} for user {user_id}")
-                
                 return {
-                    "payment_id": payment_record.id,
-                    "paypal_payment_id": payment.id,
-                    "approval_url": approval_url,
-                    "amount": amount,
-                    "currency": plan_info["currency"]
+                    'success': True,
+                    'payment_id': payment.id,
+                    'approval_url': approval_url,
+                    'amount': amount
                 }
             else:
                 logger.error(f"PayPal payment creation failed: {payment.error}")
-                raise PaymentError("PayPal payment creation failed")
+                return {'success': False, 'error': payment.error}
                 
         except Exception as e:
-            db.session.rollback()
             logger.error(f"PayPal payment creation failed: {str(e)}")
-            raise PaymentError(f"Payment setup failed: {str(e)}")
+            return {'success': False, 'error': str(e)}
     
-    def confirm_stripe_payment(self, payment_intent_id):
-        """Confirm and process successful Stripe payment"""
+    def process_stripe_webhook(self, payload: str, signature: str) -> Dict:
+        """Process Stripe webhook events"""
         try:
-            # Retrieve payment intent from Stripe
-            intent = stripe.PaymentIntent.retrieve(payment_intent_id)
-            
-            if intent.status != "succeeded":
-                raise PaymentError("Payment not completed")
-            
-            # Get payment record
-            payment = Payment.query.filter_by(stripe_payment_id=payment_intent_id).first()
-            if not payment:
-                raise PaymentError("Payment record not found")
-            
-            # Update payment status
-            payment.status = "completed"
-            payment.completed_at = datetime.utcnow()
-            
-            # Update user subscription
-            user = User.query.get(payment.user_id)
-            if user:
-                self._activate_subscription(user, payment)
-            
-            db.session.commit()
-            
-            logger.info(f"Stripe payment confirmed: {payment_intent_id}")
-            return payment
-            
-        except stripe.error.StripeError as e:
-            logger.error(f"Stripe confirmation error: {str(e)}")
-            raise PaymentError(f"Payment confirmation failed: {str(e)}")
-        except Exception as e:
-            db.session.rollback()
-            logger.error(f"Payment confirmation failed: {str(e)}")
-            raise PaymentError(f"Payment processing failed: {str(e)}")
-    
-    def confirm_paypal_payment(self, payment_id, payer_id):
-        """Confirm and execute PayPal payment"""
-        try:
-            # Get PayPal payment
-            payment = paypalrestsdk.Payment.find(payment_id)
-            
-            if payment.execute({"payer_id": payer_id}):
-                # Get payment record
-                payment_record = Payment.query.filter_by(paypal_payment_id=payment_id).first()
-                if not payment_record:
-                    raise PaymentError("Payment record not found")
-                
-                # Update payment status
-                payment_record.status = "completed"
-                payment_record.completed_at = datetime.utcnow()
-                
-                # Update user subscription
-                user = User.query.get(payment_record.user_id)
-                if user:
-                    self._activate_subscription(user, payment_record)
-                
-                db.session.commit()
-                
-                logger.info(f"PayPal payment confirmed: {payment_id}")
-                return payment_record
-            else:
-                logger.error(f"PayPal payment execution failed: {payment.error}")
-                raise PaymentError("PayPal payment execution failed")
-                
-        except Exception as e:
-            db.session.rollback()
-            logger.error(f"PayPal payment confirmation failed: {str(e)}")
-            raise PaymentError(f"Payment processing failed: {str(e)}")
-    
-    def _activate_subscription(self, user, payment):
-        """Activate user subscription based on payment"""
-        try:
-            # Determine subscription level
-            product_name = payment.product_name.lower()
-            
-            if "pro" in product_name:
-                user.role = UserRole.PRO
-            elif "enterprise" in product_name:
-                user.role = UserRole.ENTERPRISE
-            else:
-                logger.warning(f"Unknown subscription type: {product_name}")
-                return
-            
-            # Set subscription expiry
-            if payment.billing_period == "yearly":
-                expiry_date = datetime.utcnow() + timedelta(days=365)
-            else:  # monthly
-                expiry_date = datetime.utcnow() + timedelta(days=30)
-            
-            user.subscription_expires = expiry_date
-            
-            # Reset daily message count for immediate access
-            user.daily_message_count = 0
-            user.last_message_date = datetime.utcnow().date()
-            
-            logger.info(f"Subscription activated for user {user.id}: {user.role.value} until {expiry_date}")
-            
-        except Exception as e:
-            logger.error(f"Subscription activation failed: {str(e)}")
-            raise PaymentError(f"Subscription activation failed: {str(e)}")
-    
-    def create_webdev_invoice(self, user_id, project_details):
-        """Create invoice for web development services"""
-        try:
-            # Calculate pricing based on project requirements
-            base_price = self._calculate_webdev_pricing(project_details)
-            
-            # Create payment record
-            payment = Payment(
-                user_id=user_id,
-                amount=base_price,
-                currency="USD",
-                product_type="webdev_service",
-                product_name=f"Web Development - {project_details.get('project_type', 'Custom')}",
-                billing_period="one_time",
-                status="pending"
-            )
-            db.session.add(payment)
-            db.session.commit()
-            
-            return {
-                "payment_id": payment.id,
-                "amount": float(base_price),
-                "currency": "USD",
-                "description": payment.product_name,
-                "invoice_details": self._generate_invoice_details(project_details, base_price)
-            }
-            
-        except Exception as e:
-            db.session.rollback()
-            logger.error(f"Web dev invoice creation failed: {str(e)}")
-            raise PaymentError(f"Invoice creation failed: {str(e)}")
-    
-    def _calculate_webdev_pricing(self, project_details):
-        """Calculate web development project pricing"""
-        try:
-            base_prices = {
-                "basic_website": 500,
-                "business_website": 1200,
-                "ecommerce": 2500,
-                "web_application": 3500,
-                "mobile_app": 5000,
-                "custom": 1000
-            }
-            
-            project_type = project_details.get('project_type', 'custom')
-            base_price = base_prices.get(project_type, base_prices['custom'])
-            
-            # Add complexity multipliers
-            features = project_details.get('features', [])
-            complexity_multiplier = 1.0
-            
-            complex_features = ['user_authentication', 'payment_processing', 'api_integration', 'real_time_features']
-            for feature in features:
-                if feature in complex_features:
-                    complexity_multiplier += 0.3
-            
-            # Timeline urgency multiplier
-            timeline = project_details.get('timeline', 'standard')
-            if timeline == 'rush':
-                complexity_multiplier += 0.5
-            elif timeline == 'extended':
-                complexity_multiplier -= 0.1
-            
-            final_price = Decimal(str(base_price * complexity_multiplier))
-            return final_price.quantize(Decimal('0.01'))
-            
-        except Exception as e:
-            logger.error(f"Pricing calculation failed: {str(e)}")
-            return Decimal('1000.00')  # Default price
-    
-    def _generate_invoice_details(self, project_details, amount):
-        """Generate detailed invoice breakdown"""
-        return {
-            "project_type": project_details.get('project_type', 'Custom Project'),
-            "features": project_details.get('features', []),
-            "timeline": project_details.get('timeline', 'Standard'),
-            "pages_estimate": project_details.get('pages', 'TBD'),
-            "base_amount": float(amount),
-            "breakdown": {
-                "development": float(amount * Decimal('0.7')),
-                "design": float(amount * Decimal('0.2')),
-                "testing": float(amount * Decimal('0.1'))
-            },
-            "terms": "50% deposit required, remainder due upon completion",
-            "estimated_delivery": "2-4 weeks from project approval"
-        }
-    
-    def handle_stripe_webhook(self, payload, sig_header):
-        """Handle Stripe webhook events"""
-        try:
-            endpoint_secret = current_app.config.get('STRIPE_WEBHOOK_SECRET')
-            if not endpoint_secret:
-                logger.warning("Stripe webhook secret not configured")
-                return False
-            
             event = stripe.Webhook.construct_event(
-                payload, sig_header, endpoint_secret
+                payload, signature, STRIPE_WEBHOOK_SECRET
             )
             
-            # Handle different event types
             if event['type'] == 'payment_intent.succeeded':
                 payment_intent = event['data']['object']
-                self.confirm_stripe_payment(payment_intent['id'])
+                return self._handle_successful_payment(
+                    payment_intent['metadata'], 
+                    'stripe',
+                    payment_intent['id']
+                )
             
             elif event['type'] == 'payment_intent.payment_failed':
                 payment_intent = event['data']['object']
-                self._handle_failed_payment(payment_intent['id'], 'stripe')
+                return self._handle_failed_payment(
+                    payment_intent['metadata'],
+                    'stripe',
+                    payment_intent['id']
+                )
             
-            elif event['type'] == 'invoice.payment_succeeded':
-                # Handle subscription renewal
-                invoice = event['data']['object']
-                self._handle_subscription_renewal(invoice)
+            return {'success': True, 'message': 'Webhook processed'}
             
-            logger.info(f"Stripe webhook handled: {event['type']}")
-            return True
-            
-        except ValueError as e:
-            logger.error(f"Invalid Stripe webhook payload: {str(e)}")
-            return False
-        except stripe.error.SignatureVerificationError as e:
-            logger.error(f"Invalid Stripe webhook signature: {str(e)}")
-            return False
         except Exception as e:
-            logger.error(f"Stripe webhook error: {str(e)}")
-            return False
+            logger.error(f"Stripe webhook processing failed: {str(e)}")
+            return {'success': False, 'error': str(e)}
     
-    def _handle_failed_payment(self, payment_id, provider):
+    def process_paypal_webhook(self, data: Dict) -> Dict:
+        """Process PayPal webhook events"""
+        try:
+            event_type = data.get('event_type')
+            
+            if event_type == 'PAYMENT.SALE.COMPLETED':
+                sale = data['resource']
+                custom_data = json.loads(sale.get('custom', '{}'))
+                return self._handle_successful_payment(
+                    custom_data,
+                    'paypal',
+                    sale['id']
+                )
+            
+            elif event_type == 'PAYMENT.SALE.DENIED':
+                sale = data['resource']
+                custom_data = json.loads(sale.get('custom', '{}'))
+                return self._handle_failed_payment(
+                    custom_data,
+                    'paypal',
+                    sale['id']
+                )
+            
+            return {'success': True, 'message': 'Webhook processed'}
+            
+        except Exception as e:
+            logger.error(f"PayPal webhook processing failed: {str(e)}")
+            return {'success': False, 'error': str(e)}
+    
+    def _handle_successful_payment(self, metadata: Dict, payment_method: str, transaction_id: str) -> Dict:
+        """Handle successful payment and create subscription"""
+        try:
+            user_id = metadata.get('user_id')
+            agent_id = metadata.get('agent_id')
+            tier = metadata.get('subscription_tier')
+            
+            subscription_tier = SubscriptionTier[tier.upper()]
+            start_date = datetime.now()
+            end_date = start_date + timedelta(days=subscription_tier.days)
+            
+            subscription = AgentSubscription(
+                user_id=user_id,
+                agent_id=agent_id,
+                tier=subscription_tier,
+                start_date=start_date,
+                end_date=end_date,
+                payment_method=payment_method,
+                transaction_id=transaction_id,
+                status='active'
+            )
+            
+            # Store subscription (in production, save to database)
+            subscription_key = f"{user_id}_{agent_id}"
+            self.subscriptions[subscription_key] = subscription
+            
+            # Log successful subscription
+            logger.info(f"Subscription created: {user_id} -> {agent_id} ({tier})")
+            
+            return {
+                'success': True,
+                'subscription_id': subscription_key,
+                'end_date': end_date.isoformat(),
+                'message': 'Subscription activated successfully'
+            }
+            
+        except Exception as e:
+            logger.error(f"Payment success handling failed: {str(e)}")
+            return {'success': False, 'error': str(e)}
+    
+    def _handle_failed_payment(self, metadata: Dict, payment_method: str, transaction_id: str) -> Dict:
         """Handle failed payment"""
         try:
-            if provider == 'stripe':
-                payment = Payment.query.filter_by(stripe_payment_id=payment_id).first()
-            else:  # paypal
-                payment = Payment.query.filter_by(paypal_payment_id=payment_id).first()
+            user_id = metadata.get('user_id')
+            agent_id = metadata.get('agent_id')
             
-            if payment:
-                payment.status = "failed"
-                db.session.commit()
-                
-                # Notify user of failed payment
-                # Could send email notification here
-                
-                logger.info(f"Payment marked as failed: {payment_id}")
-                
+            logger.warning(f"Payment failed: {user_id} -> {agent_id} ({payment_method})")
+            
+            return {
+                'success': True,
+                'message': 'Payment failure handled',
+                'action': 'notify_user'
+            }
+            
         except Exception as e:
-            logger.error(f"Failed payment handling error: {str(e)}")
+            logger.error(f"Payment failure handling failed: {str(e)}")
+            return {'success': False, 'error': str(e)}
     
-    def _handle_subscription_renewal(self, invoice):
-        """Handle automatic subscription renewal"""
-        try:
-            customer_id = invoice.get('customer')
-            if not customer_id:
-                return
-            
-            # Find user by Stripe customer ID (would need to store this)
-            # For now, log the renewal
-            logger.info(f"Subscription renewal processed for customer: {customer_id}")
-            
-        except Exception as e:
-            logger.error(f"Subscription renewal error: {str(e)}")
+    def check_subscription_access(self, user_id: str, agent_id: str) -> Dict:
+        """Check if user has active subscription for agent"""
+        subscription_key = f"{user_id}_{agent_id}"
+        subscription = self.subscriptions.get(subscription_key)
+        
+        if not subscription:
+            return {
+                'has_access': False,
+                'reason': 'no_subscription',
+                'message': 'No active subscription found'
+            }
+        
+        if subscription.status != 'active':
+            return {
+                'has_access': False,
+                'reason': 'inactive_subscription',
+                'message': 'Subscription is not active'
+            }
+        
+        if datetime.now() > subscription.end_date:
+            subscription.status = 'expired'
+            return {
+                'has_access': False,
+                'reason': 'expired_subscription',
+                'message': 'Subscription has expired',
+                'expired_date': subscription.end_date.isoformat()
+            }
+        
+        # Check usage limits if applicable
+        if subscription.max_usage > 0 and subscription.usage_count >= subscription.max_usage:
+            return {
+                'has_access': False,
+                'reason': 'usage_limit_reached',
+                'message': 'Usage limit reached for this subscription'
+            }
+        
+        return {
+            'has_access': True,
+            'subscription': {
+                'tier': subscription.tier.period,
+                'end_date': subscription.end_date.isoformat(),
+                'usage_count': subscription.usage_count,
+                'max_usage': subscription.max_usage,
+                'days_remaining': (subscription.end_date - datetime.now()).days
+            }
+        }
     
-    def get_user_payment_history(self, user_id, limit=20):
-        """Get user's payment history"""
-        try:
-            payments = Payment.query.filter_by(user_id=user_id)\
-                                  .order_by(Payment.created_at.desc())\
-                                  .limit(limit)\
-                                  .all()
+    def track_usage(self, user_id: str, agent_id: str, usage_type: str = 'message') -> Dict:
+        """Track agent usage for billing purposes"""
+        subscription_key = f"{user_id}_{agent_id}"
+        subscription = self.subscriptions.get(subscription_key)
+        
+        if subscription and subscription.status == 'active':
+            subscription.usage_count += 1
             
-            return [payment.to_dict() for payment in payments]
+            # Log usage for analytics
+            logger.info(f"Usage tracked: {user_id} -> {agent_id} ({usage_type})")
             
-        except Exception as e:
-            logger.error(f"Payment history retrieval failed: {str(e)}")
-            return []
+            return {
+                'success': True,
+                'usage_count': subscription.usage_count,
+                'remaining_usage': max(0, subscription.max_usage - subscription.usage_count) if subscription.max_usage > 0 else -1
+            }
+        
+        return {'success': False, 'error': 'No active subscription found'}
     
-    def cancel_subscription(self, user_id):
-        """Cancel user subscription"""
-        try:
-            user = User.query.get(user_id)
-            if not user:
-                raise PaymentError("User not found")
+    def get_user_subscriptions(self, user_id: str) -> List[Dict]:
+        """Get all subscriptions for a user"""
+        user_subscriptions = []
+        
+        for key, subscription in self.subscriptions.items():
+            if subscription.user_id == user_id:
+                user_subscriptions.append({
+                    'agent_id': subscription.agent_id,
+                    'tier': subscription.tier.period,
+                    'start_date': subscription.start_date.isoformat(),
+                    'end_date': subscription.end_date.isoformat(),
+                    'status': subscription.status,
+                    'payment_method': subscription.payment_method,
+                    'usage_count': subscription.usage_count,
+                    'days_remaining': max(0, (subscription.end_date - datetime.now()).days)
+                })
+        
+        return user_subscriptions
+    
+    def cancel_subscription(self, user_id: str, agent_id: str) -> Dict:
+        """Cancel a user's subscription"""
+        subscription_key = f"{user_id}_{agent_id}"
+        subscription = self.subscriptions.get(subscription_key)
+        
+        if not subscription:
+            return {'success': False, 'error': 'Subscription not found'}
+        
+        subscription.status = 'cancelled'
+        
+        logger.info(f"Subscription cancelled: {user_id} -> {agent_id}")
+        
+        return {
+            'success': True,
+            'message': 'Subscription cancelled successfully',
+            'refund_eligible': (datetime.now() - subscription.start_date).days < 3
+        }
+    
+    def get_payment_analytics(self) -> Dict:
+        """Get payment and subscription analytics"""
+        total_subscriptions = len(self.subscriptions)
+        active_subscriptions = sum(1 for s in self.subscriptions.values() if s.status == 'active')
+        total_revenue = sum(self.calculate_agent_price(s.agent_id, s.tier) for s in self.subscriptions.values())
+        
+        agent_popularity = {}
+        payment_method_stats = {}
+        tier_stats = {}
+        
+        for subscription in self.subscriptions.values():
+            # Agent popularity
+            agent_popularity[subscription.agent_id] = agent_popularity.get(subscription.agent_id, 0) + 1
             
-            # Revert to free plan
-            user.role = UserRole.FREE
-            user.subscription_expires = None
+            # Payment method stats
+            payment_method_stats[subscription.payment_method] = payment_method_stats.get(subscription.payment_method, 0) + 1
             
-            db.session.commit()
-            
-            logger.info(f"Subscription cancelled for user: {user_id}")
-            return True
-            
-        except Exception as e:
-            db.session.rollback()
-            logger.error(f"Subscription cancellation failed: {str(e)}")
-            return False
+            # Tier stats
+            tier_stats[subscription.tier.period] = tier_stats.get(subscription.tier.period, 0) + 1
+        
+        return {
+            'total_subscriptions': total_subscriptions,
+            'active_subscriptions': active_subscriptions,
+            'total_revenue': round(total_revenue, 2),
+            'conversion_rate': round((active_subscriptions / max(1, total_subscriptions)) * 100, 2),
+            'agent_popularity': agent_popularity,
+            'payment_method_stats': payment_method_stats,
+            'tier_distribution': tier_stats
+        }
 
-# Global payment service instance
-payment_service = PaymentService()
+# Global payment processor instance
+payment_processor = PaymentProcessor()
+
+# Helper functions for Flask routes
+def create_subscription_payment(user_id: str, agent_id: str, tier: str, payment_method: str) -> Dict:
+    """Create payment for agent subscription"""
+    if payment_method.lower() == 'stripe':
+        return payment_processor.create_stripe_payment_intent(user_id, agent_id, tier)
+    elif payment_method.lower() == 'paypal':
+        return payment_processor.create_paypal_payment(user_id, agent_id, tier)
+    else:
+        return {'success': False, 'error': 'Unsupported payment method'}
+
+def verify_agent_access(user_id: str, agent_id: str) -> bool:
+    """Quick access verification for chat system"""
+    result = payment_processor.check_subscription_access(user_id, agent_id)
+    return result.get('has_access', False)
+
+def log_agent_usage(user_id: str, agent_id: str, usage_type: str = 'message'):
+    """Log agent usage for billing"""
+    payment_processor.track_usage(user_id, agent_id, usage_type)
+
+def get_user_dashboard_data(user_id: str) -> Dict:
+    """Get comprehensive dashboard data for user"""
+    subscriptions = payment_processor.get_user_subscriptions(user_id)
+    
+    return {
+        'subscriptions': subscriptions,
+        'total_active': sum(1 for s in subscriptions if s['status'] == 'active'),
+        'total_spent': sum(payment_processor.calculate_agent_price(s['agent_id'], SubscriptionTier[s['tier'].upper()]) for s in subscriptions),
+        'expiring_soon': [s for s in subscriptions if s['days_remaining'] <= 3 and s['status'] == 'active']
+    }

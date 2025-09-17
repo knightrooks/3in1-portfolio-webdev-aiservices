@@ -11,7 +11,7 @@ import time
 from pathlib import Path
 
 # Create Blueprint
-webdev_bp = Blueprint('webdev', __name__, template_folder='../templates/webdev')
+webdev_bp = Blueprint('webdev', __name__, template_folder='../../webdev')
 
 # Web Development Services Configuration
 WEBDEV_SERVICES = {
