@@ -1,267 +1,325 @@
 {% extends "base.html" %}
 
-{% block title %}AI Agents Pricing - Affordable AI Services{% endblock %}
+{% block title %}AI Services Pricing | Individual Agent Subscriptions{% endblock %}
 
 {% block content %}
-<div class="container-fluid py-5 bg-gradient-primary text-white">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-lg-8 mx-auto">
-                <h1 class="display-4 fw-bold mb-4">🤖 AI Agents Pricing</h1>
-                <p class="lead mb-0">Choose your perfect AI companion with flexible, affordable pricing</p>
-                <p class="mb-4">Individual agent subscriptions • No bundling required • Cancel anytime</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container py-5">
-    <!-- Pricing Plans -->
-    <div class="row justify-content-center mb-5">
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100 border-0 shadow-lg">
-                <div class="card-header bg-light text-center border-0 py-4">
-                    <h5 class="card-title text-primary fw-bold">💧 Daily Pass</h5>
-                    <h2 class="display-4 fw-bold text-dark">$1<small class="fs-6 text-muted">/day</small></h2>
-                    <p class="text-muted mb-0">Perfect for quick tasks</p>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24-hour access</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Full agent capabilities</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited conversations</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Basic support</li>
-                        <li class="mb-2"><i class="fas fa-times text-muted me-2"></i>No memory retention</li>
-                    </ul>
-                </div>
-                <div class="card-footer border-0 bg-transparent">
-                    <button class="btn btn-outline-primary w-100">Choose Daily</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100 border-0 shadow-lg border-primary" style="border-width: 3px!important;">
-                <div class="card-header bg-primary text-white text-center border-0 py-4 position-relative">
-                    <span class="badge bg-warning text-dark position-absolute top-0 start-50 translate-middle px-3 py-2 rounded-pill">Most Popular</span>
-                    <h5 class="card-title fw-bold mt-3">⚡ Weekly Pass</h5>
-                    <h2 class="display-4 fw-bold">$5<small class="fs-6 opacity-75">/week</small></h2>
-                    <p class="mb-0 opacity-90">Great for projects</p>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>7-day access</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Full agent capabilities</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited conversations</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Priority support</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Basic memory retention</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Progress tracking</li>
-                    </ul>
-                </div>
-                <div class="card-footer border-0 bg-transparent">
-                    <button class="btn btn-primary w-100 fw-bold">Choose Weekly</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100 border-0 shadow-lg">
-                <div class="card-header bg-dark text-white text-center border-0 py-4">
-                    <h5 class="card-title fw-bold">🚀 Monthly Pass</h5>
-                    <h2 class="display-4 fw-bold">$19<small class="fs-6 opacity-75">/month</small></h2>
-                    <p class="mb-0 opacity-90">Best value for professionals</p>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>30-day access</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Full agent capabilities</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited conversations</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Premium support</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced memory retention</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Progress tracking</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Custom training data</li>
-                        <li class="mb-2"><i class="fas fa-check text-success me-2"></i>API access</li>
-                    </ul>
-                </div>
-                <div class="card-footer border-0 bg-transparent">
-                    <button class="btn btn-dark w-100">Choose Monthly</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Agent Selection -->
-    <div class="row mb-5">
-        <div class="col-12">
-            <h2 class="text-center mb-4">🎯 Choose Your AI Agents</h2>
-            <p class="text-center text-muted mb-4">Subscribe to individual agents that match your needs. Mix and match!</p>
-        </div>
-    </div>
-
-    <!-- Professional Agents -->
-    <div class="row mb-5">
-        <div class="col-12">
-            <h3 class="mb-4"><i class="fas fa-briefcase text-primary me-2"></i>Professional Agents</h3>
-        </div>
-        
-        {% set professional_agents = [
-            {'id': 'strategist', 'name': 'Business Strategist', 'icon': '📊', 'description': 'Strategic planning & market research'},
-            {'id': 'developer', 'name': 'Software Developer', 'icon': '💻', 'description': 'Code development & debugging'},
-            {'id': 'security_expert', 'name': 'Security Expert', 'icon': '🔐', 'description': 'Security analysis & testing'},
-            {'id': 'content_creator', 'name': 'Content Creator', 'icon': '✍️', 'description': 'Content strategy & copywriting'},
-            {'id': 'data_scientist', 'name': 'Data Scientist', 'icon': '📈', 'description': 'Data analysis & insights'},
-            {'id': 'research_analyst', 'name': 'Research Analyst', 'icon': '🔍', 'description': 'Market research & analysis'}
-        ] %}
-        
-        {% for agent in professional_agents %}
-        <div class="col-lg-4 col-md-6 mb-3">
-            <div class="card border-0 shadow-sm agent-pricing-card">
-                <div class="card-body d-flex align-items-center">
-                    <span class="fs-1 me-3">{{ agent.icon }}</span>
-                    <div class="flex-grow-1">
-                        <h6 class="card-title mb-1">{{ agent.name }}</h6>
-                        <p class="card-text small text-muted mb-2">{{ agent.description }}</p>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="{{ agent.id }}" id="agent_{{ agent.id }}">
-                            <label class="form-check-label small" for="agent_{{ agent.id }}">
-                                Select this agent
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <!-- Personality Agents -->
-    <div class="row mb-5">
-        <div class="col-12">
-            <h3 class="mb-4"><i class="fas fa-heart text-danger me-2"></i>Personality Agents</h3>
-        </div>
-        
-        {% set personality_agents = [
-            {'id': 'girlfriend', 'name': 'Virtual Girlfriend', 'icon': '💝', 'description': 'Caring companion & emotional support'},
-            {'id': 'strictwife', 'name': 'Strict Wife', 'icon': '👩‍⚖️', 'description': 'Direct feedback & accountability'},
-            {'id': 'lazyjohn', 'name': 'Lazy John', 'icon': '😴', 'description': 'Casual conversation & chill vibes'},
-            {'id': 'gossipqueen', 'name': 'Gossip Queen', 'icon': '👑', 'description': 'Fun chats & entertainment'},
-            {'id': 'emotionaljenny', 'name': 'Emotional Jenny', 'icon': '🥺', 'description': 'Empathetic support & understanding'},
-            {'id': 'coderbot', 'name': 'Coder Bot', 'icon': '🤖', 'description': 'Technical coding assistant'}
-        ] %}
-        
-        {% for agent in personality_agents %}
-        <div class="col-lg-4 col-md-6 mb-3">
-            <div class="card border-0 shadow-sm agent-pricing-card">
-                <div class="card-body d-flex align-items-center">
-                    <span class="fs-1 me-3">{{ agent.icon }}</span>
-                    <div class="flex-grow-1">
-                        <h6 class="card-title mb-1">{{ agent.name }}</h6>
-                        <p class="card-text small text-muted mb-2">{{ agent.description }}</p>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="{{ agent.id }}" id="agent_{{ agent.id }}">
-                            <label class="form-check-label small" for="agent_{{ agent.id }}">
-                                Select this agent
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-
-    <!-- Pricing Calculator -->
-    <div class="row justify-content-center">
-        <div class="col-lg-6">
-            <div class="card border-0 shadow-lg bg-light">
-                <div class="card-body text-center p-4">
-                    <h4 class="fw-bold mb-3">💰 Your Total</h4>
-                    <div class="mb-3">
-                        <span class="text-muted">Selected agents: </span>
-                        <span id="selectedCount" class="fw-bold">0</span>
-                    </div>
-                    <div class="pricing-display mb-4">
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Daily (per agent):</span>
-                            <span class="fw-bold">$<span id="dailyTotal">0</span></span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>Weekly (per agent):</span>
-                            <span class="fw-bold text-primary">$<span id="weeklyTotal">0</span></span>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span>Monthly (per agent):</span>
-                            <span class="fw-bold">$<span id="monthlyTotal">0</span></span>
-                        </div>
-                    </div>
-                    <button id="checkoutBtn" class="btn btn-success btn-lg w-100" disabled>
-                        <i class="fas fa-credit-card me-2"></i>Proceed to Checkout
-                    </button>
-                    <p class="small text-muted mt-3 mb-0">
-                        <i class="fas fa-shield-alt me-1"></i>Secure payment • Cancel anytime • No hidden fees
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- FAQ Section -->
-<div class="bg-light py-5">
+<!-- Pricing Hero -->
+<section class="pricing-hero bg-dark text-white py-5" style="margin-top: 76px; background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h2 class="text-center mb-4">🤔 Frequently Asked Questions</h2>
-                
+            <div class="col-12 text-center">
+                <h1 class="display-4 fw-bold mb-3">
+                    <span class="text-success">💳</span> AI Services Pricing
+                </h1>
+                <p class="lead mb-4">
+                    Individual agent subscriptions • No bundling required • Cancel anytime
+                </p>
+                <p class="text-success">
+                    <i class="fas fa-shield-alt me-2"></i>
+                    Transparent pricing • Pay only for what you use • No hidden fees
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Pricing Plans -->
+<section class="main-pricing py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="h3 fw-bold mb-3">Choose Your Preferred Billing</h2>
+                <p class="text-muted">Each AI agent is priced individually. Mix and match your favorites!</p>
+            </div>
+        </div>
+        
+        <div class="row g-4 justify-content-center">
+            <!-- Daily Pass -->
+            <div class="col-lg-4 col-md-6">
+                <div class="pricing-card card border-0 shadow-sm h-100">
+                    <div class="card-header bg-light text-center border-0 py-4">
+                        <h4 class="fw-bold text-primary mb-2">
+                            <i class="fas fa-calendar-day text-primary me-2"></i>Daily Pass
+                        </h4>
+                        <div class="price-display">
+                            <span class="h1 fw-bold text-success">$1</span>
+                            <span class="text-muted">/day per agent</span>
+                        </div>
+                        <p class="text-muted small mb-0">Perfect for quick interactions</p>
+                    </div>
+                    <div class="card-body p-4">
+                        <ul class="list-unstyled pricing-features">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24-hour access</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited messages</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Full agent capabilities</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>No commitment</li>
+                            <li class="mb-2"><i class="fas fa-times text-muted me-2"></i>Limited memory retention</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer border-0 bg-transparent p-4">
+                        <button class="btn btn-outline-primary w-100" onclick="selectPlan('daily')">
+                            <i class="fas fa-play me-2"></i>Try Daily Pass
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weekly Pass (Most Popular) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="pricing-card card border-0 shadow-lg h-100 border-warning" style="border-width: 3px!important;">
+                    <div class="position-relative">
+                        <div class="badge bg-warning text-dark position-absolute top-0 start-50 translate-middle px-3 py-2 rounded-pill shadow">
+                            <i class="fas fa-star me-1"></i>Most Popular
+                        </div>
+                    </div>
+                    <div class="card-header bg-warning text-dark text-center border-0 py-4 mt-3">
+                        <h4 class="fw-bold mb-2">
+                            <i class="fas fa-calendar-week me-2"></i>Weekly Pass
+                        </h4>
+                        <div class="price-display">
+                            <span class="h1 fw-bold text-dark">$5</span>
+                            <span class="opacity-75">/week per agent</span>
+                        </div>
+                        <p class="mb-0 opacity-90 small">Best value for regular use</p>
+                    </div>
+                    <div class="card-body p-4">
+                        <ul class="list-unstyled pricing-features">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>7 days full access</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited conversations</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Enhanced memory system</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Priority support</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Better value (30% savings)</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer border-0 bg-transparent p-4">
+                        <button class="btn btn-warning w-100 text-dark fw-bold" onclick="selectPlan('weekly')">
+                            <i class="fas fa-crown me-2"></i>Choose Weekly
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monthly Pass -->
+            <div class="col-lg-4 col-md-6">
+                <div class="pricing-card card border-0 shadow-sm h-100">
+                    <div class="card-header bg-light text-center border-0 py-4">
+                        <h4 class="fw-bold text-primary mb-2">
+                            <i class="fas fa-calendar-alt text-primary me-2"></i>Monthly Pass
+                        </h4>
+                        <div class="price-display">
+                            <span class="h1 fw-bold text-success">$19</span>
+                            <span class="text-muted">/month per agent</span>
+                        </div>
+                        <p class="text-muted small mb-0">Maximum value for power users</p>
+                    </div>
+                    <div class="card-body p-4">
+                        <ul class="list-unstyled pricing-features">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>30 days unlimited access</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Persistent memory system</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced conversation history</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Premium support</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Best value (37% savings)</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer border-0 bg-transparent p-4">
+                        <button class="btn btn-outline-primary w-100" onclick="selectPlan('monthly')">
+                            <i class="fas fa-calendar-check me-2"></i>Go Monthly
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Agent Categories & Examples -->
+<section class="agent-examples py-5 bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="h3 fw-bold mb-3">Available AI Agent Categories</h2>
+                <p class="text-muted">Each category offers unique personalities with specialized capabilities</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Professional Agents -->
+            <div class="col-lg-4">
+                <div class="category-card card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-briefcase text-primary" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Professional Agents</h5>
+                        <p class="text-muted mb-3">Business-focused AI personalities for work and productivity</p>
+                        <div class="agent-examples">
+                            <span class="badge bg-light text-dark me-2 mb-2">Business Strategist</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">Software Developer</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">Financial Analyst</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">Project Manager</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">Marketing Expert</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Entertainment Agents -->
+            <div class="col-lg-4">
+                <div class="category-card card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-heart text-danger" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Entertainment Agents</h5>
+                        <p class="text-muted mb-3">Fun and engaging AI companions for leisure and companionship</p>
+                        <div class="agent-examples">
+                            <span class="badge bg-light text-dark me-2 mb-2">Virtual Girlfriend</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">Gossip Queen</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">ChatterBox Chloe</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">Social Butterfly</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">Entertainment Host</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Personality Agents -->
+            <div class="col-lg-4">
+                <div class="category-card card border-0 shadow-sm h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-masks-theater text-warning" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5 class="fw-bold mb-3">Personality Agents</h5>
+                        <p class="text-muted mb-3">Unique character traits and behavioral patterns</p>
+                        <div class="agent-examples">
+                            <span class="badge bg-light text-dark me-2 mb-2">Lazy John</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">Strict Wife</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">Emotional Jenny</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">Operations Manager</span>
+                            <span class="badge bg-light text-dark me-2 mb-2">Wise Mentor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Calculator -->
+<section class="pricing-calculator py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="h3 fw-bold mb-3">
+                    <i class="fas fa-calculator text-success me-2"></i>Pricing Calculator
+                </h2>
+                <p class="text-muted">Calculate your monthly cost based on selected agents and billing preferences</p>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="calculator-card card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Number of Agents:</label>
+                                <input type="range" class="form-range" id="agentCount" min="1" max="16" value="3" onchange="updateCalculator()">
+                                <div class="d-flex justify-content-between text-muted small">
+                                    <span>1</span>
+                                    <span id="agentCountDisplay">3</span>
+                                    <span>16</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Billing Period:</label>
+                                <select class="form-select" id="billingPeriod" onchange="updateCalculator()">
+                                    <option value="daily">Daily ($1/day per agent)</option>
+                                    <option value="weekly" selected>Weekly ($5/week per agent)</option>
+                                    <option value="monthly">Monthly ($19/month per agent)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="calculator-result text-center">
+                            <div class="result-display">
+                                <h4 class="text-success mb-2">Total Cost:</h4>
+                                <div class="price-breakdown">
+                                    <div id="calculatorResult" class="h2 fw-bold text-success">$15/week</div>
+                                    <div id="calculatorDetails" class="text-muted">3 agents × $5/week = $15/week</div>
+                                    <div id="calculatorSavings" class="text-success small">Save 30% vs daily billing!</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="pricing-faq py-5 bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="h3 fw-bold mb-3">Frequently Asked Questions</h2>
+                <p class="text-muted">Everything you need to know about our AI agent pricing</p>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
                 <div class="accordion" id="pricingFAQ">
-                    <div class="accordion-item border-0 mb-3">
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                                How does individual agent pricing work?
+                                Can I subscribe to individual agents?
                             </button>
                         </h2>
                         <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#pricingFAQ">
                             <div class="accordion-body">
-                                Each AI agent is priced individually. You only pay for the agents you want to use. Select multiple agents and pay for each one separately - no bundling required!
+                                Yes! Each AI agent has individual pricing. You can subscribe to as many or as few as you'd like, and mix different billing periods.
                             </div>
                         </div>
                     </div>
                     
-                    <div class="accordion-item border-0 mb-3">
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                                Can I cancel my subscription anytime?
+                                What payment methods do you accept?
                             </button>
                         </h2>
                         <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
                             <div class="accordion-body">
-                                Yes! You can cancel any agent subscription at any time. There are no cancellation fees or penalties. Your access will continue until the end of your paid period.
+                                We accept all major credit cards through Stripe, and PayPal payments. All transactions are secure and encrypted.
                             </div>
                         </div>
                     </div>
                     
-                    <div class="accordion-item border-0 mb-3">
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                                What's the difference between agents?
+                                Can I cancel anytime?
                             </button>
                         </h2>
                         <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
                             <div class="accordion-body">
-                                Professional agents (like Business Strategist, Developer) focus on work tasks and business solutions. Personality agents (like Girlfriend, Lazy John) provide companionship and entertainment with unique personalities.
+                                Absolutely! You can cancel any agent subscription at any time. No questions asked, no cancellation fees.
                             </div>
                         </div>
                     </div>
                     
-                    <div class="accordion-item border-0">
+                    <div class="accordion-item border-0 mb-3 shadow-sm">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
-                                Do you offer refunds?
+                                Is there a free trial?
                             </button>
                         </h2>
                         <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
                             <div class="accordion-body">
-                                We offer a 24-hour satisfaction guarantee. If you're not happy with your agent within the first day, we'll provide a full refund. For longer subscriptions, we offer prorated refunds on a case-by-case basis.
+                                Yes! You get 10 free messages with any agent to try them out. After that, choose your preferred billing period.
                             </div>
                         </div>
                     </div>
@@ -269,67 +327,121 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
+<!-- CTA Section -->
+<section class="pricing-cta py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 text-center text-lg-start">
+                <h3 class="fw-bold mb-2">Ready to Start Chatting?</h3>
+                <p class="mb-0">Choose your favorite AI agents and start building meaningful relationships today</p>
+            </div>
+            <div class="col-lg-4 text-center text-lg-end">
+                <a href="{{ url_for('ai_services.agents') }}" class="btn btn-warning btn-lg me-2">
+                    <i class="fas fa-users me-2"></i>Browse Agents
+                </a>
+                <a href="{{ url_for('ai_services.chat') }}" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-comments me-2"></i>Start Free Trial
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
 <style>
-.bg-gradient-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.agent-pricing-card {
-    transition: transform 0.2s ease-in-out;
-}
-
-.agent-pricing-card:hover {
-    transform: translateY(-2px);
-}
-
-.pricing-display {
-    background: white;
-    border-radius: 10px;
-    padding: 20px;
-    border: 2px solid #e9ecef;
-}
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    const selectedCount = document.getElementById('selectedCount');
-    const dailyTotal = document.getElementById('dailyTotal');
-    const weeklyTotal = document.getElementById('weeklyTotal');
-    const monthlyTotal = document.getElementById('monthlyTotal');
-    const checkoutBtn = document.getElementById('checkoutBtn');
-    
-    function updatePricing() {
-        const selected = document.querySelectorAll('input[type="checkbox"]:checked').length;
-        
-        selectedCount.textContent = selected;
-        dailyTotal.textContent = selected * 1;
-        weeklyTotal.textContent = selected * 5;
-        monthlyTotal.textContent = selected * 19;
-        
-        checkoutBtn.disabled = selected === 0;
-        
-        if (selected > 0) {
-            checkoutBtn.innerHTML = `<i class="fas fa-credit-card me-2"></i>Subscribe to ${selected} Agent${selected > 1 ? 's' : ''}`;
-        } else {
-            checkoutBtn.innerHTML = `<i class="fas fa-credit-card me-2"></i>Proceed to Checkout`;
-        }
+    .pricing-hero {
+        position: relative;
+        overflow: hidden;
     }
     
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', updatePricing);
-    });
+    .pricing-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        pointer-events: none;
+    }
     
-    checkoutBtn.addEventListener('click', function() {
-        const selectedAgents = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value);
-        
-        if (selectedAgents.length > 0) {
-            // Redirect to payment processing (placeholder)
-            alert(`Selected agents: ${selectedAgents.join(', ')}\\nThis would redirect to Stripe payment processing.`);
-        }
-    });
+    .pricing-card {
+        transition: all 0.3s ease;
+    }
+    
+    .pricing-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .category-card {
+        transition: all 0.3s ease;
+    }
+    
+    .category-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+    }
+    
+    .calculator-result {
+        background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+        border-radius: 10px;
+        padding: 20px;
+    }
+    
+    .accordion-button:not(.collapsed) {
+        background-color: #f8f9fa;
+        box-shadow: none;
+        border-color: transparent;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function updateCalculator() {
+    const agentCount = document.getElementById('agentCount').value;
+    const billingPeriod = document.getElementById('billingPeriod').value;
+    
+    document.getElementById('agentCountDisplay').textContent = agentCount;
+    
+    let pricePerAgent, period, totalCost, savings = '';
+    
+    switch(billingPeriod) {
+        case 'daily':
+            pricePerAgent = 1;
+            period = '/day';
+            totalCost = agentCount * pricePerAgent;
+            break;
+        case 'weekly':
+            pricePerAgent = 5;
+            period = '/week';
+            totalCost = agentCount * pricePerAgent;
+            savings = 'Save 30% vs daily billing!';
+            break;
+        case 'monthly':
+            pricePerAgent = 19;
+            period = '/month';
+            totalCost = agentCount * pricePerAgent;
+            savings = 'Save 37% vs daily billing!';
+            break;
+    }
+    
+    document.getElementById('calculatorResult').textContent = `$${totalCost}${period}`;
+    document.getElementById('calculatorDetails').textContent = `${agentCount} agents × $${pricePerAgent}${period} = $${totalCost}${period}`;
+    document.getElementById('calculatorSavings').textContent = savings;
+}
+
+function selectPlan(plan) {
+    // This would integrate with payment processing
+    alert(`Selected ${plan} plan! This would redirect to payment processing.`);
+}
+
+// Initialize calculator on page load
+document.addEventListener('DOMContentLoaded', function() {
+    updateCalculator();
 });
 </script>
 {% endblock %}
