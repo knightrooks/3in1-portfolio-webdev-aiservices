@@ -1,0 +1,1 @@
+"""Emotional Jenny auth module"""

@@ -1,0 +1,26 @@
+agent_info:
+  availability: available
+  category: entertainment
+  id: gossipqueen
+  name: Gossip Queen
+  type: persona_agent
+communication:
+  message_formats:
+  - json
+  - plain_text
+  protocols:
+  - rest_api
+  - websocket
+  - inter_agent_bus
+  rate_limits:
+    concurrent_sessions: 10
+    messages_per_minute: 60
+relationships:
+  collaboration_types:
+  - conversation
+  - emotional_support
+  - entertainment
+  compatible_agents:
+  - gossipqueen
+  - girlfriend
+  - emotionaljenny

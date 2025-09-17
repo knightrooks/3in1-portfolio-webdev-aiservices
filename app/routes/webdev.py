@@ -1,17 +1,26 @@
+"""
+Web Development Services Routing System
+Comprehensive routing for all web development services, templates, and tools
+"""
+
 from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
 import json
 from datetime import datetime
 import os
+import time
+from pathlib import Path
 
 # Create Blueprint
-webdev_bp = Blueprint('webdev', __name__, url_prefix='/webdev')
+webdev_bp = Blueprint('webdev', __name__, template_folder='../templates/webdev')
 
-# Web Development Services Data
+# Web Development Services Configuration
 WEBDEV_SERVICES = {
     'hero': {
         'title': 'Professional Web Development Services',
-        'tagline': 'From concept to launch, I build web solutions that work.',
-        'description': 'Custom websites, web applications, and digital solutions designed to help your business grow online.'
+        'tagline': 'From concept to launch, we build web solutions that work.',
+        'description': 'Custom websites, web applications, and digital solutions designed to help your business grow online.',
+        'technologies': ['React', 'Vue.js', 'Flask', 'Django', 'Node.js', 'Python', 'JavaScript', 'TypeScript'],
+        'specialties': ['Frontend Development', 'Backend Development', 'Full-Stack Solutions', 'API Development']
     },
     'services': [
         {
@@ -19,345 +28,368 @@ WEBDEV_SERVICES = {
             'name': 'Custom Websites',
             'icon': 'fas fa-globe',
             'short_desc': 'Professional, responsive websites built with modern technologies.',
+            'long_desc': 'Custom websites tailored to your business needs, from simple landing pages to complex corporate sites.',
             'price_from': '$1,500',
-            'features': ['Responsive Design', 'SEO Optimized', 'Fast Loading', 'Mobile-First']
+            'price_to': '$10,000',
+            'features': ['Responsive Design', 'SEO Optimized', 'Fast Loading', 'Mobile-First', 'CMS Integration'],
+            'technologies': ['HTML5', 'CSS3', 'JavaScript', 'React', 'Vue.js'],
+            'category': 'websites'
         },
         {
             'id': 'web-apps',
             'name': 'Web Applications',
             'icon': 'fas fa-laptop-code',
             'short_desc': 'Custom web applications with advanced functionality.',
+            'long_desc': 'Full-featured web applications with complex business logic, user authentication, and database integration.',
             'price_from': '$3,000',
-            'features': ['Custom Development', 'Database Integration', 'User Authentication', 'API Integration']
+            'price_to': '$25,000',
+            'features': ['User Authentication', 'Database Integration', 'API Development', 'Real-time Features', 'Admin Panels'],
+            'technologies': ['Flask', 'Django', 'Node.js', 'PostgreSQL', 'MongoDB'],
+            'category': 'applications'
         },
         {
             'id': 'ecommerce',
             'name': 'E-commerce Solutions',
             'icon': 'fas fa-shopping-cart',
-            'short_desc': 'Complete online stores with payment processing.',
-            'price_from': '$2,500',
-            'features': ['Payment Gateway', 'Inventory Management', 'Order Processing', 'Admin Dashboard']
+            'short_desc': 'Complete online stores with payment processing and inventory management.',
+            'long_desc': 'Full-featured e-commerce platforms with shopping carts, payment gateways, and order management.',
+            'price_from': '$5,000',
+            'price_to': '$20,000',
+            'features': ['Payment Processing', 'Inventory Management', 'Order Tracking', 'Customer Accounts', 'Admin Dashboard'],
+            'technologies': ['Shopify', 'WooCommerce', 'Stripe', 'PayPal'],
+            'category': 'ecommerce'
+        },
+        {
+            'id': 'apis',
+            'name': 'API Development',
+            'icon': 'fas fa-exchange-alt',
+            'short_desc': 'RESTful APIs and microservices for your applications.',
+            'long_desc': 'Scalable API solutions for connecting your applications and enabling third-party integrations.',
+            'price_from': '$2,000',
+            'price_to': '$15,000',
+            'features': ['RESTful Architecture', 'Authentication', 'Rate Limiting', 'Documentation', 'Testing'],
+            'technologies': ['Flask', 'FastAPI', 'Django REST', 'Node.js'],
+            'category': 'backend'
+        },
+        {
+            'id': 'seo',
+            'name': 'SEO Optimization',
+            'icon': 'fas fa-search',
+            'short_desc': 'Improve your website\'s search engine rankings and visibility.',
+            'long_desc': 'Comprehensive SEO services to increase your online visibility and drive organic traffic.',
+            'price_from': '$800',
+            'price_to': '$3,000',
+            'features': ['Keyword Research', 'On-page SEO', 'Technical SEO', 'Content Optimization', 'Analytics'],
+            'technologies': ['Google Analytics', 'Search Console', 'SEMrush', 'Ahrefs'],
+            'category': 'marketing'
         },
         {
             'id': 'maintenance',
             'name': 'Website Maintenance',
             'icon': 'fas fa-tools',
             'short_desc': 'Keep your website updated, secure, and running smoothly.',
-            'price_from': '$200/mo',
-            'features': ['Security Updates', 'Content Updates', 'Performance Monitoring', 'Backup Services']
+            'long_desc': 'Ongoing maintenance services to ensure your website remains secure, updated, and performing optimally.',
+            'price_from': '$200',
+            'price_to': '$1000',
+            'features': ['Security Updates', 'Content Updates', 'Performance Monitoring', 'Backup Services', '24/7 Support'],
+            'technologies': ['Monitoring Tools', 'Security Scanners', 'Backup Solutions'],
+            'category': 'maintenance'
         }
     ],
     'technologies': [
-        {'name': 'Python/Flask', 'icon': 'fab fa-python'},
-        {'name': 'JavaScript/React', 'icon': 'fab fa-js'},
-        {'name': 'HTML5/CSS3', 'icon': 'fab fa-html5'},
-        {'name': 'MySQL/PostgreSQL', 'icon': 'fas fa-database'},
-        {'name': 'AWS/Cloud', 'icon': 'fab fa-aws'},
-        {'name': 'Docker', 'icon': 'fab fa-docker'}
+        {'name': 'Python/Flask', 'icon': 'fab fa-python', 'category': 'backend'},
+        {'name': 'JavaScript/React', 'icon': 'fab fa-js', 'category': 'frontend'},
+        {'name': 'HTML5/CSS3', 'icon': 'fab fa-html5', 'category': 'frontend'},
+        {'name': 'MySQL/PostgreSQL', 'icon': 'fas fa-database', 'category': 'database'},
+        {'name': 'AWS/Cloud', 'icon': 'fab fa-aws', 'category': 'infrastructure'},
+        {'name': 'Docker', 'icon': 'fab fa-docker', 'category': 'deployment'}
+    ],
+    'portfolio_projects': [
+        {'name': 'E-commerce Platform', 'tech': ['React', 'Node.js', 'MongoDB'], 'category': 'ecommerce'},
+        {'name': 'Corporate Website', 'tech': ['HTML5', 'CSS3', 'JavaScript'], 'category': 'websites'},
+        {'name': 'API Gateway', 'tech': ['Python', 'Flask', 'PostgreSQL'], 'category': 'backend'}
     ]
 }
 
+# Routes
 @webdev_bp.route('/')
 def index():
     """Web Development Services homepage."""
-    return render_template('webdev/index.html', services=WEBDEV_SERVICES)
+    return render_template('webdev/index.html', 
+                         services=WEBDEV_SERVICES,
+                         page_title='Web Development Services')
+
+@webdev_bp.route('/api')
+def api_overview():
+    """API overview for webdev services"""
+    service_apis = {}
+    
+    for service in WEBDEV_SERVICES['services']:
+        service_apis[service['id']] = {
+            'info': service,
+            'endpoints': {
+                'details': f'/webdev/{service["id"]}',
+                'quote': f'/webdev/quote?service={service["id"]}',
+                'portfolio': f'/webdev/portfolio?category={service["category"]}'
+            }
+        }
+    
+    return jsonify({
+        'success': True,
+        'data': {
+            'total_services': len(WEBDEV_SERVICES['services']),
+            'categories': list(set(s['category'] for s in WEBDEV_SERVICES['services'])),
+            'technologies': WEBDEV_SERVICES['technologies'],
+            'services': service_apis
+        }
+    })
 
 @webdev_bp.route('/websites')
 def websites():
     """Website Development Service."""
-    service_data = {
-        'title': 'Custom Website Development',
-        'description': 'Professional, responsive websites built with modern technologies and best practices.',
-        'features': [
-            'Responsive Design for all devices',
-            'SEO Optimized structure',
-            'Fast loading times (< 3 seconds)',
-            'Mobile-first approach',
-            'Cross-browser compatibility',
-            'Contact forms and integrations',
-            'Content Management System',
-            'Google Analytics integration'
-        ],
-        'packages': [
-            {
-                'name': 'Starter Website',
-                'price': '$1,500',
-                'features': ['Up to 5 pages', 'Responsive design', 'Contact form', 'SEO basics', '3 months support']
-            },
-            {
-                'name': 'Business Website',
-                'price': '$2,500',
-                'features': ['Up to 10 pages', 'CMS integration', 'Advanced SEO', 'Analytics setup', '6 months support']
-            },
-            {
-                'name': 'Premium Website',
-                'price': '$4,000',
-                'features': ['Unlimited pages', 'Custom functionality', 'E-commerce ready', 'Performance optimization', '1 year support']
-            }
-        ]
-    }
-    return render_template('webdev/websites.html', data=service_data)
+    service_data = next((s for s in WEBDEV_SERVICES['services'] if s['id'] == 'websites'), None)
+    
+    return render_template('webdev/websites.html', 
+                         service=service_data,
+                         page_title='Custom Website Development')
 
 @webdev_bp.route('/apps')
 def apps():
-    """Web Application Development."""
-    return render_template('webdev/apps.html')
+    """Web Applications Service."""
+    service_data = next((s for s in WEBDEV_SERVICES['services'] if s['id'] == 'web-apps'), None)
+    
+    return render_template('webdev/apps.html', 
+                         service=service_data,
+                         page_title='Web Application Development')
 
 @webdev_bp.route('/ecommerce')
 def ecommerce():
-    """E-commerce Development."""
-    return render_template('webdev/ecommerce.html')
-
-@webdev_bp.route('/maintenance')
-def maintenance():
-    """Website Maintenance Services."""
-    return render_template('webdev/maintenance.html')
+    """E-commerce Solutions Service."""
+    service_data = next((s for s in WEBDEV_SERVICES['services'] if s['id'] == 'ecommerce'), None)
+    
+    return render_template('webdev/ecommerce.html', 
+                         service=service_data,
+                         page_title='E-commerce Solutions')
 
 @webdev_bp.route('/seo')
 def seo():
-    """SEO Services."""
-    return render_template('webdev/seo.html')
+    """SEO Optimization Service."""
+    service_data = next((s for s in WEBDEV_SERVICES['services'] if s['id'] == 'seo'), None)
+    
+    return render_template('webdev/seo.html', 
+                         service=service_data,
+                         page_title='SEO Optimization Services')
+
+@webdev_bp.route('/maintenance')
+def maintenance():
+    """Website Maintenance Service."""
+    service_data = next((s for s in WEBDEV_SERVICES['services'] if s['id'] == 'maintenance'), None)
+    
+    return render_template('webdev/maintenance.html', 
+                         service=service_data,
+                         page_title='Website Maintenance Services')
 
 @webdev_bp.route('/marketing')
 def marketing():
     """Digital Marketing Services."""
-    return render_template('webdev/marketing.html')
+    marketing_services = [s for s in WEBDEV_SERVICES['services'] if s['category'] in ['marketing', 'seo']]
+    
+    return render_template('webdev/marketing.html', 
+                         services=marketing_services,
+                         page_title='Digital Marketing Services')
+
+@webdev_bp.route('/pricing')
+def pricing():
+    """Pricing page for all services."""
+    return render_template('webdev/pricing.html', 
+                         services=WEBDEV_SERVICES,
+                         page_title='Web Development Pricing')
 
 @webdev_bp.route('/quote')
-def quote():
-    """Get a Quote."""
-    package = request.args.get('package', '')
-    service = request.args.get('service', '')
-    return render_template('webdev/quote.html', package=package, service=service)
+def quote_form():
+    """Quote request form."""
+    service_id = request.args.get('service', '')
+    selected_service = None
+    
+    if service_id:
+        selected_service = next((s for s in WEBDEV_SERVICES['services'] if s['id'] == service_id), None)
+    
+    return render_template('webdev/quote.html', 
+                         services=WEBDEV_SERVICES['services'],
+                         selected_service=selected_service,
+                         page_title='Request a Quote')
 
 @webdev_bp.route('/quote', methods=['POST'])
-def quote_submit():
+def submit_quote():
     """Handle quote form submission."""
     try:
-        # Extract form data
-        form_data = {
-            'name': request.form.get('name', ''),
-            'email': request.form.get('email', ''),
+        # Get form data
+        quote_data = {
+            'name': request.form.get('name'),
+            'email': request.form.get('email'),
             'phone': request.form.get('phone', ''),
             'company': request.form.get('company', ''),
-            'service': request.form.get('service', ''),
-            'package': request.form.get('package', ''),
-            'budget': request.form.get('budget', ''),
-            'timeline': request.form.get('timeline', ''),
-            'description': request.form.get('description', ''),
-            'website': request.form.get('website', ''),
-            'goals': request.form.getlist('goals'),
-            'submitted_at': datetime.now().isoformat()
+            'service': request.form.get('service'),
+            'budget': request.form.get('budget'),
+            'timeline': request.form.get('timeline'),
+            'description': request.form.get('description'),
+            'timestamp': datetime.now().isoformat(),
+            'status': 'new'
         }
         
-        # Save to JSON file (in production, would use database)
-        quotes_file = 'data/quotes.json'
-        os.makedirs('data', exist_ok=True)
+        # Save to quotes file
+        quotes_file = Path('data/quotes.json')
+        quotes_file.parent.mkdir(exist_ok=True)
         
         quotes = []
-        if os.path.exists(quotes_file):
-            try:
-                with open(quotes_file, 'r') as f:
-                    quotes = json.load(f)
-            except:
-                quotes = []
+        if quotes_file.exists():
+            with open(quotes_file, 'r') as f:
+                quotes = json.load(f)
         
-        quotes.append(form_data)
+        quotes.append(quote_data)
         
         with open(quotes_file, 'w') as f:
             json.dump(quotes, f, indent=2)
         
-        flash('Thank you! Your quote request has been submitted successfully. We\'ll get back to you within 24 hours.', 'success')
-        return redirect(url_for('webdev.quote'))
+        flash('Thank you! Your quote request has been submitted. We\'ll get back to you within 24 hours.', 'success')
+        return redirect(url_for('webdev.quote_form'))
         
     except Exception as e:
-        flash('Sorry, there was an error submitting your request. Please try again or contact us directly.', 'error')
-        return redirect(url_for('webdev.quote'))
+        flash('Sorry, there was an error submitting your request. Please try again.', 'error')
+        return redirect(url_for('webdev.quote_form'))
 
-@webdev_bp.route('/service-inquiry', methods=['POST'])
-def service_inquiry():
-    """Handle service inquiry form submission."""
-    try:
-        # Extract form data
-        form_data = {
-            'name': request.form.get('name', ''),
-            'email': request.form.get('email', ''),
-            'service': request.form.get('service', ''),
-            'message': request.form.get('message', ''),
-            'phone': request.form.get('phone', ''),
-            'company': request.form.get('company', ''),
-            'submitted_at': datetime.now().isoformat()
-        }
-        
-        # Save to JSON file
-        inquiries_file = 'data/inquiries.json'
-        os.makedirs('data', exist_ok=True)
-        
-        inquiries = []
-        if os.path.exists(inquiries_file):
-            try:
-                with open(inquiries_file, 'r') as f:
-                    inquiries = json.load(f)
-            except:
-                inquiries = []
-        
-        inquiries.append(form_data)
-        
-        with open(inquiries_file, 'w') as f:
-            json.dump(inquiries, f, indent=2)
-        
-        return jsonify({
-            'success': True,
-            'message': 'Thank you for your inquiry! We\'ll get back to you soon.'
-        })
-        
-    except Exception as e:
-        return jsonify({
-            'success': False,
-            'message': 'Sorry, there was an error. Please try again.'
-        }), 500
+@webdev_bp.route('/portfolio')
+def portfolio():
+    """Portfolio showcase for web development projects."""
+    category = request.args.get('category', 'all')
+    
+    projects = WEBDEV_SERVICES['portfolio_projects']
+    if category != 'all':
+        projects = [p for p in projects if p['category'] == category]
+    
+    categories = list(set(p['category'] for p in WEBDEV_SERVICES['portfolio_projects']))
+    
+    return render_template('webdev/portfolio.html', 
+                         projects=projects,
+                         categories=categories,
+                         current_category=category,
+                         page_title='Web Development Portfolio')
 
-# Service packages configuration
-SERVICE_PACKAGES = {
-    'websites': {
-        'starter': {
-            'name': 'Starter Website',
-            'price': 1500,
-            'features': ['Up to 5 pages', 'Responsive design', 'Contact form', 'SEO basics', '3 months support'],
-            'timeline': '2-3 weeks'
+@webdev_bp.route('/technologies')
+def technologies():
+    """Technologies and tools showcase."""
+    tech_by_category = {}
+    
+    for tech in WEBDEV_SERVICES['technologies']:
+        category = tech['category']
+        if category not in tech_by_category:
+            tech_by_category[category] = []
+        tech_by_category[category].append(tech)
+    
+    return render_template('webdev/technologies.html', 
+                         technologies=tech_by_category,
+                         page_title='Technologies & Tools')
+
+@webdev_bp.route('/process')
+def process():
+    """Development process overview."""
+    process_steps = [
+        {
+            'step': 1,
+            'title': 'Discovery & Planning',
+            'description': 'Understanding your requirements and planning the project architecture.',
+            'duration': '1-2 weeks',
+            'deliverables': ['Project Scope', 'Technical Specification', 'Timeline']
         },
-        'business': {
-            'name': 'Business Website',
-            'price': 2500,
-            'features': ['Up to 10 pages', 'CMS integration', 'Advanced SEO', 'Analytics setup', '6 months support'],
-            'timeline': '3-4 weeks'
+        {
+            'step': 2,
+            'title': 'Design & Prototyping',
+            'description': 'Creating wireframes, mockups, and interactive prototypes.',
+            'duration': '1-3 weeks',
+            'deliverables': ['UI/UX Design', 'Prototype', 'Style Guide']
         },
-        'premium': {
-            'name': 'Premium Website',
-            'price': 4000,
-            'features': ['Unlimited pages', 'Custom functionality', 'E-commerce ready', 'Performance optimization', '1 year support'],
-            'timeline': '4-6 weeks'
+        {
+            'step': 3,
+            'title': 'Development',
+            'description': 'Building the application with regular progress updates.',
+            'duration': '2-8 weeks',
+            'deliverables': ['Working Application', 'Code Documentation', 'Testing']
+        },
+        {
+            'step': 4,
+            'title': 'Testing & Launch',
+            'description': 'Quality assurance testing and deployment to production.',
+            'duration': '1-2 weeks',
+            'deliverables': ['QA Testing', 'Deployment', 'Training']
+        },
+        {
+            'step': 5,
+            'title': 'Support & Maintenance',
+            'description': 'Ongoing support, updates, and maintenance services.',
+            'duration': 'Ongoing',
+            'deliverables': ['24/7 Support', 'Updates', 'Monitoring']
         }
-    },
-    'apps': {
-        'basic': {
-            'name': 'Basic Web App',
-            'price': 3000,
-            'features': ['User authentication', 'Basic CRUD', 'Responsive design', 'Database integration', '3 months support'],
-            'timeline': '4-5 weeks'
-        },
-        'professional': {
-            'name': 'Professional Web App',
-            'price': 5000,
-            'features': ['Advanced features', 'API integration', 'Admin panel', 'User management', '6 months support'],
-            'timeline': '6-8 weeks'
-        },
-        'enterprise': {
-            'name': 'Enterprise Web App',
-            'price': 8000,
-            'features': ['Custom architecture', 'Scalable infrastructure', 'Advanced security', 'Full documentation', '1 year support'],
-            'timeline': '8-12 weeks'
-        }
-    },
-    'ecommerce': {
-        'starter': {
-            'name': 'E-commerce Starter',
-            'price': 2500,
-            'features': ['Up to 50 products', 'Payment gateway', 'Order management', 'Basic analytics', '3 months support'],
-            'timeline': '3-4 weeks'
-        },
-        'professional': {
-            'name': 'E-commerce Professional',
-            'price': 4500,
-            'features': ['Unlimited products', 'Multi-payment options', 'Inventory management', 'Customer accounts', '6 months support'],
-            'timeline': '5-6 weeks'
-        },
-        'enterprise': {
-            'name': 'E-commerce Enterprise',
-            'price': 8000,
-            'features': ['Custom features', 'Multi-vendor support', 'Advanced analytics', 'Mobile app', '1 year support'],
-            'timeline': '8-10 weeks'
-        }
-    },
-    'maintenance': {
-        'basic': {
-            'name': 'Basic Maintenance',
-            'price': 200,
-            'billing': 'monthly',
-            'features': ['Security updates', 'Content updates (2/month)', 'Basic monitoring', 'Email support'],
-            'timeline': 'Ongoing'
-        },
-        'professional': {
-            'name': 'Professional Maintenance',
-            'price': 400,
-            'billing': 'monthly',
-            'features': ['Priority updates', 'Content updates (8/month)', 'Performance monitoring', 'Phone support'],
-            'timeline': 'Ongoing'
-        },
-        'enterprise': {
-            'name': 'Enterprise Maintenance',
-            'price': 800,
-            'billing': 'monthly',
-            'features': ['24/7 monitoring', 'Unlimited updates', 'Performance optimization', 'Dedicated support'],
-            'timeline': 'Ongoing'
-        }
-    },
-    'seo': {
-        'starter': {
-            'name': 'SEO Starter',
-            'price': 800,
-            'billing': 'monthly',
-            'features': ['Keyword research', 'On-page optimization', 'Basic reporting', 'Google Analytics setup'],
-            'timeline': '3-6 months'
-        },
-        'professional': {
-            'name': 'SEO Professional',
-            'price': 1500,
-            'billing': 'monthly',
-            'features': ['Advanced SEO strategy', 'Content optimization', 'Link building', 'Detailed reporting'],
-            'timeline': '6-12 months'
-        },
-        'enterprise': {
-            'name': 'SEO Enterprise',
-            'price': 2500,
-            'billing': 'monthly',
-            'features': ['Full SEO management', 'Technical SEO', 'Competitor analysis', 'Dedicated SEO manager'],
-            'timeline': '12+ months'
-        }
-    },
-    'marketing': {
-        'starter': {
-            'name': 'Marketing Starter',
-            'price': 1200,
-            'billing': 'monthly',
-            'features': ['Google Ads management', 'Social media (2 platforms)', 'Basic email marketing', 'Monthly reporting'],
-            'timeline': 'Ongoing'
-        },
-        'professional': {
-            'name': 'Marketing Professional',
-            'price': 2500,
-            'billing': 'monthly',
-            'features': ['Multi-platform ads', 'Social media (4 platforms)', 'Advanced email marketing', 'Content creation'],
-            'timeline': 'Ongoing'
-        },
-        'enterprise': {
-            'name': 'Marketing Enterprise',
-            'price': 5000,
-            'billing': 'monthly',
-            'features': ['Full-funnel marketing', 'Omnichannel campaigns', 'Custom analytics', 'Dedicated manager'],
-            'timeline': 'Ongoing'
-        }
+    ]
+    
+    return render_template('webdev/process.html', 
+                         steps=process_steps,
+                         page_title='Development Process')
+
+@webdev_bp.route('/health')
+def health():
+    """Health check for webdev services"""
+    health_data = {
+        'status': 'healthy',
+        'services_count': len(WEBDEV_SERVICES['services']),
+        'technologies_count': len(WEBDEV_SERVICES['technologies']),
+        'categories': list(set(s['category'] for s in WEBDEV_SERVICES['services'])),
+        'timestamp': time.time()
     }
-}
+    
+    return jsonify({
+        'success': True,
+        'data': health_data
+    })
 
-@webdev_bp.route('/api/packages/<service>')
-def get_service_packages(service):
-    """API endpoint to get service packages."""
-    if service in SERVICE_PACKAGES:
-        return jsonify(SERVICE_PACKAGES[service])
-    return jsonify({'error': 'Service not found'}), 404
-
-@webdev_bp.route('/pricing')
-def pricing():
-    """Pricing Information."""
-    return render_template('webdev/pricing.html')
+@webdev_bp.route('/analytics')
+def analytics():
+    """Analytics for webdev services"""
+    analytics_data = {
+        'total_services': len(WEBDEV_SERVICES['services']),
+        'service_categories': {},
+        'technology_categories': {},
+        'price_ranges': {},
+        'portfolio_projects': len(WEBDEV_SERVICES['portfolio_projects'])
+    }
+    
+    # Service categories
+    for service in WEBDEV_SERVICES['services']:
+        category = service['category']
+        analytics_data['service_categories'][category] = analytics_data['service_categories'].get(category, 0) + 1
+    
+    # Technology categories
+    for tech in WEBDEV_SERVICES['technologies']:
+        category = tech['category']
+        analytics_data['technology_categories'][category] = analytics_data['technology_categories'].get(category, 0) + 1
+    
+    # Price ranges
+    for service in WEBDEV_SERVICES['services']:
+        if 'price_from' in service:
+            price_from = service['price_from'].replace('$', '').replace(',', '').replace('/mo', '')
+            try:
+                price_num = int(price_from)
+                if price_num < 1000:
+                    range_key = 'under_1k'
+                elif price_num < 5000:
+                    range_key = '1k_to_5k'
+                else:
+                    range_key = 'over_5k'
+                analytics_data['price_ranges'][range_key] = analytics_data['price_ranges'].get(range_key, 0) + 1
+            except ValueError:
+                pass
+    
+    return jsonify({
+        'success': True,
+        'data': analytics_data,
+        'timestamp': time.time()
+    })

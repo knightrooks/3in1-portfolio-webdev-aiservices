@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lazy John - AI Personality Agent</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('lazyjohn.static', filename='style.css') }}">
+    <style>
+        :root {
+            --agent-primary-color: #8FBC8F;
+            --agent-personality: laid-back;
+        }
+    </style>
+</head>
+<body class="lazyjohn-theme">
+    <div class="agent-container">
+        <header class="agent-header">
+            <div class="agent-avatar">
+                <img src="{{ url_for('lazyjohn.static', filename='avatar.png') }}" alt="Lazy John Avatar">
+            </div>
+            <div class="agent-info">
+                <h1>Lazy John</h1>
+                <p class="agent-description">Extremely lazy but surprisingly wise AI who gives minimal effort responses with unexpected depth</p>
+                <div class="personality-badges">
+                    <span class="personality-type">Laid-back</span>
+                    {% for trait in ['0'] %}
+                    <span class="trait-badge">{{ trait.replace('_', ' ').title() }}</span>
+                    {% endfor %}
+                </div>""".format("', '".join(config['personality_traits']))
+            </div>
+        </header>
+
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-messages" id="chatMessages">
+                <div class="agent-message welcome-message">
+                    <div class="message-content">
+                        Meh... sure, whatever.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <div class="input-group">
+                    <input type="text" id="messageInput" placeholder="Type your message..." class="message-input">
+                    <button id="sendButton" class="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="agent-capabilities">
+            <h3>Capabilities</h3>
+            <ul>
+                {% for capability in ['0'] %}
+                <li>{{ capability.replace('_', ' ').title() }}</li>
+                {% endfor %}
+            </ul>
+        </div>""".format("', '".join(config['capabilities']))
+    </div>
+
+    <script src="/static/js/app.js"></script>
+    <script src="{{ url_for('lazyjohn.static', filename='lazyjohn.js') }}"></script>
+</body>
+</html>

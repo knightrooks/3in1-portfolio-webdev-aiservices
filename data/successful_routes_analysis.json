@@ -1,0 +1,1951 @@
+{
+  "successful": {
+    "/agents/api": {
+      "description": "Agents API overview",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 7817,
+      "response_data": {
+        "data": {
+          "agents": {
+            "coderbot": {
+              "endpoints": {
+                "analytics": "/agents/api/coderbot/analytics",
+                "chat": "/agents/api/coderbot/chat",
+                "health": "/agents/api/coderbot/health",
+                "websocket": "/agents/ws/coderbot"
+              },
+              "info": {
+                "capabilities": [
+                  "coding_assistance",
+                  "programming_tutorials",
+                  "code_debugging",
+                  "technical_support"
+                ],
+                "category": "entertainment",
+                "color": "#374151",
+                "description": "Coding assistance, programming tutorials, code debugging, technical support",
+                "icon": "\ud83e\udd16",
+                "name": "Coder Bot"
+              }
+            },
+            "content_creator": {
+              "endpoints": {
+                "analytics": "/agents/api/content_creator/analytics",
+                "chat": "/agents/api/content_creator/chat",
+                "health": "/agents/api/content_creator/health",
+                "websocket": "/agents/ws/content_creator"
+              },
+              "info": {
+                "capabilities": [
+                  "content_strategy",
+                  "copywriting",
+                  "seo_optimization",
+                  "social_media"
+                ],
+                "category": "professional",
+                "color": "#7c3aed",
+                "description": "Content strategy, copywriting, SEO optimization, social media",
+                "icon": "\u270d\ufe0f",
+                "name": "Content Creator"
+              }
+            },
+            "customer_success": {
+              "endpoints": {
+                "analytics": "/agents/api/customer_success/analytics",
+                "chat": "/agents/api/customer_success/chat",
+                "health": "/agents/api/customer_success/health",
+                "websocket": "/agents/ws/customer_success"
+              },
+              "info": {
+                "capabilities": [
+                  "customer_support",
+                  "relationship_management",
+                  "retention_strategies",
+                  "feedback_analysis"
+                ],
+                "category": "professional",
+                "color": "#16a34a",
+                "description": "Customer support, relationship management, retention strategies",
+                "icon": "\ud83e\udd1d",
+                "name": "Customer Success"
+              }
+            },
+            "data_scientist": {
+              "endpoints": {
+                "analytics": "/agents/api/data_scientist/analytics",
+                "chat": "/agents/api/data_scientist/chat",
+                "health": "/agents/api/data_scientist/health",
+                "websocket": "/agents/ws/data_scientist"
+              },
+              "info": {
+                "capabilities": [
+                  "data_analysis",
+                  "machine_learning",
+                  "statistical_modeling",
+                  "predictive_analytics"
+                ],
+                "category": "professional",
+                "color": "#0891b2",
+                "description": "Data analysis, machine learning, statistical modeling, predictive analytics",
+                "icon": "\ud83d\udcc8",
+                "name": "Data Scientist"
+              }
+            },
+            "developer": {
+              "endpoints": {
+                "analytics": "/agents/api/developer/analytics",
+                "chat": "/agents/api/developer/chat",
+                "health": "/agents/api/developer/health",
+                "websocket": "/agents/ws/developer"
+              },
+              "info": {
+                "capabilities": [
+                  "code_development",
+                  "architecture_design",
+                  "debugging",
+                  "testing"
+                ],
+                "category": "professional",
+                "color": "#059669",
+                "description": "Code development, architecture design, debugging, testing",
+                "icon": "\ud83d\udcbb",
+                "name": "Software Developer"
+              }
+            },
+            "emotionaljenny": {
+              "endpoints": {
+                "analytics": "/agents/api/emotionaljenny/analytics",
+                "chat": "/agents/api/emotionaljenny/chat",
+                "health": "/agents/api/emotionaljenny/health",
+                "websocket": "/agents/ws/emotionaljenny"
+              },
+              "info": {
+                "capabilities": [
+                  "emotional_intelligence",
+                  "empathy",
+                  "mood_support",
+                  "personal_guidance"
+                ],
+                "category": "entertainment",
+                "color": "#06b6d4",
+                "description": "Emotional intelligence, empathy, mood support, personal guidance",
+                "icon": "\ud83d\ude0a",
+                "name": "Emotional Jenny"
+              }
+            },
+            "girlfriend": {
+              "endpoints": {
+                "analytics": "/agents/api/girlfriend/analytics",
+                "chat": "/agents/api/girlfriend/chat",
+                "health": "/agents/api/girlfriend/health",
+                "websocket": "/agents/ws/girlfriend"
+              },
+              "info": {
+                "capabilities": [
+                  "emotional_support",
+                  "relationship_advice",
+                  "casual_conversation",
+                  "companionship"
+                ],
+                "category": "entertainment",
+                "color": "#f472b6",
+                "description": "Emotional support, relationship advice, casual conversation, companionship",
+                "icon": "\ud83d\udc95",
+                "name": "Virtual Girlfriend"
+              }
+            },
+            "gossipqueen": {
+              "endpoints": {
+                "analytics": "/agents/api/gossipqueen/analytics",
+                "chat": "/agents/api/gossipqueen/chat",
+                "health": "/agents/api/gossipqueen/health",
+                "websocket": "/agents/ws/gossipqueen"
+              },
+              "info": {
+                "capabilities": [
+                  "social_updates",
+                  "trending_topics",
+                  "celebrity_news",
+                  "entertainment_gossip"
+                ],
+                "category": "entertainment",
+                "color": "#f59e0b",
+                "description": "Social updates, trending topics, celebrity news, entertainment gossip",
+                "icon": "\ud83d\udc51",
+                "name": "Gossip Queen"
+              }
+            },
+            "lazyjohn": {
+              "endpoints": {
+                "analytics": "/agents/api/lazyjohn/analytics",
+                "chat": "/agents/api/lazyjohn/chat",
+                "health": "/agents/api/lazyjohn/health",
+                "websocket": "/agents/ws/lazyjohn"
+              },
+              "info": {
+                "capabilities": [
+                  "casual_chat",
+                  "humor",
+                  "relaxed_conversation",
+                  "entertainment"
+                ],
+                "category": "entertainment",
+                "color": "#fbbf24",
+                "description": "Casual chat, humor, relaxed conversation, entertainment",
+                "icon": "\ud83d\ude34",
+                "name": "Lazy John"
+              }
+            },
+            "marketing_specialist": {
+              "endpoints": {
+                "analytics": "/agents/api/marketing_specialist/analytics",
+                "chat": "/agents/api/marketing_specialist/chat",
+                "health": "/agents/api/marketing_specialist/health",
+                "websocket": "/agents/ws/marketing_specialist"
+              },
+              "info": {
+                "capabilities": [
+                  "marketing_strategy",
+                  "campaign_management",
+                  "brand_development",
+                  "digital_marketing"
+                ],
+                "category": "professional",
+                "color": "#e11d48",
+                "description": "Marketing strategy, campaign management, brand development, digital marketing",
+                "icon": "\ud83d\udce2",
+                "name": "Marketing Specialist"
+              }
+            },
+            "operations_manager": {
+              "endpoints": {
+                "analytics": "/agents/api/operations_manager/analytics",
+                "chat": "/agents/api/operations_manager/chat",
+                "health": "/agents/api/operations_manager/health",
+                "websocket": "/agents/ws/operations_manager"
+              },
+              "info": {
+                "capabilities": [
+                  "process_optimization",
+                  "resource_management",
+                  "quality_assurance",
+                  "workflow_design"
+                ],
+                "category": "professional",
+                "color": "#6b7280",
+                "description": "Process optimization, resource management, quality assurance, workflow design",
+                "icon": "\u2699\ufe0f",
+                "name": "Operations Manager"
+              }
+            },
+            "product_manager": {
+              "endpoints": {
+                "analytics": "/agents/api/product_manager/analytics",
+                "chat": "/agents/api/product_manager/chat",
+                "health": "/agents/api/product_manager/health",
+                "websocket": "/agents/ws/product_manager"
+              },
+              "info": {
+                "capabilities": [
+                  "product_strategy",
+                  "roadmap_planning",
+                  "feature_prioritization",
+                  "user_research"
+                ],
+                "category": "professional",
+                "color": "#9333ea",
+                "description": "Product strategy, roadmap planning, feature prioritization, user research",
+                "icon": "\ud83d\udccb",
+                "name": "Product Manager"
+              }
+            },
+            "research_analyst": {
+              "endpoints": {
+                "analytics": "/agents/api/research_analyst/analytics",
+                "chat": "/agents/api/research_analyst/chat",
+                "health": "/agents/api/research_analyst/health",
+                "websocket": "/agents/ws/research_analyst"
+              },
+              "info": {
+                "capabilities": [
+                  "market_research",
+                  "data_analysis",
+                  "trend_analysis",
+                  "reporting"
+                ],
+                "category": "professional",
+                "color": "#ea580c",
+                "description": "Market research, data analysis, trend analysis, reporting",
+                "icon": "\ud83d\udd0d",
+                "name": "Research Analyst"
+              }
+            },
+            "security_expert": {
+              "endpoints": {
+                "analytics": "/agents/api/security_expert/analytics",
+                "chat": "/agents/api/security_expert/chat",
+                "health": "/agents/api/security_expert/health",
+                "websocket": "/agents/ws/security_expert"
+              },
+              "info": {
+                "capabilities": [
+                  "security_analysis",
+                  "vulnerability_assessment",
+                  "penetration_testing",
+                  "compliance"
+                ],
+                "category": "professional",
+                "color": "#dc2626",
+                "description": "Security analysis, vulnerability assessment, penetration testing",
+                "icon": "\ud83d\udd10",
+                "name": "Security Expert"
+              }
+            },
+            "strategist": {
+              "endpoints": {
+                "analytics": "/agents/api/strategist/analytics",
+                "chat": "/agents/api/strategist/chat",
+                "health": "/agents/api/strategist/health",
+                "websocket": "/agents/ws/strategist"
+              },
+              "info": {
+                "capabilities": [
+                  "strategic_planning",
+                  "business_analysis",
+                  "market_research",
+                  "competitive_analysis"
+                ],
+                "category": "professional",
+                "color": "#2563eb",
+                "description": "Strategic planning, business analysis, market research",
+                "icon": "\ud83d\udcca",
+                "name": "Business Strategist"
+              }
+            },
+            "strictwife": {
+              "endpoints": {
+                "analytics": "/agents/api/strictwife/analytics",
+                "chat": "/agents/api/strictwife/chat",
+                "health": "/agents/api/strictwife/health",
+                "websocket": "/agents/ws/strictwife"
+              },
+              "info": {
+                "capabilities": [
+                  "discipline",
+                  "organization",
+                  "accountability",
+                  "structured_guidance"
+                ],
+                "category": "entertainment",
+                "color": "#7c2d12",
+                "description": "Discipline, organization, accountability, structured guidance",
+                "icon": "\ud83d\udc69\u200d\ud83d\udcbc",
+                "name": "Strict Wife"
+              }
+            }
+          },
+          "entertainment_count": 6,
+          "professional_count": 10,
+          "total_agents": 16
+        },
+        "success": true
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "7817"
+      }
+    },
+    "/agents/health": {
+      "description": "Agents health check",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 2169,
+      "response_data": {
+        "data": {
+          "agents": {
+            "coderbot": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.2875452,
+              "status": "unavailable"
+            },
+            "content_creator": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.2801425,
+              "status": "unavailable"
+            },
+            "customer_success": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.2820408,
+              "status": "unavailable"
+            },
+            "data_scientist": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.2814033,
+              "status": "unavailable"
+            },
+            "developer": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.2788782,
+              "status": "unavailable"
+            },
+            "emotionaljenny": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.2863297,
+              "status": "unavailable"
+            },
+            "girlfriend": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.2844946,
+              "status": "unavailable"
+            },
+            "gossipqueen": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.285713,
+              "status": "unavailable"
+            },
+            "lazyjohn": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.2851176,
+              "status": "unavailable"
+            },
+            "marketing_specialist": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.2832592,
+              "status": "unavailable"
+            },
+            "operations_manager": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.2838829,
+              "status": "unavailable"
+            },
+            "product_manager": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.28264,
+              "status": "unavailable"
+            },
+            "research_analyst": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.280745,
+              "status": "unavailable"
+            },
+            "security_expert": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.2795098,
+              "status": "unavailable"
+            },
+            "strategist": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.2781982,
+              "status": "unavailable"
+            },
+            "strictwife": {
+              "api_available": false,
+              "error": "API module not found",
+              "last_check": 1758120915.2869494,
+              "status": "unavailable"
+            }
+          },
+          "health_percentage": 0.0,
+          "healthy_agents": 0,
+          "overall_status": "partial",
+          "timestamp": 1758120915.2875645,
+          "total_agents": 16
+        },
+        "success": true
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "2169"
+      }
+    },
+    "/agents/analytics": {
+      "description": "Agents analytics",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 2105,
+      "response_data": {
+        "data": {
+          "agents": {
+            "coderbot": {
+              "status": "unavailable"
+            },
+            "content_creator": {
+              "status": "unavailable"
+            },
+            "customer_success": {
+              "status": "unavailable"
+            },
+            "data_scientist": {
+              "status": "unavailable"
+            },
+            "developer": {
+              "status": "unavailable"
+            },
+            "emotionaljenny": {
+              "status": "unavailable"
+            },
+            "girlfriend": {
+              "status": "unavailable"
+            },
+            "gossipqueen": {
+              "status": "unavailable"
+            },
+            "lazyjohn": {
+              "status": "unavailable"
+            },
+            "marketing_specialist": {
+              "status": "unavailable"
+            },
+            "operations_manager": {
+              "status": "unavailable"
+            },
+            "product_manager": {
+              "status": "unavailable"
+            },
+            "research_analyst": {
+              "status": "unavailable"
+            },
+            "security_expert": {
+              "status": "unavailable"
+            },
+            "strategist": {
+              "status": "unavailable"
+            },
+            "strictwife": {
+              "status": "unavailable"
+            }
+          },
+          "capabilities": {
+            "accountability": 1,
+            "architecture_design": 1,
+            "brand_development": 1,
+            "business_analysis": 1,
+            "campaign_management": 1,
+            "casual_chat": 1,
+            "casual_conversation": 1,
+            "celebrity_news": 1,
+            "code_debugging": 1,
+            "code_development": 1,
+            "coding_assistance": 1,
+            "companionship": 1,
+            "competitive_analysis": 1,
+            "compliance": 1,
+            "content_strategy": 1,
+            "copywriting": 1,
+            "customer_support": 1,
+            "data_analysis": 2,
+            "debugging": 1,
+            "digital_marketing": 1,
+            "discipline": 1,
+            "emotional_intelligence": 1,
+            "emotional_support": 1,
+            "empathy": 1,
+            "entertainment": 1,
+            "entertainment_gossip": 1,
+            "feature_prioritization": 1,
+            "feedback_analysis": 1,
+            "humor": 1,
+            "machine_learning": 1,
+            "market_research": 2,
+            "marketing_strategy": 1,
+            "mood_support": 1,
+            "organization": 1,
+            "penetration_testing": 1,
+            "personal_guidance": 1,
+            "predictive_analytics": 1,
+            "process_optimization": 1,
+            "product_strategy": 1,
+            "programming_tutorials": 1,
+            "quality_assurance": 1,
+            "relationship_advice": 1,
+            "relationship_management": 1,
+            "relaxed_conversation": 1,
+            "reporting": 1,
+            "resource_management": 1,
+            "retention_strategies": 1,
+            "roadmap_planning": 1,
+            "security_analysis": 1,
+            "seo_optimization": 1,
+            "social_media": 1,
+            "social_updates": 1,
+            "statistical_modeling": 1,
+            "strategic_planning": 1,
+            "structured_guidance": 1,
+            "technical_support": 1,
+            "testing": 1,
+            "trend_analysis": 1,
+            "trending_topics": 1,
+            "user_research": 1,
+            "vulnerability_assessment": 1,
+            "workflow_design": 1
+          },
+          "categories": {
+            "entertainment": 6,
+            "professional": 10
+          },
+          "total_agents": 16
+        },
+        "success": true,
+        "timestamp": 1758120915.299337
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "2105"
+      }
+    },
+    "/webdev/api": {
+      "description": "WebDev API overview",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 4449,
+      "response_data": {
+        "data": {
+          "categories": [
+            "backend",
+            "maintenance",
+            "marketing",
+            "ecommerce",
+            "websites",
+            "applications"
+          ],
+          "services": {
+            "apis": {
+              "endpoints": {
+                "details": "/webdev/apis",
+                "portfolio": "/webdev/portfolio?category=backend",
+                "quote": "/webdev/quote?service=apis"
+              },
+              "info": {
+                "category": "backend",
+                "features": [
+                  "RESTful Architecture",
+                  "Authentication",
+                  "Rate Limiting",
+                  "Documentation",
+                  "Testing"
+                ],
+                "icon": "fas fa-exchange-alt",
+                "id": "apis",
+                "long_desc": "Scalable API solutions for connecting your applications and enabling third-party integrations.",
+                "name": "API Development",
+                "price_from": "$2,000",
+                "price_to": "$15,000",
+                "short_desc": "RESTful APIs and microservices for your applications.",
+                "technologies": [
+                  "Flask",
+                  "FastAPI",
+                  "Django REST",
+                  "Node.js"
+                ]
+              }
+            },
+            "ecommerce": {
+              "endpoints": {
+                "details": "/webdev/ecommerce",
+                "portfolio": "/webdev/portfolio?category=ecommerce",
+                "quote": "/webdev/quote?service=ecommerce"
+              },
+              "info": {
+                "category": "ecommerce",
+                "features": [
+                  "Payment Processing",
+                  "Inventory Management",
+                  "Order Tracking",
+                  "Customer Accounts",
+                  "Admin Dashboard"
+                ],
+                "icon": "fas fa-shopping-cart",
+                "id": "ecommerce",
+                "long_desc": "Full-featured e-commerce platforms with shopping carts, payment gateways, and order management.",
+                "name": "E-commerce Solutions",
+                "price_from": "$5,000",
+                "price_to": "$20,000",
+                "short_desc": "Complete online stores with payment processing and inventory management.",
+                "technologies": [
+                  "Shopify",
+                  "WooCommerce",
+                  "Stripe",
+                  "PayPal"
+                ]
+              }
+            },
+            "maintenance": {
+              "endpoints": {
+                "details": "/webdev/maintenance",
+                "portfolio": "/webdev/portfolio?category=maintenance",
+                "quote": "/webdev/quote?service=maintenance"
+              },
+              "info": {
+                "category": "maintenance",
+                "features": [
+                  "Security Updates",
+                  "Content Updates",
+                  "Performance Monitoring",
+                  "Backup Services",
+                  "24/7 Support"
+                ],
+                "icon": "fas fa-tools",
+                "id": "maintenance",
+                "long_desc": "Ongoing maintenance services to ensure your website remains secure, updated, and performing optimally.",
+                "name": "Website Maintenance",
+                "price_from": "$200",
+                "price_to": "$1000",
+                "short_desc": "Keep your website updated, secure, and running smoothly.",
+                "technologies": [
+                  "Monitoring Tools",
+                  "Security Scanners",
+                  "Backup Solutions"
+                ]
+              }
+            },
+            "seo": {
+              "endpoints": {
+                "details": "/webdev/seo",
+                "portfolio": "/webdev/portfolio?category=marketing",
+                "quote": "/webdev/quote?service=seo"
+              },
+              "info": {
+                "category": "marketing",
+                "features": [
+                  "Keyword Research",
+                  "On-page SEO",
+                  "Technical SEO",
+                  "Content Optimization",
+                  "Analytics"
+                ],
+                "icon": "fas fa-search",
+                "id": "seo",
+                "long_desc": "Comprehensive SEO services to increase your online visibility and drive organic traffic.",
+                "name": "SEO Optimization",
+                "price_from": "$800",
+                "price_to": "$3,000",
+                "short_desc": "Improve your website's search engine rankings and visibility.",
+                "technologies": [
+                  "Google Analytics",
+                  "Search Console",
+                  "SEMrush",
+                  "Ahrefs"
+                ]
+              }
+            },
+            "web-apps": {
+              "endpoints": {
+                "details": "/webdev/web-apps",
+                "portfolio": "/webdev/portfolio?category=applications",
+                "quote": "/webdev/quote?service=web-apps"
+              },
+              "info": {
+                "category": "applications",
+                "features": [
+                  "User Authentication",
+                  "Database Integration",
+                  "API Development",
+                  "Real-time Features",
+                  "Admin Panels"
+                ],
+                "icon": "fas fa-laptop-code",
+                "id": "web-apps",
+                "long_desc": "Full-featured web applications with complex business logic, user authentication, and database integration.",
+                "name": "Web Applications",
+                "price_from": "$3,000",
+                "price_to": "$25,000",
+                "short_desc": "Custom web applications with advanced functionality.",
+                "technologies": [
+                  "Flask",
+                  "Django",
+                  "Node.js",
+                  "PostgreSQL",
+                  "MongoDB"
+                ]
+              }
+            },
+            "websites": {
+              "endpoints": {
+                "details": "/webdev/websites",
+                "portfolio": "/webdev/portfolio?category=websites",
+                "quote": "/webdev/quote?service=websites"
+              },
+              "info": {
+                "category": "websites",
+                "features": [
+                  "Responsive Design",
+                  "SEO Optimized",
+                  "Fast Loading",
+                  "Mobile-First",
+                  "CMS Integration"
+                ],
+                "icon": "fas fa-globe",
+                "id": "websites",
+                "long_desc": "Custom websites tailored to your business needs, from simple landing pages to complex corporate sites.",
+                "name": "Custom Websites",
+                "price_from": "$1,500",
+                "price_to": "$10,000",
+                "short_desc": "Professional, responsive websites built with modern technologies.",
+                "technologies": [
+                  "HTML5",
+                  "CSS3",
+                  "JavaScript",
+                  "React",
+                  "Vue.js"
+                ]
+              }
+            }
+          },
+          "technologies": [
+            {
+              "category": "backend",
+              "icon": "fab fa-python",
+              "name": "Python/Flask"
+            },
+            {
+              "category": "frontend",
+              "icon": "fab fa-js",
+              "name": "JavaScript/React"
+            },
+            {
+              "category": "frontend",
+              "icon": "fab fa-html5",
+              "name": "HTML5/CSS3"
+            },
+            {
+              "category": "database",
+              "icon": "fas fa-database",
+              "name": "MySQL/PostgreSQL"
+            },
+            {
+              "category": "infrastructure",
+              "icon": "fab fa-aws",
+              "name": "AWS/Cloud"
+            },
+            {
+              "category": "deployment",
+              "icon": "fab fa-docker",
+              "name": "Docker"
+            }
+          ],
+          "total_services": 6
+        },
+        "success": true
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "4449"
+      }
+    },
+    "/webdev/health": {
+      "description": "WebDev health check",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 207,
+      "response_data": {
+        "data": {
+          "categories": [
+            "backend",
+            "maintenance",
+            "marketing",
+            "ecommerce",
+            "websites",
+            "applications"
+          ],
+          "services_count": 6,
+          "status": "healthy",
+          "technologies_count": 6,
+          "timestamp": 1758120915.3071127
+        },
+        "success": true
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "207"
+      }
+    },
+    "/portfolio/api": {
+      "description": "Portfolio API overview",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 1790,
+      "response_data": {
+        "data": {
+          "achievements_count": 4,
+          "categories": [
+            {
+              "color": "#2563eb",
+              "description": "Intelligent AI agents and machine learning solutions",
+              "icon": "\ud83e\udd16",
+              "id": "ai-services",
+              "name": "AI Services & Agents"
+            },
+            {
+              "color": "#059669",
+              "description": "Full-stack web applications and platforms",
+              "icon": "\ud83d\udcbb",
+              "id": "web-applications",
+              "name": "Web Applications"
+            },
+            {
+              "color": "#dc2626",
+              "description": "Cybersecurity tools and secure applications",
+              "icon": "\ud83d\udd12",
+              "id": "security-projects",
+              "name": "Security Projects"
+            },
+            {
+              "color": "#7c3aed",
+              "description": "API development and third-party integrations",
+              "icon": "\ud83d\udd17",
+              "id": "apis-integrations",
+              "name": "APIs & Integrations"
+            },
+            {
+              "color": "#ea580c",
+              "description": "Workflow automation and productivity tools",
+              "icon": "\u2699\ufe0f",
+              "id": "automation-tools",
+              "name": "Automation Tools"
+            }
+          ],
+          "personal_info": {
+            "ai_agents_created": 16,
+            "alias": "@onelastai",
+            "bio": "Experienced full-stack developer and AI specialist with expertise in creating intelligent web solutions, secure applications, and cutting-edge AI services. Passionate about combining traditional web development with modern AI capabilities.",
+            "clients_satisfied": 120,
+            "email": "contact@axeyaxe.com",
+            "facebook": "https://facebook.com/onelastai",
+            "github": "https://github.com/1-manarmy",
+            "instagram": "https://instagram.com/onelastai",
+            "linkedin": "https://linkedin.com/in/onelastai",
+            "location": "Digital Realm",
+            "name": "Professor Johnny",
+            "projects_completed": 150,
+            "tagline": "Building the future with AI, Web Development, and Innovation",
+            "telegram": "https://t.me/onelastai",
+            "title": "AI Orchestrator & Full-Stack Developer",
+            "twitter": "https://twitter.com/onelastai",
+            "website": "https://axeyaxe.com",
+            "years_experience": 8
+          },
+          "projects_count": 5,
+          "skills_count": 10,
+          "specialties_count": 6,
+          "testimonials_count": 3
+        },
+        "success": true
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "1790"
+      }
+    },
+    "/portfolio/health": {
+      "description": "Portfolio health check",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 309,
+      "response_data": {
+        "data": {
+          "content_stats": {
+            "projects_count": 5,
+            "skills_count": 10,
+            "specialties_count": 6
+          },
+          "data_integrity": {
+            "achievements": true,
+            "personal_info": true,
+            "projects": true,
+            "skills": true,
+            "specialties": true,
+            "testimonials": true
+          },
+          "overall_status": "healthy",
+          "status": "healthy",
+          "timestamp": 1758120915.3122847
+        },
+        "success": true
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "309"
+      }
+    },
+    "/models/api": {
+      "description": "Models API overview",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 7089,
+      "response_data": {
+        "data": {
+          "categories": [
+            "math",
+            "code",
+            "reasoning",
+            "general",
+            "embedding",
+            "multilingual"
+          ],
+          "models": {
+            "codellama": {
+              "endpoints": {
+                "health": "/models/api/codellama/health",
+                "start": "/models/api/codellama/start",
+                "status": "/models/api/codellama/status",
+                "stop": "/models/api/codellama/stop"
+              },
+              "info": {
+                "agents": [
+                  "developer",
+                  "coderbot"
+                ],
+                "category": "code",
+                "color": "#2563eb",
+                "description": "Advanced code generation and analysis model",
+                "icon": "\ud83e\udd99",
+                "name": "Code Llama",
+                "use_cases": [
+                  "code_generation",
+                  "code_review",
+                  "debugging",
+                  "documentation"
+                ]
+              },
+              "status": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/codellama",
+                "status": "local"
+              }
+            },
+            "deepseek-coder": {
+              "endpoints": {
+                "health": "/models/api/deepseek-coder/health",
+                "start": "/models/api/deepseek-coder/start",
+                "status": "/models/api/deepseek-coder/status",
+                "stop": "/models/api/deepseek-coder/stop"
+              },
+              "info": {
+                "agents": [
+                  "developer",
+                  "security_expert"
+                ],
+                "category": "code",
+                "color": "#059669",
+                "description": "Specialized coding assistant model",
+                "icon": "\ud83d\udd0d",
+                "name": "DeepSeek Coder",
+                "use_cases": [
+                  "code_completion",
+                  "bug_fixing",
+                  "refactoring",
+                  "code_explanation"
+                ]
+              },
+              "status": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/deepseek-coder",
+                "status": "local"
+              }
+            },
+            "gemma2": {
+              "endpoints": {
+                "health": "/models/api/gemma2/health",
+                "start": "/models/api/gemma2/start",
+                "status": "/models/api/gemma2/status",
+                "stop": "/models/api/gemma2/stop"
+              },
+              "info": {
+                "agents": [
+                  "content_creator",
+                  "marketing_specialist",
+                  "girlfriend",
+                  "lazyjohn"
+                ],
+                "category": "general",
+                "color": "#7c3aed",
+                "description": "General purpose language model for conversation",
+                "icon": "\ud83d\udc8e",
+                "name": "Gemma 2",
+                "use_cases": [
+                  "conversation",
+                  "content_creation",
+                  "analysis",
+                  "summarization"
+                ]
+              },
+              "status": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/gemma2",
+                "status": "local"
+              }
+            },
+            "llama3.2": {
+              "endpoints": {
+                "health": "/models/api/llama3.2/health",
+                "start": "/models/api/llama3.2/start",
+                "status": "/models/api/llama3.2/status",
+                "stop": "/models/api/llama3.2/stop"
+              },
+              "info": {
+                "agents": [
+                  "strategist",
+                  "research_analyst",
+                  "emotionaljenny"
+                ],
+                "category": "general",
+                "color": "#ea580c",
+                "description": "Advanced reasoning and conversation model",
+                "icon": "\ud83e\udd99",
+                "name": "Llama 3.2",
+                "use_cases": [
+                  "reasoning",
+                  "problem_solving",
+                  "creative_writing",
+                  "analysis"
+                ]
+              },
+              "status": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/llama3.2",
+                "status": "local"
+              }
+            },
+            "mathstral": {
+              "endpoints": {
+                "health": "/models/api/mathstral/health",
+                "start": "/models/api/mathstral/start",
+                "status": "/models/api/mathstral/status",
+                "stop": "/models/api/mathstral/stop"
+              },
+              "info": {
+                "agents": [
+                  "data_scientist",
+                  "research_analyst"
+                ],
+                "category": "math",
+                "color": "#0891b2",
+                "description": "Mathematical reasoning and calculation model",
+                "icon": "\ud83d\udd22",
+                "name": "Mathstral",
+                "use_cases": [
+                  "mathematical_analysis",
+                  "calculations",
+                  "data_modeling",
+                  "statistics"
+                ]
+              },
+              "status": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/mathstral",
+                "status": "local"
+              }
+            },
+            "mistral": {
+              "endpoints": {
+                "health": "/models/api/mistral/health",
+                "start": "/models/api/mistral/start",
+                "status": "/models/api/mistral/status",
+                "stop": "/models/api/mistral/stop"
+              },
+              "info": {
+                "agents": [
+                  "content_creator",
+                  "customer_success",
+                  "gossipqueen"
+                ],
+                "category": "general",
+                "color": "#16a34a",
+                "description": "Efficient and powerful language model",
+                "icon": "\ud83c\udf2a\ufe0f",
+                "name": "Mistral",
+                "use_cases": [
+                  "conversation",
+                  "text_generation",
+                  "summarization",
+                  "translation"
+                ]
+              },
+              "status": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/mistral",
+                "status": "local"
+              }
+            },
+            "nomic-embed-text": {
+              "endpoints": {
+                "health": "/models/api/nomic-embed-text/health",
+                "start": "/models/api/nomic-embed-text/start",
+                "status": "/models/api/nomic-embed-text/status",
+                "stop": "/models/api/nomic-embed-text/stop"
+              },
+              "info": {
+                "agents": [
+                  "research_analyst",
+                  "content_creator",
+                  "data_scientist"
+                ],
+                "category": "embedding",
+                "color": "#9333ea",
+                "description": "Text embedding model for semantic search",
+                "icon": "\ud83d\udd0d",
+                "name": "Nomic Embed Text",
+                "use_cases": [
+                  "semantic_search",
+                  "text_similarity",
+                  "document_analysis",
+                  "clustering"
+                ]
+              },
+              "status": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/nomic-embed-text",
+                "status": "local"
+              }
+            },
+            "phi3": {
+              "endpoints": {
+                "health": "/models/api/phi3/health",
+                "start": "/models/api/phi3/start",
+                "status": "/models/api/phi3/status",
+                "stop": "/models/api/phi3/stop"
+              },
+              "info": {
+                "agents": [
+                  "strategist",
+                  "product_manager",
+                  "strictwife"
+                ],
+                "category": "reasoning",
+                "color": "#e11d48",
+                "description": "Compact and efficient reasoning model",
+                "icon": "\u03c6",
+                "name": "Phi-3",
+                "use_cases": [
+                  "logical_reasoning",
+                  "problem_solving",
+                  "decision_making",
+                  "analysis"
+                ]
+              },
+              "status": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/phi3",
+                "status": "local"
+              }
+            },
+            "qwen2.5": {
+              "endpoints": {
+                "health": "/models/api/qwen2.5/health",
+                "start": "/models/api/qwen2.5/start",
+                "status": "/models/api/qwen2.5/status",
+                "stop": "/models/api/qwen2.5/stop"
+              },
+              "info": {
+                "agents": [
+                  "customer_success",
+                  "marketing_specialist"
+                ],
+                "category": "multilingual",
+                "color": "#6b7280",
+                "description": "Multilingual conversation and analysis model",
+                "icon": "\ud83c\udf10",
+                "name": "Qwen 2.5",
+                "use_cases": [
+                  "multilingual_conversation",
+                  "translation",
+                  "cultural_analysis",
+                  "global_support"
+                ]
+              },
+              "status": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/qwen2.5",
+                "status": "local"
+              }
+            },
+            "qwen2.5-coder": {
+              "endpoints": {
+                "health": "/models/api/qwen2.5-coder/health",
+                "start": "/models/api/qwen2.5-coder/start",
+                "status": "/models/api/qwen2.5-coder/status",
+                "stop": "/models/api/qwen2.5-coder/stop"
+              },
+              "info": {
+                "agents": [
+                  "developer",
+                  "security_expert",
+                  "coderbot"
+                ],
+                "category": "code",
+                "color": "#f472b6",
+                "description": "Coding-focused version of Qwen model",
+                "icon": "\ud83d\udc68\u200d\ud83d\udcbb",
+                "name": "Qwen 2.5 Coder",
+                "use_cases": [
+                  "code_generation",
+                  "code_review",
+                  "algorithm_design",
+                  "optimization"
+                ]
+              },
+              "status": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/qwen2.5-coder",
+                "status": "local"
+              }
+            },
+            "snowflake-arctic-embed": {
+              "endpoints": {
+                "health": "/models/api/snowflake-arctic-embed/health",
+                "start": "/models/api/snowflake-arctic-embed/start",
+                "status": "/models/api/snowflake-arctic-embed/status",
+                "stop": "/models/api/snowflake-arctic-embed/stop"
+              },
+              "info": {
+                "agents": [
+                  "data_scientist",
+                  "operations_manager",
+                  "research_analyst"
+                ],
+                "category": "embedding",
+                "color": "#fbbf24",
+                "description": "Advanced embedding model for enterprise use",
+                "icon": "\u2744\ufe0f",
+                "name": "Snowflake Arctic Embed",
+                "use_cases": [
+                  "enterprise_search",
+                  "document_retrieval",
+                  "knowledge_base",
+                  "analytics"
+                ]
+              },
+              "status": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/snowflake-arctic-embed",
+                "status": "local"
+              }
+            },
+            "yi": {
+              "endpoints": {
+                "health": "/models/api/yi/health",
+                "start": "/models/api/yi/start",
+                "status": "/models/api/yi/status",
+                "stop": "/models/api/yi/stop"
+              },
+              "info": {
+                "agents": [
+                  "customer_success",
+                  "content_creator"
+                ],
+                "category": "multilingual",
+                "color": "#f59e0b",
+                "description": "High-performance bilingual language model",
+                "icon": "\u6613",
+                "name": "Yi",
+                "use_cases": [
+                  "bilingual_support",
+                  "cross_cultural_communication",
+                  "translation",
+                  "localization"
+                ]
+              },
+              "status": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/yi",
+                "status": "local"
+              }
+            }
+          },
+          "system_resources": {
+            "cpu_percent": 42.4,
+            "disk_percent": 36.5,
+            "gpu_available": false,
+            "memory_percent": 60.3
+          },
+          "total_models": 12
+        },
+        "success": true
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "7089"
+      }
+    },
+    "/models/health": {
+      "description": "Models health check",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 2286,
+      "response_data": {
+        "data": {
+          "availability_percentage": 100.0,
+          "available_models": 12,
+          "models": {
+            "codellama": {
+              "details": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/codellama",
+                "status": "local"
+              },
+              "last_check": 1758120917.3337321,
+              "status": "healthy"
+            },
+            "deepseek-coder": {
+              "details": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/deepseek-coder",
+                "status": "local"
+              },
+              "last_check": 1758120917.3342414,
+              "status": "healthy"
+            },
+            "gemma2": {
+              "details": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/gemma2",
+                "status": "local"
+              },
+              "last_check": 1758120917.334706,
+              "status": "healthy"
+            },
+            "llama3.2": {
+              "details": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/llama3.2",
+                "status": "local"
+              },
+              "last_check": 1758120917.3351762,
+              "status": "healthy"
+            },
+            "mathstral": {
+              "details": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/mathstral",
+                "status": "local"
+              },
+              "last_check": 1758120917.335622,
+              "status": "healthy"
+            },
+            "mistral": {
+              "details": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/mistral",
+                "status": "local"
+              },
+              "last_check": 1758120917.3361006,
+              "status": "healthy"
+            },
+            "nomic-embed-text": {
+              "details": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/nomic-embed-text",
+                "status": "local"
+              },
+              "last_check": 1758120917.3365464,
+              "status": "healthy"
+            },
+            "phi3": {
+              "details": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/phi3",
+                "status": "local"
+              },
+              "last_check": 1758120917.3371022,
+              "status": "healthy"
+            },
+            "qwen2.5": {
+              "details": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/qwen2.5",
+                "status": "local"
+              },
+              "last_check": 1758120917.3376315,
+              "status": "healthy"
+            },
+            "qwen2.5-coder": {
+              "details": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/qwen2.5-coder",
+                "status": "local"
+              },
+              "last_check": 1758120917.3381126,
+              "status": "healthy"
+            },
+            "snowflake-arctic-embed": {
+              "details": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/snowflake-arctic-embed",
+                "status": "local"
+              },
+              "last_check": 1758120917.3388264,
+              "status": "healthy"
+            },
+            "yi": {
+              "details": {
+                "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/yi",
+                "status": "local"
+              },
+              "last_check": 1758120917.339448,
+              "status": "healthy"
+            }
+          },
+          "overall_status": "healthy",
+          "system_healthy": true,
+          "system_resources": {
+            "cpu_percent": 12.1,
+            "disk_percent": 36.5,
+            "gpu_available": false,
+            "memory_percent": 60.5
+          },
+          "timestamp": 1758120918.33996,
+          "total_models": 12
+        },
+        "success": true
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "2286"
+      }
+    },
+    "/models/analytics": {
+      "description": "Models analytics",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 1840,
+      "response_data": {
+        "data": {
+          "agent_connections": {
+            "coderbot": 2,
+            "content_creator": 4,
+            "customer_success": 3,
+            "data_scientist": 3,
+            "developer": 3,
+            "emotionaljenny": 1,
+            "girlfriend": 1,
+            "gossipqueen": 1,
+            "lazyjohn": 1,
+            "marketing_specialist": 2,
+            "operations_manager": 1,
+            "product_manager": 1,
+            "research_analyst": 4,
+            "security_expert": 2,
+            "strategist": 2,
+            "strictwife": 1
+          },
+          "categories": {
+            "code": 3,
+            "embedding": 2,
+            "general": 3,
+            "math": 1,
+            "multilingual": 2,
+            "reasoning": 1
+          },
+          "model_statuses": {
+            "codellama": {
+              "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/codellama",
+              "status": "local"
+            },
+            "deepseek-coder": {
+              "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/deepseek-coder",
+              "status": "local"
+            },
+            "gemma2": {
+              "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/gemma2",
+              "status": "local"
+            },
+            "llama3.2": {
+              "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/llama3.2",
+              "status": "local"
+            },
+            "mathstral": {
+              "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/mathstral",
+              "status": "local"
+            },
+            "mistral": {
+              "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/mistral",
+              "status": "local"
+            },
+            "nomic-embed-text": {
+              "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/nomic-embed-text",
+              "status": "local"
+            },
+            "phi3": {
+              "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/phi3",
+              "status": "local"
+            },
+            "qwen2.5": {
+              "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/qwen2.5",
+              "status": "local"
+            },
+            "qwen2.5-coder": {
+              "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/qwen2.5-coder",
+              "status": "local"
+            },
+            "snowflake-arctic-embed": {
+              "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/snowflake-arctic-embed",
+              "status": "local"
+            },
+            "yi": {
+              "path": "/workspaces/3in1-portfolio-webdev-aiservices/models/yi",
+              "status": "local"
+            }
+          },
+          "system_resources": {
+            "cpu_percent": 4.5,
+            "disk_percent": 36.5,
+            "gpu_available": false,
+            "memory_percent": 60.4
+          },
+          "total_models": 12
+        },
+        "success": true,
+        "timestamp": 1758120919.3472104
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "1840"
+      }
+    },
+    "/analytics/": {
+      "description": "Analytics dashboard",
+      "status_code": 200,
+      "content_type": "text/html; charset=utf-8",
+      "content_length": 0,
+      "response_data": null,
+      "headers": {
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": "0"
+      }
+    },
+    "/analytics/api": {
+      "description": "Analytics API",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 322,
+      "response_data": {
+        "endpoints": {
+          "/": "Analytics dashboard",
+          "/agents": "AI agents analytics",
+          "/api": "API overview (this endpoint)",
+          "/health": "Health check",
+          "/models": "AI models analytics",
+          "/overview": "Analytics overview data",
+          "/portfolio": "Portfolio analytics",
+          "/webdev": "WebDev services analytics"
+        },
+        "service": "Analytics API",
+        "version": "1.0"
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "322"
+      }
+    },
+    "/analytics/health": {
+      "description": "Analytics health",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 118,
+      "response_data": {
+        "service": "Analytics System",
+        "status": "healthy",
+        "timestamp": "2025-09-17T14:55:19.353072",
+        "uptime": 4.134009838104248
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "118"
+      }
+    },
+    "/analytics/overview": {
+      "description": "Analytics overview",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 673,
+      "response_data": {
+        "performance": {
+          "error_rate": "0.3%",
+          "response_time": "1.8s",
+          "throughput": "450 req/min"
+        },
+        "platform": {
+          "active_sessions": 89,
+          "name": "3-in-1 Portfolio WebDev AI Services",
+          "total_users": 1245,
+          "uptime": "99.8%"
+        },
+        "recent_activity": [
+          {
+            "event": "New webdev client inquiry",
+            "time": "2 min ago"
+          },
+          {
+            "event": "AI agent strategist session completed",
+            "time": "5 min ago"
+          },
+          {
+            "event": "Portfolio project updated",
+            "time": "8 min ago"
+          },
+          {
+            "event": "Model codellama performance optimized",
+            "time": "12 min ago"
+          }
+        ],
+        "services": {
+          "agents": {
+            "status": "operational",
+            "usage": 89
+          },
+          "models": {
+            "status": "operational",
+            "usage": 45
+          },
+          "portfolio": {
+            "status": "operational",
+            "usage": 134
+          },
+          "webdev": {
+            "status": "operational",
+            "usage": 67
+          }
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "673"
+      }
+    },
+    "/analytics/agents": {
+      "description": "Agents analytics",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 322,
+      "response_data": {
+        "active_agents": 12,
+        "performance": {
+          "avg_response_time": "2.3s",
+          "uptime": "99.7%"
+        },
+        "total_agents": 16,
+        "usage_stats": {
+          "developer": {
+            "requests": 89,
+            "success_rate": 95.2
+          },
+          "girlfriend": {
+            "requests": 234,
+            "success_rate": 99.1
+          },
+          "marketing_specialist": {
+            "requests": 67,
+            "success_rate": 94.8
+          },
+          "strategist": {
+            "requests": 145,
+            "success_rate": 98.5
+          }
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "322"
+      }
+    },
+    "/analytics/webdev": {
+      "description": "WebDev analytics",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 188,
+      "response_data": {
+        "active_projects": 12,
+        "client_stats": {
+          "active_clients": 23,
+          "satisfaction_rate": 96.8,
+          "total_clients": 45
+        },
+        "revenue": {
+          "growth_rate": 23.5,
+          "monthly": 15420,
+          "quarterly": 48650
+        },
+        "total_services": 8
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "188"
+      }
+    },
+    "/analytics/portfolio": {
+      "description": "Portfolio analytics",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 174,
+      "response_data": {
+        "featured_projects": 12,
+        "skills_count": 28,
+        "testimonials": 18,
+        "total_projects": 34,
+        "visitor_stats": {
+          "avg_session_duration": "4m 32s",
+          "bounce_rate": 23.4,
+          "monthly_visitors": 2340
+        }
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "174"
+      }
+    },
+    "/analytics/models": {
+      "description": "Models analytics",
+      "status_code": 200,
+      "content_type": "application/json",
+      "content_length": 269,
+      "response_data": {
+        "active_models": 8,
+        "model_usage": {
+          "codellama": {
+            "performance": "excellent",
+            "usage": 45
+          },
+          "gemma2": {
+            "performance": "good",
+            "usage": 32
+          },
+          "phi3": {
+            "performance": "good",
+            "usage": 28
+          }
+        },
+        "resource_usage": {
+          "cpu_avg": "34%",
+          "gpu_utilization": "67%",
+          "memory_avg": "2.3GB"
+        },
+        "total_models": 12
+      },
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "269"
+      }
+    }
+  },
+  "failed": {
+    "/": {
+      "description": "Main landing page",
+      "error": "Could not build url for endpoint 'webdev.quote'. Did you mean 'webdev.quote_form' instead?"
+    },
+    "/health": {
+      "description": "Global health check",
+      "error": "errors/404.html"
+    },
+    "/api": {
+      "description": "Global API overview",
+      "error": "errors/404.html"
+    },
+    "/agents/": {
+      "description": "Agents dashboard",
+      "error": "agents/dashboard.html"
+    },
+    "/agents/strategist": {
+      "description": "Strategist agent",
+      "error": "agents/detail.html"
+    },
+    "/agents/developer": {
+      "description": "Developer agent",
+      "error": "agents/detail.html"
+    },
+    "/agents/girlfriend": {
+      "description": "Girlfriend agent",
+      "error": "agents/detail.html"
+    },
+    "/agents/coderbot": {
+      "description": "CoderBot agent",
+      "error": "agents/detail.html"
+    },
+    "/agents/marketing_specialist": {
+      "description": "Marketing specialist agent",
+      "error": "agents/detail.html"
+    },
+    "/webdev/": {
+      "description": "WebDev homepage",
+      "error": "webdev/index.html"
+    },
+    "/webdev/websites": {
+      "description": "Website services",
+      "error": "webdev/websites.html"
+    },
+    "/webdev/apps": {
+      "description": "Web applications",
+      "error": "webdev/apps.html"
+    },
+    "/webdev/ecommerce": {
+      "description": "E-commerce solutions",
+      "error": "webdev/ecommerce.html"
+    },
+    "/webdev/pricing": {
+      "description": "Pricing page",
+      "error": "webdev/pricing.html"
+    },
+    "/webdev/quote": {
+      "description": "Quote form",
+      "error": "webdev/quote.html"
+    },
+    "/webdev/maintenance": {
+      "description": "Maintenance services",
+      "error": "webdev/maintenance.html"
+    },
+    "/webdev/seo": {
+      "description": "SEO services",
+      "error": "webdev/seo.html"
+    },
+    "/webdev/marketing": {
+      "description": "Digital marketing",
+      "error": "webdev/marketing.html"
+    },
+    "/portfolio/": {
+      "description": "Portfolio homepage",
+      "error": "portfolio/index.html"
+    },
+    "/portfolio/about": {
+      "description": "About page",
+      "error": "portfolio/about.html"
+    },
+    "/portfolio/projects": {
+      "description": "Projects showcase",
+      "error": "portfolio/projects.html"
+    },
+    "/portfolio/skills": {
+      "description": "Skills page",
+      "error": "portfolio/skills.html"
+    },
+    "/portfolio/achievements": {
+      "description": "Achievements page",
+      "error": "portfolio/achievements.html"
+    },
+    "/portfolio/testimonials": {
+      "description": "Testimonials",
+      "error": "portfolio/testimonials.html"
+    },
+    "/portfolio/contact": {
+      "description": "Contact page",
+      "error": "portfolio/contact.html"
+    },
+    "/models/": {
+      "description": "Models dashboard",
+      "error": "models/dashboard.html"
+    },
+    "/models/codellama": {
+      "description": "CodeLlama model",
+      "error": "models/detail.html"
+    },
+    "/models/gemma2": {
+      "description": "Gemma2 model",
+      "error": "models/detail.html"
+    },
+    "/models/phi3": {
+      "description": "Phi3 model",
+      "error": "models/detail.html"
+    },
+    "/models/qwen2.5": {
+      "description": "Qwen2.5 model",
+      "error": "models/detail.html"
+    }
+  },
+  "summary": {
+    "total_routes": 48,
+    "successful_count": 18,
+    "failed_count": 30,
+    "success_rate": 37.5
+  }
+}

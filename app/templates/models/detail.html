@@ -1,0 +1,268 @@
+{% extends "base.html" %}
+
+{% block title %}{{ model.name }} - AI Model Details{% endblock %}
+
+{% block extra_css %}
+<style>
+    .model-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 15px;
+        padding: 30px;
+    }
+    .stat-card {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .performance-bar {
+        height: 20px;
+        background: #e9ecef;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+    .performance-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #28a745, #20c997);
+        transition: width 0.3s ease;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-4">
+    <!-- Model Header -->
+    <div class="model-header text-center mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-2">
+                <i class="fas fa-{{ model.icon }} fa-4x"></i>
+            </div>
+            <div class="col-md-8">
+                <h1 class="display-4 mb-2">{{ model.name }}</h1>
+                <p class="lead mb-3">{{ model.description }}</p>
+                <div>
+                    <span class="badge bg-light text-dark me-2">{{ model.type|title }}</span>
+                    <span class="badge bg-light text-dark me-2">{{ model.size }}</span>
+                    <span class="badge bg-success">Running</span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="stat-card bg-white text-dark">
+                    <h4>{{ model.usage_count }}</h4>
+                    <small>Total Uses</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Model Information -->
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5><i class="fas fa-info-circle"></i> Model Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Provider:</strong> {{ model.provider }}<br>
+                            <strong>Version:</strong> {{ model.version }}<br>
+                            <strong>License:</strong> {{ model.license }}<br>
+                            <strong>Parameters:</strong> {{ model.parameters }}
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Context Window:</strong> {{ model.context_length }}<br>
+                            <strong>Max Output:</strong> {{ model.max_tokens }}<br>
+                            <strong>Languages:</strong> {{ model.languages|join(', ') }}<br>
+                            <strong>Last Updated:</strong> {{ model.last_updated }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Performance Metrics -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5><i class="fas fa-chart-line"></i> Performance Metrics</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Response Time</label>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 85%"></div>
+                            </div>
+                            <small class="text-muted">Average: 1.2s</small>
+                        </div>
+                        <div class="col-md-6">
+                            <label>Accuracy</label>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 92%"></div>
+                            </div>
+                            <small class="text-muted">Score: 92%</small>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <label>Resource Usage</label>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 67%"></div>
+                            </div>
+                            <small class="text-muted">CPU: 67%</small>
+                        </div>
+                        <div class="col-md-6 mt-3">
+                            <label>Success Rate</label>
+                            <div class="performance-bar">
+                                <div class="performance-fill" style="width: 98%"></div>
+                            </div>
+                            <small class="text-muted">Rate: 98%</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Capabilities -->
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-cogs"></i> Capabilities & Use Cases</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Capabilities:</h6>
+                            <ul>
+                                {% for capability in model.capabilities %}
+                                <li>{{ capability|title }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Use Cases:</h6>
+                            <ul>
+                                {% for use_case in model.use_cases %}
+                                <li>{{ use_case }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="col-lg-4">
+            <!-- Model Controls -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5><i class="fas fa-sliders-h"></i> Model Controls</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-success">
+                            <i class="fas fa-play"></i> Start Model
+                        </button>
+                        <button class="btn btn-danger">
+                            <i class="fas fa-stop"></i> Stop Model
+                        </button>
+                        <button class="btn btn-warning">
+                            <i class="fas fa-redo"></i> Restart Model
+                        </button>
+                        <hr>
+                        <button class="btn btn-info">
+                            <i class="fas fa-download"></i> Download Logs
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-cog"></i> Configuration
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5><i class="fas fa-tachometer-alt"></i> Quick Stats</h5>
+                </div>
+                <div class="card-body">
+                    <div class="stat-card">
+                        <h4 class="text-primary">1,234</h4>
+                        <small>Total Requests</small>
+                    </div>
+                    <div class="stat-card">
+                        <h4 class="text-success">98.5%</h4>
+                        <small>Success Rate</small>
+                    </div>
+                    <div class="stat-card">
+                        <h4 class="text-info">1.2s</h4>
+                        <small>Avg Response Time</small>
+                    </div>
+                    <div class="stat-card">
+                        <h4 class="text-warning">67%</h4>
+                        <small>Resource Usage</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Endpoints -->
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-code"></i> API Endpoints</h5>
+                </div>
+                <div class="card-body">
+                    <small class="text-muted">Base URL:</small>
+                    <div class="bg-light p-2 rounded mb-2">
+                        <code>/models/api/{{ model_id }}</code>
+                    </div>
+                    
+                    <small class="text-muted">Available endpoints:</small>
+                    <ul class="list-unstyled mt-2">
+                        <li><code>GET /status</code></li>
+                        <li><code>POST /generate</code></li>
+                        <li><code>POST /chat</code></li>
+                        <li><code>GET /metrics</code></li>
+                    </ul>
+                    
+                    <a href="{{ url_for('models.api_overview') }}" class="btn btn-outline-primary btn-sm">
+                        View Full API Docs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <a href="{{ url_for('models.dashboard') }}" class="btn btn-secondary me-2">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <a href="{{ url_for('models.analytics') }}" class="btn btn-info">
+                <i class="fas fa-chart-line"></i> View Analytics
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Animate performance bars
+    setTimeout(() => {
+        document.querySelectorAll('.performance-fill').forEach(bar => {
+            bar.style.width = bar.style.width;
+        });
+    }, 500);
+    
+    // Model control buttons
+    document.querySelector('.btn-success').addEventListener('click', function() {
+        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Starting...';
+        setTimeout(() => {
+            this.innerHTML = '<i class="fas fa-play"></i> Start Model';
+            alert('Model started successfully!');
+        }, 2000);
+    });
+});
+</script>
+{% endblock %}

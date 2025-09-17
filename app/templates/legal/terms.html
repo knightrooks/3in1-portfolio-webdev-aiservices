@@ -1,0 +1,271 @@
+{% extends "base.html" %}
+
+{% block title %}Terms of Service - AI Portfolio Platform{% endblock %}
+
+{% block content %}
+<div class="legal-page">
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Terms of Service</h1>
+            <p class="text-xl opacity-90 max-w-2xl mx-auto">
+                Please read these terms carefully before using our AI Portfolio Platform services
+            </p>
+            <div class="mt-6 text-sm opacity-80">
+                <p>Last updated: {{ last_updated or "January 1, 2024" }}</p>
+                <p>Effective date: {{ effective_date or "January 1, 2024" }}</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Content -->
+    <div class="container mx-auto px-4 py-16 max-w-4xl">
+        <div class="prose lg:prose-lg mx-auto">
+            
+            <!-- Table of Contents -->
+            <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">Table of Contents</h2>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#acceptance" class="text-blue-600 hover:underline">1. Acceptance of Terms</a></li>
+                    <li><a href="#description" class="text-blue-600 hover:underline">2. Description of Service</a></li>
+                    <li><a href="#user-accounts" class="text-blue-600 hover:underline">3. User Accounts</a></li>
+                    <li><a href="#ai-services" class="text-blue-600 hover:underline">4. AI Services Usage</a></li>
+                    <li><a href="#payments" class="text-blue-600 hover:underline">5. Payment Terms</a></li>
+                    <li><a href="#intellectual-property" class="text-blue-600 hover:underline">6. Intellectual Property</a></li>
+                    <li><a href="#user-conduct" class="text-blue-600 hover:underline">7. User Conduct</a></li>
+                    <li><a href="#privacy" class="text-blue-600 hover:underline">8. Privacy</a></li>
+                    <li><a href="#disclaimers" class="text-blue-600 hover:underline">9. Disclaimers</a></li>
+                    <li><a href="#limitation" class="text-blue-600 hover:underline">10. Limitation of Liability</a></li>
+                    <li><a href="#termination" class="text-blue-600 hover:underline">11. Termination</a></li>
+                    <li><a href="#governing-law" class="text-blue-600 hover:underline">12. Governing Law</a></li>
+                    <li><a href="#contact" class="text-blue-600 hover:underline">13. Contact Information</a></li>
+                </ul>
+            </div>
+
+            <!-- Terms Sections -->
+            <section id="acceptance" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">1. Acceptance of Terms</h2>
+                <p class="mb-4">
+                    By accessing and using the AI Portfolio Platform ("Platform"), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+                </p>
+                <p class="mb-4">
+                    These Terms of Service ("Terms") govern your use of our AI-powered platform, including but not limited to AI agent interactions, web development services, portfolio features, and related services.
+                </p>
+            </section>
+
+            <section id="description" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">2. Description of Service</h2>
+                <p class="mb-4">
+                    AI Portfolio Platform provides a comprehensive suite of services including:
+                </p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li><strong>AI Agent Interactions:</strong> Access to various AI personalities for conversation, assistance, and entertainment</li>
+                    <li><strong>Portfolio Services:</strong> Professional portfolio creation and management tools</li>
+                    <li><strong>Web Development:</strong> Custom web development services and consultations</li>
+                    <li><strong>Premium Features:</strong> Enhanced capabilities through subscription plans</li>
+                </ul>
+                <p class="mb-4">
+                    We reserve the right to modify, suspend, or discontinue any part of our service at any time without notice.
+                </p>
+            </section>
+
+            <section id="user-accounts" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">3. User Accounts</h2>
+                <h3 class="text-lg font-semibold mb-3">Registration</h3>
+                <p class="mb-4">
+                    To access certain features, you must create an account. You agree to provide accurate, current, and complete information during registration and to update such information as necessary.
+                </p>
+                
+                <h3 class="text-lg font-semibold mb-3">Account Security</h3>
+                <p class="mb-4">
+                    You are responsible for safeguarding your account credentials and for all activities that occur under your account. You must notify us immediately of any unauthorized use of your account.
+                </p>
+
+                <h3 class="text-lg font-semibold mb-3">Account Types</h3>
+                <ul class="list-disc pl-6 mb-4">
+                    <li><strong>Free Account:</strong> Limited daily AI interactions and basic features</li>
+                    <li><strong>Pro Account:</strong> Unlimited AI interactions and premium features</li>
+                    <li><strong>Enterprise Account:</strong> Advanced features and dedicated support</li>
+                </ul>
+            </section>
+
+            <section id="ai-services" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">4. AI Services Usage</h2>
+                <h3 class="text-lg font-semibold mb-3">AI Agent Interactions</h3>
+                <p class="mb-4">
+                    Our AI agents are designed to provide helpful, entertaining, and informative interactions. However:
+                </p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>AI responses are generated algorithmically and may not always be accurate or appropriate</li>
+                    <li>AI agents should not be considered a substitute for professional advice (medical, legal, financial, etc.)</li>
+                    <li>Conversations may be analyzed to improve our services</li>
+                    <li>Usage limits apply based on your subscription tier</li>
+                </ul>
+
+                <h3 class="text-lg font-semibold mb-3">Content Guidelines</h3>
+                <p class="mb-4">
+                    When interacting with AI agents, you agree not to:
+                </p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Request illegal, harmful, or unethical content</li>
+                    <li>Attempt to extract training data or reverse-engineer our models</li>
+                    <li>Use the service to generate spam or malicious content</li>
+                    <li>Impersonate others or misrepresent your identity</li>
+                </ul>
+            </section>
+
+            <section id="payments" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">5. Payment Terms</h2>
+                <h3 class="text-lg font-semibold mb-3">Subscription Plans</h3>
+                <p class="mb-4">
+                    Premium features require a paid subscription. By subscribing, you agree to pay all applicable fees and taxes.
+                </p>
+
+                <h3 class="text-lg font-semibold mb-3">Billing</h3>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Subscriptions are billed in advance on a monthly or annual basis</li>
+                    <li>Fees are non-refundable except as expressly stated</li>
+                    <li>Price changes will be communicated 30 days in advance</li>
+                    <li>Failed payments may result in service suspension</li>
+                </ul>
+
+                <h3 class="text-lg font-semibold mb-3">Web Development Services</h3>
+                <p class="mb-4">
+                    Custom web development projects are billed according to project agreements. A 50% deposit is typically required before work begins.
+                </p>
+            </section>
+
+            <section id="intellectual-property" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">6. Intellectual Property</h2>
+                <h3 class="text-lg font-semibold mb-3">Platform Ownership</h3>
+                <p class="mb-4">
+                    The Platform and its original content, features, and functionality remain the exclusive property of AI Portfolio Platform and its licensors.
+                </p>
+
+                <h3 class="text-lg font-semibold mb-3">User Content</h3>
+                <p class="mb-4">
+                    You retain ownership of content you create or upload. However, you grant us a license to use, modify, and display such content in connection with our services.
+                </p>
+
+                <h3 class="text-lg font-semibold mb-3">AI-Generated Content</h3>
+                <p class="mb-4">
+                    Content generated by our AI agents during your interactions may be used to improve our services. You may use AI-generated content for your own purposes, subject to these terms.
+                </p>
+            </section>
+
+            <section id="user-conduct" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">7. User Conduct</h2>
+                <p class="mb-4">You agree not to use the Platform to:</p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Violate any local, state, national, or international law or regulation</li>
+                    <li>Harass, abuse, or harm others or threaten to do so</li>
+                    <li>Transmit any material that is defamatory, offensive, or inappropriate</li>
+                    <li>Attempt to gain unauthorized access to our systems</li>
+                    <li>Interfere with or disrupt the Platform or servers</li>
+                    <li>Use automated scripts or bots without permission</li>
+                </ul>
+            </section>
+
+            <section id="privacy" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">8. Privacy</h2>
+                <p class="mb-4">
+                    Your privacy is important to us. Our collection and use of personal information is described in our Privacy Policy, which is incorporated by reference into these Terms.
+                </p>
+                <p class="mb-4">
+                    <a href="{{ url_for('legal.privacy_policy') }}" class="text-blue-600 hover:underline">View our Privacy Policy</a>
+                </p>
+            </section>
+
+            <section id="disclaimers" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">9. Disclaimers</h2>
+                <p class="mb-4">
+                    THE PLATFORM IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT ANY WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED.
+                </p>
+                <p class="mb-4">
+                    We do not warrant that:
+                </p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>The Platform will be available without interruption</li>
+                    <li>AI responses will be accurate or appropriate</li>
+                    <li>The Platform will be free from errors or security vulnerabilities</li>
+                    <li>Your use of the Platform will meet your requirements</li>
+                </ul>
+            </section>
+
+            <section id="limitation" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">10. Limitation of Liability</h2>
+                <p class="mb-4">
+                    IN NO EVENT SHALL AI PORTFOLIO PLATFORM BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING WITHOUT LIMITATION, LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES.
+                </p>
+                <p class="mb-4">
+                    OUR TOTAL LIABILITY TO YOU FOR ALL DAMAGES SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE TWELVE (12) MONTHS PRIOR TO THE EVENT GIVING RISE TO LIABILITY.
+                </p>
+            </section>
+
+            <section id="termination" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">11. Termination</h2>
+                <p class="mb-4">
+                    We may terminate or suspend your account and access to the Platform immediately, without prior notice, for any reason, including breach of these Terms.
+                </p>
+                <p class="mb-4">
+                    You may terminate your account at any time by contacting us or using the account settings. Upon termination, your right to use the Platform will cease immediately.
+                </p>
+            </section>
+
+            <section id="governing-law" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">12. Governing Law</h2>
+                <p class="mb-4">
+                    These Terms shall be interpreted and governed by the laws of [Your Jurisdiction], without regard to conflict of law provisions.
+                </p>
+                <p class="mb-4">
+                    Any disputes arising from these Terms will be resolved through binding arbitration or in the courts of [Your Jurisdiction].
+                </p>
+            </section>
+
+            <section id="contact" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">13. Contact Information</h2>
+                <p class="mb-4">
+                    If you have questions about these Terms of Service, please contact us:
+                </p>
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <p><strong>Email:</strong> legal@aiportfolio.com</p>
+                    <p><strong>Address:</strong> [Your Business Address]</p>
+                    <p><strong>Phone:</strong> [Your Phone Number]</p>
+                </div>
+            </section>
+
+            <!-- Agreement Section -->
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mt-8">
+                <h3 class="text-lg font-semibold mb-2 text-blue-800">Agreement Acknowledgment</h3>
+                <p class="text-blue-700">
+                    By using our Platform, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.legal-page .prose h2 {
+    color: #1f2937;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.legal-page .prose h3 {
+    color: #374151;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.legal-page .prose a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.legal-page .prose a:hover {
+    text-decoration: underline;
+}
+</style>
+{% endblock %}

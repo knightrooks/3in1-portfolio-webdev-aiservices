@@ -1,0 +1,691 @@
+{% extends "base.html" %}
+
+{% block title %}Feedback - AI Portfolio Platform{% endblock %}
+
+{% block content %}
+<div class="feedback-page">
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient-to-r from-pink-600 to-red-600 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">💭 Share Your Feedback</h1>
+            <p class="text-xl opacity-90 max-w-2xl mx-auto">
+                Help us improve by sharing your thoughts, suggestions, and experiences
+            </p>
+            <div class="mt-6 text-sm opacity-80">
+                <p>Your feedback shapes our future - every suggestion matters!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Types -->
+    <div class="bg-gray-50 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-8 text-gray-800">What would you like to share?</h2>
+            <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <button onclick="setFeedbackType('general')" class="feedback-type-btn bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-all border-2 border-transparent hover:border-pink-500">
+                    <div class="text-pink-600 text-3xl mb-4">💬</div>
+                    <h3 class="font-bold mb-2">General Feedback</h3>
+                    <p class="text-sm text-gray-600">Overall experience and suggestions</p>
+                </button>
+                <button onclick="setFeedbackType('feature')" class="feedback-type-btn bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-all border-2 border-transparent hover:border-pink-500">
+                    <div class="text-blue-600 text-3xl mb-4">💡</div>
+                    <h3 class="font-bold mb-2">Feature Request</h3>
+                    <p class="text-sm text-gray-600">New features and improvements</p>
+                </button>
+                <button onclick="setFeedbackType('bug')" class="feedback-type-btn bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-all border-2 border-transparent hover:border-pink-500">
+                    <div class="text-red-600 text-3xl mb-4">🐛</div>
+                    <h3 class="font-bold mb-2">Bug Report</h3>
+                    <p class="text-sm text-gray-600">Issues and problems you've encountered</p>
+                </button>
+                <button onclick="setFeedbackType('testimonial')" class="feedback-type-btn bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-all border-2 border-transparent hover:border-pink-500">
+                    <div class="text-green-600 text-3xl mb-4">⭐</div>
+                    <h3 class="font-bold mb-2">Testimonial</h3>
+                    <p class="text-sm text-gray-600">Share your success story</p>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Form -->
+    <div class="container mx-auto px-4 py-16">
+        <div class="max-w-4xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Main Feedback Form -->
+                <div class="md:col-span-2">
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h2 class="text-2xl font-bold mb-6 text-gray-800" id="form-title">Share Your Feedback</h2>
+                        
+                        <form id="feedback-form" class="space-y-6">
+                            <input type="hidden" id="feedback-type" name="feedback_type" value="general">
+                            
+                            <!-- User Information -->
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                                    <input type="text" id="name" name="name" 
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email (Optional)</label>
+                                    <input type="email" id="email" name="email" 
+                                           placeholder="For follow-up (optional)"
+                                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                </div>
+                            </div>
+
+                            <!-- Rating Section -->
+                            <div id="rating-section" class="border-2 border-gray-200 rounded-lg p-6">
+                                <label class="block text-sm font-medium text-gray-700 mb-3">Overall Experience Rating</label>
+                                <div class="flex items-center space-x-1 mb-2">
+                                    <div class="star-rating flex space-x-1" data-rating="0">
+                                        <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-value="1">⭐</button>
+                                        <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-value="2">⭐</button>
+                                        <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-value="3">⭐</button>
+                                        <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-value="4">⭐</button>
+                                        <button type="button" class="star text-2xl text-gray-300 hover:text-yellow-400 transition-colors" data-value="5">⭐</button>
+                                    </div>
+                                    <span class="ml-2 text-sm text-gray-600" id="rating-text">Click to rate</span>
+                                </div>
+                                <input type="hidden" id="rating" name="rating" value="0">
+                            </div>
+
+                            <!-- Category-specific fields -->
+                            <div id="category-fields">
+                                <!-- General Feedback Fields -->
+                                <div id="general-fields" class="space-y-4">
+                                    <div>
+                                        <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                                        <input type="text" id="subject" name="subject" 
+                                               placeholder="Brief summary of your feedback"
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                    </div>
+                                    <div>
+                                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Your Feedback *</label>
+                                        <textarea id="message" name="message" rows="6" required
+                                                  placeholder="Tell us about your experience, what you liked, what could be improved..."
+                                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"></textarea>
+                                    </div>
+                                </div>
+
+                                <!-- Feature Request Fields -->
+                                <div id="feature-fields" class="space-y-4 hidden">
+                                    <div>
+                                        <label for="feature-title" class="block text-sm font-medium text-gray-700 mb-2">Feature Title *</label>
+                                        <input type="text" id="feature-title" name="feature_title" 
+                                               placeholder="Name of the feature you'd like to see"
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                    </div>
+                                    <div>
+                                        <label for="feature-description" class="block text-sm font-medium text-gray-700 mb-2">Feature Description *</label>
+                                        <textarea id="feature-description" name="feature_description" rows="4"
+                                                  placeholder="Describe what the feature should do and how it would help you..."
+                                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"></textarea>
+                                    </div>
+                                    <div>
+                                        <label for="use-case" class="block text-sm font-medium text-gray-700 mb-2">Use Case</label>
+                                        <textarea id="use-case" name="use_case" rows="3"
+                                                  placeholder="How would you use this feature? What problem does it solve?"
+                                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"></textarea>
+                                    </div>
+                                    <div>
+                                        <label for="priority" class="block text-sm font-medium text-gray-700 mb-2">Priority</label>
+                                        <select id="priority" name="priority" 
+                                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                            <option value="low">Low - Nice to have</option>
+                                            <option value="medium" selected>Medium - Would be helpful</option>
+                                            <option value="high">High - Really needed</option>
+                                            <option value="critical">Critical - Blocking my workflow</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Bug Report Fields -->
+                                <div id="bug-fields" class="space-y-4 hidden">
+                                    <div>
+                                        <label for="bug-title" class="block text-sm font-medium text-gray-700 mb-2">Bug Title *</label>
+                                        <input type="text" id="bug-title" name="bug_title" 
+                                               placeholder="Brief description of the issue"
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                    </div>
+                                    <div>
+                                        <label for="steps-to-reproduce" class="block text-sm font-medium text-gray-700 mb-2">Steps to Reproduce *</label>
+                                        <textarea id="steps-to-reproduce" name="steps_to_reproduce" rows="4"
+                                                  placeholder="1. Go to...&#10;2. Click on...&#10;3. See error..."
+                                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"></textarea>
+                                    </div>
+                                    <div>
+                                        <label for="expected-behavior" class="block text-sm font-medium text-gray-700 mb-2">Expected Behavior</label>
+                                        <textarea id="expected-behavior" name="expected_behavior" rows="2"
+                                                  placeholder="What did you expect to happen?"
+                                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"></textarea>
+                                    </div>
+                                    <div>
+                                        <label for="actual-behavior" class="block text-sm font-medium text-gray-700 mb-2">Actual Behavior</label>
+                                        <textarea id="actual-behavior" name="actual_behavior" rows="2"
+                                                  placeholder="What actually happened?"
+                                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"></textarea>
+                                    </div>
+                                    <div class="grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="browser" class="block text-sm font-medium text-gray-700 mb-2">Browser</label>
+                                            <input type="text" id="browser" name="browser" 
+                                                   placeholder="Chrome, Firefox, Safari, etc."
+                                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                        </div>
+                                        <div>
+                                            <label for="device" class="block text-sm font-medium text-gray-700 mb-2">Device</label>
+                                            <input type="text" id="device" name="device" 
+                                                   placeholder="Desktop, Mobile, Tablet"
+                                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Testimonial Fields -->
+                                <div id="testimonial-fields" class="space-y-4 hidden">
+                                    <div>
+                                        <label for="testimonial-title" class="block text-sm font-medium text-gray-700 mb-2">Title/Headline</label>
+                                        <input type="text" id="testimonial-title" name="testimonial_title" 
+                                               placeholder="A catchy headline for your testimonial"
+                                               class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                    </div>
+                                    <div>
+                                        <label for="testimonial-content" class="block text-sm font-medium text-gray-700 mb-2">Your Story *</label>
+                                        <textarea id="testimonial-content" name="testimonial_content" rows="6"
+                                                  placeholder="Share your success story, how our platform helped you, what you achieved..."
+                                                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"></textarea>
+                                    </div>
+                                    <div class="grid md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company (Optional)</label>
+                                            <input type="text" id="company" name="company" 
+                                                   placeholder="Your company name"
+                                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                        </div>
+                                        <div>
+                                            <label for="role" class="block text-sm font-medium text-gray-700 mb-2">Role (Optional)</label>
+                                            <input type="text" id="role" name="role" 
+                                                   placeholder="Your job title"
+                                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start space-x-3">
+                                        <input type="checkbox" id="publish-consent" name="publish_consent" 
+                                               class="mt-1 w-4 h-4 text-pink-600 focus:ring-pink-500 border-gray-300 rounded">
+                                        <label for="publish-consent" class="text-sm text-gray-600">
+                                            I consent to having this testimonial published on your website and marketing materials (with attribution)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- File Upload -->
+                            <div>
+                                <label for="attachment" class="block text-sm font-medium text-gray-700 mb-2">Attach Files (Optional)</label>
+                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-pink-500 transition-colors">
+                                    <input type="file" id="attachment" name="attachment" multiple 
+                                           accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx,.txt"
+                                           class="hidden">
+                                    <label for="attachment" class="cursor-pointer">
+                                        <div class="text-gray-400 text-2xl mb-2">📎</div>
+                                        <p class="text-gray-600">Click to attach screenshots or documents</p>
+                                        <p class="text-xs text-gray-500 mt-1">Max 10MB per file. Images, PDFs, documents supported</p>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Additional Options -->
+                            <div class="space-y-3">
+                                <div class="flex items-start space-x-3">
+                                    <input type="checkbox" id="follow-up" name="follow_up" 
+                                           class="mt-1 w-4 h-4 text-pink-600 focus:ring-pink-500 border-gray-300 rounded">
+                                    <label for="follow-up" class="text-sm text-gray-600">
+                                        I'd like to be contacted about this feedback (requires email)
+                                    </label>
+                                </div>
+                                <div class="flex items-start space-x-3">
+                                    <input type="checkbox" id="beta-tester" name="beta_tester" 
+                                           class="mt-1 w-4 h-4 text-pink-600 focus:ring-pink-500 border-gray-300 rounded">
+                                    <label for="beta-tester" class="text-sm text-gray-600">
+                                        I'm interested in beta testing new features
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button type="submit" 
+                                    class="w-full bg-pink-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-pink-700 focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                                <span class="submit-text">Submit Feedback</span>
+                                <span class="loading-text hidden">Submitting...</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="space-y-6">
+                    <!-- Feedback Stats -->
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="font-bold text-lg mb-4">Community Impact</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-600">Feedback Received:</span>
+                                <span class="font-bold text-pink-600">2,847</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-600">Features Implemented:</span>
+                                <span class="font-bold text-green-600">156</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-600">Bugs Fixed:</span>
+                                <span class="font-bold text-blue-600">89</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-gray-600">Avg. Response Time:</span>
+                                <span class="font-bold text-purple-600">2.3 days</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Updates -->
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="font-bold text-lg mb-4">Recent Updates</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-start space-x-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <div>
+                                    <p class="font-medium">Dark mode toggle</p>
+                                    <p class="text-gray-600">Added based on user requests</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <div>
+                                    <p class="font-medium">AI response speed</p>
+                                    <p class="text-gray-600">30% faster response times</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-green-500 mt-1">✓</span>
+                                <div>
+                                    <p class="font-medium">Mobile optimization</p>
+                                    <p class="text-gray-600">Better mobile experience</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="text-yellow-500 mt-1">🔄</span>
+                                <div>
+                                    <p class="font-medium">Export conversations</p>
+                                    <p class="text-gray-600">Coming next week</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="font-bold text-lg mb-4">Get in Touch</h3>
+                        <div class="space-y-2 text-sm">
+                            <p class="flex items-center space-x-2">
+                                <span class="text-pink-600">📧</span>
+                                <span>feedback@aiportfolio.com</span>
+                            </p>
+                            <p class="flex items-center space-x-2">
+                                <span class="text-pink-600">💬</span>
+                                <span>24/7 Live Chat Support</span>
+                            </p>
+                            <p class="flex items-center space-x-2">
+                                <span class="text-pink-600">📱</span>
+                                <span>Follow us on Twitter</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Feedback Guidelines -->
+                    <div class="bg-pink-50 border border-pink-200 rounded-lg p-4">
+                        <h4 class="font-medium text-pink-800 mb-2">💡 Feedback Tips</h4>
+                        <ul class="text-xs text-pink-700 space-y-1">
+                            <li>• Be specific about the issue or suggestion</li>
+                            <li>• Include steps to reproduce bugs</li>
+                            <li>• Explain how a feature would benefit you</li>
+                            <li>• Attach screenshots when relevant</li>
+                            <li>• Be constructive and respectful</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white p-8 rounded-lg max-w-md mx-4">
+            <div class="text-center">
+                <div class="text-pink-600 text-4xl mb-4">💖</div>
+                <h3 class="text-xl font-bold mb-2">Thank You!</h3>
+                <p class="text-gray-600 mb-4" id="success-message">
+                    Your feedback has been received and will help us improve the platform.
+                </p>
+                <p class="text-sm text-gray-500 mb-6">
+                    Reference ID: <span id="feedback-id" class="font-mono bg-gray-100 px-2 py-1 rounded">#FB12345</span>
+                </p>
+                <button onclick="closeSuccessModal()" class="bg-pink-600 text-white px-6 py-2 rounded-lg hover:bg-pink-700">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Feedback form functionality
+let currentFeedbackType = 'general';
+
+function setFeedbackType(type) {
+    currentFeedbackType = type;
+    
+    // Update hidden field
+    document.getElementById('feedback-type').value = type;
+    
+    // Update form title
+    const titles = {
+        'general': 'Share Your General Feedback',
+        'feature': 'Request a New Feature',
+        'bug': 'Report a Bug',
+        'testimonial': 'Share Your Success Story'
+    };
+    document.getElementById('form-title').textContent = titles[type];
+    
+    // Hide all category fields
+    document.querySelectorAll('[id$="-fields"]').forEach(el => {
+        el.classList.add('hidden');
+    });
+    
+    // Show relevant fields
+    document.getElementById(type + '-fields').classList.remove('hidden');
+    
+    // Update button states
+    document.querySelectorAll('.feedback-type-btn').forEach(btn => {
+        btn.classList.remove('border-pink-500', 'bg-pink-50');
+        btn.classList.add('border-transparent');
+    });
+    
+    event.target.closest('.feedback-type-btn').classList.add('border-pink-500', 'bg-pink-50');
+    event.target.closest('.feedback-type-btn').classList.remove('border-transparent');
+    
+    // Show/hide rating section based on type
+    const ratingSection = document.getElementById('rating-section');
+    if (type === 'bug') {
+        ratingSection.style.display = 'none';
+    } else {
+        ratingSection.style.display = 'block';
+    }
+    
+    // Scroll to form
+    document.getElementById('feedback-form').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Star rating functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const stars = document.querySelectorAll('.star');
+    const ratingInput = document.getElementById('rating');
+    const ratingText = document.getElementById('rating-text');
+    
+    const ratingTexts = {
+        0: 'Click to rate',
+        1: 'Poor',
+        2: 'Fair',
+        3: 'Good',
+        4: 'Very Good',
+        5: 'Excellent'
+    };
+    
+    stars.forEach((star, index) => {
+        star.addEventListener('click', function(e) {
+            e.preventDefault();
+            const rating = parseInt(this.getAttribute('data-value'));
+            setRating(rating);
+        });
+        
+        star.addEventListener('mouseenter', function() {
+            const rating = parseInt(this.getAttribute('data-value'));
+            highlightStars(rating);
+        });
+    });
+    
+    document.querySelector('.star-rating').addEventListener('mouseleave', function() {
+        const currentRating = parseInt(ratingInput.value);
+        highlightStars(currentRating);
+    });
+    
+    function setRating(rating) {
+        ratingInput.value = rating;
+        ratingText.textContent = ratingTexts[rating];
+        highlightStars(rating);
+    }
+    
+    function highlightStars(rating) {
+        stars.forEach((star, index) => {
+            if (index < rating) {
+                star.classList.remove('text-gray-300');
+                star.classList.add('text-yellow-400');
+            } else {
+                star.classList.remove('text-yellow-400');
+                star.classList.add('text-gray-300');
+            }
+        });
+    }
+});
+
+// Form submission
+document.getElementById('feedback-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const submitButton = this.querySelector('button[type="submit"]');
+    const submitText = submitButton.querySelector('.submit-text');
+    const loadingText = submitButton.querySelector('.loading-text');
+    
+    // Validate required fields based on type
+    if (!validateForm()) {
+        return;
+    }
+    
+    // Show loading state
+    submitButton.disabled = true;
+    submitText.classList.add('hidden');
+    loadingText.classList.remove('hidden');
+    
+    try {
+        const formData = new FormData(this);
+        const response = await fetch('/api/contact/feedback', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token() }}'
+            }
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            // Show success modal
+            document.getElementById('feedback-id').textContent = result.feedback_id;
+            
+            const successMessages = {
+                'general': 'Your feedback has been received and will help us improve the platform.',
+                'feature': 'Your feature request has been added to our development roadmap.',
+                'bug': 'Your bug report has been logged and our team will investigate.',
+                'testimonial': 'Thank you for sharing your success story with us!'
+            };
+            
+            document.getElementById('success-message').textContent = successMessages[currentFeedbackType];
+            document.getElementById('success-modal').classList.remove('hidden');
+            
+            // Reset form
+            this.reset();
+            document.getElementById('rating').value = 0;
+            highlightStars(0);
+            document.getElementById('rating-text').textContent = 'Click to rate';
+        } else {
+            alert('Error submitting feedback: ' + (result.message || 'Please try again.'));
+        }
+    } catch (error) {
+        alert('Error submitting feedback. Please try again or contact us directly.');
+    } finally {
+        // Reset loading state
+        submitButton.disabled = false;
+        submitText.classList.remove('hidden');
+        loadingText.classList.add('hidden');
+    }
+});
+
+function validateForm() {
+    const requiredFields = {
+        'general': ['message'],
+        'feature': ['feature-title', 'feature-description'],
+        'bug': ['bug-title', 'steps-to-reproduce'],
+        'testimonial': ['testimonial-content']
+    };
+    
+    const fields = requiredFields[currentFeedbackType] || [];
+    
+    for (let fieldId of fields) {
+        const field = document.getElementById(fieldId);
+        if (!field || !field.value.trim()) {
+            field.focus();
+            field.classList.add('border-red-500');
+            setTimeout(() => field.classList.remove('border-red-500'), 3000);
+            alert('Please fill in all required fields.');
+            return false;
+        }
+    }
+    
+    return true;
+}
+
+function closeSuccessModal() {
+    document.getElementById('success-modal').classList.add('hidden');
+}
+
+// File upload handling
+document.getElementById('attachment').addEventListener('change', function(e) {
+    const files = Array.from(e.target.files);
+    const maxSize = 10 * 1024 * 1024; // 10MB
+    
+    for (let file of files) {
+        if (file.size > maxSize) {
+            alert(`File "${file.name}" is too large. Maximum size is 10MB.`);
+            e.target.value = '';
+            return;
+        }
+    }
+    
+    // Update label to show selected files
+    const label = document.querySelector('label[for="attachment"] p');
+    if (files.length > 0) {
+        label.textContent = `${files.length} file(s) selected: ${files.map(f => f.name).join(', ')}`;
+    }
+});
+
+// Auto-fill browser and device info for bug reports
+function autoFillBrowserInfo() {
+    const browserField = document.getElementById('browser');
+    const deviceField = document.getElementById('device');
+    
+    // Detect browser
+    const userAgent = navigator.userAgent;
+    let browser = 'Unknown';
+    if (userAgent.includes('Chrome')) browser = 'Chrome';
+    else if (userAgent.includes('Firefox')) browser = 'Firefox';
+    else if (userAgent.includes('Safari')) browser = 'Safari';
+    else if (userAgent.includes('Edge')) browser = 'Edge';
+    
+    // Detect device type
+    const isMobile = /Mobi|Android/i.test(userAgent);
+    const isTablet = /Tablet|iPad/i.test(userAgent);
+    let device = 'Desktop';
+    if (isMobile) device = 'Mobile';
+    else if (isTablet) device = 'Tablet';
+    
+    if (browserField && !browserField.value) {
+        browserField.value = browser;
+    }
+    if (deviceField && !deviceField.value) {
+        deviceField.value = device;
+    }
+}
+
+// Auto-fill when bug type is selected
+document.addEventListener('DOMContentLoaded', function() {
+    // Set up observer for when bug fields become visible
+    const bugFields = document.getElementById('bug-fields');
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                if (!bugFields.classList.contains('hidden')) {
+                    autoFillBrowserInfo();
+                }
+            }
+        });
+    });
+    
+    observer.observe(bugFields, { attributes: true });
+});
+</script>
+
+<style>
+.feedback-page .feedback-type-btn {
+    transition: all 0.3s ease;
+}
+
+.feedback-page .feedback-type-btn:hover {
+    transform: translateY(-4px);
+}
+
+.feedback-page .star {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.feedback-page .star:hover {
+    transform: scale(1.2);
+}
+
+.feedback-page form input:focus,
+.feedback-page form select:focus,
+.feedback-page form textarea:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: rgb(236, 72, 153);
+    border-color: transparent;
+}
+
+.feedback-page .hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.feedback-page .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
+                linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.1) 75%), 
+                linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.1) 75%);
+    background-size: 30px 30px;
+    background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+    opacity: 0.1;
+}
+
+.feedback-page .file-upload-area {
+    transition: all 0.3s ease;
+}
+
+.feedback-page .file-upload-area:hover {
+    transform: scale(1.02);
+}
+</style>
+{% endblock %}

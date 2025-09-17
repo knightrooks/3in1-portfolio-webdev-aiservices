@@ -1,0 +1,1 @@
+"""Strict Wife engine module"""

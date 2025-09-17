@@ -1,0 +1,241 @@
+{% extends "base.html" %}
+
+{% block title %}AI Agents Dashboard - 3-in-1 Platform{% endblock %}
+
+{% block meta_description %}Explore our comprehensive collection of 16 AI agents for various professional and entertainment purposes{% endblock %}
+
+{% block extra_css %}
+<style>
+    .agent-card {
+        transition: all 0.3s ease;
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .agent-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    .agent-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    .category-badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 0.75rem;
+    }
+    .stats-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 15px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-4">
+    <!-- Header Section -->
+    <div class="row mb-5">
+        <div class="col-12 text-center">
+            <h1 class="display-4 mb-3">
+                <i class="fas fa-robot text-primary"></i>
+                AI Agents Dashboard
+            </h1>
+            <p class="lead text-muted">
+                Discover our comprehensive collection of {{ total_agents }} AI agents designed for various professional and entertainment purposes
+            </p>
+        </div>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-5">
+        <div class="col-md-3">
+            <div class="card stats-card h-100 text-center p-4">
+                <div class="card-body">
+                    <i class="fas fa-robot fa-2x mb-3"></i>
+                    <h3>{{ total_agents }}</h3>
+                    <p class="mb-0">Total Agents</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stats-card h-100 text-center p-4">
+                <div class="card-body">
+                    <i class="fas fa-briefcase fa-2x mb-3"></i>
+                    <h3>{{ professional_agents|length }}</h3>
+                    <p class="mb-0">Professional</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stats-card h-100 text-center p-4">
+                <div class="card-body">
+                    <i class="fas fa-gamepad fa-2x mb-3"></i>
+                    <h3>{{ entertainment_agents|length }}</h3>
+                    <p class="mb-0">Entertainment</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card stats-card h-100 text-center p-4">
+                <div class="card-body">
+                    <i class="fas fa-chart-line fa-2x mb-3"></i>
+                    <h3>24/7</h3>
+                    <p class="mb-0">Available</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Professional Agents Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4">
+                <i class="fas fa-briefcase text-primary"></i>
+                Professional Agents
+            </h2>
+            <div class="row">
+                {% for agent_id, agent in professional_agents %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card agent-card h-100 position-relative">
+                        <span class="badge bg-primary category-badge">Professional</span>
+                        <div class="card-body text-center">
+                            <div class="agent-icon" style="color: {{ agent.color }}">
+                                {{ agent.icon }}
+                            </div>
+                            <h5 class="card-title">{{ agent.name }}</h5>
+                            <p class="card-text text-muted">{{ agent.description }}</p>
+                            
+                            <!-- Capabilities -->
+                            <div class="mb-3">
+                                {% for capability in agent.capabilities[:3] %}
+                                <span class="badge bg-light text-dark me-1">{{ capability }}</span>
+                                {% endfor %}
+                            </div>
+                            
+                            <div class="d-grid gap-2">
+                                <a href="{{ url_for('agents.agent_detail', agent_id=agent_id) }}" class="btn btn-primary">
+                                    <i class="fas fa-comments"></i> Chat Now
+                                </a>
+                                <a href="/agents/api/{{ agent_id }}/analytics" class="btn btn-outline-secondary btn-sm">
+                                    <i class="fas fa-chart-bar"></i> Analytics
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Entertainment Agents Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <h2 class="mb-4">
+                <i class="fas fa-gamepad text-success"></i>
+                Entertainment Agents
+            </h2>
+            <div class="row">
+                {% for agent_id, agent in entertainment_agents %}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card agent-card h-100 position-relative">
+                        <span class="badge bg-success category-badge">Entertainment</span>
+                        <div class="card-body text-center">
+                            <div class="agent-icon" style="color: {{ agent.color }}">
+                                {{ agent.icon }}
+                            </div>
+                            <h5 class="card-title">{{ agent.name }}</h5>
+                            <p class="card-text text-muted">{{ agent.description }}</p>
+                            
+                            <!-- Capabilities -->
+                            <div class="mb-3">
+                                {% for capability in agent.capabilities[:3] %}
+                                <span class="badge bg-light text-dark me-1">{{ capability }}</span>
+                                {% endfor %}
+                            </div>
+                            
+                            <div class="d-grid gap-2">
+                                <a href="{{ url_for('agents.agent_detail', agent_id=agent_id) }}" class="btn btn-success">
+                                    <i class="fas fa-comments"></i> Chat Now
+                                </a>
+                                <a href="/agents/api/{{ agent_id }}/analytics" class="btn btn-outline-secondary btn-sm">
+                                    <i class="fas fa-chart-bar"></i> Analytics
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- API Integration Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card border-0 bg-light">
+                <div class="card-body p-5 text-center">
+                    <h3 class="mb-3">
+                        <i class="fas fa-code text-info"></i>
+                        Developer Integration
+                    </h3>
+                    <p class="lead">
+                        Integrate any of our AI agents into your applications using our comprehensive REST API and WebSocket connections.
+                    </p>
+                    <div class="row mt-4">
+                        <div class="col-md-4">
+                            <a href="{{ url_for('agents.api_overview') }}" class="btn btn-info btn-lg">
+                                <i class="fas fa-book"></i> API Documentation
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{{ url_for('agents.health_check') }}" class="btn btn-success btn-lg">
+                                <i class="fas fa-heartbeat"></i> Health Status
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{{ url_for('agents.analytics') }}" class="btn btn-warning btn-lg">
+                                <i class="fas fa-chart-line"></i> Usage Analytics
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Add some interactivity to the dashboard
+document.addEventListener('DOMContentLoaded', function() {
+    // Animate statistics on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+            }
+        });
+    });
+
+    document.querySelectorAll('.stats-card').forEach(card => {
+        observer.observe(card);
+    });
+
+    // Add click tracking for agent cards
+    document.querySelectorAll('.agent-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            if (!e.target.closest('a')) {
+                const chatButton = this.querySelector('a[href*="agent_detail"]');
+                if (chatButton) {
+                    window.location.href = chatButton.href;
+                }
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

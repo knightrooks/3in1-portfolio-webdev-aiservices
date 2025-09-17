@@ -1,0 +1,403 @@
+{% extends "base.html" %}
+
+{% block title %}Support Center - AI Portfolio Platform{% endblock %}
+
+{% block content %}
+<div class="support-page">
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">🎧 Support Center</h1>
+            <p class="text-xl opacity-90 max-w-2xl mx-auto">
+                We're here to help you get the most out of our AI-powered platform
+            </p>
+            <div class="mt-8">
+                <a href="#contact-form" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 mr-4">Get Help Now</a>
+                <a href="#faq" class="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600">Browse FAQ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Help Options -->
+    <div class="bg-gray-50 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-8 text-gray-800">How can we help you today?</h2>
+            <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
+                    <div class="text-blue-600 text-3xl mb-4">🤖</div>
+                    <h3 class="font-bold mb-2">AI Services</h3>
+                    <p class="text-sm text-gray-600 mb-4">Get help with AI agents, conversations, and features</p>
+                    <a href="#ai-support" class="text-blue-600 hover:underline text-sm">Get AI Help</a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
+                    <div class="text-green-600 text-3xl mb-4">🌐</div>
+                    <h3 class="font-bold mb-2">Web Development</h3>
+                    <p class="text-sm text-gray-600 mb-4">Project questions, quotes, and development support</p>
+                    <a href="#webdev-support" class="text-green-600 hover:underline text-sm">Web Dev Help</a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
+                    <div class="text-purple-600 text-3xl mb-4">💳</div>
+                    <h3 class="font-bold mb-2">Billing</h3>
+                    <p class="text-sm text-gray-600 mb-4">Payment issues, subscriptions, and invoices</p>
+                    <a href="#billing-support" class="text-purple-600 hover:underline text-sm">Billing Help</a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow">
+                    <div class="text-red-600 text-3xl mb-4">⚙️</div>
+                    <h3 class="font-bold mb-2">Technical</h3>
+                    <p class="text-sm text-gray-600 mb-4">Platform issues, bugs, and technical problems</p>
+                    <a href="#tech-support" class="text-red-600 hover:underline text-sm">Tech Support</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="container mx-auto px-4 py-16" id="contact-form">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800">Submit a Support Ticket</h2>
+                <p class="text-gray-600">Tell us about your issue and we'll get back to you within 24 hours</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Contact Form -->
+                <div class="md:col-span-2">
+                    <form id="support-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                                <input type="text" id="name" name="name" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="category" class="block text-sm font-medium text-gray-700 mb-2">Issue Category *</label>
+                                <select id="category" name="category" required 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                    <option value="">Select Category</option>
+                                    <option value="ai-services">AI Services</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="billing">Billing & Payments</option>
+                                    <option value="technical">Technical Issues</option>
+                                    <option value="account">Account Management</option>
+                                    <option value="feature-request">Feature Request</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="priority" class="block text-sm font-medium text-gray-700 mb-2">Priority</label>
+                                <select id="priority" name="priority" 
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                    <option value="low">Low</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="high">High</option>
+                                    <option value="urgent">Urgent</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-2">Subject *</label>
+                            <input type="text" id="subject" name="subject" required 
+                                   placeholder="Brief description of your issue"
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Describe your issue *</label>
+                            <textarea id="message" name="message" rows="6" required 
+                                      placeholder="Please provide as much detail as possible about your issue..."
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"></textarea>
+                        </div>
+
+                        <div>
+                            <label for="attachment" class="block text-sm font-medium text-gray-700 mb-2">Attach Files (Optional)</label>
+                            <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                                <input type="file" id="attachment" name="attachment" multiple 
+                                       accept=".jpg,.jpeg,.png,.gif,.pdf,.doc,.docx,.txt"
+                                       class="hidden">
+                                <label for="attachment" class="cursor-pointer">
+                                    <div class="text-gray-400 text-2xl mb-2">📁</div>
+                                    <p class="text-gray-600">Click to upload files or drag and drop</p>
+                                    <p class="text-xs text-gray-500 mt-1">Max 10MB per file. Supported: images, PDFs, documents</p>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-3">
+                            <input type="checkbox" id="urgent" name="urgent" 
+                                   class="mt-1 w-4 h-4 text-purple-600 focus:ring-purple-500 border-gray-300 rounded">
+                            <label for="urgent" class="text-sm text-gray-600">
+                                This is an urgent issue affecting my business operations
+                            </label>
+                        </div>
+
+                        <button type="submit" 
+                                class="w-full bg-purple-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                            <span class="submit-text">Submit Ticket</span>
+                            <span class="loading-text hidden">Submitting...</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="font-bold text-lg mb-4">Contact Information</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex items-center space-x-3">
+                                <span class="text-purple-600">📧</span>
+                                <span>support@aiportfolio.com</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-purple-600">📞</span>
+                                <span>1-800-AI-HELP (24/7)</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-purple-600">💬</span>
+                                <span>Live Chat: Available 24/7</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <span class="text-purple-600">⏰</span>
+                                <span>Response Time: < 24 hours</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="font-bold text-lg mb-4">Support Hours</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Monday - Friday:</span>
+                                <span>6 AM - 10 PM EST</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Saturday:</span>
+                                <span>8 AM - 8 PM EST</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Sunday:</span>
+                                <span>10 AM - 6 PM EST</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Emergency:</span>
+                                <span>24/7</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="font-bold text-lg mb-4">Quick Links</h3>
+                        <div class="space-y-2">
+                            <a href="{{ url_for('contact.faq') }}" class="block text-blue-600 hover:underline text-sm">Frequently Asked Questions</a>
+                            <a href="{{ url_for('portfolio.index') }}" class="block text-blue-600 hover:underline text-sm">User Guide & Documentation</a>
+                            <a href="{{ url_for('legal.terms') }}" class="block text-blue-600 hover:underline text-sm">Terms of Service</a>
+                            <a href="{{ url_for('legal.privacy') }}" class="block text-blue-600 hover:underline text-sm">Privacy Policy</a>
+                            <a href="/billing" class="block text-blue-600 hover:underline text-sm">Billing Portal</a>
+                        </div>
+                    </div>
+
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                        <h4 class="font-medium text-green-800 mb-2">💡 Pro Tip</h4>
+                        <p class="text-green-700 text-xs">
+                            For faster resolution, please include:
+                            <br>• Your account email
+                            <br>• Steps to reproduce the issue
+                            <br>• Screenshots if applicable
+                            <br>• Browser and device information
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Support -->
+    <div class="bg-red-50 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold text-red-800 mb-4">🚨 Emergency Support</h3>
+            <p class="text-red-700 mb-6 max-w-2xl mx-auto">
+                If you're experiencing a critical issue that's preventing you from using our platform or affecting your business operations, contact us immediately.
+            </p>
+            <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+                <a href="tel:1-800-AI-HELP" class="bg-red-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 inline-block">
+                    📞 Call Emergency Line
+                </a>
+                <a href="mailto:emergency@aiportfolio.com" class="bg-white text-red-600 border border-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-red-50 inline-block">
+                    📧 Emergency Email
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white p-8 rounded-lg max-w-md mx-4">
+            <div class="text-center">
+                <div class="text-green-600 text-4xl mb-4">✅</div>
+                <h3 class="text-xl font-bold mb-2">Support Ticket Submitted</h3>
+                <p class="text-gray-600 mb-4">
+                    Thank you for contacting us! We've received your support ticket and will respond within 24 hours.
+                </p>
+                <p class="text-sm text-gray-500 mb-6">
+                    Ticket ID: <span id="ticket-id" class="font-mono bg-gray-100 px-2 py-1 rounded">#12345</span>
+                </p>
+                <button onclick="closeSuccessModal()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('support-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const submitButton = this.querySelector('button[type="submit"]');
+    const submitText = submitButton.querySelector('.submit-text');
+    const loadingText = submitButton.querySelector('.loading-text');
+    
+    // Show loading state
+    submitButton.disabled = true;
+    submitText.classList.add('hidden');
+    loadingText.classList.remove('hidden');
+    
+    try {
+        const formData = new FormData(this);
+        const response = await fetch('/api/contact/support', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRFToken': '{{ csrf_token() }}'
+            }
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+            // Show success modal
+            document.getElementById('ticket-id').textContent = result.ticket_id;
+            document.getElementById('success-modal').classList.remove('hidden');
+            
+            // Reset form
+            this.reset();
+        } else {
+            alert('Error submitting ticket: ' + (result.message || 'Please try again.'));
+        }
+    } catch (error) {
+        alert('Error submitting ticket. Please try again or contact us directly.');
+    } finally {
+        // Reset loading state
+        submitButton.disabled = false;
+        submitText.classList.remove('hidden');
+        loadingText.classList.add('hidden');
+    }
+});
+
+function closeSuccessModal() {
+    document.getElementById('success-modal').classList.add('hidden');
+}
+
+// File upload handling
+document.getElementById('attachment').addEventListener('change', function(e) {
+    const files = Array.from(e.target.files);
+    const maxSize = 10 * 1024 * 1024; // 10MB
+    
+    for (let file of files) {
+        if (file.size > maxSize) {
+            alert(`File "${file.name}" is too large. Maximum size is 10MB.`);
+            e.target.value = '';
+            return;
+        }
+    }
+    
+    // Update label to show selected files
+    const label = document.querySelector('label[for="attachment"] p');
+    if (files.length > 0) {
+        label.textContent = `${files.length} file(s) selected: ${files.map(f => f.name).join(', ')}`;
+    }
+});
+
+// Category-based form adjustments
+document.getElementById('category').addEventListener('change', function(e) {
+    const category = e.target.value;
+    const messageTextarea = document.getElementById('message');
+    
+    // Update placeholder based on category
+    const placeholders = {
+        'ai-services': 'Please describe the AI service issue you\'re experiencing. Include which agent you were using and what you expected to happen.',
+        'web-development': 'Please provide details about your web development project or question. Include project timeline, requirements, or specific issues.',
+        'billing': 'Please describe your billing question or issue. Include your account email and any relevant invoice numbers.',
+        'technical': 'Please describe the technical issue you\'re experiencing. Include steps to reproduce the problem and your browser/device information.',
+        'account': 'Please describe your account-related question or issue. Include your account email and specific details.',
+        'feature-request': 'Please describe the feature you\'d like to see added and how it would benefit your workflow.',
+        'other': 'Please provide as much detail as possible about your question or issue.'
+    };
+    
+    messageTextarea.placeholder = placeholders[category] || messageTextarea.placeholder;
+});
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+</script>
+
+<style>
+.support-page .hero-section {
+    position: relative;
+}
+
+.support-page .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/static/img/support-bg.jpg') center/cover;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.support-page .hero-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+.support-page form input:focus,
+.support-page form select:focus,
+.support-page form textarea:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: rgb(147, 51, 234);
+    border-color: transparent;
+}
+
+.support-page .file-upload-area {
+    transition: all 0.3s ease;
+}
+
+.support-page .file-upload-area:hover {
+    border-color: rgb(147, 51, 234);
+    background-color: rgb(250, 245, 255);
+}
+</style>
+{% endblock %}

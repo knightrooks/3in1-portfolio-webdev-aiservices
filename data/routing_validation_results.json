@@ -1,0 +1,180 @@
+{
+  "timestamp": 1758123234.7202091,
+  "duration": 4.276836633682251,
+  "blueprint_imports": {
+    "agents": {
+      "status": "SUCCESS",
+      "blueprint_name": "agents",
+      "url_prefix": null
+    },
+    "webdev": {
+      "status": "SUCCESS",
+      "blueprint_name": "webdev",
+      "url_prefix": null
+    },
+    "portfolio": {
+      "status": "SUCCESS",
+      "blueprint_name": "portfolio",
+      "url_prefix": null
+    },
+    "models": {
+      "status": "SUCCESS",
+      "blueprint_name": "models",
+      "url_prefix": null
+    }
+  },
+  "routing_validation": {
+    "global_routes": {
+      "/": {
+        "status": "ERROR: Could not build url for endpoint 'agents.dashboard'. Did you mean 'agents.agents_dashboard' instead?",
+        "description": "Main landing page"
+      },
+      "/health": {
+        "status": "ERROR: 'None' has no attribute 'startswith'",
+        "description": "Global health check"
+      },
+      "/api": {
+        "status": "ERROR: 'None' has no attribute 'startswith'",
+        "description": "Global API overview"
+      }
+    },
+    "agents_routes": {
+      "/agents/": {
+        "status": "ERROR: Could not build url for endpoint 'agents.dashboard'. Did you mean 'agents.agents_dashboard' instead?",
+        "description": "Agents dashboard"
+      },
+      "/agents/api": {
+        "status": "PASS",
+        "description": "Agents API overview",
+        "response_code": 200
+      },
+      "/agents/health": {
+        "status": "PASS",
+        "description": "Agents health check",
+        "response_code": 200
+      },
+      "/agents/analytics": {
+        "status": "PASS",
+        "description": "Agents analytics",
+        "response_code": 200
+      },
+      "/agents/strategist": {
+        "status": "ERROR: Could not build url for endpoint 'agents.dashboard'. Did you mean 'agents.agents_dashboard' instead?",
+        "description": "Strategist agent detail"
+      },
+      "/agents/developer": {
+        "status": "ERROR: Could not build url for endpoint 'agents.dashboard'. Did you mean 'agents.agents_dashboard' instead?",
+        "description": "Developer agent detail"
+      },
+      "/agents/girlfriend": {
+        "status": "ERROR: Could not build url for endpoint 'agents.dashboard'. Did you mean 'agents.agents_dashboard' instead?",
+        "description": "Girlfriend agent detail"
+      }
+    },
+    "webdev_routes": {
+      "/webdev/": {
+        "status": "ERROR: block 'title' defined twice",
+        "description": "WebDev homepage"
+      },
+      "/webdev/api": {
+        "status": "PASS",
+        "description": "WebDev API overview",
+        "response_code": 200
+      },
+      "/webdev/websites": {
+        "status": "ERROR: block 'title' defined twice",
+        "description": "Website services"
+      },
+      "/webdev/apps": {
+        "status": "ERROR: block 'title' defined twice",
+        "description": "Web applications"
+      },
+      "/webdev/ecommerce": {
+        "status": "ERROR: block 'title' defined twice",
+        "description": "E-commerce solutions"
+      },
+      "/webdev/pricing": {
+        "status": "ERROR: block 'title' defined twice",
+        "description": "Pricing page"
+      },
+      "/webdev/quote": {
+        "status": "ERROR: block 'title' defined twice",
+        "description": "Quote form"
+      },
+      "/webdev/health": {
+        "status": "PASS",
+        "description": "WebDev health check",
+        "response_code": 200
+      }
+    },
+    "portfolio_routes": {
+      "/portfolio/": {
+        "status": "ERROR: Encountered unknown tag 'endif'. You probably made a nesting mistake. Jinja is expecting this tag, but currently looking for 'endfor' or 'else'. The innermost block that needs to be closed is 'for'.",
+        "description": "Portfolio homepage"
+      },
+      "/portfolio/api": {
+        "status": "PASS",
+        "description": "Portfolio API overview",
+        "response_code": 200
+      },
+      "/portfolio/about": {
+        "status": "ERROR: block 'title' defined twice",
+        "description": "About page"
+      },
+      "/portfolio/projects": {
+        "status": "ERROR: block 'title' defined twice",
+        "description": "Projects showcase"
+      },
+      "/portfolio/skills": {
+        "status": "ERROR: block 'title' defined twice",
+        "description": "Skills page"
+      },
+      "/portfolio/achievements": {
+        "status": "ERROR: Could not build url for endpoint 'agents.dashboard'. Did you mean 'agents.agents_dashboard' instead?",
+        "description": "Achievements page"
+      },
+      "/portfolio/testimonials": {
+        "status": "ERROR: block 'title' defined twice",
+        "description": "Testimonials"
+      },
+      "/portfolio/contact": {
+        "status": "ERROR: block 'title' defined twice",
+        "description": "Contact page"
+      },
+      "/portfolio/health": {
+        "status": "PASS",
+        "description": "Portfolio health check",
+        "response_code": 200
+      }
+    },
+    "models_routes": {
+      "/models/": {
+        "status": "ERROR: Could not build url for endpoint 'agents.dashboard'. Did you mean 'agents.agents_dashboard' instead?",
+        "description": "Models dashboard"
+      },
+      "/models/api": {
+        "status": "PASS",
+        "description": "Models API overview",
+        "response_code": 200
+      },
+      "/models/health": {
+        "status": "PASS",
+        "description": "Models health check",
+        "response_code": 200
+      },
+      "/models/analytics": {
+        "status": "PASS",
+        "description": "Models analytics",
+        "response_code": 200
+      },
+      "/models/codellama": {
+        "status": "ERROR: Could not build url for endpoint 'agents.dashboard'. Did you mean 'agents.agents_dashboard' instead?",
+        "description": "Code Llama model detail"
+      },
+      "/models/gemma2": {
+        "status": "ERROR: Could not build url for endpoint 'agents.dashboard'. Did you mean 'agents.agents_dashboard' instead?",
+        "description": "Gemma2 model detail"
+      }
+    }
+  }
+}

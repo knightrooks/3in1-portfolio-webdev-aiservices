@@ -1,0 +1,484 @@
+{% extends "base.html" %}
+
+{% block title %}SEO Services | Professor Johnny (@onelastai){% endblock %}
+
+{% block content %}
+<div class="seo-section" style="margin-top: 76px;">
+    <!-- SEO Hero -->
+    <section class="seo-hero bg-success text-white py-5" style="background: linear-gradient(135deg, #198754 0%, #20c997 50%, #0f5132 100%);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ url_for('webdev.index') }}" class="text-light">Services</a></li>
+                            <li class="breadcrumb-item active text-light">SEO Services</li>
+                        </ol>
+                    </nav>
+                    
+                    <h1 class="display-4 fw-bold mb-4">
+                        <i class="fas fa-search text-warning"></i> SEO Services
+                    </h1>
+                    <p class="lead mb-4">Get found on Google and drive organic traffic to your website</p>
+                    
+                    <div class="d-flex gap-3">
+                        <a href="#packages" class="btn btn-warning btn-lg">
+                            <i class="fas fa-chart-line"></i> View Packages
+                        </a>
+                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-calculator"></i> Get Quote
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="device-mockup">
+                        <i class="fas fa-chart-line fa-8x text-warning opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO Benefits -->
+    <section class="seo-benefits py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-rocket text-primary"></i> Why SEO Matters
+                    </h2>
+                    <p class="lead text-muted">Increase visibility, drive traffic, and grow your business</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="benefit-card card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <i class="fas fa-eye fa-3x text-primary mb-3"></i>
+                            <h4 class="fw-bold mb-3">Increased Visibility</h4>
+                            <p class="text-muted">Appear higher in search results when customers look for your services.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="benefit-card card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <i class="fas fa-users fa-3x text-success mb-3"></i>
+                            <h4 class="fw-bold mb-3">More Traffic</h4>
+                            <p class="text-muted">Drive qualified organic traffic that converts into customers.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="benefit-card card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <i class="fas fa-dollar-sign fa-3x text-warning mb-3"></i>
+                            <h4 class="fw-bold mb-3">Better ROI</h4>
+                            <p class="text-muted">Cost-effective marketing that delivers long-term results.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="benefit-card card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <i class="fas fa-trophy fa-3x text-info mb-3"></i>
+                            <h4 class="fw-bold mb-3">Brand Authority</h4>
+                            <p class="text-muted">Build trust and credibility with higher search rankings.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO Services -->
+    <section class="seo-services py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-cogs text-success"></i> Our SEO Services
+                    </h2>
+                    <p class="lead text-muted">Comprehensive SEO solutions to boost your online presence</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="service-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <i class="fas fa-search fa-3x text-primary mb-4"></i>
+                            <h4 class="fw-bold mb-3">Keyword Research</h4>
+                            <p class="text-muted mb-4">In-depth keyword analysis to identify the best opportunities for your business.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Competitor analysis</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Search volume analysis</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Long-tail keywords</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Local keywords</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="service-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <i class="fas fa-code fa-3x text-info mb-4"></i>
+                            <h4 class="fw-bold mb-3">Technical SEO</h4>
+                            <p class="text-muted mb-4">Optimize your website's technical foundation for better search engine crawling.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Site speed optimization</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Mobile responsiveness</li>
+                                <li><i class="fas fa-check text-success me-2"></i>XML sitemaps</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Schema markup</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="service-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <i class="fas fa-edit fa-3x text-warning mb-4"></i>
+                            <h4 class="fw-bold mb-3">Content Optimization</h4>
+                            <p class="text-muted mb-4">Create and optimize content that ranks well and engages your audience.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Content strategy</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Meta tags optimization</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Internal linking</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Blog content</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="service-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <i class="fas fa-link fa-3x text-danger mb-4"></i>
+                            <h4 class="fw-bold mb-3">Link Building</h4>
+                            <p class="text-muted mb-4">Build high-quality backlinks to improve your domain authority and rankings.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>High-quality backlinks</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Guest posting</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Directory submissions</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Competitor analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="service-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <i class="fas fa-map-marker-alt fa-3x text-secondary mb-4"></i>
+                            <h4 class="fw-bold mb-3">Local SEO</h4>
+                            <p class="text-muted mb-4">Optimize for local searches to attract customers in your area.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Google My Business optimization</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Local citations</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Review management</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Local keywords</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="service-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <i class="fas fa-chart-bar fa-3x text-dark mb-4"></i>
+                            <h4 class="fw-bold mb-3">SEO Analytics</h4>
+                            <p class="text-muted mb-4">Track and measure SEO performance with detailed reporting.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Google Analytics setup</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Ranking tracking</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Traffic analysis</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Monthly reports</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO Packages -->
+    <section id="packages" class="seo-packages py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-packages text-success"></i> SEO Packages
+                    </h2>
+                    <p class="lead text-muted">Choose the right SEO package for your business goals</p>
+                </div>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <!-- Starter Package -->
+                <div class="col-lg-4">
+                    <div class="package-card card h-100 border-0 shadow">
+                        <div class="card-header bg-success text-white text-center">
+                            <h3 class="card-title fw-bold">SEO Starter</h3>
+                            <div class="price">
+                                <span class="h2 fw-bold">$800</span>
+                                <small class="d-block opacity-75">per month</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="package-features mb-4">
+                                <h5 class="fw-bold mb-3">Perfect for small businesses:</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Keyword research (10 keywords)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>On-page optimization (5 pages)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Technical SEO audit</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Google My Business setup</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Monthly reporting</li>
+                                    <li class="mb-2"><i class="fas fa-times text-muted me-2"></i><span class="text-muted">Link building</span></li>
+                                    <li class="mb-2"><i class="fas fa-times text-muted me-2"></i><span class="text-muted">Content creation</span></li>
+                                </ul>
+                            </div>
+                            
+                            <a href="{{ url_for('webdev.quote') }}?package=seo-starter" class="btn btn-success w-100">
+                                Choose Starter Package
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professional Package -->
+                <div class="col-lg-4">
+                    <div class="package-card card h-100 border-primary shadow position-relative">
+                        <div class="position-absolute top-0 start-50 translate-middle">
+                            <span class="badge bg-primary px-3 py-2">Most Popular</span>
+                        </div>
+                        <div class="card-header bg-primary text-white text-center">
+                            <h3 class="card-title fw-bold">SEO Professional</h3>
+                            <div class="price">
+                                <span class="h2 fw-bold">$1,500</span>
+                                <small class="d-block opacity-75">per month</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="package-features mb-4">
+                                <h5 class="fw-bold mb-3">Ideal for growing businesses:</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Keyword research (25 keywords)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>On-page optimization (15 pages)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Technical SEO improvements</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Link building (10 links/month)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Content creation (2 articles/month)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Local SEO optimization</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bi-weekly reporting</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="{{ url_for('webdev.quote') }}?package=seo-professional" class="btn btn-primary w-100">
+                                Choose Professional Package
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enterprise Package -->
+                <div class="col-lg-4">
+                    <div class="package-card card h-100 border-0 shadow">
+                        <div class="card-header bg-warning text-dark text-center">
+                            <h3 class="card-title fw-bold">SEO Enterprise</h3>
+                            <div class="price">
+                                <span class="h2 fw-bold">$2,500+</span>
+                                <small class="d-block">per month</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="package-features mb-4">
+                                <h5 class="fw-bold mb-3">For large businesses:</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited keyword research</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Complete site optimization</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced technical SEO</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Link building (25+ links/month)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Content creation (4+ articles/month)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Dedicated SEO manager</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Weekly reporting & calls</li>
+                                </ul>
+                            </div>
+                            
+                            <a href="{{ url_for('webdev.quote') }}?package=seo-enterprise" class="btn btn-warning w-100">
+                                Choose Enterprise Package
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO Process -->
+    <section class="seo-process py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-route text-info"></i> Our SEO Process
+                    </h2>
+                    <p class="lead text-muted">A proven methodology that delivers results</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="process-timeline">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4 class="fw-bold">SEO Audit</h4>
+                                <p class="text-muted">Comprehensive analysis of your website's current SEO performance and identify improvement opportunities.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4 class="fw-bold">Strategy Development</h4>
+                                <p class="text-muted">Create a customized SEO strategy based on your business goals and competitive landscape.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4 class="fw-bold">Implementation</h4>
+                                <p class="text-muted">Execute on-page optimizations, technical improvements, and content creation according to the strategy.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4 class="fw-bold">Monitoring & Reporting</h4>
+                                <p class="text-muted">Track rankings, traffic, and conversions with detailed monthly reports and ongoing optimization.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="seo-cta py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h3 class="fw-bold mb-3">Ready to Dominate Search Results?</h3>
+                    <p class="lead mb-4">Let's optimize your website and drive more organic traffic to your business.</p>
+                    <div class="d-flex gap-3 justify-content-center">
+                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-warning btn-lg">
+                            <i class="fas fa-rocket"></i> Start SEO Campaign
+                        </a>
+                        <a href="mailto:contact@axeyaxe.com" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-phone"></i> Free SEO Consultation
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.benefit-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}
+
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+}
+
+.package-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+}
+
+.process-timeline {
+    position: relative;
+}
+
+.process-timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #28a745;
+}
+
+.process-step {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: #28a745;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 2rem;
+    z-index: 2;
+    position: relative;
+}
+
+.step-content {
+    flex: 1;
+    padding-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .process-timeline::before {
+        display: none;
+    }
+    
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+}
+</style>
+{% endblock %}

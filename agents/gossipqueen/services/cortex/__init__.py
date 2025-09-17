@@ -1,0 +1,1 @@
+"""Gossip Queen cortex module"""

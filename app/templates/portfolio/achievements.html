@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Achievements - Portfolio{% endblock %}
+{% block content %}
+<div class="container mt-5 pt-4">
+    <h1>Achievements & Awards</h1>
+    <div class="row">
+        {% for achievement in achievements %}
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5>{{ achievement.title }}</h5>
+                    <p>{{ achievement.description }}</p>
+                    <small class="text-muted">{{ achievement.date }}</small>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

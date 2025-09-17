@@ -1,0 +1,476 @@
+{% extends "base.html" %}
+
+{% block title %}Request Quote | Professor Johnny (@onelastai){% endblock %}
+
+{% block content %}
+<div class="quote-section" style="margin-top: 76px;">
+    <!-- Quote Hero -->
+    <section class="quote-hero py-5 bg-light">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h1 class="display-4 fw-bold mb-4">
+                        <i class="fas fa-calculator text-primary"></i> Request a Quote
+                    </h1>
+                    <p class="lead text-muted">Tell us about your project and we'll provide a detailed quote within 24 hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Form -->
+    <section class="quote-form py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <!-- Flash Messages -->
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }} alert-dismissible fade show" role="alert">
+                                    <i class="fas fa-{{ 'check-circle' if category == 'success' else 'exclamation-circle' }} me-2"></i>
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    
+                    <div class="card shadow border-0">
+                        <div class="card-body p-5">
+                            <form id="quoteForm" method="POST">
+                                <!-- Service Type -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Service Type *</label>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="form-check service-option">
+                                                <input class="form-check-input" type="radio" name="service" id="websites" value="websites" 
+                                                       {% if service == 'websites' %}checked{% endif %}>
+                                                <label class="form-check-label d-flex align-items-center" for="websites">
+                                                    <i class="fas fa-globe text-primary me-2"></i>
+                                                    <div>
+                                                        <strong>Custom Websites</strong>
+                                                        <small class="d-block text-muted">From $1,500+</small>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check service-option">
+                                                <input class="form-check-input" type="radio" name="service" id="applications" value="apps"
+                                                       {% if service == 'apps' %}checked{% endif %}>
+                                                <label class="form-check-label d-flex align-items-center" for="applications">
+                                                    <i class="fas fa-code text-success me-2"></i>
+                                                    <div>
+                                                        <strong>Web Applications</strong>
+                                                        <small class="d-block text-muted">From $3,000+</small>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check service-option">
+                                                <input class="form-check-input" type="radio" name="service" id="ecommerce" value="ecommerce"
+                                                       {% if service == 'ecommerce' %}checked{% endif %}>
+                                                <label class="form-check-label d-flex align-items-center" for="ecommerce">
+                                                    <i class="fas fa-shopping-cart text-warning me-2"></i>
+                                                    <div>
+                                                        <strong>E-commerce Solutions</strong>
+                                                        <small class="d-block text-muted">From $2,500+</small>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check service-option">
+                                                <input class="form-check-input" type="radio" name="service" id="maintenance" value="maintenance"
+                                                       {% if service == 'maintenance' %}checked{% endif %}>
+                                                <label class="form-check-label d-flex align-items-center" for="maintenance">
+                                                    <i class="fas fa-tools text-info me-2"></i>
+                                                    <div>
+                                                        <strong>Website Maintenance</strong>
+                                                        <small class="d-block text-muted">From $200/month</small>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check service-option">
+                                                <input class="form-check-input" type="radio" name="service" id="seo" value="seo"
+                                                       {% if service == 'seo' %}checked{% endif %}>
+                                                <label class="form-check-label d-flex align-items-center" for="seo">
+                                                    <i class="fas fa-search text-danger me-2"></i>
+                                                    <div>
+                                                        <strong>SEO Services</strong>
+                                                        <small class="d-block text-muted">From $800/month</small>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check service-option">
+                                                <input class="form-check-input" type="radio" name="service" id="marketing" value="marketing"
+                                                       {% if service == 'marketing' %}checked{% endif %}>
+                                                <label class="form-check-label d-flex align-items-center" for="marketing">
+                                                    <i class="fas fa-bullhorn text-primary me-2"></i>
+                                                    <div>
+                                                        <strong>Digital Marketing</strong>
+                                                        <small class="d-block text-muted">From $1,200/month</small>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Package Selection (dynamically shown based on service type) -->
+                                <div id="packageSection" class="mb-4 d-none">
+                                    <label for="package" class="form-label fw-bold">Package</label>
+                                    <select class="form-select" id="package" name="package">
+                                        <option value="">Select a package</option>
+                                    </select>
+                                </div>
+
+                                <!-- Personal Information -->
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="name" class="form-label fw-bold">Full Name *</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="email" class="form-label fw-bold">Email Address *</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="phone" class="form-label fw-bold">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="company" class="form-label fw-bold">Company Name</label>
+                                        <input type="text" class="form-control" id="company" name="company">
+                                    </div>
+                                </div>
+
+                                <!-- Project Details -->
+                                <div class="mb-4">
+                                    <label for="project_description" class="form-label fw-bold">Project Description *</label>
+                                    <textarea class="form-control" id="project_description" name="project_description" rows="4" 
+                                              placeholder="Please describe your project, goals, and any specific requirements..." required></textarea>
+                                </div>
+
+                                <!-- Budget -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Estimated Budget</label>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="budget" id="budget1" value="Under $2,000">
+                                                <label class="form-check-label" for="budget1">Under $2,000</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="budget" id="budget2" value="$2,000 - $5,000">
+                                                <label class="form-check-label" for="budget2">$2,000 - $5,000</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="budget" id="budget3" value="$5,000 - $10,000">
+                                                <label class="form-check-label" for="budget3">$5,000 - $10,000</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="budget" id="budget4" value="$10,000+">
+                                                <label class="form-check-label" for="budget4">$10,000+</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Timeline -->
+                                <div class="mb-4">
+                                    <label for="timeline" class="form-label fw-bold">Preferred Timeline</label>
+                                    <select class="form-select" id="timeline" name="timeline">
+                                        <option value="">Select timeline</option>
+                                        <option value="ASAP (Rush job +50%)">ASAP (Rush job +50%)</option>
+                                        <option value="2-4 weeks">2-4 weeks</option>
+                                        <option value="1-2 months">1-2 months</option>
+                                        <option value="2-3 months">2-3 months</option>
+                                        <option value="No specific deadline">No specific deadline</option>
+                                    </select>
+                                </div>
+
+                                <!-- Additional Requirements -->
+                                <div class="mb-4">
+                                    <label class="form-label fw-bold">Additional Requirements</label>
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="requirements" id="req1" value="SEO Optimization">
+                                                <label class="form-check-label" for="req1">SEO Optimization</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="requirements" id="req2" value="Content Management">
+                                                <label class="form-check-label" for="req2">Content Management</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="requirements" id="req3" value="Analytics Setup">
+                                                <label class="form-check-label" for="req3">Analytics Setup</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="requirements" id="req4" value="Training/Documentation">
+                                                <label class="form-check-label" for="req4">Training/Documentation</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Additional Notes -->
+                                <div class="mb-4">
+                                    <label for="notes" class="form-label fw-bold">Additional Notes</label>
+                                    <textarea class="form-control" id="notes" name="notes" rows="3" 
+                                              placeholder="Any other details you'd like to share..."></textarea>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                        <i class="fas fa-paper-plane"></i> Send Quote Request
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Info Sidebar -->
+                <div class="col-lg-4">
+                    <div class="contact-info mt-5 mt-lg-0">
+                        <div class="card border-0 bg-light">
+                            <div class="card-body p-4">
+                                <h5 class="fw-bold mb-3">
+                                    <i class="fas fa-info-circle text-primary"></i> What Happens Next?
+                                </h5>
+                                
+                                <div class="process-step mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="badge bg-primary rounded-pill me-2">1</span>
+                                        <strong>Quote Review</strong>
+                                    </div>
+                                    <p class="text-muted mb-0 ms-4">We'll review your requirements and prepare a detailed quote.</p>
+                                </div>
+                                
+                                <div class="process-step mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="badge bg-primary rounded-pill me-2">2</span>
+                                        <strong>Quick Response</strong>
+                                    </div>
+                                    <p class="text-muted mb-0 ms-4">You'll receive our response within 24 hours via email.</p>
+                                </div>
+                                
+                                <div class="process-step mb-3">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="badge bg-primary rounded-pill me-2">3</span>
+                                        <strong>Discussion</strong>
+                                    </div>
+                                    <p class="text-muted mb-0 ms-4">We'll schedule a call to discuss details and answer questions.</p>
+                                </div>
+                                
+                                <div class="process-step">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <span class="badge bg-primary rounded-pill me-2">4</span>
+                                        <strong>Project Start</strong>
+                                    </div>
+                                    <p class="text-muted mb-0 ms-4">Once approved, we'll start working on your project immediately.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-0 bg-primary text-white mt-4">
+                            <div class="card-body p-4 text-center">
+                                <h5 class="fw-bold mb-3">Need to Talk First?</h5>
+                                <p class="mb-3">Prefer to discuss your project before requesting a quote?</p>
+                                <a href="mailto:contact@axeyaxe.com" class="btn btn-light">
+                                    <i class="fas fa-envelope"></i> contact@axeyaxe.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.service-option {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.service-option:hover {
+    border-color: #007bff;
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+.service-option input[type="radio"]:checked + label {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.process-step {
+    border-left: 3px solid #e9ecef;
+    padding-left: 1rem;
+}
+
+.process-step:last-child {
+    border-left: none;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const serviceOptions = document.querySelectorAll('input[name="service_type"]');
+    const packageSection = document.getElementById('packageSection');
+    const packageSelect = document.getElementById('package');
+    
+    // Package options for each service type
+    const packageOptions = {
+        'Custom Websites': [
+            'Basic Website - $1,500',
+            'Professional Website - $3,000',
+            'Enterprise Website - $5,000+'
+        ],
+        'Web Applications': [
+            'Simple App - $3,000',
+            'Complex App - $6,000',
+            'Enterprise App - $10,000+'
+        ],
+        'E-commerce Solutions': [
+            'Basic Store - $2,500',
+            'Advanced Store - $4,500',
+            'Enterprise Store - $8,000+'
+        ],
+        'Website Maintenance': [
+            'Basic Plan - $200/month',
+            'Professional Plan - $400/month',
+            'Enterprise Plan - $800/month'
+        ]
+    };
+    
+    serviceOptions.forEach(option => {
+        option.addEventListener('change', function() {
+            if (this.checked) {
+                const serviceType = this.value;
+                loadPackageOptions(serviceType);
+            }
+        });
+    });
+    
+    // Load package options from API
+    function loadPackageOptions(service) {
+        fetch(`/webdev/api/packages/${service}`)
+            .then(response => response.json())
+            .then(data => {
+                packageSelect.innerHTML = '<option value="">Select a package</option>';
+                
+                Object.entries(data).forEach(([key, pkg]) => {
+                    const price = pkg.billing ? `$${pkg.price}/${pkg.billing}` : `$${pkg.price}`;
+                    packageSelect.innerHTML += `<option value="${service}-${key}">${pkg.name} - ${price}</option>`;
+                });
+                
+                packageSection.classList.remove('d-none');
+            })
+            .catch(error => {
+                console.error('Error loading packages:', error);
+                packageSection.classList.add('d-none');
+            });
+    }
+    
+    // Pre-select package if provided in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const preselectedPackage = urlParams.get('package');
+    const preselectedService = urlParams.get('service');
+    
+    if (preselectedService) {
+        const serviceOption = document.getElementById(preselectedService);
+        if (serviceOption) {
+            serviceOption.checked = true;
+            loadPackageOptions(preselectedService);
+            
+            // Wait for packages to load, then select the package
+            setTimeout(() => {
+                if (preselectedPackage) {
+                    packageSelect.value = preselectedPackage;
+                }
+            }, 500);
+        }
+    }
+    
+    // Form validation and submission
+    document.getElementById('quoteForm').addEventListener('submit', function(e) {
+        const requiredFields = ['name', 'email', 'service'];
+        let isValid = true;
+        
+        // Validate required fields
+        requiredFields.forEach(fieldName => {
+            const field = document.querySelector(`[name="${fieldName}"]`);
+            if (!field || (field.type === 'radio' && !document.querySelector(`[name="${fieldName}"]:checked`))) {
+                isValid = false;
+                
+                // Add error styling
+                if (field && field.type !== 'radio') {
+                    field.classList.add('is-invalid');
+                }
+            } else if (field.type !== 'radio') {
+                field.classList.remove('is-invalid');
+            }
+        });
+        
+        if (!isValid) {
+            e.preventDefault();
+            alert('Please fill in all required fields.');
+            return;
+        }
+        
+        // Show loading state
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
+        
+        // Let form submit normally (will be handled by Flask backend)
+    });
+    
+    // Remove error styling on input
+    document.querySelectorAll('input, textarea, select').forEach(field => {
+        field.addEventListener('input', function() {
+            this.classList.remove('is-invalid');
+        });
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,1 @@
+"""Emotional Jenny engine module"""

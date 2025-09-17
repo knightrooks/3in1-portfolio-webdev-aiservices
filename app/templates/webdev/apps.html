@@ -1,44 +1,84 @@
-{% extends "base.html" %}
+{% extends "base.html" %}{% extends "base.html" %}
 
-{% block title %}Web Applications | Professor Johnny (@onelastai){% endblock %}
 
-{% block content %}
-<div class="apps-section" style="margin-top: 76px;">
-    <!-- Apps Hero -->
-    <section class="apps-hero bg-success text-white py-5" style="background: linear-gradient(135deg, #198754 0%, #20c997 50%, #0d6efd 100%);">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ url_for('webdev.index') }}" class="text-light">Services</a></li>
-                            <li class="breadcrumb-item active text-light">Web Applications</li>
-                        </ol>
-                    </nav>
-                    
-                    <h1 class="display-4 fw-bold mb-4">
-                        <i class="fas fa-code text-warning"></i> Custom Web Applications
-                    </h1>
-                    <p class="lead mb-4">Powerful web applications built with cutting-edge technology</p>
-                    
-                    <div class="d-flex gap-3">
-                        <a href="#packages" class="btn btn-warning btn-lg">
-                            <i class="fas fa-tags"></i> View Packages
-                        </a>
-                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-outline-light btn-lg">
-                            <i class="fas fa-calculator"></i> Get Quote
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <div class="device-mockup">
-                        <i class="fas fa-desktop fa-8x text-info opacity-75"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
+{% block title %}Web Applications Development{% endblock %}{% block title %}Web Applications | Professor Johnny (@onelastai){% endblock %}
+
+
+
+{% block content %}{% block content %}
+
+<div class="container mt-5 pt-4"><div class="apps-section" style="margin-top: 76px;">
+
+    <h1>Web Application Development</h1>    <!-- Apps Hero -->
+
+    <p>Custom web applications built with modern technologies.</p>    <section class="apps-hero bg-success text-white py-5" style="background: linear-gradient(135deg, #198754 0%, #20c997 50%, #0d6efd 100%);">
+
+            <div class="container">
+
+    <div class="row">            <div class="row align-items-center">
+
+        <div class="col-md-4">                <div class="col-lg-8">
+
+            <div class="card">                    <nav aria-label="breadcrumb">
+
+                <div class="card-body">                        <ol class="breadcrumb">
+
+                    <h5>SPA Development</h5>                            <li class="breadcrumb-item"><a href="{{ url_for('webdev.index') }}" class="text-light">Services</a></li>
+
+                    <p>Single Page Applications with React/Vue</p>                            <li class="breadcrumb-item active text-light">Web Applications</li>
+
+                </div>                        </ol>
+
+            </div>                    </nav>
+
+        </div>                    
+
+        <div class="col-md-4">                    <h1 class="display-4 fw-bold mb-4">
+
+            <div class="card">                        <i class="fas fa-code text-warning"></i> Custom Web Applications
+
+                <div class="card-body">                    </h1>
+
+                    <h5>API Integration</h5>                    <p class="lead mb-4">Powerful web applications built with cutting-edge technology</p>
+
+                    <p>RESTful APIs and third-party integrations</p>                    
+
+                </div>                    <div class="d-flex gap-3">
+
+            </div>                        <a href="#packages" class="btn btn-warning btn-lg">
+
+        </div>                            <i class="fas fa-tags"></i> View Packages
+
+        <div class="col-md-4">                        </a>
+
+            <div class="card">                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-outline-light btn-lg">
+
+                <div class="card-body">                            <i class="fas fa-calculator"></i> Get Quote
+
+                    <h5>Database Design</h5>                        </a>
+
+                    <p>Efficient database architecture</p>                    </div>
+
+                </div>                </div>
+
+            </div>                <div class="col-lg-4 text-center">
+
+        </div>                    <div class="device-mockup">
+
+    </div>                        <i class="fas fa-desktop fa-8x text-info opacity-75"></i>
+
+                        </div>
+
+    <div class="text-center mt-5">                </div>
+
+        <a href="{{ url_for('webdev.quote') }}" class="btn btn-primary btn-lg">Start Your Project</a>            </div>
+
+    </div>        </div>
+
+</div>    </section>
+
+{% endblock %}
     <!-- App Types -->
     <section class="app-types py-5">
         <div class="container">

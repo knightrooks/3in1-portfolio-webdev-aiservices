@@ -1,0 +1,1 @@
+"""Test package for Virtual Girlfriend agent"""

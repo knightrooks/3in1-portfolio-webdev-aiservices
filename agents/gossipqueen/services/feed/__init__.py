@@ -1,0 +1,1 @@
+"""Gossip Queen feed module"""

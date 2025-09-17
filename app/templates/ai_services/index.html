@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+
+{% block title %}AI Services - Intelligent Agent Hub{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/ai.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="ai-services-hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Meet Your AI Companions</h1>
+            <p class="hero-subtitle">Interact with {{ total_agents }} unique AI personalities, each with their own character and specialties</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">{{ total_agents }}</span>
+                    <span class="stat-label">AI Agents</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">11</span>
+                    <span class="stat-label">AI Models</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Availability</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="featured-agents">
+    <div class="container">
+        <h2 class="section-title">Featured AI Personalities</h2>
+        <div class="agents-grid">
+            {% for agent in featured_agents %}
+            <div class="agent-card" data-agent="{{ agent.id }}">
+                <div class="agent-avatar">
+                    <img src="{{ agent.avatar }}" alt="{{ agent.name }}" onerror="this.src='/static/img/avatar-placeholder.png'">
+                </div>
+                <div class="agent-info">
+                    <h3 class="agent-name">{{ agent.name }}</h3>
+                    <p class="agent-description">{{ agent.description }}</p>
+                    <div class="agent-traits">
+                        {% for trait in agent.personality[:3] %}
+                        <span class="trait-badge">{{ trait.replace('_', ' ').title() }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="agent-actions">
+                        <a href="{{ url_for('ai_services.agent_profile', agent_id=agent.id) }}" class="btn btn-outline">View Profile</a>
+                        <a href="{{ url_for('ai_services.chat', agent_id=agent.id) }}" class="btn btn-primary">Chat Now</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{{ url_for('ai_services.agents') }}" class="btn btn-large btn-primary">
+                View All {{ total_agents }} Agents
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="ai-capabilities">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>What Makes Our AI Special?</h2>
+                <div class="capabilities-list">
+                    <div class="capability-item">
+                        <div class="capability-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="capability-content">
+                            <h4>Unique Personalities</h4>
+                            <p>Each agent has distinct traits, from romantic companions to strict coaches</p>
+                        </div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-icon">
+                            <i class="fas fa-memory"></i>
+                        </div>
+                        <div class="capability-content">
+                            <h4>Persistent Memory</h4>
+                            <p>AI remembers your conversations and builds lasting relationships</p>
+                        </div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="capability-content">
+                            <h4>Multi-Model Intelligence</h4>
+                            <p>Powered by 11 specialized AI models for optimal responses</p>
+                        </div>
+                    </div>
+                    <div class="capability-item">
+                        <div class="capability-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="capability-content">
+                            <h4>Real-time Conversations</h4>
+                            <p>Instant responses with WebSocket-powered live chat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="ai-demo-container">
+                    <h3>Try AI Chat Now</h3>
+                    <div class="demo-chat">
+                        <div class="chat-message agent-message">
+                            <div class="message-avatar">
+                                <img src="/static/img/avatars/girlfriend.png" alt="AI">
+                            </div>
+                            <div class="message-content">
+                                Hi sweetie! I'm your virtual girlfriend. How has your day been? 💕
+                            </div>
+                        </div>
+                        <div class="chat-message user-message">
+                            <div class="message-content">
+                                It's been pretty good! Just exploring this AI platform.
+                            </div>
+                        </div>
+                        <div class="chat-message agent-message">
+                            <div class="message-avatar">
+                                <img src="/static/img/avatars/girlfriend.png" alt="AI">
+                            </div>
+                            <div class="message-content">
+                                That's wonderful! I'm so excited you're here. Want to chat with me or try one of my AI friends?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="demo-actions">
+                        <a href="{{ url_for('ai_services.chat') }}" class="btn btn-primary btn-large">
+                            Start Chatting
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pricing-preview">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2>Choose Your AI Experience</h2>
+                <p>From free conversations to premium AI relationships</p>
+            </div>
+        </div>
+        <div class="row pricing-cards">
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <h3>Free Tier</h3>
+                    <div class="price">$0<span class="period">/month</span></div>
+                    <ul>
+                        <li>10 messages per day</li>
+                        <li>2 basic AI agents</li>
+                        <li>Standard responses</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline">Get Started</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Pro Plan</h3>
+                    <div class="price">$19.99<span class="period">/month</span></div>
+                    <ul>
+                        <li>Unlimited messages</li>
+                        <li>All {{ total_agents }} AI agents</li>
+                        <li>Conversation history</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="{{ url_for('ai_services.pricing') }}" class="btn btn-primary">Upgrade Now</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">$99.99<span class="period">/month</span></div>
+                    <ul>
+                        <li>Custom AI agents</li>
+                        <li>API access</li>
+                        <li>Analytics dashboard</li>
+                        <li>Dedicated support</li>
+                    </ul>
+                    <a href="{{ url_for('ai_services.pricing') }}" class="btn btn-outline">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container text-center">
+        <h2>Ready to Meet Your AI Companions?</h2>
+        <p>Join thousands of users already chatting with our AI personalities</p>
+        <div class="cta-buttons">
+            <a href="{{ url_for('ai_services.chat') }}" class="btn btn-primary btn-large">
+                Start Chatting Free
+            </a>
+            <a href="{{ url_for('ai_services.agents') }}" class="btn btn-outline btn-large">
+                Browse All Agents
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Animate agent cards on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.agent-card').forEach(card => {
+        observer.observe(card);
+    });
+
+    // Agent card hover effects
+    document.querySelectorAll('.agent-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+});
+</script>
+{% endblock %}

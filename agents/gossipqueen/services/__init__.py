@@ -1,0 +1,1 @@
+"""Gossip Queen Services Package"""

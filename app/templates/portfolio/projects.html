@@ -1,25 +1,46 @@
-{% extends "base.html" %}
+{% extends "base.html" %}{% extends "base.html" %}
 
-{% block title %}Projects | {{ data.personal_info.name }}{% endblock %}
+{% block title %}Projects - Portfolio{% endblock %}
 
-{% block content %}
-<div class="projects-section" style="margin-top: 76px;">
-    <!-- Projects Hero -->
-    <section class="projects-hero bg-gradient text-white py-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <h1 class="display-4 fw-bold mb-3">
-                        <i class="fas fa-folder-open text-warning"></i> Featured Projects
-                    </h1>
-                    <p class="lead">Showcasing AI-powered solutions, security frameworks, and innovative applications</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- GitHub Stats Section -->
-    <section class="github-stats py-5 bg-dark text-white">
+{% block content %}{% block title %}Projects | {{ data.personal_info.name }}{% endblock %}
+
+<div class="container mt-5 pt-4">
+
+    <h1>My Projects</h1>{% block content %}
+
+    <div class="row"><div class="projects-section" style="margin-top: 76px;">
+
+        {% for project in projects %}    <!-- Projects Hero -->
+
+        <div class="col-md-4 mb-4">    <section class="projects-hero bg-gradient text-white py-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+
+            <div class="card">        <div class="container">
+
+                <div class="card-body">            <div class="row">
+
+                    <h5>{{ project.name }}</h5>                <div class="col-12 text-center">
+
+                    <p>{{ project.description }}</p>                    <h1 class="display-4 fw-bold mb-3">
+
+                    {% if project.live_url %}                        <i class="fas fa-folder-open text-warning"></i> Featured Projects
+
+                    <a href="{{ project.live_url }}" class="btn btn-primary" target="_blank">View Live</a>                    </h1>
+
+                    {% endif %}                    <p class="lead">Showcasing AI-powered solutions, security frameworks, and innovative applications</p>
+
+                </div>                </div>
+
+            </div>            </div>
+
+        </div>        </div>
+
+        {% endfor %}    </section>
+
+    </div>    
+
+</div>    <!-- GitHub Stats Section -->
+
+{% endblock %}    <section class="github-stats py-5 bg-dark text-white">
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mb-5">

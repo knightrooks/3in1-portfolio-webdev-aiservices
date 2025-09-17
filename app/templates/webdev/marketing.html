@@ -1,11 +1,18 @@
-{% extends "base.html" %}
+{% extends "base.html" %}{% extends "base.html" %}
 
-{% block title %}Digital Marketing | Professor Johnny (@onelastai){% endblock %}
+{% block title %}Digital Marketing{% endblock %}
 
-{% block content %}
-<div class="marketing-section" style="margin-top: 76px;">
-    <!-- Marketing Hero -->
-    <section class="marketing-hero bg-gradient text-white py-5" style="background: linear-gradient(135deg, #e91e63 0%, #f44336 50%, #ff9800 100%);">
+{% block content %}{% block title %}Digital Marketing | Professor Johnny (@onelastai){% endblock %}
+
+<div class="container mt-5 pt-4">
+
+    <h1>Digital Marketing Services</h1>{% block content %}
+
+    <p>Grow your online presence with our digital marketing solutions.</p><div class="marketing-section" style="margin-top: 76px;">
+
+</div>    <!-- Marketing Hero -->
+
+{% endblock %}    <section class="marketing-hero bg-gradient text-white py-5" style="background: linear-gradient(135deg, #e91e63 0%, #f44336 50%, #ff9800 100%);">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8">

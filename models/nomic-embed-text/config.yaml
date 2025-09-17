@@ -1,0 +1,203 @@
+name: nomic-embed-text
+version: "v1.5"
+provider: nomic
+model_type: text_embedding
+description: "Nomic's high-quality text embedding model for semantic search and document analysis"
+
+# Model Parameters
+parameters:
+  embedding_dimensions: 768
+  max_input_tokens: 2048
+  batch_size: 32
+  normalize_embeddings: true
+  context_window: 2048
+  
+# Core Capabilities
+capabilities:
+  text_embedding:
+    - semantic_representation
+    - contextual_understanding
+    - multi_domain_adaptation
+    - similarity_computation
+  
+  semantic_search:
+    - document_retrieval
+    - content_matching
+    - similarity_ranking
+    - query_expansion
+  
+  document_analysis:
+    - content_clustering
+    - topic_modeling
+    - duplicate_detection
+    - classification_support
+  
+  knowledge_retrieval:
+    - information_extraction
+    - context_preservation
+    - relevance_scoring
+    - multi_modal_support
+
+# Specialized Areas
+specialties:
+  semantic_understanding:
+    focus: "Deep contextual meaning capture"
+    strength: 0.95
+    use_cases:
+      - document_similarity
+      - content_recommendation
+      - semantic_search
+      - knowledge_extraction
+  
+  domain_adaptation:
+    focus: "Cross-domain embedding quality"
+    strength: 0.90
+    use_cases:
+      - technical_documentation
+      - business_content
+      - academic_papers
+      - legal_documents
+  
+  retrieval_optimization:
+    focus: "Information retrieval effectiveness"
+    strength: 0.88
+    use_cases:
+      - search_engines
+      - recommendation_systems
+      - content_discovery
+      - knowledge_bases
+
+# Model Configuration
+model_config:
+  embedding_quality: "high_fidelity"
+  semantic_preservation: "comprehensive"
+  domain_robustness: "cross_domain"
+  computational_efficiency: "optimized"
+  
+  embedding_settings:
+    vector_normalization: "l2_norm"
+    dimensionality_reduction: "optional"
+    similarity_metric: "cosine"
+    clustering_compatibility: "enhanced"
+  
+  performance_settings:
+    batch_optimization: "enabled"
+    memory_efficiency: "prioritized"
+    processing_speed: "maximized"
+    scalability: "horizontal"
+
+# Performance Characteristics
+performance:
+  embedding_quality: "excellent"      # State-of-the-art semantic capture
+  processing_speed: "very_fast"       # Optimized for batch processing
+  memory_efficiency: "high"           # Minimal memory footprint
+  scalability: "enterprise_ready"     # Handles large document collections
+  
+  optimal_use_cases:
+    - large_scale_document_search
+    - content_recommendation_systems
+    - knowledge_base_construction
+    - semantic_similarity_analysis
+  
+  benchmark_performance:
+    mteb_score: "high"                # Strong on MTEB benchmarks
+    retrieval_accuracy: "excellent"   # >90% relevant document retrieval
+    clustering_quality: "very_good"   # Clean topic separation
+    cross_domain_transfer: "good"     # Adapts across domains
+
+# Integration Settings
+integration:
+  api_compatibility: "sentence_transformers"
+  vector_database_support: true
+  streaming_embeddings: true
+  batch_processing: true
+  
+  input_formats:
+    - plain_text
+    - markdown
+    - structured_documents
+    - json_content
+  
+  output_formats:
+    - dense_vectors
+    - normalized_embeddings
+    - similarity_matrices
+    - clustering_results
+
+# Quality Control
+quality_settings:
+  embedding_validation: "comprehensive"
+  similarity_verification: "cross_validated"
+  domain_consistency: "monitored"
+  performance_tracking: "real_time"
+  
+  quality_metrics:
+    semantic_fidelity: "measured"
+    retrieval_precision: "tracked"
+    clustering_coherence: "evaluated"
+    cross_domain_stability: "assessed"
+
+# Use Case Optimization
+optimization_profiles:
+  document_search:
+    relevance_optimization: "maximized"
+    query_understanding: "enhanced"
+    result_ranking: "semantic"
+    response_time: "sub_second"
+  
+  content_recommendation:
+    similarity_accuracy: "high"
+    diversity_balance: "optimized"
+    user_preference_learning: "adaptive"
+    cold_start_handling: "robust"
+  
+  knowledge_extraction:
+    context_preservation: "prioritized"
+    relationship_detection: "enhanced"
+    entity_recognition: "integrated"
+    concept_linking: "automatic"
+  
+  clustering_analysis:
+    topic_coherence: "maximized"
+    cluster_separation: "clear"
+    outlier_detection: "enabled"
+    hierarchical_structure: "supported"
+
+# Technical Specifications
+technical_specs:
+  model_architecture: "transformer_based"
+  training_corpus: "diverse_web_content"
+  vocabulary_size: "large"
+  parameter_count: "optimized"
+  
+  embedding_properties:
+    vector_dimensionality: 768
+    value_range: "[-1, 1]"
+    sparsity: "dense"
+    interpretability: "limited"
+
+# Deployment Options
+deployment:
+  cpu_optimization: "available"
+  gpu_acceleration: "supported"
+  cloud_deployment: "optimized"
+  edge_deployment: "possible"
+  
+  scalability_features:
+    horizontal_scaling: "native"
+    load_balancing: "automatic"
+    caching_support: "intelligent"
+    batch_optimization: "dynamic"
+
+# Security and Privacy
+security:
+  data_privacy: "compliant"
+  encryption_support: "available"
+  access_control: "configurable"
+  audit_logging: "comprehensive"
+  
+  privacy_features:
+    local_processing: "supported"
+    data_retention: "configurable"
+    anonymization: "available"
+    gdpr_compliance: "ensured"

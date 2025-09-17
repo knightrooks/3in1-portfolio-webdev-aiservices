@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}AI Agents - Choose Your Companion{% endblock %}
+
+{% block content %}
+<div class="agents-hero">
+    <div class="container">
+        <h1>Choose Your AI Companion</h1>
+        <p>{{ agents|length }} unique personalities waiting to chat with you</p>
+    </div>
+</div>
+
+<div class="agents-container">
+    <div class="container">
+        <div class="agents-grid">
+            {% for agent in agents %}
+            <div class="agent-card" data-personality="{{ agent.personality_type|lower }}">
+                <div class="agent-header">
+                    <div class="agent-avatar">
+                        <img src="{{ agent.avatar }}" alt="{{ agent.name }}" onerror="this.src='/static/img/avatar-placeholder.png'">
+                        <div class="availability-indicator {{ agent.availability }}"></div>
+                    </div>
+                    <div class="agent-title">
+                        <h3>{{ agent.name }}</h3>
+                        <span class="personality-type">{{ agent.personality_type }}</span>
+                    </div>
+                </div>
+                
+                <div class="agent-body">
+                    <p class="agent-description">{{ agent.description }}</p>
+                    
+                    <div class="specialties">
+                        <h5>Specialties:</h5>
+                        <div class="specialty-tags">
+                            {% for specialty in agent.specialties[:3] %}
+                            <span class="specialty-tag">{{ specialty.replace('_', ' ').title() }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <div class="model-info">
+                        <h5>Powered by:</h5>
+                        <div class="model-badges">
+                            {% for model in agent.model_ensemble %}
+                            <span class="model-badge">{{ model.replace('_', ' ').title() }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="agent-actions">
+                    <a href="{{ url_for('ai_services.agent_profile', agent_id=agent.id) }}" class="btn btn-outline">View Profile</a>
+                    <a href="{{ url_for('ai_services.chat', agent_id=agent.id) }}" class="btn btn-primary">Chat Now</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<section class="agent-categories">
+    <div class="container">
+        <h2>Agent Categories</h2>
+        <div class="category-filters">
+            <button class="filter-btn active" data-category="all">All Agents</button>
+            <button class="filter-btn" data-category="romantic">Romantic</button>
+            <button class="filter-btn" data-category="professional">Professional</button>
+            <button class="filter-btn" data-category="entertaining">Entertaining</button>
+            <button class="filter-btn" data-category="technical">Technical</button>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Category filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const agentCards = document.querySelectorAll('.agent-card');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const category = this.dataset.category;
+            
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filter cards
+            agentCards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                    card.classList.add('fade-in');
+                } else {
+                    const personality = card.dataset.personality;
+                    if (personality.includes(category)) {
+                        card.style.display = 'block';
+                        card.classList.add('fade-in');
+                    } else {
+                        card.style.display = 'none';
+                        card.classList.remove('fade-in');
+                    }
+                }
+            });
+        });
+    });
+    
+    // Agent card animations
+    agentCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+        card.classList.add('fade-in');
+    });
+});
+</script>
+{% endblock %}

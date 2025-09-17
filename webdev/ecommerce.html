@@ -1,0 +1,418 @@
+{% extends "base.html" %}
+
+{% block title %}E-commerce Solutions | Professor Johnny (@onelastai){% endblock %}
+
+{% block content %}
+<div class="ecommerce-section" style="margin-top: 76px;">
+    <!-- E-commerce Hero -->
+    <section class="ecommerce-hero bg-warning text-dark py-5" style="background: linear-gradient(135deg, #ffc107 0%, #ff8c00 50%, #dc3545 100%);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ url_for('webdev.index') }}" class="text-dark">Services</a></li>
+                            <li class="breadcrumb-item active text-dark">E-commerce Solutions</li>
+                        </ol>
+                    </nav>
+                    
+                    <h1 class="display-4 fw-bold mb-4">
+                        <i class="fas fa-shopping-cart text-primary"></i> E-commerce Solutions
+                    </h1>
+                    <p class="lead mb-4">Complete online stores that convert visitors into customers</p>
+                    
+                    <div class="d-flex gap-3">
+                        <a href="#packages" class="btn btn-primary btn-lg">
+                            <i class="fas fa-tags"></i> View Packages
+                        </a>
+                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-outline-dark btn-lg">
+                            <i class="fas fa-calculator"></i> Get Quote
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="device-mockup">
+                        <i class="fas fa-store fa-8x text-primary opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- E-commerce Features -->
+    <section class="ecommerce-features py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-star text-warning"></i> E-commerce Features
+                    </h2>
+                    <p class="lead text-muted">Everything you need to sell online successfully</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-shopping-basket fa-4x text-primary mb-4"></i>
+                            <h4 class="fw-bold mb-3">Product Catalog</h4>
+                            <p class="text-muted mb-4">Comprehensive product management with categories, variants, and inventory tracking.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>Unlimited products</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Product variants & options</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Inventory management</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Bulk import/export</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-credit-card fa-4x text-success mb-4"></i>
+                            <h4 class="fw-bold mb-3">Payment Processing</h4>
+                            <p class="text-muted mb-4">Secure payment gateway integration with multiple payment options.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>Stripe & PayPal integration</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Credit/debit cards</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Digital wallets</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Secure checkout</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-truck fa-4x text-info mb-4"></i>
+                            <h4 class="fw-bold mb-3">Shipping & Orders</h4>
+                            <p class="text-muted mb-4">Complete order management with shipping calculations and tracking.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>Order management</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Shipping calculations</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Order tracking</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Email notifications</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-users fa-4x text-danger mb-4"></i>
+                            <h4 class="fw-bold mb-3">Customer Management</h4>
+                            <p class="text-muted mb-4">Customer accounts, wishlists, and relationship management.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>Customer accounts</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Order history</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Wishlists</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Customer support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-chart-bar fa-4x text-warning mb-4"></i>
+                            <h4 class="fw-bold mb-3">Analytics & Reports</h4>
+                            <p class="text-muted mb-4">Detailed analytics and reporting for business insights.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>Sales analytics</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Customer insights</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Product performance</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Custom reports</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-mobile-alt fa-4x text-secondary mb-4"></i>
+                            <h4 class="fw-bold mb-3">Mobile Optimized</h4>
+                            <p class="text-muted mb-4">Fully responsive design optimized for mobile shopping.</p>
+                            <ul class="list-unstyled text-start">
+                                <li><i class="fas fa-check text-success me-2"></i>Mobile-first design</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Touch-friendly interface</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Fast loading</li>
+                                <li><i class="fas fa-check text-success me-2"></i>PWA capabilities</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- E-commerce Packages -->
+    <section id="packages" class="ecommerce-packages py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-box text-warning"></i> E-commerce Packages
+                    </h2>
+                    <p class="lead text-muted">Choose the perfect package for your online store</p>
+                </div>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-4">
+                    <div class="package-card card h-100 border-0 shadow">
+                        <div class="card-header bg-warning text-dark text-center">
+                            <h3 class="card-title fw-bold">Starter Store</h3>
+                            <div class="price">
+                                <span class="h2 fw-bold">$2,500</span>
+                                <small class="d-block">Up to 50 products</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Product catalog (50 items)</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Shopping cart</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Payment gateway setup</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Basic inventory management</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Order management</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Email notifications</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Basic analytics</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Mobile responsive</li>
+                            </ul>
+                            
+                            <div class="timeline mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock"></i> Delivery: 3-4 weeks
+                                </small>
+                            </div>
+                            
+                            <a href="{{ url_for('webdev.quote') }}?package=starter-store" class="btn btn-warning w-100">
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="package-card card h-100 border-primary shadow position-relative">
+                        <div class="position-absolute top-0 start-50 translate-middle">
+                            <span class="badge bg-primary px-3 py-2">Most Popular</span>
+                        </div>
+                        <div class="card-header bg-primary text-white text-center">
+                            <h3 class="card-title fw-bold">Professional Store</h3>
+                            <div class="price">
+                                <span class="h2 fw-bold">$4,500</span>
+                                <small class="d-block opacity-75">Up to 500 products</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Everything in Starter</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced product variants</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Customer accounts</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Wishlist functionality</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced search & filters</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Discount codes & promotions</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Multi-currency support</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>SEO optimization</li>
+                            </ul>
+                            
+                            <div class="timeline mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock"></i> Delivery: 4-6 weeks
+                                </small>
+                            </div>
+                            
+                            <a href="{{ url_for('webdev.quote') }}?package=professional-store" class="btn btn-primary w-100">
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="package-card card h-100 border-0 shadow">
+                        <div class="card-header bg-danger text-white text-center">
+                            <h3 class="card-title fw-bold">Enterprise Store</h3>
+                            <div class="price">
+                                <span class="h2 fw-bold">$8,000+</span>
+                                <small class="d-block opacity-75">Unlimited products</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled mb-4">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Everything in Professional</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Multi-vendor marketplace</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>B2B functionality</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced analytics</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>API integrations</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Custom features</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Priority support</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Performance optimization</li>
+                            </ul>
+                            
+                            <div class="timeline mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock"></i> Delivery: 6-10 weeks
+                                </small>
+                            </div>
+                            
+                            <a href="{{ url_for('webdev.quote') }}?package=enterprise-store" class="btn btn-danger w-100">
+                                Get Started
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="success-stories py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-trophy text-success"></i> Success Stories
+                    </h2>
+                    <p class="lead text-muted">Real results from our e-commerce clients</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="success-story card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="story-header mb-3">
+                                <h5 class="fw-bold text-primary">Fashion Boutique</h5>
+                                <p class="text-muted mb-0">Online clothing store</p>
+                            </div>
+                            <div class="metrics mb-3">
+                                <div class="metric">
+                                    <span class="h4 fw-bold text-success">300%</span>
+                                    <small class="text-muted d-block">Sales increase</small>
+                                </div>
+                            </div>
+                            <p class="text-muted">"The new e-commerce platform transformed our business. Sales tripled within 6 months of launch."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="success-story card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="story-header mb-3">
+                                <h5 class="fw-bold text-primary">Electronics Store</h5>
+                                <p class="text-muted mb-0">Tech products retailer</p>
+                            </div>
+                            <div class="metrics mb-3">
+                                <div class="metric">
+                                    <span class="h4 fw-bold text-info">150%</span>
+                                    <small class="text-muted d-block">Conversion rate improvement</small>
+                                </div>
+                            </div>
+                            <p class="text-muted">"The optimized checkout process and mobile design significantly boosted our conversion rates."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="success-story card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <div class="story-header mb-3">
+                                <h5 class="fw-bold text-primary">Artisan Marketplace</h5>
+                                <p class="text-muted mb-0">Handmade products platform</p>
+                            </div>
+                            <div class="metrics mb-3">
+                                <div class="metric">
+                                    <span class="h4 fw-bold text-warning">50+</span>
+                                    <small class="text-muted d-block">Active vendors</small>
+                                </div>
+                            </div>
+                            <p class="text-muted">"Our multi-vendor marketplace now supports over 50 artisans with seamless vendor management."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="ecommerce-cta py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h3 class="fw-bold mb-3">Ready to Launch Your Online Store?</h3>
+                    <p class="lead mb-4">Let's build an e-commerce solution that drives sales and grows your business.</p>
+                    <div class="d-flex gap-3 justify-content-center">
+                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-warning btn-lg">
+                            <i class="fas fa-rocket"></i> Start Your Store
+                        </a>
+                        <a href="{{ url_for('webdev.pricing') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-dollar-sign"></i> View All Pricing
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+}
+
+.package-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
+}
+
+.success-story {
+    transition: transform 0.3s ease;
+}
+
+.success-story:hover {
+    transform: translateY(-3px);
+}
+
+.metric {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.05);
+}
+
+.timeline {
+    border-top: 1px solid #e9ecef;
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .package-card {
+        margin-bottom: 2rem;
+    }
+}
+</style>
+{% endblock %}

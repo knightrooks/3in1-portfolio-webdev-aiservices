@@ -1,0 +1,683 @@
+{% extends "base.html" %}
+
+{% block title %}FAQ - Frequently Asked Questions{% endblock %}
+
+{% block content %}
+<div class="faq-page">
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient-to-r from-teal-600 to-blue-600 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">❓ Frequently Asked Questions</h1>
+            <p class="text-xl opacity-90 max-w-2xl mx-auto">
+                Find answers to the most common questions about our AI-powered platform
+            </p>
+            <div class="mt-8">
+                <div class="max-w-md mx-auto">
+                    <input type="text" id="faq-search" placeholder="Search FAQ..." 
+                           class="w-full px-6 py-3 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-white">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Categories -->
+    <div class="bg-gray-50 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-8 text-gray-800">Browse by Category</h2>
+            <div class="grid md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <button onclick="filterFAQ('general')" class="faq-category-btn bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow border-2 border-transparent hover:border-teal-500">
+                    <div class="text-teal-600 text-3xl mb-4">🔧</div>
+                    <h3 class="font-bold mb-2">General</h3>
+                    <p class="text-sm text-gray-600">Platform basics and getting started</p>
+                </button>
+                <button onclick="filterFAQ('ai-services')" class="faq-category-btn bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow border-2 border-transparent hover:border-teal-500">
+                    <div class="text-blue-600 text-3xl mb-4">🤖</div>
+                    <h3 class="font-bold mb-2">AI Services</h3>
+                    <p class="text-sm text-gray-600">AI agents, conversations, and features</p>
+                </button>
+                <button onclick="filterFAQ('web-development')" class="faq-category-btn bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow border-2 border-transparent hover:border-teal-500">
+                    <div class="text-green-600 text-3xl mb-4">🌐</div>
+                    <h3 class="font-bold mb-2">Web Development</h3>
+                    <p class="text-sm text-gray-600">Projects, quotes, and services</p>
+                </button>
+                <button onclick="filterFAQ('billing')" class="faq-category-btn bg-white p-6 rounded-lg shadow-lg text-center hover:shadow-xl transition-shadow border-2 border-transparent hover:border-teal-500">
+                    <div class="text-purple-600 text-3xl mb-4">💳</div>
+                    <h3 class="font-bold mb-2">Billing</h3>
+                    <p class="text-sm text-gray-600">Payments, subscriptions, and pricing</p>
+                </button>
+            </div>
+            <div class="text-center mt-6">
+                <button onclick="filterFAQ('all')" class="text-teal-600 hover:text-teal-700 font-semibold">Show All Questions</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Content -->
+    <div class="container mx-auto px-4 py-16 max-w-4xl">
+        
+        <!-- General FAQs -->
+        <div class="faq-section" data-category="general">
+            <h2 class="text-2xl font-bold mb-8 text-gray-800 border-b-2 border-teal-500 pb-2">🔧 General Questions</h2>
+            
+            <div class="space-y-4">
+                <div class="faq-item bg-white rounded-lg shadow-lg border border-gray-200">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-teal-600 flex items-center justify-between">
+                        <span>What is the AI Portfolio Platform?</span>
+                        <span class="faq-icon text-teal-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p class="mb-4">
+                            The AI Portfolio Platform is a comprehensive 3-in-1 solution that combines:
+                        </p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>Personal Portfolio:</strong> Showcase your skills, projects, and experience</li>
+                            <li><strong>Web Development Services:</strong> Professional website creation and maintenance</li>
+                            <li><strong>AI Services:</strong> Access to 16+ specialized AI agents for various tasks</li>
+                        </ul>
+                        <p class="mt-4">
+                            Our platform helps individuals and businesses create professional online presence while providing powerful AI tools for productivity and automation.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-lg border border-gray-200">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-teal-600 flex items-center justify-between">
+                        <span>How do I get started?</span>
+                        <span class="faq-icon text-teal-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <ol class="list-decimal pl-6 space-y-2">
+                            <li><strong>Create an Account:</strong> Sign up with your email address</li>
+                            <li><strong>Verify Your Email:</strong> Check your inbox and click the verification link</li>
+                            <li><strong>Choose Your Plan:</strong> Start with our 7-day free trial or select a paid plan</li>
+                            <li><strong>Explore Features:</strong> Try our AI agents, browse web development services, or build your portfolio</li>
+                            <li><strong>Get Support:</strong> Use our 24/7 chat support or browse this FAQ for help</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-lg border border-gray-200">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-teal-600 flex items-center justify-between">
+                        <span>Is there a mobile app?</span>
+                        <span class="faq-icon text-teal-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p class="mb-4">
+                            Currently, we offer a fully responsive web application that works seamlessly on all devices including smartphones and tablets. Our mobile-optimized interface provides:
+                        </p>
+                        <ul class="list-disc pl-6 space-y-1">
+                            <li>Full access to all AI agents and features</li>
+                            <li>Responsive design that adapts to your screen size</li>
+                            <li>Touch-friendly interface for mobile interactions</li>
+                            <li>Offline conversation history access</li>
+                        </ul>
+                        <p class="mt-4">
+                            Native mobile apps for iOS and Android are planned for Q2 2024.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-lg border border-gray-200">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-teal-600 flex items-center justify-between">
+                        <span>What browsers are supported?</span>
+                        <span class="faq-icon text-teal-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p class="mb-4">Our platform is compatible with all modern browsers:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-semibold mb-2">✅ Fully Supported:</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Chrome 90+</li>
+                                    <li>• Firefox 88+</li>
+                                    <li>• Safari 14+</li>
+                                    <li>• Edge 90+</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">⚠️ Limited Support:</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Internet Explorer (not recommended)</li>
+                                    <li>• Older mobile browsers</li>
+                                    <li>• Browsers with JavaScript disabled</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Services FAQs -->
+        <div class="faq-section mt-16" data-category="ai-services">
+            <h2 class="text-2xl font-bold mb-8 text-gray-800 border-b-2 border-blue-500 pb-2">🤖 AI Services</h2>
+            
+            <div class="space-y-4">
+                <div class="faq-item bg-white rounded-lg shadow-lg border border-gray-200">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-blue-600 flex items-center justify-between">
+                        <span>What AI agents are available?</span>
+                        <span class="faq-icon text-blue-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p class="mb-4">We offer 16 specialized AI agents in two categories:</p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-semibold mb-3">🏢 Professional Agents:</h4>
+                            <div class="grid md:grid-cols-2 gap-2 text-sm">
+                                <ul class="space-y-1">
+                                    <li>• <strong>Developer:</strong> Code review, debugging, architecture</li>
+                                    <li>• <strong>Data Scientist:</strong> Analysis, ML, visualization</li>
+                                    <li>• <strong>Content Creator:</strong> Writing, marketing, SEO</li>
+                                    <li>• <strong>Product Manager:</strong> Strategy, roadmaps, requirements</li>
+                                    <li>• <strong>Marketing Specialist:</strong> Campaigns, content, analytics</li>
+                                </ul>
+                                <ul class="space-y-1">
+                                    <li>• <strong>Research Analyst:</strong> Market research, data analysis</li>
+                                    <li>• <strong>Security Expert:</strong> Cybersecurity, compliance</li>
+                                    <li>• <strong>Operations Manager:</strong> Process optimization</li>
+                                    <li>• <strong>Customer Success:</strong> Support, onboarding</li>
+                                    <li>• <strong>Strategist:</strong> Business planning, consulting</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h4 class="font-semibold mb-3">😊 Entertaining Personas:</h4>
+                            <div class="grid md:grid-cols-2 gap-2 text-sm">
+                                <ul class="space-y-1">
+                                    <li>• <strong>Girlfriend:</strong> Caring, supportive companion</li>
+                                    <li>• <strong>Lazy John:</strong> Relaxed, humorous conversations</li>
+                                    <li>• <strong>Gossip Queen:</strong> Fun, chatty, social insights</li>
+                                </ul>
+                                <ul class="space-y-1">
+                                    <li>• <strong>Emotional Jenny:</strong> Empathetic, understanding</li>
+                                    <li>• <strong>Strict Wife:</strong> Direct, organized, motivational</li>
+                                    <li>• <strong>Coder Bot:</strong> Technical humor, programming tips</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-lg border border-gray-200">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-blue-600 flex items-center justify-between">
+                        <span>How do conversations work?</span>
+                        <span class="faq-icon text-blue-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p class="mb-4">Our AI conversations are designed to be natural and helpful:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>Context Awareness:</strong> Agents remember your conversation history and preferences</li>
+                            <li><strong>Specialized Knowledge:</strong> Each agent is trained in their specific domain expertise</li>
+                            <li><strong>Real-time Responses:</strong> Get instant responses with typing indicators</li>
+                            <li><strong>Multi-turn Conversations:</strong> Engage in complex, back-and-forth discussions</li>
+                            <li><strong>File Sharing:</strong> Upload documents, images, or code for analysis</li>
+                            <li><strong>Conversation History:</strong> Access and search your past conversations</li>
+                        </ul>
+                        <p class="mt-4">
+                            Start a conversation by selecting an agent and typing your message. The AI will respond based on its personality and expertise.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-lg border border-gray-200">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-blue-600 flex items-center justify-between">
+                        <span>Are my conversations private?</span>
+                        <span class="faq-icon text-blue-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p class="mb-4">Yes, your privacy is our top priority:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>End-to-End Encryption:</strong> All conversations are encrypted in transit and at rest</li>
+                            <li><strong>Private Access:</strong> Only you can access your conversations</li>
+                            <li><strong>No Data Selling:</strong> We never sell your conversation data to third parties</li>
+                            <li><strong>GDPR Compliant:</strong> Full compliance with privacy regulations</li>
+                            <li><strong>Data Control:</strong> Delete conversations anytime or set auto-deletion periods</li>
+                            <li><strong>Anonymous Analytics:</strong> Only anonymized usage patterns used for improvement</li>
+                        </ul>
+                        <p class="mt-4">
+                            Read our <a href="{{ url_for('legal.privacy') }}" class="text-blue-600 hover:underline">Privacy Policy</a> for complete details.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-lg border border-gray-200">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-blue-600 flex items-center justify-between">
+                        <span>What are the usage limits?</span>
+                        <span class="faq-icon text-blue-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p class="mb-4">Usage limits depend on your subscription plan:</p>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-gray-50 border border-gray-200 rounded-lg">
+                                <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Plan</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Messages</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Agents</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">File Uploads</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200 text-sm">
+                                    <tr>
+                                        <td class="px-4 py-2 font-medium">Free Trial</td>
+                                        <td class="px-4 py-2">100 messages</td>
+                                        <td class="px-4 py-2">3 agents</td>
+                                        <td class="px-4 py-2">10 files</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 font-medium">Basic</td>
+                                        <td class="px-4 py-2">1,000 messages</td>
+                                        <td class="px-4 py-2">3 agents</td>
+                                        <td class="px-4 py-2">50 files</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 font-medium">Pro</td>
+                                        <td class="px-4 py-2">10,000 messages</td>
+                                        <td class="px-4 py-2">All agents</td>
+                                        <td class="px-4 py-2">500 files</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2 font-medium">Enterprise</td>
+                                        <td class="px-4 py-2">Unlimited</td>
+                                        <td class="px-4 py-2">All + Custom</td>
+                                        <td class="px-4 py-2">Unlimited</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p class="mt-4 text-sm">
+                            Overage charges apply for Basic and Pro plans. See our <a href="{{ url_for('legal.payments') }}" class="text-blue-600 hover:underline">Payment Terms</a> for details.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Web Development FAQs -->
+        <div class="faq-section mt-16" data-category="web-development">
+            <h2 class="text-2xl font-bold mb-8 text-gray-800 border-b-2 border-green-500 pb-2">🌐 Web Development</h2>
+            
+            <div class="space-y-4">
+                <div class="faq-item bg-white rounded-lg shadow-lg border border-gray-200">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-green-600 flex items-center justify-between">
+                        <span>What web development services do you offer?</span>
+                        <span class="faq-icon text-green-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p class="mb-4">We provide comprehensive web development services:</p>
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold mb-2">🖥️ Website Types:</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Business websites</li>
+                                    <li>• E-commerce platforms</li>
+                                    <li>• Portfolio sites</li>
+                                    <li>• Landing pages</li>
+                                    <li>• Custom web applications</li>
+                                    <li>• API integrations</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">🛠️ Additional Services:</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• SEO optimization</li>
+                                    <li>• Performance optimization</li>
+                                    <li>• Security implementation</li>
+                                    <li>• Maintenance & support</li>
+                                    <li>• Hosting setup</li>
+                                    <li>• Analytics integration</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-lg border border-gray-200">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-green-600 flex items-center justify-between">
+                        <span>How long does a typical project take?</span>
+                        <span class="faq-icon text-green-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p class="mb-4">Project timelines vary based on complexity and scope:</p>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
+                                <span class="font-medium">Simple Website (1-5 pages)</span>
+                                <span class="text-green-600 font-semibold">1-2 weeks</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
+                                <span class="font-medium">Business Website (5-15 pages)</span>
+                                <span class="text-green-600 font-semibold">2-4 weeks</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
+                                <span class="font-medium">E-commerce Platform</span>
+                                <span class="text-green-600 font-semibold">4-8 weeks</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-gray-50 p-3 rounded">
+                                <span class="font-medium">Custom Web Application</span>
+                                <span class="text-green-600 font-semibold">8+ weeks</span>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-sm">
+                            Timelines may be adjusted based on client feedback, revisions, and project complexity. We provide detailed project timelines during the planning phase.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-lg border border-gray-200">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-green-600 flex items-center justify-between">
+                        <span>What's included in the project price?</span>
+                        <span class="faq-icon text-green-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p class="mb-4">Our project pricing includes comprehensive deliverables:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-semibold mb-2">✅ Included:</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Custom design and development</li>
+                                    <li>• Responsive mobile optimization</li>
+                                    <li>• Basic SEO setup</li>
+                                    <li>• Performance optimization</li>
+                                    <li>• Cross-browser testing</li>
+                                    <li>• 30 days of free support</li>
+                                    <li>• Source code and assets</li>
+                                    <li>• Training materials</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">💰 Additional Costs:</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Hosting and domain (client-managed)</li>
+                                    <li>• Premium plugins/themes</li>
+                                    <li>• Third-party API integrations</li>
+                                    <li>• Extended support beyond 30 days</li>
+                                    <li>• Major scope changes</li>
+                                    <li>• Stock photography/graphics</li>
+                                    <li>• SSL certificates (if not included in hosting)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Billing FAQs -->
+        <div class="faq-section mt-16" data-category="billing">
+            <h2 class="text-2xl font-bold mb-8 text-gray-800 border-b-2 border-purple-500 pb-2">💳 Billing & Payments</h2>
+            
+            <div class="space-y-4">
+                <div class="faq-item bg-white rounded-lg shadow-lg border border-gray-200">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-purple-600 flex items-center justify-between">
+                        <span>What payment methods do you accept?</span>
+                        <span class="faq-icon text-purple-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p class="mb-4">We accept various secure payment methods:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-semibold mb-2">💳 Credit & Debit Cards:</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Visa, MasterCard, American Express</li>
+                                    <li>• Discover, JCB, Diners Club</li>
+                                    <li>• Secure processing via Stripe</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold mb-2">💰 Digital Payments:</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• PayPal and PayPal Credit</li>
+                                    <li>• Apple Pay and Google Pay</li>
+                                    <li>• Bank transfers (ACH/SEPA)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-sm">
+                            All payments are processed securely with industry-standard encryption. We never store your complete payment information.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-lg border border-gray-200">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-purple-600 flex items-center justify-between">
+                        <span>Can I cancel my subscription anytime?</span>
+                        <span class="faq-icon text-purple-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p class="mb-4">Yes, you can cancel your subscription at any time with no cancellation fees:</p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>Easy Cancellation:</strong> Cancel instantly from your account dashboard</li>
+                            <li><strong>No Hidden Fees:</strong> No cancellation or early termination fees</li>
+                            <li><strong>Prorated Refunds:</strong> Get refunded for unused portion (within 30 days)</li>
+                            <li><strong>Access Until End:</strong> Keep access until your current billing period ends</li>
+                            <li><strong>Data Retention:</strong> Your data is kept for 90 days after cancellation</li>
+                        </ul>
+                        <p class="mt-4">
+                            <a href="/billing/cancel" class="text-purple-600 hover:underline">Cancel your subscription here</a> or contact support for assistance.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white rounded-lg shadow-lg border border-gray-200">
+                    <button class="faq-question w-full text-left p-6 font-semibold text-gray-800 hover:text-purple-600 flex items-center justify-between">
+                        <span>Do you offer refunds?</span>
+                        <span class="faq-icon text-purple-600 text-xl">+</span>
+                    </button>
+                    <div class="faq-answer hidden p-6 pt-0 text-gray-600">
+                        <p class="mb-4">Yes, we offer refunds under certain conditions:</p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="border-l-4 border-green-500 pl-4">
+                                <h4 class="font-semibold mb-2 text-green-800">✅ Refundable:</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Unused subscription within 30 days</li>
+                                    <li>• Service unavailability > 48 hours</li>
+                                    <li>• Billing errors and duplicate charges</li>
+                                    <li>• Cancellation within 7-day trial</li>
+                                </ul>
+                            </div>
+                            <div class="border-l-4 border-red-500 pl-4">
+                                <h4 class="font-semibold mb-2 text-red-800">❌ Non-Refundable:</h4>
+                                <ul class="text-sm space-y-1">
+                                    <li>• Used AI messages and API calls</li>
+                                    <li>• Completed custom development</li>
+                                    <li>• Third-party service costs</li>
+                                    <li>• Terms of service violations</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mt-4">
+                            Refund requests are processed within 2 business days. Approved refunds are issued to the original payment method within 5-10 business days.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Still have questions? -->
+        <div class="bg-teal-50 p-8 rounded-lg text-center mt-16">
+            <h3 class="text-2xl font-bold text-teal-800 mb-4">Still have questions?</h3>
+            <p class="text-teal-700 mb-6">
+                Can't find what you're looking for? Our support team is here to help 24/7.
+            </p>
+            <div class="space-y-4 sm:space-y-0 sm:space-x-4 sm:flex sm:justify-center">
+                <a href="{{ url_for('contact.support') }}" class="bg-teal-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-teal-700 inline-block">
+                    Contact Support
+                </a>
+                <a href="mailto:help@aiportfolio.com" class="bg-white text-teal-600 border border-teal-600 px-8 py-3 rounded-lg font-semibold hover:bg-teal-50 inline-block">
+                    Email Us
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// FAQ functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // FAQ toggle functionality
+    document.querySelectorAll('.faq-question').forEach(button => {
+        button.addEventListener('click', function() {
+            const faqItem = this.closest('.faq-item');
+            const answer = faqItem.querySelector('.faq-answer');
+            const icon = this.querySelector('.faq-icon');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem) {
+                    item.querySelector('.faq-answer').classList.add('hidden');
+                    item.querySelector('.faq-icon').textContent = '+';
+                    item.classList.remove('ring-2', 'ring-teal-500');
+                }
+            });
+            
+            // Toggle current item
+            answer.classList.toggle('hidden');
+            icon.textContent = answer.classList.contains('hidden') ? '+' : '−';
+            
+            if (!answer.classList.contains('hidden')) {
+                faqItem.classList.add('ring-2', 'ring-teal-500');
+                faqItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                faqItem.classList.remove('ring-2', 'ring-teal-500');
+            }
+        });
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('faq-search');
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+            const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+            
+            if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = searchTerm === '' ? 'block' : 'none';
+            }
+        });
+        
+        // Show all sections if searching
+        if (searchTerm) {
+            document.querySelectorAll('.faq-section').forEach(section => {
+                section.style.display = 'block';
+            });
+        }
+    });
+});
+
+// Category filtering
+function filterFAQ(category) {
+    const sections = document.querySelectorAll('.faq-section');
+    const buttons = document.querySelectorAll('.faq-category-btn');
+    
+    // Reset button states
+    buttons.forEach(btn => {
+        btn.classList.remove('border-teal-500', 'bg-teal-50');
+        btn.classList.add('border-transparent');
+    });
+    
+    // Highlight active button
+    if (category !== 'all') {
+        event.target.closest('.faq-category-btn').classList.add('border-teal-500', 'bg-teal-50');
+        event.target.closest('.faq-category-btn').classList.remove('border-transparent');
+    }
+    
+    // Show/hide sections
+    sections.forEach(section => {
+        if (category === 'all' || section.dataset.category === category) {
+            section.style.display = 'block';
+        } else {
+            section.style.display = 'none';
+        }
+    });
+    
+    // Close all open FAQ items
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.querySelector('.faq-answer').classList.add('hidden');
+        item.querySelector('.faq-icon').textContent = '+';
+        item.classList.remove('ring-2', 'ring-teal-500');
+    });
+    
+    // Scroll to top of FAQ content
+    document.querySelector('.faq-section').scrollIntoView({ behavior: 'smooth' });
+}
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+</script>
+
+<style>
+.faq-page .faq-item {
+    transition: all 0.3s ease;
+}
+
+.faq-page .faq-item:hover {
+    transform: translateY(-2px);
+    shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.faq-page .faq-question:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.faq-page .faq-answer {
+    transition: all 0.3s ease;
+}
+
+.faq-page .faq-category-btn {
+    transition: all 0.3s ease;
+}
+
+.faq-page .faq-category-btn:hover {
+    transform: translateY(-4px);
+}
+
+.faq-page #faq-search:focus {
+    outline: none;
+    ring: 2px;
+    ring-color: white;
+    ring-opacity: 50%;
+}
+
+.faq-page table {
+    font-size: 0.875rem;
+}
+
+.faq-page .hero-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.faq-page .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
+                linear-gradient(-45deg, rgba(255,255,255,0.1) 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, rgba(255,255,255,0.1) 75%), 
+                linear-gradient(-45deg, transparent 75%, rgba(255,255,255,0.1) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    opacity: 0.1;
+}
+</style>
+{% endblock %}

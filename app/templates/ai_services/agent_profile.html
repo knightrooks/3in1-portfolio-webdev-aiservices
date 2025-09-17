@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block title %}{{ agent.name }} - AI Agent Profile{% endblock %}
+
+{% block content %}
+<div class="agent-profile-hero" style="--agent-color: {{ agent.avatar_color or '#007bff' }}">
+    <div class="container">
+        <div class="profile-header">
+            <div class="agent-avatar-large">
+                <img src="{{ agent.avatar }}" alt="{{ agent.name }}" onerror="this.src='/static/img/avatar-placeholder.png'">
+                <div class="availability-badge {{ agent.availability }}">{{ agent.availability.title() }}</div>
+            </div>
+            <div class="agent-info">
+                <h1>{{ agent.name }}</h1>
+                <p class="agent-tagline">{{ agent.description }}</p>
+                <div class="personality-info">
+                    <span class="personality-type-badge">{{ agent.personality_type }}</span>
+                    <div class="traits">
+                        {% for trait in agent.personality_traits %}
+                        <span class="trait-pill">{{ trait.replace('_', ' ').title() }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="profile-actions">
+                    <a href="{{ url_for('ai_services.chat', agent_id=agent.id) }}" class="btn btn-primary btn-large">
+                        <i class="fas fa-comments"></i> Start Conversation
+                    </a>
+                    <button class="btn btn-outline" onclick="shareAgent()">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="agent-profile-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <section class="about-agent">
+                    <h2>About {{ agent.name }}</h2>
+                    <p>{{ agent.description }}</p>
+                    
+                    <div class="response-style">
+                        <h3>Communication Style</h3>
+                        <div class="style-attributes">
+                            {% if agent.response_style %}
+                            {% for key, value in agent.response_style.items() %}
+                            <div class="style-item">
+                                <span class="style-label">{{ key.replace('_', ' ').title() }}:</span>
+                                <span class="style-value">{{ value.replace('_', ' ').title() }}</span>
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                </section>
+
+                <section class="capabilities-section">
+                    <h2>Capabilities & Specialties</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>What I Can Help With:</h4>
+                            <ul class="capabilities-list">
+                                {% for capability in agent.capabilities %}
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    {{ capability.replace('_', ' ').title() }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>My Specialties:</h4>
+                            <div class="specialties-grid">
+                                {% for specialty in agent.specialties %}
+                                <div class="specialty-card">
+                                    <i class="fas fa-star"></i>
+                                    <span>{{ specialty.replace('_', ' ').title() }}</span>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {% if agent.interaction_examples %}
+                <section class="examples-section">
+                    <h2>Conversation Examples</h2>
+                    <div class="example-conversations">
+                        {% for example in agent.interaction_examples %}
+                        <div class="conversation-example">
+                            <div class="example-message agent-message">
+                                <div class="message-avatar">
+                                    <img src="{{ agent.avatar }}" alt="{{ agent.name }}">
+                                </div>
+                                <div class="message-content">{{ example }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+                {% endif %}
+            </div>
+
+            <div class="col-md-4">
+                <div class="agent-sidebar">
+                    <div class="quick-stats">
+                        <h3>Quick Stats</h3>
+                        <div class="stat-item">
+                            <span class="stat-label">Personality Type</span>
+                            <span class="stat-value">{{ agent.personality_type }}</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">AI Models</span>
+                            <span class="stat-value">{{ agent.model_ensemble|length }} Models</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Availability</span>
+                            <span class="stat-value availability {{ agent.availability }}">{{ agent.availability.title() }}</span>
+                        </div>
+                    </div>
+
+                    <div class="model-ensemble">
+                        <h3>Powered By</h3>
+                        <div class="models-list">
+                            {% for model in agent.model_ensemble %}
+                            <div class="model-item">
+                                <i class="fas fa-microchip"></i>
+                                <span>{{ model.replace('_', ' ').title() }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    {% if related_agents %}
+                    <div class="related-agents">
+                        <h3>Similar Agents</h3>
+                        {% for related in related_agents %}
+                        <div class="related-agent-item">
+                            <img src="{{ related.avatar }}" alt="{{ related.name }}">
+                            <div class="related-info">
+                                <a href="{{ url_for('ai_services.agent_profile', agent_id=related.id) }}">{{ related.name }}</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <div class="chat-cta">
+                        <h3>Ready to Chat?</h3>
+                        <p>Start a conversation with {{ agent.name }} right now!</p>
+                        <a href="{{ url_for('ai_services.chat', agent_id=agent.id) }}" class="btn btn-primary btn-block">
+                            Begin Conversation
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function shareAgent() {
+    if (navigator.share) {
+        navigator.share({
+            title: '{{ agent.name }} - AI Agent',
+            text: 'Check out {{ agent.name }}: {{ agent.description }}',
+            url: window.location.href
+        });
+    } else {
+        // Fallback to copy URL
+        navigator.clipboard.writeText(window.location.href).then(() => {
+            alert('Profile URL copied to clipboard!');
+        });
+    }
+}
+
+// Add personality-based styling
+document.addEventListener('DOMContentLoaded', function() {
+    const personalityType = '{{ agent.personality_type|lower }}';
+    document.body.classList.add(`personality-${personalityType}`);
+});
+</script>
+{% endblock %}

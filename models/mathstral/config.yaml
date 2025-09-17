@@ -1,0 +1,175 @@
+name: mathstral
+version: "7b-v0.1"
+provider: mistral
+model_type: mathematical_reasoning
+description: "Mistral's Mathstral model specialized in mathematical reasoning and scientific computing"
+
+# Model Parameters
+parameters:
+  max_tokens: 4096
+  temperature: 0.2
+  top_p: 0.95
+  top_k: 40
+  frequency_penalty: 0.0
+  presence_penalty: 0.0
+  context_window: 8192
+  
+# Core Capabilities
+capabilities:
+  mathematical_reasoning:
+    - advanced_mathematics
+    - calculus_and_analysis
+    - linear_algebra
+    - statistics_and_probability
+  
+  scientific_computing:
+    - numerical_methods
+    - computational_physics
+    - data_analysis
+    - modeling_and_simulation
+  
+  financial_modeling:
+    - quantitative_finance
+    - risk_analysis
+    - portfolio_optimization
+    - derivatives_pricing
+  
+  data_science:
+    - statistical_analysis
+    - machine_learning_math
+    - optimization_problems
+    - algorithmic_trading
+
+# Specialized Areas
+specialties:
+  advanced_mathematics:
+    focus: "Higher-level mathematical concepts and proofs"
+    strength: 0.95
+    use_cases:
+      - theorem_proving
+      - complex_analysis
+      - differential_equations
+      - abstract_algebra
+  
+  quantitative_finance:
+    focus: "Financial mathematics and risk modeling"
+    strength: 0.90
+    use_cases:
+      - options_pricing
+      - risk_management
+      - portfolio_theory
+      - algorithmic_trading
+  
+  data_analysis:
+    focus: "Statistical analysis and data modeling"
+    strength: 0.88
+    use_cases:
+      - hypothesis_testing
+      - regression_analysis
+      - time_series_analysis
+      - multivariate_statistics
+
+# Model Configuration
+model_config:
+  precision: "high"
+  numerical_stability: "enforced"
+  theorem_proving: "enabled"
+  step_by_step_solutions: "detailed"
+  
+  mathematical_settings:
+    notation_style: "standard"
+    proof_rigor: "formal"
+    explanation_depth: "comprehensive"
+    error_checking: "strict"
+  
+  computational_settings:
+    numerical_precision: "double"
+    convergence_tolerance: 1e-12
+    iteration_limits: 10000
+    memory_optimization: "enabled"
+
+# Performance Characteristics
+performance:
+  calculation_accuracy: "very_high"    # >99.9% for standard operations
+  proof_validity: "high"              # Formal mathematical rigor
+  explanation_quality: "excellent"    # Clear step-by-step solutions
+  computational_speed: "optimized"    # Efficient numerical methods
+  
+  optimal_use_cases:
+    - advanced_mathematical_problems
+    - financial_quantitative_analysis
+    - scientific_research_computations
+    - statistical_data_analysis
+  
+  complexity_handling:
+    basic_arithmetic: "excellent"
+    advanced_calculus: "excellent"
+    abstract_mathematics: "very_good"
+    research_level_problems: "good"
+
+# Integration Settings
+integration:
+  api_compatibility: "mathml_and_latex"
+  symbolic_computation: true
+  numerical_computation: true
+  graphing_support: true
+  
+  input_formats:
+    - natural_language_math
+    - latex_equations
+    - mathml
+    - python_sympy
+  
+  output_formats:
+    - step_by_step_solutions
+    - latex_formatted
+    - computational_code
+    - graphical_visualizations
+
+# Quality Control
+quality_settings:
+  mathematical_verification: "enabled"
+  numerical_validation: "cross_checked"
+  proof_checking: "formal_logic"
+  result_consistency: "verified"
+  
+  error_prevention:
+    division_by_zero: "checked"
+    overflow_protection: "enabled"
+    convergence_monitoring: "active"
+    domain_validation: "strict"
+
+# Domain-Specific Optimization
+domain_optimization:
+  pure_mathematics:
+    theorem_proving: "advanced"
+    symbolic_manipulation: "extensive"
+    proof_generation: "rigorous"
+  
+  applied_mathematics:
+    numerical_methods: "optimized"
+    real_world_modeling: "practical"
+    approximation_techniques: "balanced"
+  
+  financial_mathematics:
+    risk_modeling: "sophisticated"
+    monte_carlo_methods: "optimized"
+    stochastic_processes: "advanced"
+  
+  data_science_math:
+    statistical_inference: "robust"
+    machine_learning_theory: "comprehensive"
+    optimization_algorithms: "efficient"
+
+# Educational and Explanatory Features
+educational_features:
+  step_by_step_explanations: "detailed"
+  concept_clarification: "intuitive"
+  mistake_identification: "educational"
+  alternative_approaches: "multiple"
+  
+  learning_support:
+    difficulty_adaptation: "user_level"
+    prerequisite_checking: "automatic"
+    concept_building: "progressive"
+    practice_problems: "generated"

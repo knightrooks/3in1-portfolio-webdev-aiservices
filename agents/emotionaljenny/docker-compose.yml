@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  emotionaljenny:
+    build: .
+    ports:
+      - "5007:5000"
+    environment:
+      - AGENT_ID=emotionaljenny
+      - AGENT_NAME=Emotional Jenny
+      - REDIS_URL=redis://redis:6379
+      - DB_URL=postgresql://user:password@postgres:5432/emotionaljenny_db
+    depends_on:
+      - redis
+      - postgres
+    volumes:
+      - ./volumes/ollama_models:/app/models
+      - ./volumes/blenderbot:/app/blenderbot
+    networks:
+      - agent_network
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - agent_network
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_DB=emotionaljenny_db
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - agent_network
+
+volumes:
+  redis_data:
+  postgres_data:
+
+networks:
+  agent_network:
+    driver: bridge

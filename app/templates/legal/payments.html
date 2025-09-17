@@ -1,0 +1,428 @@
+{% extends "base.html" %}
+
+{% block title %}Payment Terms - AI Portfolio Platform{% endblock %}
+
+{% block content %}
+<div class="payment-terms-page">
+    <!-- Hero Section -->
+    <section class="hero-section bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">💳 Payment Terms</h1>
+            <p class="text-xl opacity-90 max-w-2xl mx-auto">
+                Clear and transparent payment terms for all our services and subscriptions
+            </p>
+            <div class="mt-6 text-sm opacity-80">
+                <p>Last updated: {{ last_updated or "January 1, 2024" }}</p>
+                <p>Effective date: {{ effective_date or "January 1, 2024" }}</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Reference Cards -->
+    <div class="bg-gray-50 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center mb-8 text-gray-800">Payment Overview</h2>
+            <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-blue-200">
+                    <div class="text-blue-600 text-2xl mb-3">🤖</div>
+                    <h3 class="font-bold mb-2">AI Services</h3>
+                    <ul class="text-sm space-y-1 text-gray-600">
+                        <li>• Monthly/Annual subscriptions</li>
+                        <li>• Usage-based billing</li>
+                        <li>• 7-day free trial</li>
+                        <li>• Cancel anytime</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-green-200">
+                    <div class="text-green-600 text-2xl mb-3">🌐</div>
+                    <h3 class="font-bold mb-2">Web Development</h3>
+                    <ul class="text-sm space-y-1 text-gray-600">
+                        <li>• Project-based pricing</li>
+                        <li>• 50% upfront payment</li>
+                        <li>• Milestone payments</li>
+                        <li>• 30-day payment terms</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg border border-purple-200">
+                    <div class="text-purple-600 text-2xl mb-3">📊</div>
+                    <h3 class="font-bold mb-2">Premium Features</h3>
+                    <ul class="text-sm space-y-1 text-gray-600">
+                        <li>• One-time purchases</li>
+                        <li>• Lifetime access options</li>
+                        <li>• Upgrade/downgrade anytime</li>
+                        <li>• Prorated billing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Terms Content -->
+    <div class="container mx-auto px-4 py-16 max-w-4xl">
+        <div class="prose lg:prose-lg mx-auto">
+            
+            <!-- Table of Contents -->
+            <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                <h2 class="text-xl font-bold mb-4 text-gray-800">Table of Contents</h2>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#pricing-structure" class="text-blue-600 hover:underline">1. Pricing Structure</a></li>
+                    <li><a href="#payment-methods" class="text-blue-600 hover:underline">2. Payment Methods</a></li>
+                    <li><a href="#subscription-terms" class="text-blue-600 hover:underline">3. Subscription Terms</a></li>
+                    <li><a href="#webdev-payments" class="text-blue-600 hover:underline">4. Web Development Payments</a></li>
+                    <li><a href="#billing-cycles" class="text-blue-600 hover:underline">5. Billing Cycles</a></li>
+                    <li><a href="#refunds" class="text-blue-600 hover:underline">6. Refunds & Cancellations</a></li>
+                    <li><a href="#late-payments" class="text-blue-600 hover:underline">7. Late Payments</a></li>
+                    <li><a href="#disputes" class="text-blue-600 hover:underline">8. Payment Disputes</a></li>
+                    <li><a href="#taxes" class="text-blue-600 hover:underline">9. Taxes & Fees</a></li>
+                    <li><a href="#security" class="text-blue-600 hover:underline">10. Payment Security</a></li>
+                </ul>
+            </div>
+
+            <!-- Pricing Structure -->
+            <section id="pricing-structure" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">1. Pricing Structure</h2>
+                
+                <h3 class="text-lg font-semibold mb-3">AI Services Subscription Tiers</h3>
+                <div class="overflow-x-auto mb-6">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Plan</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Monthly</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Annual</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Features</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Basic</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$19/month</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$190/year <span class="text-green-600">(17% off)</span></td>
+                                <td class="px-6 py-4 text-sm text-gray-500">3 agents, 1000 messages/month</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Pro</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$49/month</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$490/year <span class="text-green-600">(17% off)</span></td>
+                                <td class="px-6 py-4 text-sm text-gray-500">All agents, 10k messages/month</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Enterprise</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$149/month</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$1,490/year <span class="text-green-600">(17% off)</span></td>
+                                <td class="px-6 py-4 text-sm text-gray-500">Custom agents, unlimited messages</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-lg font-semibold mb-3">Web Development Pricing</h3>
+                <ul class="list-disc pl-6 mb-4">
+                    <li><strong>Simple Website:</strong> $500 - $2,500 (1-2 weeks delivery)</li>
+                    <li><strong>Business Website:</strong> $2,500 - $7,500 (2-4 weeks delivery)</li>
+                    <li><strong>E-commerce Platform:</strong> $7,500 - $15,000 (4-8 weeks delivery)</li>
+                    <li><strong>Custom Web Application:</strong> $15,000+ (8+ weeks delivery)</li>
+                    <li><strong>Hourly Rate:</strong> $125/hour for custom work</li>
+                </ul>
+
+                <h3 class="text-lg font-semibold mb-3">Additional Services</h3>
+                <ul class="list-disc pl-6 mb-4">
+                    <li><strong>Priority Support:</strong> $99/month</li>
+                    <li><strong>Custom AI Agent Development:</strong> $2,500 - $10,000</li>
+                    <li><strong>API Access:</strong> $0.01 per API call</li>
+                    <li><strong>White-label Solution:</strong> Custom pricing</li>
+                </ul>
+            </section>
+
+            <!-- Payment Methods -->
+            <section id="payment-methods" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">2. Payment Methods</h2>
+                
+                <h3 class="text-lg font-semibold mb-3">Accepted Payment Methods</h3>
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-medium mb-2 flex items-center">
+                            <span class="text-blue-600 mr-2">💳</span>
+                            Credit & Debit Cards
+                        </h4>
+                        <ul class="text-sm space-y-1 text-gray-600">
+                            <li>✓ Visa, MasterCard, American Express</li>
+                            <li>✓ Discover, JCB, Diners Club</li>
+                            <li>✓ Secure processing via Stripe</li>
+                            <li>✓ Automatic recurring billing</li>
+                        </ul>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-medium mb-2 flex items-center">
+                            <span class="text-yellow-600 mr-2">💰</span>
+                            Digital Wallets
+                        </h4>
+                        <ul class="text-sm space-y-1 text-gray-600">
+                            <li>✓ PayPal and PayPal Credit</li>
+                            <li>✓ Apple Pay and Google Pay</li>
+                            <li>✓ One-click checkout</li>
+                            <li>✓ Buyer protection included</li>
+                        </ul>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-medium mb-2 flex items-center">
+                            <span class="text-green-600 mr-2">🏦</span>
+                            Bank Transfers
+                        </h4>
+                        <ul class="text-sm space-y-1 text-gray-600">
+                            <li>✓ ACH transfers (US only)</li>
+                            <li>✓ SEPA transfers (EU only)</li>
+                            <li>✓ Wire transfers for large payments</li>
+                            <li>✓ Net 30 terms for enterprises</li>
+                        </ul>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4">
+                        <h4 class="font-medium mb-2 flex items-center">
+                            <span class="text-purple-600 mr-2">🚀</span>
+                            Cryptocurrency
+                        </h4>
+                        <ul class="text-sm space-y-1 text-gray-600">
+                            <li>✓ Bitcoin (BTC)</li>
+                            <li>✓ Ethereum (ETH)</li>
+                            <li>✓ Stable coins (USDC, USDT)</li>
+                            <li>✓ Enterprise customers only</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                    <p class="text-blue-800">
+                        <strong>Security:</strong> All payments are processed using industry-standard encryption and security protocols. We never store your complete payment information on our servers.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Subscription Terms -->
+            <section id="subscription-terms" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">3. Subscription Terms</h2>
+                
+                <h3 class="text-lg font-semibold mb-3">Billing Frequency</h3>
+                <ul class="list-disc pl-6 mb-4">
+                    <li><strong>Monthly:</strong> Charged on the same date each month</li>
+                    <li><strong>Annual:</strong> Charged once per year with 17% discount</li>
+                    <li><strong>Usage-based:</strong> Calculated at the end of each billing period</li>
+                </ul>
+
+                <h3 class="text-lg font-semibold mb-3">Auto-Renewal</h3>
+                <p class="mb-4">
+                    Subscriptions automatically renew unless cancelled at least 24 hours before the next billing date. You can cancel anytime through:
+                </p>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Your account dashboard</li>
+                    <li>Customer support (support@aiportfolio.com)</li>
+                    <li>Billing management portal</li>
+                </ul>
+
+                <h3 class="text-lg font-semibold mb-3">Plan Changes</h3>
+                <ul class="list-disc pl-6 mb-4">
+                    <li><strong>Upgrades:</strong> Effective immediately with prorated billing</li>
+                    <li><strong>Downgrades:</strong> Effective at the next billing cycle</li>
+                    <li><strong>Usage limits:</strong> Soft limits with overage charges</li>
+                    <li><strong>Free trial:</strong> 7 days for new customers only</li>
+                </ul>
+
+                <h3 class="text-lg font-semibold mb-3">Overage Charges</h3>
+                <div class="overflow-x-auto mb-4">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Resource</th>
+                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Overage Rate</th>
+                                <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Billing</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-4 py-2 text-sm">AI Messages</td>
+                                <td class="px-4 py-2 text-sm">$0.05 per message</td>
+                                <td class="px-4 py-2 text-sm">Monthly</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm">API Calls</td>
+                                <td class="px-4 py-2 text-sm">$0.01 per call</td>
+                                <td class="px-4 py-2 text-sm">Monthly</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-2 text-sm">Storage</td>
+                                <td class="px-4 py-2 text-sm">$0.10 per GB</td>
+                                <td class="px-4 py-2 text-sm">Monthly</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Web Development Payments -->
+            <section id="webdev-payments" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">4. Web Development Payments</h2>
+                
+                <h3 class="text-lg font-semibold mb-3">Payment Schedule</h3>
+                <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                    <ul class="space-y-2">
+                        <li><strong>Project Initiation:</strong> 50% of total project cost</li>
+                        <li><strong>Milestone Payments:</strong> 25% at design approval, 25% at development completion</li>
+                        <li><strong>Final Payment:</strong> Upon project delivery and approval</li>
+                        <li><strong>Maintenance:</strong> Monthly billing for ongoing support</li>
+                    </ul>
+                </div>
+
+                <h3 class="text-lg font-semibold mb-3">Project Scope Changes</h3>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Additional features require written approval and payment</li>
+                    <li>Scope changes are billed at hourly rates</li>
+                    <li>Timeline adjustments may affect final project cost</li>
+                    <li>Change requests are processed within 48 hours</li>
+                </ul>
+
+                <h3 class="text-lg font-semibold mb-3">Payment Terms</h3>
+                <ul class="list-disc pl-6 mb-4">
+                    <li><strong>Net 30:</strong> Payment due within 30 days of invoice</li>
+                    <li><strong>Early Payment Discount:</strong> 2% discount for payment within 10 days</li>
+                    <li><strong>Late Fee:</strong> 1.5% per month on overdue amounts</li>
+                    <li><strong>Collection Costs:</strong> Client responsible for collection costs if payment defaults</li>
+                </ul>
+            </section>
+
+            <!-- Refunds & Cancellations -->
+            <section id="refunds" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">6. Refunds & Cancellations</h2>
+                
+                <h3 class="text-lg font-semibold mb-3">AI Services Refund Policy</h3>
+                <div class="grid md:grid-cols-2 gap-6 mb-4">
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h4 class="font-medium mb-2 text-green-800">✅ Refundable</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• Unused portion of subscription within 30 days</li>
+                            <li>• Service unavailability > 48 hours</li>
+                            <li>• Billing errors and duplicate charges</li>
+                            <li>• Cancellation within 7-day trial period</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-red-500 pl-4">
+                        <h4 class="font-medium mb-2 text-red-800">❌ Non-Refundable</h4>
+                        <ul class="text-sm space-y-1">
+                            <li>• Used AI messages and API calls</li>
+                            <li>• Completed custom agent development</li>
+                            <li>• Third-party service costs</li>
+                            <li>• Violation of terms of service</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="text-lg font-semibold mb-3">Web Development Refund Policy</h3>
+                <ul class="list-disc pl-6 mb-4">
+                    <li><strong>Design Phase:</strong> Full refund if cancelled before design approval</li>
+                    <li><strong>Development Phase:</strong> Refund for incomplete work minus costs incurred</li>
+                    <li><strong>Completion Phase:</strong> No refund after final delivery and approval</li>
+                    <li><strong>Custom Work:</strong> Refunds calculated based on work completed</li>
+                </ul>
+
+                <h3 class="text-lg font-semibold mb-3">Refund Process</h3>
+                <ol class="list-decimal pl-6 mb-4">
+                    <li>Submit refund request via support ticket</li>
+                    <li>Provide order number and reason for refund</li>
+                    <li>Refund review within 2 business days</li>
+                    <li>Approved refunds processed within 5-10 business days</li>
+                    <li>Refunds issued to original payment method</li>
+                </ol>
+            </section>
+
+            <!-- Payment Security -->
+            <section id="security" class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">10. Payment Security</h2>
+                
+                <h3 class="text-lg font-semibold mb-3">Security Standards</h3>
+                <div class="grid md:grid-cols-2 gap-6 mb-4">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-medium mb-2">🔒 PCI DSS Compliance</h4>
+                        <p class="text-sm text-gray-600">Payment Card Industry Data Security Standard certified for secure payment processing</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-medium mb-2">🛡️ SSL Encryption</h4>
+                        <p class="text-sm text-gray-600">256-bit SSL encryption for all payment transactions and data transmission</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-medium mb-2">🔐 Tokenization</h4>
+                        <p class="text-sm text-gray-600">Payment details tokenized and stored securely with our payment processors</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-medium mb-2">📊 Fraud Detection</h4>
+                        <p class="text-sm text-gray-600">Real-time fraud monitoring and risk assessment for all transactions</p>
+                    </div>
+                </div>
+
+                <h3 class="text-lg font-semibold mb-3">Your Security Responsibilities</h3>
+                <ul class="list-disc pl-6 mb-4">
+                    <li>Keep your account credentials secure and confidential</li>
+                    <li>Monitor your account for unauthorized transactions</li>
+                    <li>Report suspicious activity immediately</li>
+                    <li>Update payment information when cards expire</li>
+                    <li>Use secure networks when making payments</li>
+                </ul>
+            </section>
+
+            <!-- Support and Contact -->
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold mb-4 text-gray-800">Payment Support</h2>
+                <p class="mb-4">
+                    For payment-related questions, billing issues, or refund requests:
+                </p>
+                <div class="bg-blue-50 p-6 rounded-lg">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <p><strong>Billing Support:</strong> billing@aiportfolio.com</p>
+                            <p><strong>Phone:</strong> 1-800-AI-BILLS (24/7)</p>
+                            <p><strong>Live Chat:</strong> Available 24/7</p>
+                        </div>
+                        <div>
+                            <p><strong>Response Time:</strong> Within 24 hours</p>
+                            <p><strong>Billing Portal:</strong> <a href="/billing" class="text-blue-600 hover:underline">Manage Billing</a></p>
+                            <p><strong>Support Ticket:</strong> <a href="{{ url_for('contact.support') }}" class="text-blue-600 hover:underline">Create Ticket</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+<style>
+.payment-terms-page .prose h2 {
+    color: #1f2937;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.payment-terms-page .prose h3 {
+    color: #374151;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.payment-terms-page .prose a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.payment-terms-page .prose a:hover {
+    text-decoration: underline;
+}
+
+.payment-terms-page table {
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.payment-terms-page th, .payment-terms-page td {
+    text-align: left;
+    vertical-align: top;
+}
+</style>
+{% endblock %}

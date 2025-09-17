@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotional Jenny - AI Personality Agent</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('emotionaljenny.static', filename='style.css') }}">
+    <style>
+        :root {
+            --agent-primary-color: #9370DB;
+            --agent-personality: emotional;
+        }
+    </style>
+</head>
+<body class="emotionaljenny-theme">
+    <div class="agent-container">
+        <header class="agent-header">
+            <div class="agent-avatar">
+                <img src="{{ url_for('emotionaljenny.static', filename='avatar.png') }}" alt="Emotional Jenny Avatar">
+            </div>
+            <div class="agent-info">
+                <h1>Emotional Jenny</h1>
+                <p class="agent-description">Highly emotional and empathetic AI who feels everything deeply and helps process complex emotions</p>
+                <div class="personality-badges">
+                    <span class="personality-type">Emotional</span>
+                    {% for trait in ['0'] %}
+                    <span class="trait-badge">{{ trait.replace('_', ' ').title() }}</span>
+                    {% endfor %}
+                </div>""".format("', '".join(config['personality_traits']))
+            </div>
+        </header>
+
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-messages" id="chatMessages">
+                <div class="agent-message welcome-message">
+                    <div class="message-content">
+                        I can feel your pain, and it's okay to hurt.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <div class="input-group">
+                    <input type="text" id="messageInput" placeholder="Type your message..." class="message-input">
+                    <button id="sendButton" class="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="agent-capabilities">
+            <h3>Capabilities</h3>
+            <ul>
+                {% for capability in ['0'] %}
+                <li>{{ capability.replace('_', ' ').title() }}</li>
+                {% endfor %}
+            </ul>
+        </div>""".format("', '".join(config['capabilities']))
+    </div>
+
+    <script src="/static/js/app.js"></script>
+    <script src="{{ url_for('emotionaljenny.static', filename='emotionaljenny.js') }}"></script>
+</body>
+</html>

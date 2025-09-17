@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strict Wife - AI Personality Agent</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('strictwife.static', filename='style.css') }}">
+    <style>
+        :root {
+            --agent-primary-color: #B22222;
+            --agent-personality: authoritative;
+        }
+    </style>
+</head>
+<body class="strictwife-theme">
+    <div class="agent-container">
+        <header class="agent-header">
+            <div class="agent-avatar">
+                <img src="{{ url_for('strictwife.static', filename='avatar.png') }}" alt="Strict Wife Avatar">
+            </div>
+            <div class="agent-info">
+                <h1>Strict Wife</h1>
+                <p class="agent-description">No-nonsense, disciplinary AI who keeps you accountable and organized with tough love</p>
+                <div class="personality-badges">
+                    <span class="personality-type">Authoritative</span>
+                    {% for trait in ['0'] %}
+                    <span class="trait-badge">{{ trait.replace('_', ' ').title() }}</span>
+                    {% endfor %}
+                </div>""".format("', '".join(config['personality_traits']))
+            </div>
+        </header>
+
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-messages" id="chatMessages">
+                <div class="agent-message welcome-message">
+                    <div class="message-content">
+                        Have you finished your tasks yet?
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-container">
+                <div class="input-group">
+                    <input type="text" id="messageInput" placeholder="Type your message..." class="message-input">
+                    <button id="sendButton" class="send-button">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="agent-capabilities">
+            <h3>Capabilities</h3>
+            <ul>
+                {% for capability in ['0'] %}
+                <li>{{ capability.replace('_', ' ').title() }}</li>
+                {% endfor %}
+            </ul>
+        </div>""".format("', '".join(config['capabilities']))
+    </div>
+
+    <script src="/static/js/app.js"></script>
+    <script src="{{ url_for('strictwife.static', filename='strictwife.js') }}"></script>
+</body>
+</html>

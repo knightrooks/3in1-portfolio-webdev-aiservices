@@ -1,39 +1,74 @@
-{% extends "base.html" %}
+{% extends "base.html" %}{% extends "base.html" %}
 
-{% block title %}E-commerce Solutions | Professor Johnny (@onelastai){% endblock %}
 
-{% block content %}
-<div class="ecommerce-section" style="margin-top: 76px;">
-    <!-- E-commerce Hero -->
-    <section class="ecommerce-hero bg-warning text-dark py-5" style="background: linear-gradient(135deg, #ffc107 0%, #ff8c00 50%, #dc3545 100%);">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ url_for('webdev.index') }}" class="text-dark">Services</a></li>
-                            <li class="breadcrumb-item active text-dark">E-commerce Solutions</li>
-                        </ol>
-                    </nav>
-                    
-                    <h1 class="display-4 fw-bold mb-4">
-                        <i class="fas fa-shopping-cart text-primary"></i> E-commerce Solutions
-                    </h1>
-                    <p class="lead mb-4">Complete online stores that convert visitors into customers</p>
-                    
-                    <div class="d-flex gap-3">
-                        <a href="#packages" class="btn btn-primary btn-lg">
-                            <i class="fas fa-tags"></i> View Packages
-                        </a>
-                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-outline-dark btn-lg">
-                            <i class="fas fa-calculator"></i> Get Quote
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <div class="device-mockup">
-                        <i class="fas fa-store fa-8x text-primary opacity-75"></i>
-                    </div>
+
+{% block title %}E-commerce Solutions{% endblock %}{% block title %}E-commerce Solutions | Professor Johnny (@onelastai){% endblock %}
+
+
+
+{% block content %}{% block content %}
+
+<div class="container mt-5 pt-4"><div class="ecommerce-section" style="margin-top: 76px;">
+
+    <h1>E-commerce Development</h1>    <!-- E-commerce Hero -->
+
+    <p>Complete online store solutions for your business.</p>    <section class="ecommerce-hero bg-warning text-dark py-5" style="background: linear-gradient(135deg, #ffc107 0%, #ff8c00 50%, #dc3545 100%);">
+
+            <div class="container">
+
+    <div class="row">            <div class="row align-items-center">
+
+        <div class="col-md-6">                <div class="col-lg-8">
+
+            <h3>E-commerce Features</h3>                    <nav aria-label="breadcrumb">
+
+            <ul>                        <ol class="breadcrumb">
+
+                <li>Shopping Cart</li>                            <li class="breadcrumb-item"><a href="{{ url_for('webdev.index') }}" class="text-dark">Services</a></li>
+
+                <li>Payment Processing</li>                            <li class="breadcrumb-item active text-dark">E-commerce Solutions</li>
+
+                <li>Inventory Management</li>                        </ol>
+
+                <li>Order Tracking</li>                    </nav>
+
+                <li>Customer Accounts</li>                    
+
+            </ul>                    <h1 class="display-4 fw-bold mb-4">
+
+        </div>                        <i class="fas fa-shopping-cart text-primary"></i> E-commerce Solutions
+
+        <div class="col-md-6">                    </h1>
+
+            <h3>Platforms</h3>                    <p class="lead mb-4">Complete online stores that convert visitors into customers</p>
+
+            <ul>                    
+
+                <li>Custom Built</li>                    <div class="d-flex gap-3">
+
+                <li>Shopify</li>                        <a href="#packages" class="btn btn-primary btn-lg">
+
+                <li>WooCommerce</li>                            <i class="fas fa-tags"></i> View Packages
+
+                <li>Magento</li>                        </a>
+
+            </ul>                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-outline-dark btn-lg">
+
+        </div>                            <i class="fas fa-calculator"></i> Get Quote
+
+    </div>                        </a>
+
+                        </div>
+
+    <div class="text-center mt-5">                </div>
+
+        <a href="{{ url_for('webdev.quote') }}" class="btn btn-primary btn-lg">Launch Your Store</a>                <div class="col-lg-4 text-center">
+
+    </div>                    <div class="device-mockup">
+
+</div>                        <i class="fas fa-store fa-8x text-primary opacity-75"></i>
+
+{% endblock %}                    </div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}Internal Server Error - 500{% endblock %}
+
+{% block extra_css %}
+<style>
+    .error-container {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .error-content {
+        text-align: center;
+        max-width: 600px;
+    }
+    .error-code {
+        font-size: 8rem;
+        font-weight: bold;
+        color: #dc3545;
+        margin-bottom: 0;
+        line-height: 1;
+    }
+    .error-illustration {
+        font-size: 6rem;
+        color: #6c757d;
+        margin: 20px 0;
+        animation: shake 0.5s ease-in-out infinite alternate;
+    }
+    
+    @keyframes shake {
+        0% { transform: translateX(-2px); }
+        100% { transform: translateX(2px); }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="error-container">
+    <div class="error-content">
+        <div class="error-code">500</div>
+        <div class="error-illustration">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h1 class="display-4 mb-3">Internal Server Error</h1>
+        <p class="lead mb-4">
+            Oops! Something went wrong on our end. Our team has been notified and is working to fix this issue.
+        </p>
+        
+        <div class="alert alert-warning" role="alert">
+            <i class="fas fa-info-circle"></i>
+            <strong>What happened?</strong> The server encountered an unexpected condition that prevented it from completing your request.
+        </div>
+        
+        <div class="mb-4">
+            <h5>What you can do:</h5>
+            <ul class="list-unstyled mt-3">
+                <li class="mb-2"><i class="fas fa-redo text-primary"></i> Try refreshing the page</li>
+                <li class="mb-2"><i class="fas fa-clock text-info"></i> Wait a few minutes and try again</li>
+                <li class="mb-2"><i class="fas fa-arrow-left text-secondary"></i> Go back to the previous page</li>
+                <li class="mb-2"><i class="fas fa-envelope text-warning"></i> Contact support if the problem persists</li>
+            </ul>
+        </div>
+        
+        <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+            <button onclick="location.reload()" class="btn btn-primary">
+                <i class="fas fa-redo"></i> Try Again
+            </button>
+            <button onclick="history.back()" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Go Back
+            </button>
+            <a href="{{ url_for('home.index') }}" class="btn btn-success">
+                <i class="fas fa-home"></i> Return Home
+            </a>
+            <a href="{{ url_for('portfolio.contact') }}" class="btn btn-outline-danger">
+                <i class="fas fa-bug"></i> Report Issue
+            </a>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-3 mb-2">
+                <a href="{{ url_for('agents.dashboard') }}" class="btn btn-outline-primary btn-sm w-100">
+                    <i class="fas fa-robot"></i> AI Agents
+                </a>
+            </div>
+            <div class="col-md-3 mb-2">
+                <a href="{{ url_for('webdev.index') }}" class="btn btn-outline-primary btn-sm w-100">
+                    <i class="fas fa-code"></i> WebDev
+                </a>
+            </div>
+            <div class="col-md-3 mb-2">
+                <a href="{{ url_for('portfolio.index') }}" class="btn btn-outline-primary btn-sm w-100">
+                    <i class="fas fa-briefcase"></i> Portfolio
+                </a>
+            </div>
+            <div class="col-md-3 mb-2">
+                <a href="{{ url_for('models.dashboard') }}" class="btn btn-outline-primary btn-sm w-100">
+                    <i class="fas fa-brain"></i> AI Models
+                </a>
+            </div>
+        </div>
+        
+        <hr class="my-4">
+        <div class="text-muted">
+            <p>
+                <strong>Error Code:</strong> 500 - Internal Server Error<br>
+                <strong>Incident ID:</strong> <code>{{ request.id or 'N/A' }}</code><br>
+                <strong>Timestamp:</strong> {{ moment().format('YYYY-MM-DD HH:mm:ss') if moment else 'N/A' }}
+            </p>
+            <p class="small">
+                If you continue to experience this issue, please include the incident ID when contacting support.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Log the 500 error for monitoring
+    console.error('500 Internal Server Error:', {
+        url: window.location.href,
+        referrer: document.referrer,
+        userAgent: navigator.userAgent,
+        timestamp: new Date().toISOString()
+    });
+    
+    // Auto-retry after 30 seconds (optional)
+    let retryCount = 0;
+    const maxRetries = 3;
+    
+    function autoRetry() {
+        if (retryCount < maxRetries) {
+            setTimeout(() => {
+                retryCount++;
+                console.log(`Auto-retry attempt ${retryCount}/${maxRetries}`);
+                location.reload();
+            }, 30000);
+        }
+    }
+    
+    // Uncomment if you want auto-retry functionality
+    // autoRetry();
+});
+</script>
+{% endblock %}
