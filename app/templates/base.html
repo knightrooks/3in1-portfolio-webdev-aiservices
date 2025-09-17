@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Professor Johnny | The Phantom Manifest{% endblock %}</title>
+    <title>{% block title %}3-in-1 Platform | Portfolio + WebDev + AI Services{% endblock %}</title>
     
     <!-- Meta Tags -->
-    <meta name="description" content="{% block meta_description %}AI Orchestrator & Security Architect | Flask Development | Cybersecurity Expert{% endblock %}">
-    <meta name="keywords" content="AI, Machine Learning, Cybersecurity, Flask, Python, Ethical Hacking">
-    <meta name="author" content="Professor Johnny">
+    <meta name="description" content="{% block meta_description %}Complete 3-in-1 platform: Professional portfolio, web development services, and AI-powered solutions{% endblock %}">
+    <meta name="keywords" content="Portfolio, Web Development, AI Services, Flask, Python, Full Stack, AI Agents">
+    <meta name="author" content="3-in-1 Platform">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="{% block og_title %}Professor Johnny - AI & Security Expert{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}The Phantom Manifest | AI Orchestrator & Security Architect{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}3-in-1 Platform - Portfolio, WebDev & AI Services{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Professional portfolio showcase, web development services, and entertaining AI personalities{% endblock %}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://professorjohnny.ai">
+    <meta property="og:url" content="{{ request.url_root }}
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -35,8 +35,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{{ url_for('home.index') }}">
-                <i class="fas fa-terminal text-danger"></i>
-                <span class="ms-2">ProfessorJohnny</span>
+                <i class="fas fa-cube text-primary"></i>
+                <span class="ms-2">3-in-1 Platform</span>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -50,44 +50,60 @@
                             <i class="fas fa-home"></i> Home
                         </a>
                     </li>
+                    
+                    <!-- Portfolio Section -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {% if request.endpoint.startswith('agents.') %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-robot"></i> AI Agents
+                        <a class="nav-link dropdown-toggle {% if request.endpoint.startswith('portfolio.') %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-tie"></i> Portfolio
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url_for('agents.agents_dashboard') }}">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('portfolio.index') }}">Overview</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('portfolio.about') }}">About Me</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('portfolio.projects') }}">Projects</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('portfolio.skills') }}">Skills</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('portfolio.testimonials') }}">Testimonials</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ url_for('agents.agent_detail', agent_id='strategist') }}">Strategist</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('agents.agent_detail', agent_id='developer') }}">Developer</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('agents.agent_detail', agent_id='girlfriend') }}">Girlfriend</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('portfolio.contact') }}">Contact</a></li>
                         </ul>
                     </li>
+                    
+                    <!-- Web Development Services -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {% if request.endpoint.startswith('webdev.') %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-code"></i> WebDev
+                            <i class="fas fa-code"></i> WebDev Services
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url_for('webdev.index') }}">Services</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('webdev.index') }}">Services Overview</a></li>
+                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{ url_for('webdev.websites') }}">Websites</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('webdev.apps') }}">Web Apps</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('webdev.ecommerce') }}">E-commerce</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('webdev.marketing') }}">Digital Marketing</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('webdev.seo') }}">SEO Services</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('webdev.maintenance') }}">Maintenance</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{ url_for('webdev.pricing') }}">Pricing</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('webdev.quote') }}">Get Quote</a></li>
                         </ul>
                     </li>
+                    
+                    <!-- AI Services Hub -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {% if request.endpoint.startswith('portfolio.') %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-briefcase"></i> Portfolio
+                        <a class="nav-link dropdown-toggle {% if request.endpoint.startswith('ai_services.') or request.endpoint.startswith('agents.') %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-robot"></i> AI Services
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url_for('portfolio.index') }}">Overview</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('portfolio.about') }}">About</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('portfolio.projects') }}">Projects</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('portfolio.skills') }}">Skills</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('portfolio.testimonials') }}">Testimonials</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('ai_services.index') }}">AI Showcase</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('ai_services.showcase') }}">Capabilities Demo</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{ url_for('ai_services.agents') }}">Agent Gallery</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('ai_services.chat') }}">Live Chat</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{ url_for('ai_services.pricing') }}">AI Pricing</a></li>
                         </ul>
                     </li>
+                    
+                    <!-- Models Management -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {% if request.endpoint.startswith('models.') %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
                             <i class="fas fa-brain"></i> AI Models
@@ -95,62 +111,29 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{ url_for('models.dashboard') }}">Dashboard</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ url_for('models.model_detail', model_id='codellama') }}">CodeLlama</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('models.model_detail', model_id='deepseek-coder') }}">DeepSeek Coder</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('models.model_detail', model_id='llama3.2') }}">Llama 3.2</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('models.model_detail', model_id='gemma2') }}">Gemma2</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('models.model_detail', model_id='mistral') }}">Mistral</a></li>
                         </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.endpoint.startswith('analytics.') %}active{% endif %}" href="{{ url_for('analytics.analytics_dashboard') }}">
-                            <i class="fas fa-chart-line"></i> Analytics
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {% if 'portfolio' in request.endpoint %}active{% endif %}" 
-                           href="#" id="portfolioDropdown" role="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-user"></i> Portfolio
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="{{ url_for('portfolio.index') }}">Overview</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('portfolio.about') }}">About Me</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('portfolio.projects') }}">Projects</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('portfolio.skills') }}">Skills</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('portfolio.testimonials') }}">Testimonials</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('portfolio.contact') }}">Contact</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {% if 'webdev' in request.endpoint %}active{% endif %}" 
-                           href="#" id="webdevDropdown" role="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-code"></i> Web Development
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="{{ url_for('webdev.index') }}">Services Overview</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('webdev.websites') }}">Custom Websites</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('webdev.pricing') }}">Pricing</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('webdev.quote') }}">Get Quote</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#ai-services">
-                            <i class="fas fa-robot"></i> AI Services
-                        </a>
                     </li>
                 </ul>
                 
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/1-manarmy" target="_blank">
-                            <i class="fab fa-github"></i>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-gavel"></i> Legal
                         </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ url_for('legal.terms') }}">Terms of Service</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('legal.privacy') }}">Privacy Policy</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('legal.cookies') }}">Cookie Policy</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('legal.payments') }}">Payment Policy</a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://linkedin.com/in/onelastai" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="mailto:contact@axeyaxe.com">
-                            <i class="fas fa-envelope"></i>
+                        <a class="nav-link" href="{{ url_for('contact.index') }}">
+                            <i class="fas fa-envelope"></i> Contact
                         </a>
                     </li>
                 </ul>
@@ -168,46 +151,60 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h5 class="footer-brand"><i class="fas fa-terminal text-danger"></i> Professor Johnny (@onelastai)</h5>
-                    <p class="footer-tagline">The Phantom Manifest | AI Orchestrator & Security Architect</p>
+                    <h5 class="footer-brand"><i class="fas fa-cube text-primary"></i> 3-in-1 Platform</h5>
+                    <p class="footer-tagline">Complete solution for portfolio, web development, and AI services</p>
                     <div class="social-links">
-                        <a href="https://github.com/1-manarmy" class="text-white me-3" title="GitHub @1-manarmy"><i class="fab fa-github fa-lg"></i></a>
-                        <a href="https://linkedin.com/in/onelastai" class="text-white me-3" title="LinkedIn @onelastai"><i class="fab fa-linkedin fa-lg"></i></a>
-                        <a href="https://twitter.com/onelastai" class="text-white me-3" title="Twitter @onelastai"><i class="fab fa-twitter fa-lg"></i></a>
-                        <a href="https://instagram.com/onelastai" class="text-white me-3" title="Instagram @onelastai"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="https://facebook.com/onelastai" class="text-white me-3" title="Facebook @onelastai"><i class="fab fa-facebook fa-lg"></i></a>
-                        <a href="https://t.me/onelastai" class="text-white me-3" title="Telegram @onelastai"><i class="fab fa-telegram fa-lg"></i></a>
-                        <a href="mailto:contact@axeyaxe.com" class="text-white" title="Email contact@axeyaxe.com"><i class="fas fa-envelope fa-lg"></i></a>
+                        <a href="mailto:contact@3in1platform.com" class="text-white" title="Contact Us"><i class="fas fa-envelope fa-lg"></i></a>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <h5 class="footer-brand">Portfolio</h5>
                     <ul class="list-unstyled footer-links">
-                        <li><a href="{{ url_for('portfolio.about') }}" class="text-muted">About Me</a></li>
+                        <li><a href="{{ url_for('portfolio.about') }}" class="text-muted">About</a></li>
                         <li><a href="{{ url_for('portfolio.projects') }}" class="text-muted">Projects</a></li>
-                        <li><a href="{{ url_for('portfolio.skills') }}" class="text-muted">Skills & Expertise</a></li>
+                        <li><a href="{{ url_for('portfolio.skills') }}" class="text-muted">Skills</a></li>
                         <li><a href="{{ url_for('portfolio.testimonials') }}" class="text-muted">Testimonials</a></li>
                         <li><a href="{{ url_for('portfolio.contact') }}" class="text-muted">Contact</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <h5 class="footer-brand">Web Development</h5>
                     <ul class="list-unstyled footer-links">
-                        <li><a href="{{ url_for('webdev.websites') }}" class="text-muted">Custom Websites</a></li>
+                        <li><a href="{{ url_for('webdev.websites') }}" class="text-muted">Websites</a></li>
+                        <li><a href="{{ url_for('webdev.apps') }}" class="text-muted">Web Apps</a></li>
+                        <li><a href="{{ url_for('webdev.ecommerce') }}" class="text-muted">E-commerce</a></li>
                         <li><a href="{{ url_for('webdev.pricing') }}" class="text-muted">Pricing</a></li>
                         <li><a href="{{ url_for('webdev.quote') }}" class="text-muted">Get Quote</a></li>
-                        <li><a href="mailto:contact@axeyaxe.com" class="text-muted">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="footer-brand">AI Services</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="{{ url_for('ai_services.showcase') }}" class="text-muted">Showcase</a></li>
+                        <li><a href="{{ url_for('ai_services.agents') }}" class="text-muted">AI Agents</a></li>
+                        <li><a href="{{ url_for('ai_services.chat') }}" class="text-muted">Live Chat</a></li>
+                        <li><a href="{{ url_for('ai_services.pricing') }}" class="text-muted">Pricing</a></li>
                     </ul>
                 </div>
             </div>
             <hr class="my-4">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0 footer-copyright">&copy; 2024 Professor Johnny. All rights reserved.</p>
+                    <p class="mb-0 footer-copyright">&copy; {{ current_year }} 3-in-1 Platform. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-end">
-                    <span class="text-danger">🔥</span>
-                    <small class="footer-built-with">Built with Flask & AI Magic</small>
+                    <span class="text-primary">🚀</span>
+                    <small class="footer-built-with">Built with Flask & AI Intelligence</small>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <small class="text-muted">
+                        <a href="{{ url_for('legal.terms') }}" class="text-muted me-3">Terms</a>
+                        <a href="{{ url_for('legal.privacy') }}" class="text-muted me-3">Privacy</a>
+                        <a href="{{ url_for('legal.cookies') }}" class="text-muted me-3">Cookies</a>
+                        <a href="{{ url_for('contact.index') }}" class="text-muted">Support</a>
+                    </small>
                 </div>
             </div>
         </div>

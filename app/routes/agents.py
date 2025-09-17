@@ -8,8 +8,8 @@ import importlib
 import time
 import json
 
-# Create agents blueprint
-agents_bp = Blueprint('agents', __name__, template_folder='../templates/agents')
+# Create agents blueprint (no template folder - uses individual agent templates)
+agents_bp = Blueprint('agents', __name__)
 
 # Define all 16 agents with their metadata
 ALL_AGENTS = {
@@ -185,35 +185,45 @@ def api_overview():
 
 @agents_bp.route('/<agent_id>')
 def agent_detail(agent_id):
-    """Individual agent detail page"""
+    """Agent detail page - redirect to individual agent interface"""
     if agent_id not in ALL_AGENTS:
         return render_template('errors/404.html'), 404
     
-    agent = ALL_AGENTS[agent_id]
-    
-    # Get agent status and analytics
-    try:
-        # Import agent's API module to get status
-        agent_module = importlib.import_module(f'agents.{agent_id}.api')
-        api_info = agent_module.get_api_info() if hasattr(agent_module, 'get_api_info') else {}
-    except ImportError:
-        api_info = {}
-    
-    return render_template('agents/detail.html', 
-                         agent_id=agent_id,
-                         agent=agent,
-                         api_info=api_info)
+    # Redirect to the agent's individual template/interface
+    # For now, redirect to chat interface - can be changed to individual agent routes later
+    return redirect(url_for('agents.agent_chat', agent_id=agent_id))
 
 @agents_bp.route('/<agent_id>/chat')
 def agent_chat(agent_id):
-    """Agent chat interface"""
+    """Agent chat interface - serve individual agent template"""
     if agent_id not in ALL_AGENTS:
         return render_template('errors/404.html'), 404
     
     agent = ALL_AGENTS[agent_id]
-    return render_template('agents/chat.html', 
-                         agent_id=agent_id,
-                         agent=agent)
+    
+    # For now, create a simple chat interface. 
+    # TODO: Later this should redirect to individual agent blueprints
+    # or serve the individual agent templates directly
+    
+    # Try to serve individual agent template if it exists
+    template_path = f'../../agents/{agent_id}/templates/{agent_id}.html'
+    try:
+        # This is a workaround - ideally each agent should have its own blueprint
+        return render_template(template_path, agent=agent)
+    except:
+        # Fallback to a simple chat interface
+        return f"""
+        <!DOCTYPE html>
+        <html>
+        <head><title>{agent['name']} Chat</title></head>
+        <body>
+            <h1>{agent['name']}</h1>
+            <p>{agent['description']}</p>
+            <p>Individual agent template not found. Please implement agent blueprint.</p>
+            <a href="/agents">Back to Dashboard</a>
+        </body>
+        </html>
+        """, 200
 
 # Dynamic API routing to individual agents
 @agents_bp.route('/api/<agent_id>/<path:endpoint>', methods=['GET', 'POST', 'PUT', 'DELETE'])

@@ -3,14 +3,14 @@ Portfolio Routing System
 Comprehensive portfolio showcase and project management system
 """
 
-from flask import Blueprint, render_template, request, jsonify, send_file
+from flask import Blueprint, render_template, request, jsonify, send_file, url_for
 import json
 import time
 from pathlib import Path
 from datetime import datetime
 
 # Create Blueprint
-portfolio_bp = Blueprint('portfolio', __name__, template_folder='../templates/portfolio')
+portfolio_bp = Blueprint('portfolio', __name__, template_folder='../../portfolio')
 
 # Portfolio Configuration
 PORTFOLIO_DATA = {

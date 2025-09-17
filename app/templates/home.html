@@ -1,60 +1,61 @@
 {% extends "base.html" %}
 
-{% block title %}Professor Johnny (@onelastai) | AI Developer & Security Expert{% endblock %}
+{% block title %}3-in-1 Platform | Portfolio + Web Development + AI Services{% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="hero-section bg-dark text-white py-5" style="margin-top: 76px; min-height: 100vh; background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);">
+<section class="hero-section bg-dark text-white py-5" style="margin-top: 76px; min-height: 100vh; background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #1d4ed8 100%);">
     <div class="container">
         <div class="row align-items-center min-vh-100">
             <div class="col-lg-6">
                 <div class="hero-content">
-                    <!-- Typing Animation -->
+                    <!-- Platform Introduction -->
                     <div class="mb-4">
                         <h1 class="display-4 fw-bold mb-3 hero-title">
-                            <span class="text-primary">�</span> Hey there!
+                            <span class="text-primary">🏗️</span> 3-in-1 Platform
                         </h1>
-                        <h2 class="display-5 fw-bold mb-3 hero-subtitle">
-                            I'm <span class="hero-title">Professor Johnny</span>
+                        <h2 class="display-6 fw-bold mb-3 hero-subtitle">
+                            Everything You Need, <span class="text-warning">All in One Place</span>
                         </h2>
-                        <div class="typing-animation hero-tagline">
-                            <span class="text-primary">@</span> 
-                            <span class="text-info">onelastai</span> 
-                            <span class="text-success">✨</span>
+                        <div class="hero-tagline">
+                            <span class="text-success">Portfolio</span> + 
+                            <span class="text-info">WebDev Services</span> + 
+                            <span class="text-warning">AI Hub</span> 
+                            <span class="text-primary">✨</span>
                         </div>
                     </div>
                     
-                    <!-- Tagline -->
+                    <!-- Value Proposition -->
                     <div class="hero-tagline mb-4">
                         <h3 class="h4 hero-tagline mb-3">
-                            <i class="fas fa-code text-primary"></i>
-                            AI Developer & Security Expert
+                            <i class="fas fa-rocket text-primary"></i>
+                            Complete Digital Solution
                         </h3>
                         <p class="lead hero-tagline">
-                            <strong>I build smart, secure systems that actually work.</strong><br>
-                            From AI chatbots to web applications, let's create something amazing together!
+                            <strong>Professional portfolio showcase, commercial web development services, and entertaining AI personalities</strong><br>
+                            Choose your path: explore, hire, or interact with AI agents!
                         </p>
                     </div>
                     
-                    <!-- Quick Stats -->
+                    <!-- Platform Stats -->
                     <div class="hero-stats mb-4">
                         <div class="row g-3">
                             <div class="col-4">
                                 <div class="stat-item text-center">
-                                    <div class="stat-number text-success fw-bold">10+</div>
-                                    <div class="stat-label small text-muted">AI Tools</div>
+                                    <div class="stat-number text-success fw-bold">16</div>
+                                    <div class="stat-label small text-muted">AI Agents</div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="stat-item text-center">
-                                    <div class="stat-number text-info fw-bold">5+</div>
-                                    <div class="stat-label small text-muted">Years Exp</div>
+                                    <div class="stat-number text-info fw-bold">11</div>
+                                    <div class="stat-label small text-muted">AI Models</div>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="stat-item text-center">
-                                    <div class="stat-number text-warning fw-bold">∞</div>
-                                    <div class="stat-label small text-muted">Coffee ☕</div>
+                                    <div class="stat-number text-warning fw-bold">3</div>
+                                    <div class="stat-label small text-muted">Services</div>
                                 </div>
                             </div>
                         </div>
@@ -62,11 +63,11 @@
                     
                     <!-- CTA Buttons -->
                     <div class="hero-cta">
-                        <a href="{{ url_for('portfolio.index') }}" class="btn btn-primary btn-lg me-3">
-                            <i class="fas fa-user"></i> Check My Work
+                        <a href="#services" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-eye"></i> Explore Services
                         </a>
-                        <a href="#services" class="btn btn-outline-light btn-lg">
-                            <i class="fas fa-heart"></i> What I Do
+                        <a href="{{ url_for('ai_services.agents') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-robot"></i> Meet AI Agents
                         </a>
                     </div>
                 </div>
@@ -74,45 +75,42 @@
             
             <div class="col-lg-6">
                 <div class="hero-visual">
-                    <!-- Terminal-like animation -->
-                    <div class="terminal-window bg-black rounded p-4 shadow-lg">
-                        <div class="terminal-header mb-3">
+                    <!-- Platform showcase animation -->
+                    <div class="platform-showcase bg-black rounded p-4 shadow-lg">
+                        <div class="platform-header mb-3">
                             <div class="d-flex align-items-center">
-                                <div class="terminal-dots">
+                                <div class="platform-dots">
                                     <span class="dot bg-danger"></span>
                                     <span class="dot bg-warning"></span>
                                     <span class="dot bg-success"></span>
                                 </div>
-                                <span class="terminal-title text-muted ms-3">onelastai@axeyaxe:~$</span>
+                                <span class="platform-title text-muted ms-3">3in1-platform.com</span>
                             </div>
                         </div>
-                        <div class="terminal-body">
-                            <div class="terminal-line">
-                                <span class="text-success">$</span> 
-                                <span class="text-white">whoami</span>
+                        <div class="platform-body">
+                            <div class="platform-line">
+                                <span class="text-primary">📂</span> 
+                                <span class="text-white">./explore_services.py</span>
                             </div>
-                            <div class="terminal-line text-info">
-                                professor_johnny (@onelastai)
+                            <div class="platform-output">
+                                <div class="text-success mb-2">🎯 <strong>Portfolio Section:</strong></div>
+                                <div class="text-muted ms-3 mb-1">• Professional showcase</div>
+                                <div class="text-muted ms-3 mb-3">• Projects & testimonials</div>
+                                
+                                <div class="text-info mb-2">💼 <strong>Web Development:</strong></div>
+                                <div class="text-muted ms-3 mb-1">• Custom websites & apps</div>
+                                <div class="text-muted ms-3 mb-3">• E-commerce solutions</div>
+                                
+                                <div class="text-warning mb-2">🤖 <strong>AI Services:</strong></div>
+                                <div class="text-muted ms-3 mb-1">• 16 unique AI personalities</div>
+                                <div class="text-muted ms-3 mb-1">• Real-time chat interface</div>
+                                <div class="text-muted ms-3">• Individual subscriptions</div>
                             </div>
-                            <div class="terminal-line">
-                                <span class="text-success">$</span> 
-                                <span class="text-white">cat skills.txt</span>
+                            <div class="platform-line mt-3">
+                                <span class="text-success">✓</span> 
+                                <span class="text-white">All systems operational</span>
                             </div>
-                            <div class="terminal-output">
-                                <div class="text-warning">🤖 AI & Machine Learning</div>
-                                <div class="text-warning">� Cybersecurity & Web Security</div>
-                                <div class="text-warning">� Python & Full-Stack Development</div>
-                                <div class="text-warning">🧠 Deep Learning & Neural Networks</div>
-                                <div class="text-warning">⚡ Automation & Smart Systems</div>
-                            </div>
-                            <div class="terminal-line">
-                                <span class="text-success">$</span> 
-                                <span class="text-white">npm start awesome-project</span>
-                            </div>
-                            <div class="terminal-line text-success">
-                                [✓] Project started successfully! 🎉
-                            </div>
-                            <div class="terminal-cursor">█</div>
+                            <div class="platform-cursor">█</div>
                         </div>
                     </div>
                 </div>
@@ -143,19 +141,21 @@
                         <div class="service-icon mb-4">
                             <i class="fas fa-user-tie text-primary" style="font-size: 4rem;"></i>
                         </div>
-                        <h3 class="card-title h4 fw-bold mb-3">Portfolio</h3>
+                        <h3 class="card-title h4 fw-bold mb-3">Portfolio Showcase</h3>
                         <p class="card-text text-muted mb-4">
-                            Explore my professional journey, skills, and projects. From AI development to cybersecurity expertise.
+                            Professional background, skills, and featured projects. Build trust and showcase expertise through testimonials and achievements.
                         </p>
                         <ul class="list-unstyled mb-4 text-start">
-                            <li><i class="fas fa-check text-success me-2"></i> Professional Background</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Featured Projects</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Skills & Certifications</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Client Testimonials</li>
+                            <li><i class="fas fa-check text-primary me-2"></i> About & Professional Background</li>
+                            <li><i class="fas fa-check text-primary me-2"></i> Featured Projects Portfolio</li>
+                            <li><i class="fas fa-check text-primary me-2"></i> Skills & Certifications</li>
+                            <li><i class="fas fa-check text-primary me-2"></i> Client Testimonials</li>
+                            <li><i class="fas fa-check text-primary me-2"></i> Contact Information</li>
                         </ul>
                         <a href="{{ url_for('portfolio.index') }}" class="btn btn-primary btn-lg w-100">
                             <i class="fas fa-eye"></i> View Portfolio
                         </a>
+                        <small class="text-muted d-block mt-2">Professional Showcase</small>
                     </div>
                 </div>
             </div>
@@ -169,43 +169,45 @@
                         </div>
                         <h3 class="card-title h4 fw-bold mb-3">Web Development</h3>
                         <p class="card-text text-muted mb-4">
-                            Professional web development services. From Flask applications to full-stack solutions.
+                            Commercial web development services for businesses. From custom websites to e-commerce solutions and digital marketing.
                         </p>
                         <ul class="list-unstyled mb-4 text-start">
-                            <li><i class="fas fa-check text-success me-2"></i> Custom Web Applications</li>
-                            <li><i class="fas fa-check text-success me-2"></i> API Development</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Database Design</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Security Integration</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Custom Websites & Applications</li>
+                            <li><i class="fas fa-check text-success me-2"></i> E-commerce Solutions</li>
+                            <li><i class="fas fa-check text-success me-2"></i> SEO & Digital Marketing</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Website Maintenance</li>
+                            <li><i class="fas fa-check text-success me-2"></i> Transparent Pricing</li>
                         </ul>
-                        <a href="#webdev" class="btn btn-success btn-lg w-100">
+                        <a href="{{ url_for('webdev.index') }}" class="btn btn-success btn-lg w-100">
                             <i class="fas fa-laptop-code"></i> View Services
                         </a>
-                        <small class="text-muted d-block mt-2">Coming Soon</small>
+                        <small class="text-muted d-block mt-2">Commercial Services</small>
                     </div>
                 </div>
             </div>
             
-            <!-- AI Services -->
+            <!-- AI Services Hub -->
             <div class="col-lg-4">
                 <div class="service-card h-100 card border-0 shadow-lg hover-card">
                     <div class="card-body p-5 text-center">
                         <div class="service-icon mb-4">
                             <i class="fas fa-robot text-warning" style="font-size: 4rem;"></i>
                         </div>
-                        <h3 class="card-title h4 fw-bold mb-3">AI Services</h3>
+                        <h3 class="card-title h4 fw-bold mb-3">AI Services Hub</h3>
                         <p class="card-text text-muted mb-4">
-                            Interact with 10 unique AI personalities. From coding help to entertainment and analysis.
+                            Interactive AI agents with unique personalities. From serious tools to entertaining companions, each with individual pricing.
                         </p>
                         <ul class="list-unstyled mb-4 text-start">
-                            <li><i class="fas fa-check text-warning me-2"></i> 10 AI Agent Personalities</li>
+                            <li><i class="fas fa-check text-warning me-2"></i> 16 Unique AI Personalities</li>
                             <li><i class="fas fa-check text-warning me-2"></i> Real-time Chat Interface</li>
-                            <li><i class="fas fa-check text-warning me-2"></i> Specialized Expertise</li>
+                            <li><i class="fas fa-check text-warning me-2"></i> Professional & Fun Agents</li>
                             <li><i class="fas fa-check text-warning me-2"></i> Individual Subscriptions</li>
+                            <li><i class="fas fa-check text-warning me-2"></i> $1/day, $5/week, $19/month</li>
                         </ul>
-                        <a href="#ai-services" class="btn btn-warning btn-lg w-100 text-dark">
-                            <i class="fas fa-comments"></i> Chat with AI
+                        <a href="{{ url_for('ai_services.index') }}" class="btn btn-warning btn-lg w-100 text-dark">
+                            <i class="fas fa-comments"></i> Explore AI Hub
                         </a>
-                        <small class="text-muted d-block mt-2">10 Agents Available</small>
+                        <small class="text-muted d-block mt-2">16 Agents Available</small>
                     </div>
                 </div>
             </div>
@@ -213,54 +215,125 @@
     </div>
 </section>
 
-<!-- Philosophy Section -->
-<section class="philosophy-section py-5 bg-dark text-white">
+<!-- Platform Features Section -->
+<section class="features-section py-5 bg-white">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mb-5">
                 <h2 class="display-6 fw-bold mb-3">
-                    <span class="text-danger">🌑</span> The Phantom Philosophy
+                    <span class="text-primary">⚡</span> Why Choose Our Platform?
                 </h2>
+                <p class="lead text-muted">
+                    All-in-one solution that's professional, scalable, and entertaining
+                </p>
             </div>
         </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-item text-center">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-cube text-primary" style="font-size: 3rem;"></i>
+                    </div>
+                    <h4 class="h5 fw-bold mb-3">All-in-One Solution</h4>
+                    <p class="text-muted">
+                        Portfolio, services, and AI entertainment combined in a single, cohesive platform.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-item text-center">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-balance-scale text-success" style="font-size: 3rem;"></i>
+                    </div>
+                    <h4 class="h5 fw-bold mb-3">Professional + Fun</h4>
+                    <p class="text-muted">
+                        Serious business services balanced with entertaining AI personalities for engagement.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-item text-center">
+                    <div class="feature-icon mb-3">
+                        <i class="fas fa-expand-arrows-alt text-warning" style="font-size: 3rem;"></i>
+                    </div>
+                    <h4 class="h5 fw-bold mb-3">Scalable & Modular</h4>
+                    <p class="text-muted">
+                        Each section is independent and expandable, allowing for future growth and updates.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- AI Agents Preview Section -->
+<section class="agents-preview py-5 bg-light">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="philosophy-quotes">
-                    <div class="quote-item mb-4">
-                        <blockquote class="blockquote">
-                            <p class="mb-0">⚡ The Mind Unshackled — A prisoner of nothing, a master of all.</p>
-                        </blockquote>
-                    </div>
-                    <div class="quote-item mb-4">
-                        <blockquote class="blockquote">
-                            <p class="mb-0">🔥 A Rebel Without Chains — No path is given, every road is taken.</p>
-                        </blockquote>
-                    </div>
-                    <div class="quote-item mb-4">
-                        <blockquote class="blockquote">
-                            <p class="mb-0">👁 A Phantom in the Veil — When they see, it is already too late.</p>
-                        </blockquote>
+            <div class="col-12 text-center mb-5">
+                <h2 class="display-6 fw-bold mb-3">
+                    <span class="text-warning">🤖</span> Meet Some AI Agents
+                </h2>
+                <p class="lead text-muted">
+                    16 unique personalities ready to help, entertain, and engage
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="agent-preview-card card border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="agent-avatar mb-3">
+                            <i class="fas fa-chart-line text-primary" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Business Strategist</h5>
+                        <p class="card-text text-muted small">
+                            Strategic planning, business analysis, market research
+                        </p>
+                        <span class="badge bg-primary rounded-pill">Professional</span>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="philosophy-quotes">
-                    <div class="quote-item mb-4">
-                        <blockquote class="blockquote">
-                            <p class="mb-0">☁️ The Shadow Architect — I write my story in the dark so they can read it in fear.</p>
-                        </blockquote>
-                    </div>
-                    <div class="quote-item mb-4">
-                        <blockquote class="blockquote">
-                            <p class="mb-0">⚔️ The Edge Walker — Order crumbles where I step, chaos follows where I lead.</p>
-                        </blockquote>
-                    </div>
-                    <div class="quote-item mb-4">
-                        <blockquote class="blockquote">
-                            <p class="mb-0">🔑 The Keeper of Lost Secrets — Every lock has a key, but mine are unseen.</p>
-                        </blockquote>
+            <div class="col-md-4">
+                <div class="agent-preview-card card border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="agent-avatar mb-3">
+                            <i class="fas fa-heart text-danger" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Virtual Girlfriend</h5>
+                        <p class="card-text text-muted small">
+                            Emotional support, companionship, caring conversations
+                        </p>
+                        <span class="badge bg-danger rounded-pill">Entertainment</span>
                     </div>
                 </div>
+            </div>
+            <div class="col-md-4">
+                <div class="agent-preview-card card border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="agent-avatar mb-3">
+                            <i class="fas fa-couch text-secondary" style="font-size: 2.5rem;"></i>
+                        </div>
+                        <h5 class="card-title fw-bold">Lazy John</h5>
+                        <p class="card-text text-muted small">
+                            Laid-back responses, minimal effort, casual conversations
+                        </p>
+                        <span class="badge bg-secondary rounded-pill">Personality</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-12 text-center">
+                <a href="{{ url_for('ai_services.agents') }}" class="btn btn-warning btn-lg">
+                    <i class="fas fa-users"></i> View All 16 Agents
+                </a>
+                <p class="text-muted mt-2 small">
+                    Starting at $1/day • $5/week • $19/month per agent
+                </p>
             </div>
         </div>
     </div>
@@ -271,12 +344,15 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
-                <h3 class="fw-bold mb-2">Ready to Collaborate?</h3>
-                <p class="mb-0">Let's build something extraordinary together. AI, Security, or Web Development.</p>
+                <h3 class="fw-bold mb-2">Ready to Get Started?</h3>
+                <p class="mb-0">Explore our portfolio, hire us for web development, or chat with AI agents. Your choice!</p>
             </div>
             <div class="col-lg-4 text-lg-end">
-                <a href="mailto:contact@axeyaxe.com" class="btn btn-light btn-lg">
-                    <i class="fas fa-envelope"></i> Get In Touch
+                <a href="{{ url_for('contact.index') }}" class="btn btn-light btn-lg me-2">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+                <a href="{{ url_for('ai_services.chat') }}" class="btn btn-warning btn-lg">
+                    <i class="fas fa-comments"></i> Chat Now
                 </a>
             </div>
         </div>
@@ -309,14 +385,14 @@
         font-weight: bold;
     }
     
-    .terminal-window {
+    .platform-showcase {
         font-family: 'Fira Code', monospace;
         font-size: 0.9rem;
-        max-height: 400px;
+        max-height: 450px;
         overflow: hidden;
     }
     
-    .terminal-dots {
+    .platform-dots {
         display: flex;
         gap: 8px;
     }
@@ -327,17 +403,17 @@
         border-radius: 50%;
     }
     
-    .terminal-line {
+    .platform-line {
         margin: 8px 0;
         line-height: 1.4;
     }
     
-    .terminal-output div {
-        margin-left: 20px;
+    .platform-output div {
+        margin: 4px 0;
         font-size: 0.85rem;
     }
     
-    .terminal-cursor {
+    .platform-cursor {
         display: inline-block;
         color: #00ff00;
         animation: blink 1s infinite;
@@ -365,33 +441,44 @@
         transform: scale(1.1);
     }
     
-    .stat-number {
-        font-size: 1.8rem;
+    .feature-item {
+        transition: transform 0.3s ease;
     }
     
-    .philosophy-quotes blockquote p {
-        font-style: italic;
-        font-size: 1.1rem;
-        line-height: 1.6;
+    .feature-item:hover {
+        transform: translateY(-5px);
+    }
+    
+    .agent-preview-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .agent-preview-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
     }
 </style>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-    // Terminal typing animation
+    // Platform showcase animation
     document.addEventListener('DOMContentLoaded', function() {
         // Add any interactive effects here
         
-        // Animate terminal cursor
-        const cursor = document.querySelector('.terminal-cursor');
+        // Animate platform cursor
+        const cursor = document.querySelector('.platform-cursor');
         if (cursor) {
             setInterval(() => {
                 cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
             }, 500);
         }
         
-        // Add smooth scrolling
+        // Add smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -402,6 +489,16 @@
                         block: 'start'
                     });
                 }
+            });
+        });
+        
+        // Add hover effects to service cards
+        document.querySelectorAll('.hover-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
             });
         });
     });

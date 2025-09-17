@@ -1,0 +1,203 @@
+version: '3.8'
+
+services:
+  # Main Application
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio_app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://portfolio_user:${DB_PASSWORD}@db:5432/portfolio_db
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=${SECRET_KEY}
+      - STRIPE_PUBLISHABLE_KEY=${STRIPE_PUBLISHABLE_KEY}
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - STRIPE_WEBHOOK_SECRET=${STRIPE_WEBHOOK_SECRET}
+      - PAYPAL_CLIENT_ID=${PAYPAL_CLIENT_ID}
+      - PAYPAL_CLIENT_SECRET=${PAYPAL_CLIENT_SECRET}
+      - MAIL_SERVER=${MAIL_SERVER}
+      - MAIL_PORT=${MAIL_PORT}
+      - MAIL_USE_TLS=${MAIL_USE_TLS}
+      - MAIL_USERNAME=${MAIL_USERNAME}
+      - MAIL_PASSWORD=${MAIL_PASSWORD}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - static_files:/app/static
+      - upload_files:/app/static/uploads
+      - log_files:/app/logs
+    depends_on:
+      - db
+      - redis
+    networks:
+      - portfolio_network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.portfolio.rule=Host(`yourdomain.com`)"
+      - "traefik.http.routers.portfolio.tls=true"
+      - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
+
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: portfolio_db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=portfolio_db
+      - POSTGRES_USER=portfolio_user
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./deploy/db-init:/docker-entrypoint-initdb.d
+    networks:
+      - portfolio_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U portfolio_user -d portfolio_db"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: portfolio_redis
+    restart: unless-stopped
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis_data:/data
+    networks:
+      - portfolio_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: portfolio_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./deploy/ssl:/etc/nginx/ssl:ro
+      - static_files:/var/www/static:ro
+      - ./logs/nginx:/var/log/nginx
+    depends_on:
+      - app
+    networks:
+      - portfolio_network
+    labels:
+      - "traefik.enable=false"
+
+  # Celery Worker for Background Tasks
+  worker:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio_worker
+    restart: unless-stopped
+    command: celery -A app.celery worker --loglevel=info --concurrency=2
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://portfolio_user:${DB_PASSWORD}@db:5432/portfolio_db
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=${SECRET_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - log_files:/app/logs
+    depends_on:
+      - db
+      - redis
+    networks:
+      - portfolio_network
+
+  # Celery Beat for Scheduled Tasks
+  scheduler:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio_scheduler
+    restart: unless-stopped
+    command: celery -A app.celery beat --loglevel=info --schedule=/tmp/celerybeat-schedule
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_URL=postgresql://portfolio_user:${DB_PASSWORD}@db:5432/portfolio_db
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=${SECRET_KEY}
+    volumes:
+      - log_files:/app/logs
+      - scheduler_data:/tmp
+    depends_on:
+      - db
+      - redis
+    networks:
+      - portfolio_network
+
+  # Monitoring - Prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: portfolio_prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./deploy/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    networks:
+      - portfolio_network
+    profiles:
+      - monitoring
+
+  # Monitoring - Grafana
+  grafana:
+    image: grafana/grafana:latest
+    container_name: portfolio_grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./deploy/grafana:/etc/grafana/provisioning
+    networks:
+      - portfolio_network
+    profiles:
+      - monitoring
+
+# Networks
+networks:
+  portfolio_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+# Volumes
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+  static_files:
+    driver: local
+  upload_files:
+    driver: local
+  log_files:
+    driver: local
+  scheduler_data:
+    driver: local
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
