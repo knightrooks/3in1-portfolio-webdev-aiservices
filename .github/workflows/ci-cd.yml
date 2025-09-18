@@ -184,24 +184,16 @@ jobs:
         cache: 'npm'
     
     - name: Install frontend dependencies
-      run: |
-        cd app/static
-        npm install
+      run: npm install
     
     - name: Run frontend tests
-      run: |
-        cd app/static
-        npm run test
+      run: npm run test
     
     - name: Run frontend linting
-      run: |
-        cd app/static
-        npm run lint
+      run: npm run lint
     
     - name: Build frontend assets
-      run: |
-        cd app/static
-        npm run build
+      run: npm run build
 
   # Build Docker Images
   build:

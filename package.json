@@ -1,0 +1,23 @@
+{
+  "name": "3in1-portfolio-webdev-aiservices",
+  "version": "1.0.0",
+  "description": "3-in-1 Portfolio, Web Development Services, and AI Services Platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'Frontend tests not yet implemented' && exit 0",
+    "build": "echo 'Frontend build not yet implemented' && exit 0",
+    "lint": "echo 'Frontend linting not yet implemented' && exit 0",
+    "dev": "echo 'Frontend development server not yet implemented' && exit 0"
+  },
+  "keywords": [
+    "portfolio",
+    "webdev",
+    "ai",
+    "flask",
+    "python"
+  ],
+  "author": "3in1 Portfolio Developer",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}

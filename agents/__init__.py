@@ -15,35 +15,37 @@ from .marketing_specialist import MarketingSpecialistAgent
 from .operations_manager import OperationsManagerAgent
 
 __all__ = [
-    'StrategistAgent',
-    'DeveloperAgent', 
-    'SecurityExpertAgent',
-    'ContentCreatorAgent',
-    'ResearchAnalystAgent',
-    'DataScientistAgent',
-    'CustomerSuccessAgent',
-    'ProductManagerAgent',
-    'MarketingSpecialistAgent',
-    'OperationsManagerAgent'
+    "StrategistAgent",
+    "DeveloperAgent",
+    "SecurityExpertAgent",
+    "ContentCreatorAgent",
+    "ResearchAnalystAgent",
+    "DataScientistAgent",
+    "CustomerSuccessAgent",
+    "ProductManagerAgent",
+    "MarketingSpecialistAgent",
+    "OperationsManagerAgent",
 ]
 
 # Agent Registry for Dynamic Loading
 AGENT_REGISTRY = {
-    'strategist': StrategistAgent,
-    'developer': DeveloperAgent,
-    'security_expert': SecurityExpertAgent,
-    'content_creator': ContentCreatorAgent,
-    'research_analyst': ResearchAnalystAgent,
-    'data_scientist': DataScientistAgent,
-    'customer_success': CustomerSuccessAgent,
-    'product_manager': ProductManagerAgent,
-    'marketing_specialist': MarketingSpecialistAgent,
-    'operations_manager': OperationsManagerAgent
+    "strategist": StrategistAgent,
+    "developer": DeveloperAgent,
+    "security_expert": SecurityExpertAgent,
+    "content_creator": ContentCreatorAgent,
+    "research_analyst": ResearchAnalystAgent,
+    "data_scientist": DataScientistAgent,
+    "customer_success": CustomerSuccessAgent,
+    "product_manager": ProductManagerAgent,
+    "marketing_specialist": MarketingSpecialistAgent,
+    "operations_manager": OperationsManagerAgent,
 }
+
 
 def get_agent_class(agent_name: str):
     """Get agent class by name"""
     return AGENT_REGISTRY.get(agent_name)
+
 
 def list_available_agents():
     """List all available agents"""

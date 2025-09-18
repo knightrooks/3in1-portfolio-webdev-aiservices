@@ -1,0 +1,618 @@
+{% extends "base.html" %}{% extends "base.html" %}
+
+
+
+{% block title %}Pricing - Web Development Services{% endblock %}{% block title %}Pricing | Professor Johnny (@onelastai){% endblock %}
+
+
+
+{% block content %}{% block content %}
+
+<div class="container mt-5 pt-4"><div class="pricing-section" style="margin-top: 76px;">
+
+    <div class="text-center mb-5">    <!-- Pricing Hero -->
+
+        <h1>Transparent Pricing</h1>    <section class="pricing-hero py-5 bg-primary text-white" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);">
+
+        <p class="lead">Choose the perfect plan for your project</p>        <div class="container">
+
+    </div>            <div class="row text-center">
+
+                    <div class="col-12">
+
+    <div class="row">                    <h1 class="display-4 fw-bold mb-4">
+
+        <div class="col-md-4 mb-4">                        <i class="fas fa-tag text-warning"></i> Transparent Pricing
+
+            <div class="card">                    </h1>
+
+                <div class="card-header text-center">                    <p class="lead mb-4">No hidden fees. No surprises. Just clear, upfront pricing for quality web solutions.</p>
+
+                    <h3>Starter</h3>                    <div class="pricing-badges">
+
+                    <h2>$1,500</h2>                        <span class="badge bg-warning text-dark me-2 p-2">
+
+                </div>                            <i class="fas fa-shield-alt"></i> 30-Day Guarantee
+
+                <div class="card-body">                        </span>
+
+                    <ul class="list-unstyled">                        <span class="badge bg-info me-2 p-2">
+
+                        <li>✓ 5-page website</li>                            <i class="fas fa-clock"></i> Fixed Timelines
+
+                        <li>✓ Responsive design</li>                        </span>
+
+                        <li>✓ SEO optimization</li>                        <span class="badge bg-success p-2">
+
+                        <li>✓ Contact form</li>                            <i class="fas fa-handshake"></i> No Hidden Costs
+
+                        <li>✓ 30 days support</li>                        </span>
+
+                    </ul>                    </div>
+
+                    <a href="{{ url_for('webdev.quote') }}" class="btn btn-primary btn-block">Get Started</a>                </div>
+
+                </div>            </div>
+
+            </div>        </div>
+
+        </div>    </section>
+
+        
+
+        <div class="col-md-4 mb-4">    <!-- Website Development Pricing -->
+
+            <div class="card border-primary">    <section class="website-pricing py-5">
+
+                <div class="card-header text-center bg-primary text-white">        <div class="container">
+
+                    <h3>Professional</h3>            <div class="row">
+
+                    <h2>$3,500</h2>                <div class="col-12 text-center mb-5">
+
+                </div>                    <h2 class="display-6 fw-bold mb-3">
+
+                <div class="card-body">                        <i class="fas fa-globe text-primary"></i> Website Development
+
+                    <ul class="list-unstyled">                    </h2>
+
+                        <li>✓ 10-page website</li>                    <p class="lead text-muted">Professional websites that convert visitors into customers</p>
+
+                        <li>✓ Custom design</li>                </div>
+
+                        <li>✓ CMS integration</li>            </div>
+
+                        <li>✓ E-commerce ready</li>            
+
+                        <li>✓ 60 days support</li>            <div class="row g-4">
+
+                    </ul>                <div class="col-lg-4">
+
+                    <a href="{{ url_for('webdev.quote') }}" class="btn btn-primary btn-block">Most Popular</a>                    <div class="pricing-card card h-100 border-0 shadow-sm">
+
+                </div>                        <div class="card-header bg-light text-center">
+
+            </div>                            <h4 class="fw-bold text-dark">Basic Website</h4>
+
+        </div>                            <div class="price">
+
+                                        <span class="h2 fw-bold text-primary">$1,500</span>
+
+        <div class="col-md-4 mb-4">                                <small class="text-muted d-block">Perfect for small businesses</small>
+
+            <div class="card">                            </div>
+
+                <div class="card-header text-center">                        </div>
+
+                    <h3>Enterprise</h3>                        <div class="card-body p-4">
+
+                    <h2>$7,500+</h2>                            <ul class="list-unstyled">
+
+                </div>                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Up to 5 pages</li>
+
+                <div class="card-body">                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Responsive design</li>
+
+                    <ul class="list-unstyled">                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Basic SEO setup</li>
+
+                        <li>✓ Unlimited pages</li>                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Contact form</li>
+
+                        <li>✓ Web application</li>                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Google Analytics</li>
+
+                        <li>✓ API integrations</li>                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>1 month support</li>
+
+                        <li>✓ Priority support</li>                                <li class="mb-2"><i class="fas fa-times text-muted me-2"></i><span class="text-muted">E-commerce functionality</span></li>
+
+                        <li>✓ 1 year maintenance</li>                                <li class="mb-2"><i class="fas fa-times text-muted me-2"></i><span class="text-muted">Advanced animations</span></li>
+
+                    </ul>                            </ul>
+
+                    <a href="{{ url_for('webdev.quote') }}" class="btn btn-primary btn-block">Contact Us</a>                            <div class="timeline mb-3">
+
+                </div>                                <small class="text-muted">
+
+            </div>                                    <i class="fas fa-clock"></i> Delivery: 2-3 weeks
+
+        </div>                                </small>
+
+    </div>                            </div>
+
+</div>                            <a href="{{ url_for('webdev.quote') }}?package=basic-website" class="btn btn-outline-primary w-100">Get Started</a>
+
+{% endblock %}                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="pricing-card card h-100 border-primary shadow position-relative">
+                        <div class="position-absolute top-0 start-50 translate-middle">
+                            <span class="badge bg-primary px-3 py-2">Most Popular</span>
+                        </div>
+                        <div class="card-header bg-primary text-white text-center">
+                            <h4 class="fw-bold">Professional Website</h4>
+                            <div class="price">
+                                <span class="h2 fw-bold">$3,000</span>
+                                <small class="d-block opacity-75">Ideal for growing businesses</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Up to 15 pages</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Custom design</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced SEO</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Multiple contact forms</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Blog functionality</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Social media integration</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>3 months support</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Performance optimization</li>
+                            </ul>
+                            <div class="timeline mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock"></i> Delivery: 3-4 weeks
+                                </small>
+                            </div>
+                            <a href="{{ url_for('webdev.quote') }}?package=professional-website" class="btn btn-primary w-100">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="pricing-card card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-warning text-center">
+                            <h4 class="fw-bold text-dark">Enterprise Website</h4>
+                            <div class="price">
+                                <span class="h2 fw-bold text-dark">$5,000+</span>
+                                <small class="text-dark d-block">For established businesses</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Unlimited pages</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Premium design</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced functionality</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Custom integrations</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Multi-language support</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced security</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>6 months support</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Priority updates</li>
+                            </ul>
+                            <div class="timeline mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock"></i> Delivery: 4-6 weeks
+                                </small>
+                            </div>
+                            <a href="{{ url_for('webdev.quote') }}?package=enterprise-website" class="btn btn-outline-warning w-100">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Web Applications Pricing -->
+    <section class="apps-pricing py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-code text-success"></i> Web Applications
+                    </h2>
+                    <p class="lead text-muted">Custom web apps built for your specific business needs</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="pricing-card card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-success text-white text-center">
+                            <h4 class="fw-bold">Simple App</h4>
+                            <div class="price">
+                                <span class="h2 fw-bold">$3,000</span>
+                                <small class="d-block opacity-75">Basic functionality</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>User authentication</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Basic CRUD operations</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Simple dashboard</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Data export/import</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Email notifications</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Mobile responsive</li>
+                            </ul>
+                            <div class="timeline mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock"></i> Delivery: 4-6 weeks
+                                </small>
+                            </div>
+                            <a href="{{ url_for('webdev.quote') }}?package=simple-app" class="btn btn-success w-100">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="pricing-card card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-info text-white text-center">
+                            <h4 class="fw-bold">Complex App</h4>
+                            <div class="price">
+                                <span class="h2 fw-bold">$6,000</span>
+                                <small class="d-block opacity-75">Advanced features</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Everything in Simple</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Role-based access</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>API integrations</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced reporting</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Real-time notifications</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>File management</li>
+                            </ul>
+                            <div class="timeline mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock"></i> Delivery: 6-8 weeks
+                                </small>
+                            </div>
+                            <a href="{{ url_for('webdev.quote') }}?package=complex-app" class="btn btn-info w-100">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="pricing-card card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-dark text-white text-center">
+                            <h4 class="fw-bold">Enterprise App</h4>
+                            <div class="price">
+                                <span class="h2 fw-bold">$10,000+</span>
+                                <small class="d-block opacity-75">Full-scale solution</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Everything in Complex</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Microservices architecture</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced security</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Load balancing</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Custom integrations</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>DevOps setup</li>
+                            </ul>
+                            <div class="timeline mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock"></i> Delivery: 8-12 weeks
+                                </small>
+                            </div>
+                            <a href="{{ url_for('webdev.quote') }}?package=enterprise-app" class="btn btn-dark w-100">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- E-commerce Pricing -->
+    <section class="ecommerce-pricing py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-shopping-cart text-warning"></i> E-commerce Solutions
+                    </h2>
+                    <p class="lead text-muted">Online stores that sell while you sleep</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="pricing-card card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-warning text-dark text-center">
+                            <h4 class="fw-bold">Basic Store</h4>
+                            <div class="price">
+                                <span class="h2 fw-bold">$2,500</span>
+                                <small class="d-block">Up to 50 products</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Product catalog</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Shopping cart</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Payment gateway</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Order management</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Basic analytics</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>SSL certificate</li>
+                            </ul>
+                            <div class="timeline mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock"></i> Delivery: 3-4 weeks
+                                </small>
+                            </div>
+                            <a href="{{ url_for('webdev.quote') }}?package=basic-store" class="btn btn-warning w-100">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="pricing-card card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-danger text-white text-center">
+                            <h4 class="fw-bold">Advanced Store</h4>
+                            <div class="price">
+                                <span class="h2 fw-bold">$4,500</span>
+                                <small class="d-block opacity-75">Up to 500 products</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Everything in Basic</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced search/filters</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Customer accounts</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Inventory management</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Discount codes</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Multi-currency</li>
+                            </ul>
+                            <div class="timeline mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock"></i> Delivery: 4-6 weeks
+                                </small>
+                            </div>
+                            <a href="{{ url_for('webdev.quote') }}?package=advanced-store" class="btn btn-danger w-100">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="pricing-card card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-secondary text-white text-center">
+                            <h4 class="fw-bold">Enterprise Store</h4>
+                            <div class="price">
+                                <span class="h2 fw-bold">$8,000+</span>
+                                <small class="d-block opacity-75">Unlimited products</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Everything in Advanced</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Multi-vendor support</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>B2B functionality</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>API integrations</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced reporting</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Custom features</li>
+                            </ul>
+                            <div class="timeline mb-3">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock"></i> Delivery: 6-10 weeks
+                                </small>
+                            </div>
+                            <a href="{{ url_for('webdev.quote') }}?package=enterprise-store" class="btn btn-secondary w-100">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maintenance Plans -->
+    <section class="maintenance-pricing py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-tools text-info"></i> Maintenance Plans
+                    </h2>
+                    <p class="lead text-muted">Keep your website running smoothly with ongoing support</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="pricing-card card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-info text-white text-center">
+                            <h4 class="fw-bold">Basic Plan</h4>
+                            <div class="price">
+                                <span class="h2 fw-bold">$200</span>
+                                <small class="d-block opacity-75">per month</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Monthly backups</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Security updates</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Uptime monitoring</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Performance reports</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Email support</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>2 hours/month updates</li>
+                            </ul>
+                            <a href="{{ url_for('webdev.quote') }}?package=basic-maintenance" class="btn btn-info w-100">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="pricing-card card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h4 class="fw-bold">Professional Plan</h4>
+                            <div class="price">
+                                <span class="h2 fw-bold">$400</span>
+                                <small class="d-block opacity-75">per month</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Everything in Basic</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Weekly backups</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Priority support</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Phone support</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>5 hours/month updates</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>SEO monitoring</li>
+                            </ul>
+                            <a href="{{ url_for('webdev.quote') }}?package=professional-maintenance" class="btn btn-primary w-100">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="pricing-card card h-100 border-0 shadow-sm">
+                        <div class="card-header bg-success text-white text-center">
+                            <h4 class="fw-bold">Enterprise Plan</h4>
+                            <div class="price">
+                                <span class="h2 fw-bold">$800</span>
+                                <small class="d-block opacity-75">per month</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Everything in Professional</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Daily backups</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24/7 monitoring</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Emergency support</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>10 hours/month updates</li>
+                                <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Dedicated support</li>
+                            </ul>
+                            <a href="{{ url_for('webdev.quote') }}?package=enterprise-maintenance" class="btn btn-success w-100">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="pricing-faq py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="text-center fw-bold mb-5">
+                        <i class="fas fa-question-circle text-primary"></i> Pricing FAQ
+                    </h2>
+                    
+                    <div class="accordion" id="pricingFAQ">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    What's included in the quoted price?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#pricingFAQ">
+                                <div class="accordion-body">
+                                    All quoted prices include design, development, testing, deployment, and the support period mentioned. No hidden fees or surprise charges.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Do you offer payment plans?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                                <div class="accordion-body">
+                                    Yes! We offer flexible payment plans. Typically 50% upfront and 50% on completion for projects over $2,000.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    What if I need changes after the project is complete?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                                <div class="accordion-body">
+                                    Minor changes are included in the support period. Major changes can be quoted separately or handled through a maintenance plan.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Do you provide hosting services?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#pricingFAQ">
+                                <div class="accordion-body">
+                                    We can help set up hosting and recommend reliable providers, but hosting costs are separate from development costs.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="pricing-cta py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-12">
+                    <h3 class="fw-bold mb-3">Ready to Start Your Project?</h3>
+                    <p class="lead mb-4">Get a custom quote tailored to your specific needs and budget.</p>
+                    <div class="d-flex gap-3 justify-content-center">
+                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-warning btn-lg">
+                            <i class="fas fa-calculator"></i> Get Custom Quote
+                        </a>
+                        <a href="mailto:contact@axeyaxe.com" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-envelope"></i> Discuss Project
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.pricing-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+}
+
+.price {
+    margin: 1rem 0;
+}
+
+.timeline {
+    border-top: 1px solid #e9ecef;
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+.pricing-badges .badge {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .pricing-badges .badge {
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+}
+</style>
+{% endblock %}

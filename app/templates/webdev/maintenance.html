@@ -1,0 +1,450 @@
+{% extends "base.html" %}{% extends "base.html" %}
+
+{% block title %}Maintenance Services{% endblock %}
+
+{% block content %}{% block title %}Website Maintenance | Professor Johnny (@onelastai){% endblock %}
+
+<div class="container mt-5 pt-4">
+
+    <h1>Website Maintenance Services</h1>{% block content %}
+
+    <p>Keep your website running smoothly with our maintenance services.</p><div class="maintenance-section" style="margin-top: 76px;">
+
+</div>    <!-- Maintenance Hero -->
+
+{% endblock %}    <section class="maintenance-hero bg-info text-white py-5" style="background: linear-gradient(135deg, #0dcaf0 0%, #0d6efd 50%, #6f42c1 100%);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ url_for('webdev.index') }}" class="text-light">Services</a></li>
+                            <li class="breadcrumb-item active text-light">Website Maintenance</li>
+                        </ol>
+                    </nav>
+                    
+                    <h1 class="display-4 fw-bold mb-4">
+                        <i class="fas fa-tools text-warning"></i> Website Maintenance
+                    </h1>
+                    <p class="lead mb-4">Keep your website secure, fast, and up-to-date with our maintenance plans</p>
+                    
+                    <div class="d-flex gap-3">
+                        <a href="#plans" class="btn btn-warning btn-lg">
+                            <i class="fas fa-list"></i> View Plans
+                        </a>
+                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-calculator"></i> Get Quote
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="device-mockup">
+                        <i class="fas fa-cogs fa-8x text-warning opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Maintenance -->
+    <section class="why-maintenance py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-shield-alt text-success"></i> Why Website Maintenance Matters
+                    </h2>
+                    <p class="lead text-muted">Your website is your digital storefront - keep it running perfectly</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="maintenance-benefit card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <i class="fas fa-lock fa-3x text-danger mb-3"></i>
+                            <h4 class="fw-bold mb-3">Security</h4>
+                            <p class="text-muted">Regular security updates and vulnerability patches to protect against threats.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="maintenance-benefit card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <i class="fas fa-tachometer-alt fa-3x text-primary mb-3"></i>
+                            <h4 class="fw-bold mb-3">Performance</h4>
+                            <p class="text-muted">Optimize loading speeds and ensure smooth user experience across all devices.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="maintenance-benefit card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <i class="fas fa-sync-alt fa-3x text-success mb-3"></i>
+                            <h4 class="fw-bold mb-3">Updates</h4>
+                            <p class="text-muted">Keep software, plugins, and content management systems up to date.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="maintenance-benefit card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <i class="fas fa-database fa-3x text-warning mb-3"></i>
+                            <h4 class="fw-bold mb-3">Backups</h4>
+                            <p class="text-muted">Regular backups ensure your data is safe and recoverable.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Maintenance Plans -->
+    <section id="plans" class="maintenance-plans py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-calendar-check text-info"></i> Maintenance Plans
+                    </h2>
+                    <p class="lead text-muted">Choose the right level of support for your website</p>
+                </div>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <!-- Basic Plan -->
+                <div class="col-lg-4">
+                    <div class="plan-card card h-100 border-0 shadow">
+                        <div class="card-header bg-info text-white text-center">
+                            <h3 class="card-title fw-bold">Basic Plan</h3>
+                            <div class="price">
+                                <span class="h2 fw-bold">$200</span>
+                                <small class="d-block opacity-75">per month</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="plan-features mb-4">
+                                <h5 class="fw-bold mb-3">What's Included:</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Monthly security updates</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Weekly backups</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Uptime monitoring</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Monthly performance report</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Email support</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>2 hours content updates</li>
+                                    <li class="mb-2"><i class="fas fa-times text-muted me-2"></i><span class="text-muted">Priority support</span></li>
+                                    <li class="mb-2"><i class="fas fa-times text-muted me-2"></i><span class="text-muted">Phone support</span></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="support-hours mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span class="fw-bold">Monthly Updates:</span>
+                                    <span class="badge bg-info">2 hours</span>
+                                </div>
+                            </div>
+                            
+                            <a href="{{ url_for('webdev.quote') }}?package=basic-maintenance" class="btn btn-info w-100">
+                                Choose Basic Plan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professional Plan -->
+                <div class="col-lg-4">
+                    <div class="plan-card card h-100 border-primary shadow position-relative">
+                        <div class="position-absolute top-0 start-50 translate-middle">
+                            <span class="badge bg-primary px-3 py-2">Most Popular</span>
+                        </div>
+                        <div class="card-header bg-primary text-white text-center">
+                            <h3 class="card-title fw-bold">Professional Plan</h3>
+                            <div class="price">
+                                <span class="h2 fw-bold">$400</span>
+                                <small class="d-block opacity-75">per month</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="plan-features mb-4">
+                                <h5 class="fw-bold mb-3">What's Included:</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Weekly security updates</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Daily backups</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24/7 uptime monitoring</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bi-weekly performance reports</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Priority email support</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Phone support (business hours)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>5 hours content updates</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>SEO monitoring</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="support-hours mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span class="fw-bold">Monthly Updates:</span>
+                                    <span class="badge bg-primary">5 hours</span>
+                                </div>
+                            </div>
+                            
+                            <a href="{{ url_for('webdev.quote') }}?package=professional-maintenance" class="btn btn-primary w-100">
+                                Choose Professional Plan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="col-lg-4">
+                    <div class="plan-card card h-100 border-0 shadow">
+                        <div class="card-header bg-success text-white text-center">
+                            <h3 class="card-title fw-bold">Enterprise Plan</h3>
+                            <div class="price">
+                                <span class="h2 fw-bold">$800</span>
+                                <small class="d-block opacity-75">per month</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="plan-features mb-4">
+                                <h5 class="fw-bold mb-3">What's Included:</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Real-time security monitoring</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Daily automated backups</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced monitoring dashboard</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Weekly detailed reports</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>24/7 emergency support</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Dedicated support manager</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>10 hours content updates</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Performance optimization</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="support-hours mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span class="fw-bold">Monthly Updates:</span>
+                                    <span class="badge bg-success">10 hours</span>
+                                </div>
+                            </div>
+                            
+                            <a href="{{ url_for('webdev.quote') }}?package=enterprise-maintenance" class="btn btn-success w-100">
+                                Choose Enterprise Plan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Breakdown -->
+    <section class="services-breakdown py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-wrench text-primary"></i> What We Do
+                    </h2>
+                    <p class="lead text-muted">Comprehensive maintenance services to keep your site running smoothly</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="service-category">
+                        <h4 class="fw-bold mb-4 text-primary">
+                            <i class="fas fa-shield-alt me-2"></i>Security Services
+                        </h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <strong>Security Updates:</strong> Regular installation of security patches and updates
+                            </li>
+                            <li class="mb-3">
+                                <strong>Malware Scanning:</strong> Automated scanning for malware and suspicious activity
+                            </li>
+                            <li class="mb-3">
+                                <strong>Firewall Management:</strong> Configuration and monitoring of security firewalls
+                            </li>
+                            <li class="mb-3">
+                                <strong>SSL Certificate Management:</strong> Renewal and maintenance of SSL certificates
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="service-category">
+                        <h4 class="fw-bold mb-4 text-success">
+                            <i class="fas fa-tachometer-alt me-2"></i>Performance Optimization
+                        </h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <strong>Speed Optimization:</strong> Image compression and code minification
+                            </li>
+                            <li class="mb-3">
+                                <strong>Database Optimization:</strong> Regular database cleanup and optimization
+                            </li>
+                            <li class="mb-3">
+                                <strong>Cache Management:</strong> Implementation and management of caching solutions
+                            </li>
+                            <li class="mb-3">
+                                <strong>CDN Setup:</strong> Content delivery network configuration for faster loading
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="service-category">
+                        <h4 class="fw-bold mb-4 text-warning">
+                            <i class="fas fa-database me-2"></i>Backup & Recovery
+                        </h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <strong>Automated Backups:</strong> Scheduled daily, weekly, or monthly backups
+                            </li>
+                            <li class="mb-3">
+                                <strong>Multiple Storage Locations:</strong> Cloud and offsite backup storage
+                            </li>
+                            <li class="mb-3">
+                                <strong>Backup Testing:</strong> Regular testing to ensure backup integrity
+                            </li>
+                            <li class="mb-3">
+                                <strong>Quick Recovery:</strong> Fast restoration in case of issues or data loss
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="service-category">
+                        <h4 class="fw-bold mb-4 text-info">
+                            <i class="fas fa-chart-line me-2"></i>Monitoring & Reports
+                        </h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <strong>Uptime Monitoring:</strong> 24/7 monitoring with instant alerts
+                            </li>
+                            <li class="mb-3">
+                                <strong>Performance Reports:</strong> Detailed monthly performance analytics
+                            </li>
+                            <li class="mb-3">
+                                <strong>SEO Monitoring:</strong> Track search engine rankings and visibility
+                            </li>
+                            <li class="mb-3">
+                                <strong>Security Reports:</strong> Regular security audit reports and recommendations
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Support -->
+    <section class="emergency-support py-5 bg-danger text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h3 class="fw-bold mb-3">
+                        <i class="fas fa-exclamation-triangle"></i> Emergency Support Available
+                    </h3>
+                    <p class="lead mb-4">Website down? Security breach? We're here to help 24/7 with emergency response services.</p>
+                    <div class="emergency-features row g-4">
+                        <div class="col-md-4">
+                            <i class="fas fa-phone fa-2x mb-2"></i>
+                            <h5>Emergency Hotline</h5>
+                            <p class="mb-0">Direct access to technical support</p>
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fas fa-clock fa-2x mb-2"></i>
+                            <h5>Rapid Response</h5>
+                            <p class="mb-0">1-hour response time guarantee</p>
+                        </div>
+                        <div class="col-md-4">
+                            <i class="fas fa-tools fa-2x mb-2"></i>
+                            <h5>Immediate Fixes</h5>
+                            <p class="mb-0">Quick resolution of critical issues</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="maintenance-cta py-5 bg-light">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h3 class="fw-bold mb-3">Keep Your Website Running Perfectly</h3>
+                    <p class="lead text-muted mb-4">Don't let maintenance headaches slow down your business. Let us handle the technical details.</p>
+                    <div class="d-flex gap-3 justify-content-center">
+                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-primary btn-lg">
+                            <i class="fas fa-rocket"></i> Start Maintenance Plan
+                        </a>
+                        <a href="mailto:contact@axeyaxe.com" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-phone"></i> Discuss Your Needs
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.maintenance-benefit {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.maintenance-benefit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}
+
+.plan-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+}
+
+.service-category {
+    padding: 2rem;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.emergency-features {
+    margin-top: 2rem;
+}
+
+.support-hours {
+    background: rgba(0,0,0,0.05);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .plan-card {
+        margin-bottom: 2rem;
+    }
+    
+    .service-category {
+        margin-bottom: 2rem;
+    }
+}
+</style>
+{% endblock %}

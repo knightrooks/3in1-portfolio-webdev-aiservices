@@ -1,0 +1,496 @@
+{% extends "base.html" %}{% extends "base.html" %}
+
+{% block title %}Digital Marketing{% endblock %}
+
+{% block content %}{% block title %}Digital Marketing | Professor Johnny (@onelastai){% endblock %}
+
+<div class="container mt-5 pt-4">
+
+    <h1>Digital Marketing Services</h1>{% block content %}
+
+    <p>Grow your online presence with our digital marketing solutions.</p><div class="marketing-section" style="margin-top: 76px;">
+
+</div>    <!-- Marketing Hero -->
+
+{% endblock %}    <section class="marketing-hero bg-gradient text-white py-5" style="background: linear-gradient(135deg, #e91e63 0%, #f44336 50%, #ff9800 100%);">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{ url_for('webdev.index') }}" class="text-light">Services</a></li>
+                            <li class="breadcrumb-item active text-light">Digital Marketing</li>
+                        </ol>
+                    </nav>
+                    
+                    <h1 class="display-4 fw-bold mb-4">
+                        <i class="fas fa-bullhorn text-warning"></i> Digital Marketing
+                    </h1>
+                    <p class="lead mb-4">Comprehensive digital marketing strategies that drive growth and ROI</p>
+                    
+                    <div class="d-flex gap-3">
+                        <a href="#services" class="btn btn-warning btn-lg">
+                            <i class="fas fa-rocket"></i> Our Services
+                        </a>
+                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-calculator"></i> Get Quote
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="device-mockup">
+                        <i class="fas fa-chart-pie fa-8x text-warning opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketing Benefits -->
+    <section class="marketing-benefits py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-target text-danger"></i> Why Digital Marketing?
+                    </h2>
+                    <p class="lead text-muted">Reach your audience where they spend their time - online</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="benefit-card card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <i class="fas fa-globe fa-3x text-primary mb-3"></i>
+                            <h4 class="fw-bold mb-3">Global Reach</h4>
+                            <p class="text-muted">Connect with customers worldwide through digital channels.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="benefit-card card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <i class="fas fa-chart-line fa-3x text-success mb-3"></i>
+                            <h4 class="fw-bold mb-3">Measurable Results</h4>
+                            <p class="text-muted">Track ROI and optimize campaigns based on real data.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="benefit-card card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <i class="fas fa-dollar-sign fa-3x text-warning mb-3"></i>
+                            <h4 class="fw-bold mb-3">Cost Effective</h4>
+                            <p class="text-muted">Better ROI compared to traditional marketing methods.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="benefit-card card h-100 border-0 shadow-sm text-center">
+                        <div class="card-body p-4">
+                            <i class="fas fa-users fa-3x text-info mb-3"></i>
+                            <h4 class="fw-bold mb-3">Targeted Audience</h4>
+                            <p class="text-muted">Reach the right people at the right time with precision.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketing Services -->
+    <section id="services" class="marketing-services py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-cogs text-primary"></i> Our Marketing Services
+                    </h2>
+                    <p class="lead text-muted">Full-spectrum digital marketing solutions</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="service-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <i class="fab fa-google fa-3x text-danger mb-4"></i>
+                            <h4 class="fw-bold mb-3">Google Ads (PPC)</h4>
+                            <p class="text-muted mb-4">Drive immediate traffic with targeted Google advertising campaigns.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Search ads</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Display ads</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Shopping ads</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Campaign optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="service-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <i class="fab fa-facebook-square fa-3x text-primary mb-4"></i>
+                            <h4 class="fw-bold mb-3">Social Media Marketing</h4>
+                            <p class="text-muted mb-4">Build brand awareness and engage with your audience on social platforms.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Facebook & Instagram ads</li>
+                                <li><i class="fas fa-check text-success me-2"></i>LinkedIn marketing</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Content creation</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Community management</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="service-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <i class="fas fa-envelope fa-3x text-success mb-4"></i>
+                            <h4 class="fw-bold mb-3">Email Marketing</h4>
+                            <p class="text-muted mb-4">Nurture leads and retain customers with effective email campaigns.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Campaign design</li>
+                                <li><i class="fas fa-check text-success me-2"></i>List management</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Automation sequences</li>
+                                <li><i class="fas fa-check text-success me-2"></i>A/B testing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="service-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <i class="fas fa-pen-fancy fa-3x text-info mb-4"></i>
+                            <h4 class="fw-bold mb-3">Content Marketing</h4>
+                            <p class="text-muted mb-4">Create valuable content that attracts and converts your target audience.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Blog writing</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Content strategy</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Video content</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Infographics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="service-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <i class="fas fa-chart-bar fa-3x text-warning mb-4"></i>
+                            <h4 class="fw-bold mb-3">Analytics & Reporting</h4>
+                            <p class="text-muted mb-4">Track performance and optimize campaigns based on data insights.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Google Analytics</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Conversion tracking</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Custom dashboards</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Monthly reports</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="service-card card h-100 border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <i class="fas fa-funnel-dollar fa-3x text-secondary mb-4"></i>
+                            <h4 class="fw-bold mb-3">Conversion Optimization</h4>
+                            <p class="text-muted mb-4">Optimize your website and campaigns to increase conversion rates.</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i>Landing page optimization</li>
+                                <li><i class="fas fa-check text-success me-2"></i>A/B testing</li>
+                                <li><i class="fas fa-check text-success me-2"></i>User experience analysis</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Funnel optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketing Packages -->
+    <section class="marketing-packages py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-gift text-danger"></i> Marketing Packages
+                    </h2>
+                    <p class="lead text-muted">Choose the right marketing package for your business</p>
+                </div>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <!-- Starter Package -->
+                <div class="col-lg-4">
+                    <div class="package-card card h-100 border-0 shadow">
+                        <div class="card-header bg-danger text-white text-center">
+                            <h3 class="card-title fw-bold">Marketing Starter</h3>
+                            <div class="price">
+                                <span class="h2 fw-bold">$1,200</span>
+                                <small class="d-block opacity-75">per month</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="package-features mb-4">
+                                <h5 class="fw-bold mb-3">Perfect for small businesses:</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Google Ads setup & management</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Social media management (2 platforms)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Basic email marketing</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Monthly performance report</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Landing page optimization</li>
+                                    <li class="mb-2"><i class="fas fa-times text-muted me-2"></i><span class="text-muted">Advanced analytics</span></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="ad-spend mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span class="fw-bold">Ad Spend Budget:</span>
+                                    <span class="badge bg-danger">$1,000+/month</span>
+                                </div>
+                            </div>
+                            
+                            <a href="{{ url_for('webdev.quote') }}?package=marketing-starter" class="btn btn-danger w-100">
+                                Choose Starter Package
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Professional Package -->
+                <div class="col-lg-4">
+                    <div class="package-card card h-100 border-primary shadow position-relative">
+                        <div class="position-absolute top-0 start-50 translate-middle">
+                            <span class="badge bg-primary px-3 py-2">Most Popular</span>
+                        </div>
+                        <div class="card-header bg-primary text-white text-center">
+                            <h3 class="card-title fw-bold">Marketing Professional</h3>
+                            <div class="price">
+                                <span class="h2 fw-bold">$2,500</span>
+                                <small class="d-block opacity-75">per month</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="package-features mb-4">
+                                <h5 class="fw-bold mb-3">For growing businesses:</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Multi-platform ad management</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Social media management (4 platforms)</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced email marketing</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Content creation & strategy</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Conversion optimization</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Bi-weekly reporting & calls</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="ad-spend mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span class="fw-bold">Ad Spend Budget:</span>
+                                    <span class="badge bg-primary">$3,000+/month</span>
+                                </div>
+                            </div>
+                            
+                            <a href="{{ url_for('webdev.quote') }}?package=marketing-professional" class="btn btn-primary w-100">
+                                Choose Professional Package
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Enterprise Package -->
+                <div class="col-lg-4">
+                    <div class="package-card card h-100 border-0 shadow">
+                        <div class="card-header bg-success text-white text-center">
+                            <h3 class="card-title fw-bold">Marketing Enterprise</h3>
+                            <div class="price">
+                                <span class="h2 fw-bold">$5,000+</span>
+                                <small class="d-block opacity-75">per month</small>
+                            </div>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="package-features mb-4">
+                                <h5 class="fw-bold mb-3">For enterprise businesses:</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Full-funnel marketing strategy</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Omnichannel campaign management</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Advanced automation</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Custom analytics dashboard</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Dedicated marketing manager</li>
+                                    <li class="mb-2"><i class="fas fa-check text-success me-2"></i>Weekly strategy calls</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="ad-spend mb-3">
+                                <div class="d-flex justify-content-between">
+                                    <span class="fw-bold">Ad Spend Budget:</span>
+                                    <span class="badge bg-success">$10,000+/month</span>
+                                </div>
+                            </div>
+                            
+                            <a href="{{ url_for('webdev.quote') }}?package=marketing-enterprise" class="btn btn-success w-100">
+                                Choose Enterprise Package
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Metrics -->
+    <section class="success-metrics py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-trophy text-warning"></i> Client Success Stories
+                    </h2>
+                    <p class="lead text-muted">Real results from our marketing campaigns</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="success-story card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="metric-icon mb-3">
+                                <i class="fas fa-chart-line fa-4x text-success"></i>
+                            </div>
+                            <div class="metric-value">
+                                <span class="h2 fw-bold text-success">400%</span>
+                                <p class="text-muted">Increase in online sales</p>
+                            </div>
+                            <div class="client-info">
+                                <h5 class="fw-bold">E-commerce Store</h5>
+                                <p class="text-muted small">6-month Google Ads campaign</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="success-story card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="metric-icon mb-3">
+                                <i class="fas fa-users fa-4x text-primary"></i>
+                            </div>
+                            <div class="metric-value">
+                                <span class="h2 fw-bold text-primary">250%</span>
+                                <p class="text-muted">Growth in social media followers</p>
+                            </div>
+                            <div class="client-info">
+                                <h5 class="fw-bold">Tech Startup</h5>
+                                <p class="text-muted small">3-month social media campaign</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="success-story card border-0 shadow-sm h-100">
+                        <div class="card-body text-center p-4">
+                            <div class="metric-icon mb-3">
+                                <i class="fas fa-envelope-open fa-4x text-info"></i>
+                            </div>
+                            <div class="metric-value">
+                                <span class="h2 fw-bold text-info">45%</span>
+                                <p class="text-muted">Email open rate improvement</p>
+                            </div>
+                            <div class="client-info">
+                                <h5 class="fw-bold">SaaS Company</h5>
+                                <p class="text-muted small">Email automation optimization</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="marketing-cta py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-8 mx-auto">
+                    <h3 class="fw-bold mb-3">Ready to Accelerate Your Growth?</h3>
+                    <p class="lead mb-4">Let's create a digital marketing strategy that delivers measurable results for your business.</p>
+                    <div class="d-flex gap-3 justify-content-center">
+                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-warning btn-lg">
+                            <i class="fas fa-rocket"></i> Start Marketing Campaign
+                        </a>
+                        <a href="mailto:contact@axeyaxe.com" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-phone"></i> Free Strategy Session
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.benefit-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}
+
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+}
+
+.package-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+}
+
+.success-story {
+    transition: transform 0.3s ease;
+}
+
+.success-story:hover {
+    transform: translateY(-3px);
+}
+
+.ad-spend {
+    background: rgba(0,0,0,0.05);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.metric-value {
+    margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2rem;
+    }
+    
+    .package-card {
+        margin-bottom: 2rem;
+    }
+}
+</style>
+{% endblock %}

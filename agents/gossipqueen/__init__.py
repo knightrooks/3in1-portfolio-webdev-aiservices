@@ -7,18 +7,20 @@ from flask import Blueprint
 from flask_socketio import Namespace
 
 # Create blueprint
-gossipqueen_bp = Blueprint('gossipqueen', __name__, url_prefix='/gossipqueen')
+gossipqueen_bp = Blueprint("gossipqueen", __name__, url_prefix="/gossipqueen")
 
 # Import routes after blueprint creation to avoid circular imports
 from .api import routes, socket, events
 
+
 # Register WebSocket namespace
 class GossipqueenNamespace(Namespace):
     def on_connect(self):
-        print(f'{self.__class__.__name__} client connected')
-    
+        print(f"{self.__class__.__name__} client connected")
+
     def on_disconnect(self):
-        print(f'{self.__class__.__name__} client disconnected')
+        print(f"{self.__class__.__name__} client disconnected")
+
 
 # Export namespace for SocketIO registration
-namespace = GossipqueenNamespace(f'/gossipqueen')
+namespace = GossipqueenNamespace(f"/gossipqueen")
