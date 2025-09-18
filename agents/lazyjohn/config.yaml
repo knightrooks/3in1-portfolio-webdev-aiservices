@@ -45,3 +45,20 @@ specialties:
 ui:
   avatar_color: '#8FBC8F'
   theme: laid-back
+voice_config:
+  enabled: true
+  provider: gTTS
+  properties:
+    gender: male
+    rate: 140
+    volume: 0.7
+    tone: monotone
+    emotion: casual
+    language: en
+    accent: us
+  personality_modifiers:
+    reduce_enthusiasm: true
+    casual_speech_patterns: true
+    relaxed_pacing: high
+  azure_voice: en-US-GuyNeural
+  fallback_voice: en-US-BrianNeural

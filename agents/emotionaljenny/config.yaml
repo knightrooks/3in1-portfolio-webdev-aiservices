@@ -44,3 +44,20 @@ specialties:
 ui:
   avatar_color: '#9370DB'
   theme: emotional
+voice_config:
+  enabled: true
+  provider: gTTS
+  properties:
+    gender: female
+    rate: 180
+    volume: 0.9
+    tone: warm
+    emotion: empathetic
+    language: en
+    accent: us
+  personality_modifiers:
+    add_warmth_words: true
+    use_gentle_pacing: true
+    emotional_inflection: high
+  azure_voice: en-US-AriaNeural
+  fallback_voice: en-US-JennyNeural

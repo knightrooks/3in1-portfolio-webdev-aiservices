@@ -230,6 +230,236 @@ def chat():
         )
 
 
+@emotionaljenny_api.route("/speak", methods=["POST"])
+@rate_limit
+@validate_request(["text"])
+@track_usage
+def text_to_speech():
+    """Convert text to speech with personality-matched voice"""
+    start_time = time.time()
+    request_id = str(uuid.uuid4())
+
+    try:
+        data = request.get_json()
+        text = data.get("text", "").strip()
+        include_audio = data.get("include_audio", True)
+        audio_format = data.get("format", "audio/mp3")
+
+        # Validate text length
+        if len(text) > 1000:
+            return (
+                jsonify({
+                    "error": "Text too long. Maximum 1000 characters.",
+                    "code": "TEXT_TOO_LONG"
+                }),
+                400,
+            )
+
+        if not text:
+            return (
+                jsonify({
+                    "error": "Text cannot be empty",
+                    "code": "EMPTY_TEXT"
+                }),
+                400,
+            )
+
+        # Generate speech using agent's personality
+        speech_response = asyncio.run(
+            controller.agent.speak_response(text, include_audio=include_audio)
+        )
+
+        processing_time = time.time() - start_time
+
+        # Log analytics
+        analytics_logger.log_interaction(
+            request_id=request_id,
+            session_id=data.get("session_id", "anonymous"),
+            interaction_type="voice_synthesis",
+            success=True,
+            processing_time=processing_time,
+            metadata={
+                "text_length": len(text),
+                "audio_format": audio_format,
+                "voice_enabled": speech_response.get("voice_enabled", False),
+                "audio_size": speech_response.get("audio_size", 0)
+            }
+        )
+
+        response = {
+            "success": True,
+            "request_id": request_id,
+            "data": speech_response,
+            "metadata": {
+                "processing_time": processing_time,
+                "timestamp": time.time(),
+                "agent": "emotionaljenny",
+                "voice_personality": "warm_empathetic"
+            }
+        }
+
+        return jsonify(response)
+
+    except Exception as e:
+        error_time = time.time() - start_time
+        analytics_logger.log_error(
+            request_id=request_id,
+            error=str(e),
+            traceback=traceback.format_exc(),
+            processing_time=error_time,
+        )
+
+        return (
+            jsonify({
+                "success": False,
+                "error": "Voice synthesis failed",
+                "code": "VOICE_ERROR",
+                "request_id": request_id,
+                "metadata": {
+                    "processing_time": error_time,
+                    "timestamp": time.time(),
+                }
+            }),
+            500,
+        )
+
+
+@emotionaljenny_api.route("/voice/capabilities", methods=["GET"])
+def get_voice_capabilities():
+    """Get voice capabilities and configuration"""
+    try:
+        voice_caps = asyncio.run(controller.agent.get_voice_capabilities())
+        
+        return jsonify({
+            "success": True,
+            "data": {
+                **voice_caps,
+                "agent_personality": "warm_empathetic",
+                "voice_description": "Warm, soothing voice with empathetic tone",
+                "supported_features": [
+                    "text_to_speech",
+                    "personality_matched_voice",
+                    "emotional_inflection",
+                    "multiple_formats"
+                ]
+            }
+        })
+
+    except Exception as e:
+        return (
+            jsonify({
+                "success": False,
+                "error": "Failed to get voice capabilities",
+                "code": "VOICE_CAPABILITIES_ERROR",
+                "details": str(e)
+            }),
+            500,
+        )
+
+
+@emotionaljenny_api.route("/chat/speak", methods=["POST"])
+@rate_limit
+@validate_request(["message"])
+@track_usage
+def chat_with_voice():
+    """Chat with voice response included"""
+    start_time = time.time()
+    request_id = str(uuid.uuid4())
+
+    try:
+        data = request.get_json()
+        message = data.get("message", "").strip()
+        session_id = data.get("session_id", str(uuid.uuid4()))
+        context = data.get("context", {})
+        include_audio = data.get("include_audio", True)
+
+        # Validate message length
+        if len(message) > 2000:
+            return (
+                jsonify({
+                    "error": "Message too long. Maximum 2000 characters.",
+                    "code": "MESSAGE_TOO_LONG"
+                }),
+                400,
+            )
+
+        # Process chat request
+        chat_request = {
+            "message": message,
+            "session_id": session_id,
+            "context": context,
+            "request_id": request_id,
+            "include_voice": include_audio
+        }
+
+        # Get response from controller
+        response_data = asyncio.run(controller.process_request(chat_request))
+        
+        # Add voice to response if requested
+        if include_audio and response_data.get("response"):
+            voice_response = asyncio.run(
+                controller.agent.speak_response(
+                    response_data["response"], 
+                    include_audio=True
+                )
+            )
+            response_data.update(voice_response)
+
+        processing_time = time.time() - start_time
+
+        # Log analytics
+        analytics_logger.log_interaction(
+            request_id=request_id,
+            session_id=session_id,
+            interaction_type="chat_with_voice",
+            success=True,
+            processing_time=processing_time,
+            metadata={
+                "message_length": len(message),
+                "response_length": len(response_data.get("response", "")),
+                "voice_included": include_audio,
+                "audio_generated": "audio" in response_data
+            }
+        )
+
+        response = {
+            "success": True,
+            "request_id": request_id,
+            "data": response_data,
+            "metadata": {
+                "processing_time": processing_time,
+                "timestamp": time.time(),
+                "agent": "emotionaljenny",
+                "interaction_type": "chat_with_voice"
+            }
+        }
+
+        return jsonify(response)
+
+    except Exception as e:
+        error_time = time.time() - start_time
+        analytics_logger.log_error(
+            request_id=request_id,
+            error=str(e),
+            traceback=traceback.format_exc(),
+            processing_time=error_time,
+        )
+
+        return (
+            jsonify({
+                "success": False,
+                "error": "Chat with voice failed",
+                "code": "CHAT_VOICE_ERROR",
+                "request_id": request_id,
+                "metadata": {
+                    "processing_time": error_time,
+                    "timestamp": time.time(),
+                }
+            }),
+            500,
+        )
+
+
 @emotionaljenny_api.route("/analytics", methods=["GET"])
 def get_analytics():
     """Get agent analytics and metrics"""

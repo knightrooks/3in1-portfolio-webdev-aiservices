@@ -46,3 +46,20 @@ specialties:
 ui:
   avatar_color: '#32CD32'
   theme: technical
+voice_config:
+  enabled: true
+  provider: gTTS
+  properties:
+    gender: neutral
+    rate: 170
+    volume: 0.8
+    tone: technical
+    emotion: focused
+    language: en
+    accent: us
+  personality_modifiers:
+    precise_articulation: true
+    technical_terminology: true
+    methodical_pacing: high
+  azure_voice: en-US-BrianNeural
+  fallback_voice: en-US-DavisNeural

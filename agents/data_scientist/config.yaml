@@ -1,1 +1,17 @@
-{}
+voice_config:
+  enabled: true
+  provider: gTTS
+  properties:
+    gender: female
+    rate: 170
+    volume: 0.85
+    tone: analytical
+    emotion: curious
+    language: en
+    accent: us
+  personality_modifiers:
+    data_emphasis: true
+    methodical_delivery: true
+    insightful_tone: true
+  azure_voice: en-US-SaraNeural
+  fallback_voice: en-US-AriaNeural

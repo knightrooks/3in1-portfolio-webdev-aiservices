@@ -45,3 +45,20 @@ specialties:
 ui:
   avatar_color: '#FF69B4'
   theme: romantic
+voice_config:
+  enabled: true
+  provider: gTTS
+  properties:
+    gender: female
+    rate: 190
+    volume: 0.85
+    tone: sweet
+    emotion: affectionate
+    language: en
+    accent: us
+  personality_modifiers:
+    add_pet_names: true
+    loving_inflection: high
+    intimate_tone: true
+  azure_voice: en-US-MichelleNeural
+  fallback_voice: en-US-AriaNeural

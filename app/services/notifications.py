@@ -542,7 +542,7 @@ class NotificationService:
         try:
             template_data = {
                 "name": user.full_name or user.username,
-                "dashboard_url": f"{current_app.config.get('BASE_URL', 'http://localhost:5000')}/dashboard",
+                "dashboard_url": f"{current_app.config.get('BASE_URL', 'http://localhost:3000')}/dashboard",
             }
 
             success = self.send_email(
@@ -581,7 +581,7 @@ class NotificationService:
                     if payment.completed_at
                     else "Today"
                 ),
-                "dashboard_url": f"{current_app.config.get('BASE_URL', 'http://localhost:5000')}/dashboard",
+                "dashboard_url": f"{current_app.config.get('BASE_URL', 'http://localhost:3000')}/dashboard",
             }
 
             success = self.send_email(
@@ -615,7 +615,7 @@ class NotificationService:
                 "subject": ticket.subject,
                 "category": ticket.category,
                 "priority": ticket.priority,
-                "ticket_url": f"{current_app.config.get('BASE_URL', 'http://localhost:5000')}/support/ticket/{ticket.id}",
+                "ticket_url": f"{current_app.config.get('BASE_URL', 'http://localhost:3000')}/support/ticket/{ticket.id}",
             }
 
             success = self.send_email(

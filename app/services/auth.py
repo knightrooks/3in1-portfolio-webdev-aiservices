@@ -253,7 +253,7 @@ class AuthService:
                 return False
 
             # Create verification URL
-            base_url = current_app.config.get("BASE_URL", "http://localhost:5000")
+            base_url = current_app.config.get("BASE_URL", "http://localhost:3000")
             verify_url = f"{base_url}/auth/verify-email?token={token}"
 
             # Create email content

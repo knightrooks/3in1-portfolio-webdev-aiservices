@@ -45,3 +45,20 @@ specialties:
 ui:
   avatar_color: '#B22222'
   theme: authoritative
+voice_config:
+  enabled: true
+  provider: gTTS
+  properties:
+    gender: female
+    rate: 160
+    volume: 0.95
+    tone: authoritative
+    emotion: stern
+    language: en
+    accent: us
+  personality_modifiers:
+    emphasize_commands: true
+    remove_uncertainty: true
+    authority_inflection: high
+  azure_voice: en-US-SaraNeural
+  fallback_voice: en-US-NancyNeural

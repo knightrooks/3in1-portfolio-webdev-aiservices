@@ -1,1 +1,17 @@
-{}
+voice_config:
+  enabled: true
+  provider: gTTS
+  properties:
+    gender: female
+    rate: 180
+    volume: 0.85
+    tone: helpful
+    emotion: supportive
+    language: en
+    accent: us
+  personality_modifiers:
+    customer_centric: true
+    empathetic_delivery: true
+    solution_oriented: true
+  azure_voice: en-US-AriaNeural
+  fallback_voice: en-US-MichelleNeural
