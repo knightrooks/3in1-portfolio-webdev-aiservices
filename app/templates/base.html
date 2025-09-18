@@ -53,7 +53,7 @@
                     
                     <!-- Portfolio Section -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {% if request.endpoint.startswith('portfolio.') %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle {% if request.endpoint and request.endpoint.startswith('portfolio.') %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
                             <i class="fas fa-user-tie"></i> Portfolio
                         </a>
                         <ul class="dropdown-menu">
@@ -69,7 +69,7 @@
                     
                     <!-- Web Development Services -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {% if request.endpoint.startswith('webdev.') %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle {% if request.endpoint and request.endpoint.startswith('webdev.') %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
                             <i class="fas fa-code"></i> WebDev Services
                         </a>
                         <ul class="dropdown-menu">
@@ -83,29 +83,29 @@
                             <li><a class="dropdown-item" href="{{ url_for('webdev.maintenance') }}">Maintenance</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{ url_for('webdev.pricing') }}">Pricing</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('webdev.quote') }}">Get Quote</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('webdev.quote_form') }}">Get Quote</a></li>
                         </ul>
                     </li>
                     
                     <!-- AI Services Hub -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {% if request.endpoint.startswith('ai_services.') or request.endpoint.startswith('agents.') %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle {% if request.endpoint and (request.endpoint.startswith('ai_services.') or request.endpoint.startswith('agents.')) %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
                             <i class="fas fa-robot"></i> AI Services
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url_for('ai_services.index') }}">AI Showcase</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('ai_services.showcase') }}">Capabilities Demo</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('agents.agents_dashboard') }}">AI Agents Hub</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('agents.api_overview') }}">API Overview</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ url_for('ai_services.agents') }}">Agent Gallery</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('ai_services.chat') }}">Live Chat</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('agents.agents_analytics') }}">Analytics</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('agents.agents_health') }}">Health Check</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="{{ url_for('ai_services.pricing') }}">AI Pricing</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('agents.agents_analytics') }}">AI Analytics</a></li>
                         </ul>
                     </li>
                     
                     <!-- Models Management -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle {% if request.endpoint.startswith('models.') %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle {% if request.endpoint and request.endpoint.startswith('models.') %}active{% endif %}" href="#" role="button" data-bs-toggle="dropdown">
                             <i class="fas fa-brain"></i> AI Models
                         </a>
                         <ul class="dropdown-menu">
@@ -180,10 +180,10 @@
                 <div class="col-md-2">
                     <h5 class="footer-brand">AI Services</h5>
                     <ul class="list-unstyled footer-links">
-                        <li><a href="{{ url_for('ai_services.showcase') }}" class="text-muted">Showcase</a></li>
-                        <li><a href="{{ url_for('ai_services.agents') }}" class="text-muted">AI Agents</a></li>
-                        <li><a href="{{ url_for('ai_services.chat') }}" class="text-muted">Live Chat</a></li>
-                        <li><a href="{{ url_for('ai_services.pricing') }}" class="text-muted">Pricing</a></li>
+                        <li><a href="{{ url_for('agents.agents_dashboard') }}" class="text-muted">AI Dashboard</a></li>
+                        <li><a href="{{ url_for('agents.api_overview') }}" class="text-muted">API Overview</a></li>
+                        <li><a href="{{ url_for('agents.agents_analytics') }}" class="text-muted">Analytics</a></li>
+                        <li><a href="{{ url_for('agents.agents_health') }}" class="text-muted">Health</a></li>
                     </ul>
                 </div>
             </div>

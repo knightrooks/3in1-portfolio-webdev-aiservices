@@ -1,1 +1,17 @@
-{}
+voice_config:
+  enabled: true
+  provider: gTTS
+  properties:
+    gender: male
+    rate: 165
+    volume: 0.8
+    tone: technical
+    emotion: focused
+    language: en
+    accent: us
+  personality_modifiers:
+    technical_precision: true
+    logical_flow: true
+    clear_explanations: true
+  azure_voice: en-US-BrianNeural
+  fallback_voice: en-US-DavisNeural

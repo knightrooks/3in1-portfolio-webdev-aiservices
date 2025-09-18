@@ -173,7 +173,7 @@ def create_admin():
 
 if __name__ == '__main__':
     # Run the application
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 3000))
     debug = os.environ.get('FLASK_ENV') == 'development'
     
     print("🚀 Starting Professor Johnny's 3-in-1 Platform...")

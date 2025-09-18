@@ -164,8 +164,8 @@ start_dev_server() {
     sleep 10
     
     # Start Flask development server
-    info "Starting Flask development server on http://localhost:5000"
-    python manage.py run --host=0.0.0.0 --port=5000 --debug
+    info "Starting Flask development server on http://localhost:3000"
+    python manage.py run --host=0.0.0.0 --port=3000 --debug
 }
 
 # Stop development server
@@ -239,8 +239,8 @@ show_status() {
     fi
     
     # Check application health
-    if curl -f -s http://localhost:5000/health > /dev/null 2>&1; then
-        echo "✅ Application: Running (http://localhost:5000)"
+    if curl -f -s http://localhost:3000/health > /dev/null 2>&1; then
+        echo "✅ Application: Running (http://localhost:3000)"
     else
         echo "❌ Application: Not responding"
     fi

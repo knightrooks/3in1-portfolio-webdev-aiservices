@@ -1,1 +1,17 @@
-{}
+voice_config:
+  enabled: true
+  provider: gTTS
+  properties:
+    gender: female
+    rate: 200
+    volume: 0.85
+    tone: creative
+    emotion: inspiring
+    language: en
+    accent: us
+  personality_modifiers:
+    creative_inflection: true
+    engaging_tone: true
+    dynamic_delivery: true
+  azure_voice: en-US-JennyNeural
+  fallback_voice: en-US-SaraNeural

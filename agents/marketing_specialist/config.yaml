@@ -1,1 +1,17 @@
-{}
+voice_config:
+  enabled: true
+  provider: gTTS
+  properties:
+    gender: female
+    rate: 190
+    volume: 0.9
+    tone: persuasive
+    emotion: enthusiastic
+    language: en
+    accent: us
+  personality_modifiers:
+    persuasive_tone: true
+    energetic_delivery: true
+    engaging_inflection: true
+  azure_voice: en-US-JennyNeural
+  fallback_voice: en-US-MichelleNeural

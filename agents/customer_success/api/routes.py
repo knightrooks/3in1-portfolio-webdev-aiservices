@@ -269,3 +269,76 @@ def get_analytics():
             ),
             500,
         )
+
+
+@customer_success_api.route("/speak", methods=["POST"])
+@rate_limit
+@validate_request(["text"])
+def speak_text():
+    """Convert text to speech with helpful customer success voice"""
+    start_time = time.time()
+    request_id = str(uuid.uuid4())
+
+    try:
+        data = request.get_json()
+        text = data["text"]
+        include_audio = data.get("include_audio", True)
+        
+        if len(text) > 5000:
+            return (jsonify({"success": False, "error": "Text too long (max 5000 characters)", "code": "TEXT_TOO_LONG"}), 400)
+
+        analytics_logger.log_request(request_id=request_id, endpoint="/speak", request_data={"text_length": len(text), "include_audio": include_audio})
+        speech_response = asyncio.run(controller.agent.speak_response(text, include_audio=include_audio))
+        processing_time = time.time() - start_time
+        analytics_logger.log_response(request_id=request_id, response_data=speech_response, processing_time=processing_time, interaction_type="voice_synthesis", status="success")
+
+        response = {"success": True, "data": {"voice_enabled": speech_response.get("voice_enabled", False), "message": speech_response.get("message", ""), "audio_file": speech_response.get("audio_file"), "metadata": {"processing_time": processing_time, "request_id": request_id, "timestamp": time.time(), "voice_personality": "helpful_supportive"}}}
+        return jsonify(response)
+
+    except Exception as e:
+        processing_time = time.time() - start_time
+        analytics_logger.log_error(request_id=request_id, error=str(e), traceback=traceback.format_exc(), processing_time=processing_time)
+        return (jsonify({"success": False, "error": "Internal server error", "code": "INTERNAL_ERROR", "request_id": request_id, "metadata": {"processing_time": processing_time, "timestamp": time.time()}}), 500)
+
+
+@customer_success_api.route("/voice/capabilities", methods=["GET"])
+def get_voice_capabilities():
+    """Get voice capabilities and configuration"""
+    try:
+        voice_caps = asyncio.run(controller.agent.get_voice_capabilities())
+        response = {"success": True, "data": {**voice_caps, "agent": "customer_success", "voice_description": "Helpful, supportive voice with customer service tone", "personality_traits": ["helpful", "supportive", "customer_focused", "solution_oriented", "empathetic", "personality_matched_voice"]}}
+        return jsonify(response)
+    except Exception as e:
+        analytics_logger.log_error(request_id=str(uuid.uuid4()), error=str(e), traceback=traceback.format_exc())
+        return (jsonify({"success": False, "error": "Failed to get voice capabilities", "code": "VOICE_CAPABILITIES_ERROR", "metadata": {"timestamp": time.time()}}), 500)
+
+
+@customer_success_api.route("/chat/speak", methods=["POST"])
+@rate_limit
+@validate_request(["message"])
+def chat_with_voice():
+    """Chat with helpful customer success voice response"""
+    start_time = time.time()
+    request_id = str(uuid.uuid4())
+
+    try:
+        data = request.get_json()
+        user_message = data["message"]
+        include_audio = data.get("include_audio", True)
+        session_id = data.get("session_id", str(uuid.uuid4()))
+        
+        if len(user_message) > 2000:
+            return (jsonify({"success": False, "error": "Message too long (max 2000 characters)", "code": "MESSAGE_TOO_LONG"}), 400)
+
+        analytics_logger.log_request(request_id=request_id, endpoint="/chat/speak", request_data={"message_length": len(user_message), "session_id": session_id, "include_audio": include_audio})
+        chat_response = asyncio.run(controller.agent.process_message({"message": user_message, "session_id": session_id, "include_voice": include_audio}))
+        processing_time = time.time() - start_time
+        analytics_logger.log_response(request_id=request_id, response_data=chat_response, processing_time=processing_time, interaction_type="chat_with_voice", status="success")
+
+        response = {"success": True, "data": {**chat_response, "metadata": {"processing_time": processing_time, "request_id": request_id, "timestamp": time.time(), "voice_personality": "helpful_supportive", "session_id": session_id}}}
+        return jsonify(response)
+
+    except Exception as e:
+        processing_time = time.time() - start_time
+        analytics_logger.log_error(request_id=request_id, error=str(e), traceback=traceback.format_exc(), processing_time=processing_time)
+        return (jsonify({"success": False, "error": "Internal server error", "code": "INTERNAL_ERROR", "request_id": request_id, "metadata": {"processing_time": processing_time, "timestamp": time.time()}}), 500)

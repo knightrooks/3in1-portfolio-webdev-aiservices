@@ -1,1 +1,17 @@
-{}
+voice_config:
+  enabled: true
+  provider: gTTS
+  properties:
+    gender: neutral
+    rate: 160
+    volume: 0.8
+    tone: scholarly
+    emotion: inquisitive
+    language: en
+    accent: us
+  personality_modifiers:
+    research_emphasis: true
+    thorough_delivery: true
+    evidence_based_tone: true
+  azure_voice: en-US-BrianNeural
+  fallback_voice: en-US-RogerNeural

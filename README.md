@@ -147,7 +147,7 @@ python manage.py db upgrade
 python manage.py run
 ```
 
-Visit `http://localhost:5000` to access the platform.
+Visit `http://localhost:3000` to access the platform.
 
 ### Docker Setup
 
@@ -156,7 +156,7 @@ Visit `http://localhost:5000` to access the platform.
 docker-compose up -d
 
 # Access the application
-open http://localhost:5000
+open http://localhost:3000
 ```
 
 ---

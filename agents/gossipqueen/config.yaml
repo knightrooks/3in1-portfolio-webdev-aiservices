@@ -45,3 +45,20 @@ specialties:
 ui:
   avatar_color: '#FFB6C1'
   theme: social
+voice_config:
+  enabled: true
+  provider: gTTS
+  properties:
+    gender: female
+    rate: 220
+    volume: 0.9
+    tone: animated
+    emotion: excited
+    language: en
+    accent: us
+  personality_modifiers:
+    add_excitement_markers: true
+    fast_paced_delivery: true
+    social_inflection: very_high
+  azure_voice: en-US-JennyNeural
+  fallback_voice: en-US-MichelleNeural
