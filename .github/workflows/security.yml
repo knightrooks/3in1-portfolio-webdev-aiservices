@@ -1,6 +1,9 @@
-name: Security Scan
-
-on:
+name: Security     - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'on:
   schedule:
     - cron: '0 2 * * 1'  # Weekly on Monday at 2 AM
   push:
@@ -52,7 +55,7 @@ jobs:
         languages: python, javascript
     
     - name: Upload security scan results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: security-scan-results
         path: |
@@ -62,7 +65,7 @@ jobs:
     
     - name: Create security issue if vulnerabilities found
       if: failure()
-      uses: actions/github-script@v6
+      uses: actions/github-script@v7
       with:
         script: |
           github.rest.issues.create({

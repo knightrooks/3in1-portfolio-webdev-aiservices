@@ -1,0 +1,325 @@
+{% extends "base.html" %}
+
+{% block title %}Website Development Services{% endblock %}
+
+
+
+{% block content %}{% block content %}
+
+<div class="container mt-5 pt-4"><div class="websites-section" style="margin-top: 76px;">
+
+    <h1>Professional Website Development</h1>    <!-- Service Hero -->
+
+    <p>Custom website solutions for your business needs.</p>    <section class="service-hero bg-primary text-white py-5" style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%);">
+
+            <div class="container">
+
+    <div class="row">            <div class="row align-items-center">
+
+        <div class="col-md-6">                <div class="col-lg-8">
+
+            <h3>What We Offer</h3>                    <nav aria-label="breadcrumb">
+
+            <ul>                        <ol class="breadcrumb">
+
+                <li>Responsive Design</li>                            <li class="breadcrumb-item"><a href="{{ url_for('webdev.index') }}" class="text-light">Services</a></li>
+
+                <li>SEO Optimization</li>                            <li class="breadcrumb-item active text-light">Website Development</li>
+
+                <li>Fast Loading</li>                        </ol>
+
+                <li>Mobile-First Approach</li>                    </nav>
+
+            </ul>                    
+
+        </div>                    <h1 class="display-4 fw-bold mb-4">
+
+        <div class="col-md-6">                        <i class="fas fa-globe text-warning"></i> {{ data.title }}
+
+            <h3>Technologies</h3>                    </h1>
+
+            <ul>                    <p class="lead mb-4">{{ data.description }}</p>
+
+                <li>HTML5, CSS3, JavaScript</li>                    
+
+                <li>React, Vue.js</li>                    <div class="d-flex gap-3">
+
+                <li>Bootstrap, Tailwind</li>                        <a href="#packages" class="btn btn-warning btn-lg">
+
+                <li>Node.js, Python</li>                            <i class="fas fa-tags"></i> View Packages
+
+            </ul>                        </a>
+
+        </div>                        <a href="{{ url_for('webdev.quote') }}" class="btn btn-outline-light btn-lg">
+
+    </div>                            <i class="fas fa-calculator"></i> Get Quote
+
+                            </a>
+
+    <div class="text-center mt-5">                    </div>
+
+        <a href="{{ url_for('webdev.quote') }}" class="btn btn-primary btn-lg">Get Quote</a>                </div>
+
+    </div>                <div class="col-lg-4 text-center">
+
+</div>                    <div class="device-mockup">
+
+{% endblock %}                        <i class="fas fa-laptop fa-8x text-info opacity-75"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-star text-primary"></i> What You Get
+                    </h2>
+                    <p class="lead text-muted">Professional features included in every website</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                {% for feature in data.features %}
+                <div class="col-lg-6 mb-3">
+                    <div class="feature-item d-flex align-items-start">
+                        <div class="feature-icon me-3">
+                            <i class="fas fa-check-circle text-success fa-lg"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-1">{{ feature }}</h5>
+                            <p class="text-muted mb-0">Professional implementation with modern standards.</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="packages py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-tags text-primary"></i> Website Packages
+                    </h2>
+                    <p class="lead text-muted">Choose the perfect package for your needs</p>
+                </div>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                {% for package in data.packages %}
+                <div class="col-lg-4">
+                    <div class="package-card card h-100 shadow border-0 {% if loop.index == 2 %}border-primary{% endif %}">
+                        {% if loop.index == 2 %}
+                        <div class="card-header bg-primary text-white text-center">
+                            <span class="badge bg-warning text-dark">Most Popular</span>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="card-body text-center p-4">
+                            <h3 class="card-title fw-bold">{{ package.name }}</h3>
+                            <div class="price mb-4">
+                                <span class="h2 fw-bold text-primary">{{ package.price }}</span>
+                            </div>
+                            
+                            <ul class="list-unstyled text-start mb-4">
+                                {% for feature in package.features %}
+                                <li class="mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>{{ feature }}
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            
+                            <a href="{{ url_for('webdev.quote') }}?package={{ package.name|lower|replace(' ', '-') }}" 
+                               class="btn {% if loop.index == 2 %}btn-primary{% else %}btn-outline-primary{% endif %} btn-lg w-100">
+                                Choose This Package
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Examples -->
+    <section class="portfolio-examples py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-images text-primary"></i> Recent Projects
+                    </h2>
+                    <p class="lead text-muted">Examples of websites we've built</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="portfolio-item card border-0 shadow-sm">
+                        <div class="card-img-top bg-gradient-primary d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <i class="fas fa-laptop text-white fa-4x opacity-50"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">E-commerce Store</h5>
+                            <p class="card-text text-muted">Modern online store with payment integration</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-secondary">React</span>
+                                <span class="badge bg-secondary">Node.js</span>
+                                <span class="badge bg-secondary">Stripe</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="portfolio-item card border-0 shadow-sm">
+                        <div class="card-img-top bg-gradient-success d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <i class="fas fa-mobile-alt text-white fa-4x opacity-50"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Restaurant Website</h5>
+                            <p class="card-text text-muted">Responsive restaurant site with online ordering</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-secondary">HTML5</span>
+                                <span class="badge bg-secondary">CSS3</span>
+                                <span class="badge bg-secondary">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="portfolio-item card border-0 shadow-sm">
+                        <div class="card-img-top bg-gradient-warning d-flex align-items-center justify-content-center" style="height: 200px;">
+                            <i class="fas fa-desktop text-white fa-4x opacity-50"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold">Business Dashboard</h5>
+                            <p class="card-text text-muted">Custom web app for business management</p>
+                            <div class="d-flex gap-2">
+                                <span class="badge bg-secondary">Flask</span>
+                                <span class="badge bg-secondary">Python</span>
+                                <span class="badge bg-secondary">MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="display-6 fw-bold mb-3">
+                        <i class="fas fa-question-circle text-primary"></i> Frequently Asked Questions
+                    </h2>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    How long does it take to build a website?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Typical timeframe is 2-4 weeks for a standard business website, depending on complexity and content requirements.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Will my website work on mobile devices?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes! All our websites are built with a mobile-first approach and are fully responsive across all devices.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Do you provide ongoing support?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we provide support periods included with each package, and ongoing maintenance plans are available.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta py-5 bg-primary text-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h3 class="fw-bold mb-2">Ready to Get Your Website Built?</h3>
+                    <p class="mb-0">Let's discuss your project and create a website that works for your business.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end">
+                    <a href="{{ url_for('webdev.quote') }}" class="btn btn-warning btn-lg">
+                        <i class="fas fa-rocket"></i> Start Your Project
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+.package-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}
+
+.portfolio-item {
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-3px);
+}
+
+.feature-item {
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.feature-item:hover {
+    background-color: rgba(59, 130, 246, 0.05);
+}
+</style>
+{% endblock %}

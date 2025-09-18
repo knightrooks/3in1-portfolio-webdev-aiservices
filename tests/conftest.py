@@ -36,7 +36,7 @@ class TestConfig(Config):
 @pytest.fixture
 def app():
     """Create application for testing"""
-    app = create_app('testing')
+    app = create_app("testing")
 
     with app.app_context():
         yield app
